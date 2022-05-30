@@ -1,23 +1,17 @@
 import React from "react";
-import logo from '../../img/logo48.png';
+import AddCarBtn from "../AddCarBtn/AddCarBtn";
+import CurrentUser from "../CurrentUser/CurrentUser";
+import Logotype from "../Logotype/Logotype";
 import s from './Header.module.css';
 
 function Header () {
     return (
         <header className={s.head}>
-            <div className={s.user}>
-                Current
-                User
-            </div>
+            <CurrentUser />
 
-            <div className={s.logotype}>
-                <img src={logo} alt="logo" />
-                <span>AutoCalc</span>
-            </div>
+            <Logotype />
 
-            <div className={s.addCar}>
-                Add Car
-            </div>
+            <AddCarBtn />
         </header>
     );
 }
