@@ -2,4 +2,25 @@
     height: 10vh;
     background-color: brown;
     display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 10px;
+    align-items: center;
+    
+}
+
+.CurrentUser {
+    justify-self: start;
+    margin-left: 10px;
+    
+}
+
+.Logotype {
+    justify-self: center;
+    
+}
+
+.AddCarBtn {
+    justify-self: end;
+    margin-right: 10px;
+    
 }

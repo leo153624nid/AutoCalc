@@ -7,11 +7,17 @@ import s from './Header.module.css';
 function Header () {
     return (
         <header className={s.head}>
-            <CurrentUser />
+            <div className={s.CurrentUser}>
+                <CurrentUser />
+            </div>
 
-            <Logotype />
+            <div className={s.Logotype}>
+                <Logotype />
+            </div>
 
-            <AddCarBtn />
+            <div className={s.AddCarBtn}>
+                <AddCarBtn />
+            </div>
         </header>
     );
 }
