@@ -1,12 +1,11 @@
 .CarBlock {
     width: 30vw;
-    height: 85vh;
     z-index: 1;
-    background-color: red;
-    
-    /* display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center; */
     opacity: 0.6;
+}
+
+.CarBlock:hover {
+    opacity: 1;
+    color: brown;
+    transition: 0.5s;
 }

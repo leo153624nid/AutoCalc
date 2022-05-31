@@ -1,0 +1,46 @@
+.CarBtns {
+    display: grid;
+    grid-template-areas: 
+        "a b"
+        "c c";
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+    grid-gap: 20px;
+  
+    
+}
+
+.fuel {
+    grid-area: a;
+    background-color: antiquewhite;
+    border-radius: 6px;
+    width: 10vw;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.etc {
+    grid-area: b;
+    background-color: antiquewhite;
+    border-radius: 6px;
+    width: 10vw;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.change {
+    grid-area: c;
+    height: 40px;
+    background-color: antiquewhite;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
