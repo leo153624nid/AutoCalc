@@ -1,0 +1,18 @@
+{
+    "userName": "A Ch",
+    "userId": 1,
+    "userCars": [
+        {
+            "carName": "BMW e46",
+            "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e46.jpg"
+        },
+        {
+            "carName": "BMW e83",
+            "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e83.jpg"
+        },
+        {
+            "carName": "NISSAN b14",
+            "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/b14.jpeg"
+        }
+    ]
+}

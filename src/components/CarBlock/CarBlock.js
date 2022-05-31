@@ -3,10 +3,10 @@ import s from './CarBlock.module.css';
 import CarCard from '../CarCard/CarCard';
 import CarBtns from '../CarBtns/CarBtns';
 
-function CarBlock () {
+function CarBlock (props) {
     return (
         <div className={s.CarBlock}>
-            <CarCard />
+            <CarCard {...props}/>
             <CarBtns />
         </div>
     );
