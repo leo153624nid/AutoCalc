@@ -7,9 +7,17 @@ import React from 'react';
 function App() {
   return (
     <div className={s.App}>
-      <Header />
-      <Carusel />
-      <Footer />
+        
+          <Header />
+        
+
+        
+          <Carusel />
+        
+
+        
+          <Footer />
+        
     </div>
   );
 }

@@ -4,7 +4,7 @@ import s from './Footer.module.css';
 function Footer () {
     return (
         <div className={s.footer}>
-            <span>footer</span>
+            <span className={s.info}>Information</span>
         </div>
     );
 }

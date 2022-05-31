@@ -1,6 +1,27 @@
 .App {
   text-align: center;
+  
 }
+
+/* .Header {
+  
+  width: 100%;
+  top: 0;
+}
+
+.Carusel {
+  flex: 1;
+}
+
+.Carusel :hover {
+  display: none;
+}
+
+.Footer {
+  
+  width: 100%;
+  bottom: 0;
+} */
 
 /* .App-logo {
   height: 40vmin;
