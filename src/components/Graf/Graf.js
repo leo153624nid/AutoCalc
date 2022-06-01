@@ -1,11 +1,17 @@
 import React from "react";
 import s from './Graf.module.css';
-import { Link } from 'react-router-dom';
+import UpperBlock from '../UpperBlock/UpperBlock';
+import GrafBlock from '../GrafBlock/GrafBlock';
+import BottomBlock from '../BottomBlock/BottomBlock';
 
 function Graf (props) {
     return (
         <div className={s.Graf}>
-            
+            <UpperBlock />
+
+            <GrafBlock />
+
+            <BottomBlock />
         </div>
     );
 }
