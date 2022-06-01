@@ -6,12 +6,12 @@
         "a a a a"
         "b b b c"
         "d d d d";
-    align-items: stretch;
+    grid-template-rows: 3vh 59vh 3vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .grafikName {
     grid-area: a;
-    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,7 +83,6 @@
 
 .toggle {
     grid-area: d;
-    height: 25px;
     display: flex;
     justify-content: center;
     align-items: center;

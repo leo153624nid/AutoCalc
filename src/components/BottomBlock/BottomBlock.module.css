@@ -1,0 +1,52 @@
+.BottomBlock {
+    width: 100%;
+    height: 12vh;
+    display: grid;
+    grid-template-areas: "a b c d";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 12vh;
+    justify-content: center;
+    align-items: stretch;
+    background-color: antiquewhite;
+}
+
+.distance {
+    grid-area: a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid rgb(199, 201, 201);
+    
+}
+
+.fuel {
+    grid-area: b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid rgb(199, 201, 201);
+    border-right: 1px solid rgb(199, 201, 201);
+}
+
+.etc {
+    grid-area: c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid rgb(199, 201, 201);
+    border-right: 1px solid rgb(199, 201, 201);
+    
+}
+
+.itogo {
+    grid-area: d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid rgb(199, 201, 201);
+}
+
