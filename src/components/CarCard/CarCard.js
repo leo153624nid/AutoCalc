@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import s from './CarCard.module.css';
 
 
@@ -28,7 +29,7 @@ function CarCard (props) {
             </div>
             
             <div className={s.CarTake}>
-                <span>Выбрать</span>
+                <span><Link to='/Graf'>Выбрать</Link></span>
             </div>
         </div>
     );

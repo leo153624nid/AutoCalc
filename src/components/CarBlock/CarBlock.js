@@ -7,6 +7,7 @@ function CarBlock (props) {
     return (
         <div className={s.CarBlock}>
             <CarCard {...props}/>
+            
             <CarBtns />
         </div>
     );
