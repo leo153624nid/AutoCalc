@@ -3,8 +3,14 @@
     background-color: rgb(59, 59, 59);
     color: antiquewhite;
     font-family: 'Tiro Bangla', serif;
-    display: grid;
+    display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+}
+
+.footer a {
+    color: antiquewhite;
+    text-decoration: none;
+    font-size: 120%;
 }
 

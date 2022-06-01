@@ -1,0 +1,12 @@
+.Graf {
+    height: 85vh;
+    width: 100%;
+    background-color: rgb(85, 85, 88);
+    display: grid;
+    grid-template-areas: 
+        "a a a a"
+        "b b b g"
+        "h h h h";
+    justify-content: center;
+    align-items: center;
+}
