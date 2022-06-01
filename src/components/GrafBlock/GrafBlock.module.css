@@ -1,0 +1,93 @@
+.GrafBlock {
+    width: 100%;
+    height: 65vh;
+    display: grid;
+    grid-template-areas: 
+        "a a a a"
+        "b b b c"
+        "d d d d";
+    align-items: stretch;
+}
+
+.grafikName {
+    grid-area: a;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(59, 59, 59);
+    color: antiquewhite;
+}
+
+.grafik {
+    grid-area: b;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: antiquewhite;
+    
+}
+
+.aside {
+    grid-area: c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(199, 201, 201);
+    
+}
+
+.generalDistance {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid antiquewhite;
+}
+
+.generalFuel {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid antiquewhite;
+    border-bottom: 1px solid antiquewhite;
+}
+
+.generalCostOneKm {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid antiquewhite;
+    border-bottom: 1px solid antiquewhite;
+}
+
+.generalCostOneDay {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid antiquewhite;
+}
+
+.toggle {
+    grid-area: d;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(59, 59, 59);
+    color: antiquewhite;
+}
+

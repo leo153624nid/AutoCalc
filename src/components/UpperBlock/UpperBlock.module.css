@@ -1,0 +1,56 @@
+.UpperBlock {
+    width: 100vw;
+    height: 8vh;
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15% 15% 25%;
+    justify-content: stretch;
+    align-items: stretch;
+    background-color: antiquewhite;
+}
+
+.moneyForFuel {
+    color: brown;
+    border-right: 1px solid rgb(199, 201, 201);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.averageDistance {
+    border-left: 1px solid rgb(199, 201, 201);
+    border-right: 1px solid rgb(199, 201, 201);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.averageConsumption {
+    border-left: 1px solid rgb(199, 201, 201);
+    border-right: 1px solid rgb(199, 201, 201);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.costFuel {
+    border-left: 1px solid rgb(199, 201, 201);
+    border-right: 1px solid rgb(199, 201, 201);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.moneyForEtc {
+    border-left: 1px solid rgb(199, 201, 201);
+    border-right: 1px solid rgb(199, 201, 201);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.car {
+    border-left: 1px solid rgb(199, 201, 201);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
