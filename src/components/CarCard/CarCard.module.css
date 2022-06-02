@@ -13,9 +13,9 @@
 
 .CarCard img {
     width: 30vw;
+    max-height: 45vh;
     border-radius: 10px 10px 0 0;
     object-fit: cover;
-    
     
 }
 

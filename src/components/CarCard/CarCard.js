@@ -9,8 +9,8 @@ function CarCard (props) {
     const carName = props.carData.carName;
     const carDistance = props.carData.distance;
     const fuelConsumptions = props.carData.fuelConsumptions;
-    const allMonth = Math.floor( props.carData.allMonth );
-
+    const allMonth = (props.carData.allMonth === '?') ? '?' : Math.floor( props.carData.allMonth );
+    
     return (
         <div className={s.CarCard}>
             <img src={carPic} alt='CarPic'/>

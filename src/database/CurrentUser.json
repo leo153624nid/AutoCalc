@@ -25,6 +25,14 @@
             "distance": 322499,
             "fuelConsumptions": 9.2,
             "allMonth": 4244.68
+        },
+        {
+            "carId": 5,
+            "carName": "RENAULT Duster 1.6",
+            "carPic": "",
+            "distance": 150000,
+            "fuelConsumptions": 10,
+            "allMonth": 1000
         }
     ]
 }

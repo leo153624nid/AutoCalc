@@ -2,7 +2,8 @@ import React from "react";
 import s from './ArrowPrev.module.css';
 import arrowPic from '../../img/arrow-prev.png'
 
-function ArrowPrev () {
+function ArrowPrev (props) {
+    
     return (
         <div className={s.ArrowPrev}>
             <img src={arrowPic} alt='arrow'/>
