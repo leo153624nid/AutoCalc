@@ -64,21 +64,31 @@ function Carusel (props) {
         let newCars = [cars[0], cars[1], cars[2]];
         let nextCarId = userCars.findIndex(item => item.carId > cars[2].carId);
         let prevCarId = userCars.findIndex(item => item.carId < cars[0].carId);
+        if ( cars[0].carId === userCars.at(-1).carId ) {
+            prevCarId = userCars.length-2;
+        }
         console.log (`nextId=${nextCarId}; prevId=${prevCarId}`);
+        console.log (`direction=${direction}`);
 
         if (direction === 'left') {
+            newCars.shift();
+
             if (nextCarId !== -1) {
-                newCars.shift();
                 newCars.push(userCars[nextCarId]);
+            } else {
+                newCars.push(userCars[0]);
             }
 
             setCars(newCars);
 
         } else if (direction === 'right') {
+            newCars.pop();
+            
             if (prevCarId !== -1) {
-                newCars.pop();
                 newCars.unshift(userCars[prevCarId]);
-            } 
+            } else {
+                newCars.unshift(userCars.at(-1));
+            }
 
             setCars(newCars);
         }
