@@ -1,18 +1,30 @@
 {
-    "userName": "A Ch",
+    "userName": "Aleksey Chaykin",
     "userId": 1,
     "userCars": [
         {
-            "carName": "BMW e46",
-            "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e46.jpg"
+            "carId": 1,
+            "carName": "BMW e46 318i",
+            "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e46.JPG",
+            "distance": 244447,
+            "fuelConsumptions": 8.4,
+            "allMonth": 12023.28
         },
         {
-            "carName": "BMW e83",
-            "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e83.jpg"
+            "carId": 2,
+            "carName": "BMW e83 30i",
+            "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e83.jpg",
+            "distance": 181206,
+            "fuelConsumptions": 14.5,
+            "allMonth": 15714.18
         },
         {
-            "carName": "NISSAN b14",
-            "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/b14.jpeg"
+            "carId": 3,
+            "carName": "NISSAN b14 1.6",
+            "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/b14.jpeg",
+            "distance": 322499,
+            "fuelConsumptions": 9.2,
+            "allMonth": 4244.68
         }
     ]
 }
