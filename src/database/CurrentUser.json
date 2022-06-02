@@ -33,6 +33,14 @@
             "distance": 150000,
             "fuelConsumptions": 10,
             "allMonth": 1000
+        },
+        {
+            "carId": 7,
+            "carName": "NISSAN Terrano 2.0",
+            "carPic": "",
+            "distance": 50000,
+            "fuelConsumptions": 11,
+            "allMonth": 2000
         }
     ]
 }

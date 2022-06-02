@@ -44,31 +44,62 @@ function Carusel (props) {
         "allMonth": '?'
     };
 
+    const [cars, setCars] = useState([carOne, carTwo, carThree]);
     let userCars = props.userCars;
+    let carBlockList = [];
 
-    if (userCars.length == 1) {
+    if (userCars.length == 0 || userCars.length == undefined) {
+        carBlockList.push(
+            <div className={s.CarBlock}>
+                У вас нет машин
+            </div>
+        );
+    } else if (userCars.length == 1) {
         carOne = userCars[0];
+
+        carBlockList.push(
+            <div className={s.CarBlock}>
+                <CarBlock carPic={carPic1} carData={cars[0]} />
+            </div>
+        );
     } else if (userCars.length == 2) {
         carOne = userCars[0];
         carTwo = userCars[1];
+
+        carBlockList.push(
+            <div className={s.CarBlock}>
+                <CarBlock carPic={carPic1} carData={cars[0]} />
+            </div>,
+
+            <div className={s.CarBlock}>
+                <CarBlock carPic={carPic2} carData={cars[1]} />
+            </div>
+        );
     } else if (userCars.length >= 3) {
         carOne = userCars[0];
         carTwo = userCars[1];
         carThree = userCars[2];
-    }
 
-    const [cars, setCars] = useState([carOne, carTwo, carThree]);
+        carBlockList.push(
+            <div className={s.CarBlock}>
+                <CarBlock carPic={carPic1} carData={cars[0]} />
+            </div>,
+
+            <div className={s.CarBlock}>
+                <CarBlock carPic={carPic2} carData={cars[1]} />
+            </div>,
+
+            <div className={s.CarBlock}>
+                <CarBlock carPic={carPic3} carData={cars[2]} />
+            </div>
+        );
+    }
 
     // Функция смены автомобильных карт влево или вправо
     const changeCarBlock = (direction) => {
         let newCars = [cars[0], cars[1], cars[2]];
         let nextCarId = userCars.findIndex(item => item.carId > cars[2].carId);
-        let prevCarId = userCars.findIndex(item => item.carId < cars[0].carId);
-        if ( cars[0].carId === userCars.at(-1).carId ) {
-            prevCarId = userCars.length-2;
-        }
-        console.log (`nextId=${nextCarId}; prevId=${prevCarId}`);
-        console.log (`direction=${direction}`);
+        let prevCarId = userCars.findIndex(item => item.carId === cars[0].carId) - 1;
 
         if (direction === 'left') {
             newCars.shift();
@@ -84,10 +115,10 @@ function Carusel (props) {
         } else if (direction === 'right') {
             newCars.pop();
             
-            if (prevCarId !== -1) {
-                newCars.unshift(userCars[prevCarId]);
-            } else {
+            if (prevCarId === -1) {
                 newCars.unshift(userCars.at(-1));
+            } else {
+                newCars.unshift(userCars[prevCarId]);
             }
 
             setCars(newCars);
@@ -100,7 +131,9 @@ function Carusel (props) {
                 <ArrowPrev />
             </div>
 
-            <div className={s.CarBlock}>
+            {carBlockList}
+
+            {/* <div className={s.CarBlock}>
                 <CarBlock carPic={carPic1} carData={cars[0]} />
             </div>
 
@@ -110,7 +143,7 @@ function Carusel (props) {
 
             <div className={s.CarBlock}>
                 <CarBlock carPic={carPic3} carData={cars[2]} />
-            </div>
+            </div> */}
 
             <div className={`${s.arrow} ${s.ArrowNext}`} onClick={()=>changeCarBlock('right')}>
                 <ArrowNext />
