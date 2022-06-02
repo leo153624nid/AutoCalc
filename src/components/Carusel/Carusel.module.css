@@ -11,18 +11,32 @@
     align-items: center;
 }
 
-.ArrowPrev {
+.arrow {
     position: absolute;
-    left: 0;
+    width: 76px;
+    height: 185px;
     z-index: 2;
     cursor: pointer;
 }
 
+.arrow:active {
+    margin-top: 8px;
+}
+
+.ArrowPrev {
+    left: 0;
+}
+
+.ArrowPrev:hover {
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
+}
+
 .ArrowNext {
-    position: absolute;
     right: 0;
-    z-index: 2;
-    cursor: pointer;
+}
+
+.ArrowNext:hover {
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, .5);
 }
 
 .CarBlock {

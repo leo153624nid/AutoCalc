@@ -16,7 +16,7 @@ function Carusel (props) {
 
     return (
         <div className={s.content}>
-            <div className={s.ArrowPrev}>
+            <div className={`${s.arrow} ${s.ArrowPrev}`}>
                 <ArrowPrev />
             </div>
 
@@ -32,7 +32,7 @@ function Carusel (props) {
                 <CarBlock carPic={carPic3} carData={carThree} />
             </div>
 
-            <div className={s.ArrowNext}>
+            <div className={`${s.arrow} ${s.ArrowNext}`}>
                 <ArrowNext />
             </div>
         </div>
