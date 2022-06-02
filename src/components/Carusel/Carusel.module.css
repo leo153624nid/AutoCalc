@@ -11,6 +11,10 @@
     align-items: center;
 }
 
+.noCar {
+    color: brown;
+}
+
 .arrow {
     position: absolute;
     width: 76px;
@@ -22,6 +26,10 @@
 .arrow:active {
     margin-top: 8px;
 }
+
+/* .noActiveArrow {
+    display: none;
+} */
 
 .ArrowPrev {
     left: 0;

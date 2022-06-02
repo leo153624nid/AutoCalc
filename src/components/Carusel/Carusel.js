@@ -3,70 +3,38 @@ import s from './Carusel.module.css';
 import ArrowNext from "../ArrowNext/ArrowNext";
 import ArrowPrev from "../ArrowPrev/ArrowPrev";
 import CarBlock from "../CarBlock/CarBlock";
-import noCarPic from '../../img/noCar.jpg';
+import AddCarBtn from '../AddCarBtn/AddCarBtn';
 // Временное решение по подгрузке картинок машин, потом они будут приходить с сервера
+import noCarPic from '../../img/noCar.jpg';
 import carPic1 from 'S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e46.JPG';
 import carPic2 from 'S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e83.jpg';
 import carPic3 from 'S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/b14.jpeg';
 
 function Carusel (props) {
 
-    // let carOne = {
-    //     "carId": 1,
-    //     "carName": "?",
-    //     "carPic": "?",
-    //     "distance": '?',
-    //     "fuelConsumptions": '?',
-    //     "allMonth": '?'
-    // };
-    // let carTwo = {
-    //     "carId": 2,
-    //     "carName": "?",
-    //     "carPic": "?",
-    //     "distance": '?',
-    //     "fuelConsumptions": '?',
-    //     "allMonth": '?'
-    // };
-    // let carThree = {
-    //     "carId": 3,
-    //     "carName": "?",
-    //     "carPic": "?",
-    //     "distance": '?',
-    //     "fuelConsumptions": '?',
-    //     "allMonth": '?'
-    // };
-    // let carNoCar = {
-    //     "carId": 0,
-    //     "carName": "?",
-    //     "carPic": "?",
-    //     "distance": '?',
-    //     "fuelConsumptions": '?',
-    //     "allMonth": '?'
-    // };
-
     let userCars = props.userCars;
     const [cars, setCars] = useState([userCars[0], userCars[1], userCars[2]]);
     let carBlockList = [];
 
     // функция считывает входные данные пользователя о машинах и создает секцию из 1...3 карт
+    // TODO - переделать через .map
     function getCars () {
-        if (userCars.length == 0 || userCars.length == undefined) {
+        if (userCars.length === 0 || userCars.length === undefined) {
+
             carBlockList.push(
                 <div className={s.CarBlock}>
-                    У вас нет машин
+                    <div className={s.noCar}>У вас нет машин</div>
+                    <AddCarBtn />
                 </div>
             );
-        } else if (userCars.length == 1) {
-            // carOne = userCars[0];
+        } else if (userCars.length === 1) {
     
             carBlockList.push(
                 <div className={s.CarBlock} id={cars[0].carId}>
                     <CarBlock carPic={carPic1} carData={cars[0]} />
                 </div>
             );
-        } else if (userCars.length == 2) {
-            // carOne = userCars[0];
-            // carTwo = userCars[1];
+        } else if (userCars.length === 2) {
     
             carBlockList.push(
                 <div className={s.CarBlock} id={cars[0].carId}>
@@ -78,9 +46,6 @@ function Carusel (props) {
                 </div>
             );
         } else if (userCars.length >= 3) {
-            // carOne = userCars[0];
-            // carTwo = userCars[1];
-            // carThree = userCars[2];
     
             carBlockList.push(
                 <div className={s.CarBlock} id={cars[0].carId}>
@@ -137,18 +102,6 @@ function Carusel (props) {
             </div>
 
             {carBlockList}
-
-            {/* <div className={s.CarBlock}>
-                <CarBlock carPic={carPic1} carData={cars[0]} />
-            </div>
-
-            <div className={s.CarBlock}>
-                <CarBlock carPic={carPic2} carData={cars[1]} />
-            </div>
-
-            <div className={s.CarBlock}>
-                <CarBlock carPic={carPic3} carData={cars[2]} />
-            </div> */}
 
             <div className={`${s.arrow} ${s.ArrowNext}`} onClick={()=>changeCarBlock('right')}>
                 <ArrowNext />
