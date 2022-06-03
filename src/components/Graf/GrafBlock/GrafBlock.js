@@ -29,12 +29,12 @@ function GrafBlock (props) {
 
                 <div className={s.generalCostOneKm}>
                     <span>Стоимость 1 км</span>
-                    <span>{car.costOneKm} руб/км</span>
+                    <span>{car.costOneKm} &#8381;/км</span>
                 </div>
 
                 <div className={s.generalCostOneDay}>
                     <span>Стоимость владения</span>
-                    <span>{car.costOneDay} руб/день</span>
+                    <span>{car.costOneDay} &#8381;/день</span>
                 </div>
             </aside>
 

@@ -17,7 +17,7 @@ function CarCard (props) {
 
             <div className={s.CarName}>
                 <span className={s.pad}><b>{carName}</b></span>
-                <span className={s.pad}>Пробег <span>{carDistance}</span> км.</span>
+                <span className={s.pad}>Пробег <span>{carDistance}</span> км</span>
             </div>
             
             <div className={s.CarConsumptions}>
@@ -28,7 +28,7 @@ function CarCard (props) {
 
                 <div className={s.AllMonth}>
                     <span className={s.pad}>Содержание</span>
-                    <span className={s.pad}> <span>{allMonth}</span> руб/мес.</span>
+                    <span className={s.pad}> <span>{allMonth}</span> &#8381;/мес</span>
                 </div>
             </div>
             

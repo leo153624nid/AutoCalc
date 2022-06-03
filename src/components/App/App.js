@@ -6,7 +6,7 @@ import s from './App.module.css';
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
 
-function App(props) {
+function App (props) {
   const userCars = props.userData.userCars;
   let routeList = userCars
                         .map ( car => (<Route
@@ -23,7 +23,7 @@ function App(props) {
 
         <Routes>
           <Route path="/" element={<Carusel userCars={userCars} />}/>
-          <Route path="/graf" element={<Graf />}/>   {/* Пустое поле для графиков */}
+          <Route path="/graf" element={<Graf />}/>   {/* Пустое поле для графиков, если ошибка ДОДЕЛАТЬ */}
           {routeList}   
         </Routes>
         
