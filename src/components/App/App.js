@@ -6,8 +6,6 @@ import s from './App.module.css';
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
 
-import userData from '../../database/CurrentUser.json';
-
 function App(props) {
   const userData = props.userData;
 
