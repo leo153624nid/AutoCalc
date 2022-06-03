@@ -1,21 +1,20 @@
 import React from "react";
 import s from './UpperBlock.module.css';
 
-
+ 
 function UpperBlock (props) {
     const carName = props.carName;
     let changeGrafik = props.changeGrafik;
+    let wrapper = React.useRef();
 
     function changeBtn (event) {
-        let wrapper = document.querySelector(`.${s.UpperBlock}`);
-
-        wrapper.childNodes.forEach( elem => elem.classList.remove(`${s.click}`) );
+        wrapper.current.childNodes.forEach( elem => elem.classList.remove(`${s.click}`) );
         event.currentTarget.classList.add(`${s.click}`);
         changeGrafik(event.currentTarget.id);
     }
 
     return (
-        <div className={s.UpperBlock}>
+        <div className={s.UpperBlock} ref={wrapper}>
             <div className={`${s.moneyForFuel} ${s.btn} ${s.click}`} 
                  onClick={(event)=>{changeBtn(event)}} 
                  id='1'>

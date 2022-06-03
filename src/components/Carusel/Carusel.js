@@ -65,7 +65,7 @@ function Carusel (props) {
     getCars();
 
     // Функция смены автомобильных карт влево или вправо
-    const changeCarBlock = (direction) => {
+    function changeCarBlock (direction) {
         let newCars = [cars[0], cars[1], cars[2]];
         let nextCarId = userCars.findIndex(item => item.carId > cars[2].carId);
         let prevCarId = userCars.findIndex(item => item.carId === cars[0].carId) - 1;
