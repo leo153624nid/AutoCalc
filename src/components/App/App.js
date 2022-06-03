@@ -8,7 +8,9 @@ import { Route, Routes } from "react-router-dom";
 
 import userData from '../../database/CurrentUser.json';
 
-function App() {
+function App(props) {
+  const userData = props.userData;
+
   return (
     
       <div className={s.App}>

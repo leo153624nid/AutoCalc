@@ -5,7 +5,6 @@ import ArrowPrev from "../ArrowPrev/ArrowPrev";
 import CarBlock from "../CarBlock/CarBlock";
 import AddCarBtn from '../AddCarBtn/AddCarBtn';
 // Временное решение по подгрузке картинок машин, потом они будут приходить с сервера
-import noCarPic from '../../img/noCar.jpg';
 import carPic1 from 'S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e46.JPG';
 import carPic2 from 'S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e83.jpg';
 import carPic3 from 'S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/b14.jpeg';
@@ -30,33 +29,33 @@ function Carusel (props) {
         } else if (userCars.length === 1) {
     
             carBlockList.push(
-                <div className={s.CarBlock} id={cars[0].carId}>
+                <div className={s.CarBlock} key={cars[0].carId}>
                     <CarBlock carPic={carPic1} carData={cars[0]} />
                 </div>
             );
         } else if (userCars.length === 2) {
     
             carBlockList.push(
-                <div className={s.CarBlock} id={cars[0].carId}>
+                <div className={s.CarBlock} key={cars[0].carId}>
                     <CarBlock carPic={carPic1} carData={cars[0]} />
                 </div>,
     
-                <div className={s.CarBlock} id={cars[1].carId}>
+                <div className={s.CarBlock} key={cars[1].carId}>
                     <CarBlock carPic={carPic2} carData={cars[1]} />
                 </div>
             );
         } else if (userCars.length >= 3) {
     
             carBlockList.push(
-                <div className={s.CarBlock} id={cars[0].carId}>
+                <div className={s.CarBlock} key={cars[0].carId}>
                     <CarBlock carPic={carPic1} carData={cars[0]} />
                 </div>,
     
-                <div className={s.CarBlock} id={cars[1].carId}>
+                <div className={s.CarBlock} key={cars[1].carId}>
                     <CarBlock carPic={carPic2} carData={cars[1]} />
                 </div>,
     
-                <div className={s.CarBlock} id={cars[2].carId}>
+                <div className={s.CarBlock} key={cars[2].carId}>
                     <CarBlock carPic={carPic3} carData={cars[2]} />
                 </div>
             );
