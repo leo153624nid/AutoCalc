@@ -3,7 +3,7 @@ import s from './UpperBlock.module.css';
 
 
 function UpperBlock (props) {
-    const car = props.data;
+    const carName = props.carName;
     let changeGrafik = props.changeGrafik;
 
     function changeBtn (event) {
@@ -47,7 +47,7 @@ function UpperBlock (props) {
             </div>
 
             <div className={`${s.carInfo} ${s.btn}`}>
-                <span><b>{car.carName}</b></span> {/*Потом сделать кнопкой для редактирования текущей машины*/}
+                <span><b>{carName}</b></span> {/*Потом сделать кнопкой для редактирования текущей машины*/}
                 <span className={s.word}><i>Редактировать</i></span>
             </div>
         </div>
