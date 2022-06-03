@@ -21,6 +21,7 @@
 .click {
     color: brown;
     background-color: rgb(199, 201, 201);
+    /* border: 1px solid rgb(199, 201, 201); */
 }
 
 .moneyForFuel {
@@ -65,7 +66,12 @@
 .carInfo {
     border-left: 1px solid rgb(199, 201, 201);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 130%;
+}
+
+.word {
+    font-size: 70%;
 }

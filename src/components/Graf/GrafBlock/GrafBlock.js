@@ -36,7 +36,7 @@ function GrafBlock (props) {
             </aside>
 
             <div className={s.toggle}>
-                Здесь будут переключатели
+                Здесь будут точки-переключатели
             </div>
         </div>
     );
