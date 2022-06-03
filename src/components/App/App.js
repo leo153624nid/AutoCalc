@@ -9,10 +9,11 @@ import { Route, Routes } from "react-router-dom";
 function App(props) {
   const userCars = props.userData.userCars;
   let routeList = userCars
-                        .map ( car => (<Route 
-                                          path={`/graf/${car.carId}`} 
-                                          element={<Graf data={car} 
-                                          key={car.carId} />}
+                        .map ( car => (<Route
+                                          key = {car.carId} 
+                                          path = {`/graf/${car.carId}`} 
+                                          element = {<Graf data={car} 
+                                                           key = {car.carId} />}
                                         />));
 
   return (

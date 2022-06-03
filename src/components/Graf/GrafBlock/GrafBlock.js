@@ -3,9 +3,9 @@ import s from './GrafBlock.module.css';
 
 
 function GrafBlock (props) {
+    const car = props.car;
 
 
-    
     return (
         <div className={s.GrafBlock}>
             <div className={s.grafikName}>
@@ -19,22 +19,22 @@ function GrafBlock (props) {
             <aside className={s.aside}>
                 <div className={s.generalDistance}>
                     <span>Общий пробег</span>
-                    <span>XXXXXX км.</span>
+                    <span>{car.distance} км</span>
                 </div>
 
                 <div className={s.generalFuel}>
                     <span>Общий расход топлива</span>
-                    <span>XXX л./100 км.</span>
+                    <span>{car.fuelConsumptions} л/100 км</span>
                 </div>
 
                 <div className={s.generalCostOneKm}>
-                    <span>Стоимость 1 км.</span>
-                    <span>XXXX,Х км.</span>
+                    <span>Стоимость 1 км</span>
+                    <span>{car.costOneKm} руб/км</span>
                 </div>
 
                 <div className={s.generalCostOneDay}>
                     <span>Стоимость владения</span>
-                    <span>XXXХ руб./день</span>
+                    <span>{car.costOneDay} руб/день</span>
                 </div>
             </aside>
 
