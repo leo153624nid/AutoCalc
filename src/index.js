@@ -9,11 +9,11 @@ import userData from './database/CurrentUser.json';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <Router>
     <React.StrictMode>
-      <App userData={userData}/>
+      <Router>
+        <App userData={userData}/>
+      </Router>
     </React.StrictMode>
-  </Router>
 );
 
 
