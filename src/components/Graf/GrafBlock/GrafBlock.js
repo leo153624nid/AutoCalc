@@ -3,6 +3,9 @@ import s from './GrafBlock.module.css';
 
 
 function GrafBlock (props) {
+
+
+    
     return (
         <div className={s.GrafBlock}>
             <div className={s.grafikName}>
