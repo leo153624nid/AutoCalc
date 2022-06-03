@@ -6,9 +6,13 @@ import BottomBlock from './BottomBlock/BottomBlock';
 
 function Graf (props) {
 
+    function changeGrafik (key) {
+        console.log(`grafik ${key}`);
+    }
+
     return (
         <div className={s.Graf}>
-            <UpperBlock {...props}/>
+            <UpperBlock changeGrafik={changeGrafik} {...props}/>
 
             <GrafBlock />
 

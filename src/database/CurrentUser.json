@@ -8,7 +8,39 @@
             "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e46.JPG",
             "distance": 244447,
             "fuelConsumptions": 8.4,
-            "allMonth": 12023.28
+            "allMonth": 12023.28,
+            "fuelings": [
+                {
+                    "fuelingId": 1,
+                    "date": 1368662400000,
+                    "mark": "АИ-95",
+                    "price": 30.6,
+                    "volume": 60,
+                    "cost": 1836,
+                    "full": 1,
+                    "distance": 215178
+                },
+                {
+                    "fuelingId": 2,
+                    "date": 1370390400000,
+                    "mark": "АИ-95",
+                    "price": 30.8,
+                    "volume": 32.47,
+                    "cost": 1000,
+                    "full": 0,
+                    "distance": 215851
+                },
+                {
+                    "fuelingId": 3,
+                    "date": 1370822400000,
+                    "mark": "АИ-95",
+                    "price": 30.8,
+                    "volume": 32.47,
+                    "cost": 1000,
+                    "full": 1,
+                    "distance": 216270
+                }
+            ]
         },
         {
             "carId": 2,
