@@ -10,7 +10,6 @@ function App(props) {
   const userData = props.userData;
 
   return (
-    
       <div className={s.App}>
         
         <Header {...userData}/>
@@ -23,7 +22,6 @@ function App(props) {
         <Footer />
 
       </div>
- 
   );
 }
 
