@@ -7,6 +7,7 @@ function UpperBlock (props) {
     let changeGrafik = props.changeGrafik;
     let wrapper = React.useRef();
 
+    // Функция меняет классы у переключателей графиков и запускает функцию смены графиков
     function changeBtn (event) {
         wrapper.current.childNodes.forEach( elem => elem.classList.remove(`${s.click}`) );
         event.currentTarget.classList.add(`${s.click}`);
