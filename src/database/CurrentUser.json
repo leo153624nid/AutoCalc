@@ -9,6 +9,8 @@
             "distance": 244447,
             "fuelConsumptions": 8.4,
             "allMonth": 12023.28,
+            "costOneKm": 15.3,
+            "costOneDay": 400.8,
             "fuelings": [
                 {
                     "fuelingId": 1,
@@ -48,7 +50,9 @@
             "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e83.jpg",
             "distance": 181206,
             "fuelConsumptions": 14.5,
-            "allMonth": 15714.18
+            "allMonth": 15714.18,
+            "costOneKm": 24.5,
+            "costOneDay": 523.8
         },
         {
             "carId": 3,
@@ -56,7 +60,9 @@
             "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/b14.jpeg",
             "distance": 322499,
             "fuelConsumptions": 9.2,
-            "allMonth": 4244.68
+            "allMonth": 4244.68,
+            "costOneKm": 6.6,
+            "costOneDay": 141.5
         },
         {
             "carId": 5,
@@ -64,7 +70,9 @@
             "carPic": "",
             "distance": 150000,
             "fuelConsumptions": 10,
-            "allMonth": 1000
+            "allMonth": 1000,
+            "costOneKm": 10,
+            "costOneDay": 250
         },
         {
             "carId": 7,
@@ -72,7 +80,9 @@
             "carPic": "",
             "distance": 50000,
             "fuelConsumptions": 11,
-            "allMonth": 2000
+            "allMonth": 2000,
+            "costOneKm": 12,
+            "costOneDay": 300
         }
     ]
 }
