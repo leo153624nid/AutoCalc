@@ -1,6 +1,6 @@
 import React from "react";
 import s from './ArrowNext.module.css';
-import arrowPic from '../../img/arrow-next.png'
+import arrowPic from '../../../img/arrow-next.png'
 
 function ArrowNext () {
     return (

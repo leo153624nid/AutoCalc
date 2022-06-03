@@ -19,7 +19,7 @@ function App(props) {
 
         <Routes>
           <Route path="/" element={<Carusel {...userData} />}/>
-          <Route path="/graf" element={<Graf {...userData} />}/>
+          <Route path="/graf" element={<Graf {...userData} />}/>   {/* Заменить на carData */}
         </Routes>
         
         <Footer />

@@ -2,14 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import s from './CarCard.module.css';
 
-
 function CarCard (props) {
   
     const carPic = props.carPic;
     const carName = props.carData.carName;
     const carDistance = props.carData.distance;
     const fuelConsumptions = props.carData.fuelConsumptions;
-    const allMonth = (props.carData.allMonth === '?') ? '?' : Math.floor( props.carData.allMonth );
+    const allMonth = Math.floor( props.carData.allMonth );
     
     return (
         <div className={s.CarCard}>

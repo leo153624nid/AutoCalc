@@ -1,6 +1,6 @@
 import React from "react";
 import s from './ArrowPrev.module.css';
-import arrowPic from '../../img/arrow-prev.png'
+import arrowPic from '../../../img/arrow-prev.png';
 
 function ArrowPrev (props) {
     

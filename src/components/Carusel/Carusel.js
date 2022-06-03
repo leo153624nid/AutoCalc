@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import s from './Carusel.module.css';
-import ArrowNext from "../ArrowNext/ArrowNext";
-import ArrowPrev from "../ArrowPrev/ArrowPrev";
-import CarBlock from "../CarBlock/CarBlock";
-import AddCarBtn from '../AddCarBtn/AddCarBtn';
+import ArrowNext from "./ArrowNext/ArrowNext";
+import ArrowPrev from "./ArrowPrev/ArrowPrev";
+import CarBlock from "./CarBlock/CarBlock";
+import AddCarBtn from '../Header/AddCarBtn/AddCarBtn';
 // Временное решение по подгрузке картинок машин, потом они будут приходить с сервера
 import carPic1 from 'S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e46.JPG';
 import carPic2 from 'S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e83.jpg';

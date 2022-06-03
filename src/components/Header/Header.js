@@ -1,7 +1,7 @@
 import React from "react";
-import AddCarBtn from "../AddCarBtn/AddCarBtn";
-import CurrentUser from "../CurrentUser/CurrentUser";
-import Logotype from "../Logotype/Logotype";
+import AddCarBtn from "../Header/AddCarBtn/AddCarBtn";
+import CurrentUser from "../Header/CurrentUser/CurrentUser";
+import Logotype from "../Header/Logotype/Logotype";
 import s from './Header.module.css';
 
 function Header () {
