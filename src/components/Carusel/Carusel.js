@@ -29,14 +29,14 @@ function Carusel (props) {
         } else if (userCars.length === 1) {
     
             carBlockList.push(
-                <div className={s.CarBlock} key={cars[0].carId}>
+                <div className={`${s.CarBlock} ${s.activeCarBlock}`} key={cars[0].carId}>
                     <CarBlock carPic={carPic1} carData={cars[0]} />
                 </div>
             );
         } else if (userCars.length === 2) {
     
             carBlockList.push(
-                <div className={s.CarBlock} key={cars[0].carId}>
+                <div className={`${s.CarBlock} ${s.activeCarBlock}`} key={cars[0].carId}>
                     <CarBlock carPic={carPic1} carData={cars[0]} />
                 </div>,
     
@@ -51,7 +51,7 @@ function Carusel (props) {
                     <CarBlock carPic={carPic1} carData={cars[0]} />
                 </div>,
     
-                <div className={s.CarBlock} key={cars[1].carId}>
+                <div className={`${s.CarBlock} ${s.activeCarBlock}`} key={cars[1].carId}>
                     <CarBlock carPic={carPic2} carData={cars[1]} />
                 </div>,
     

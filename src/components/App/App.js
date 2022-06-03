@@ -7,16 +7,16 @@ import React from 'react';
 import { Route, Routes } from "react-router-dom";
 
 function App(props) {
-  const userData = props.userData;
+  const userCars = props.userData.userCars;
 
   return (
       <div className={s.App}>
         
-        <Header {...userData}/>
+        <Header />
 
         <Routes>
-          <Route path="/" element={<Carusel {...userData} />}/>
-          <Route path="/graf" element={<Graf {...userData} />}/>   {/* Заменить на carData */}
+          <Route path="/" element={<Carusel userCars={userCars} />}/>
+          <Route path="/graf" element={<Graf />}/>   {/* Заменить на carData */}
         </Routes>
         
         <Footer />
