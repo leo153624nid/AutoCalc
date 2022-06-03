@@ -6,6 +6,21 @@
     justify-content: stretch;
     align-items: stretch;
     background-color: antiquewhite;
+    cursor: pointer;
+}
+
+.btn {
+    text-decoration: none;
+}
+
+.btn:active {
+    color: brown;
+    background-color: rgb(199, 201, 201);
+}
+
+.click {
+    color: brown;
+    background-color: rgb(199, 201, 201);
 }
 
 .moneyForFuel {
@@ -47,9 +62,10 @@
     align-items: center;
 }
 
-.car {
+.carInfo {
     border-left: 1px solid rgb(199, 201, 201);
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 130%;
 }

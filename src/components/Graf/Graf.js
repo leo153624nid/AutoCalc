@@ -5,9 +5,10 @@ import GrafBlock from './GrafBlock/GrafBlock';
 import BottomBlock from './BottomBlock/BottomBlock';
 
 function Graf (props) {
+
     return (
         <div className={s.Graf}>
-            <UpperBlock />
+            <UpperBlock {...props}/>
 
             <GrafBlock />
 

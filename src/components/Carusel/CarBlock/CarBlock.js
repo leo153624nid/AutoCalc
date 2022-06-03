@@ -8,7 +8,7 @@ function CarBlock (props) {
         <div className={s.CarBlock}>
             <CarCard {...props}/>
             
-            <CarBtns />
+            <CarBtns className={s.CarBtns}/>
         </div>
     );
 }

@@ -8,6 +8,12 @@ import { Route, Routes } from "react-router-dom";
 
 function App(props) {
   const userCars = props.userData.userCars;
+  let routeList = userCars
+                        .map ( car => (<Route 
+                                          path={`/graf/${car.carId}`} 
+                                          element={<Graf data={car} 
+                                          key={car.carId} />}
+                                        />));
 
   return (
       <div className={s.App}>
@@ -16,7 +22,8 @@ function App(props) {
 
         <Routes>
           <Route path="/" element={<Carusel userCars={userCars} />}/>
-          <Route path="/graf" element={<Graf />}/>   {/* Заменить на carData */}
+          <Route path="/graf" element={<Graf />}/>   {/* Пустое поле для графиков */}
+          {routeList}   
         </Routes>
         
         <Footer />

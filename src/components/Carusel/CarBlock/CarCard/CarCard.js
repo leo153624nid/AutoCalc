@@ -9,6 +9,7 @@ function CarCard (props) {
     const carDistance = props.carData.distance;
     const fuelConsumptions = props.carData.fuelConsumptions;
     const allMonth = Math.floor( props.carData.allMonth );
+    const carId = props.carData.carId;
     
     return (
         <div className={s.CarCard}>
@@ -32,7 +33,7 @@ function CarCard (props) {
             </div>
             
             <div className={s.CarTake}>
-                <Link to='/Graf' className={s.btn}>Выбрать</Link>
+                <Link to={`/graf/${carId}`} className={s.btn}>Выбрать</Link>
             </div>
         </div>
     );
