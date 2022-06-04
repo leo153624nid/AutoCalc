@@ -12,14 +12,24 @@
 
 .grafikName {
     grid-area: a;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-areas: "e e e f";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: stretch;
     align-items: center;
     background-color: rgb(59, 59, 59);
     color: antiquewhite;
 }
 
-.grafik {
+.names {
+    grid-area: e;
+}
+
+.cap {
+    grid-area: f;
+}
+
+.CarGrafik {
     grid-area: b;
     height: 100%;
     display: flex;
@@ -83,10 +93,16 @@
 
 .toggle {
     grid-area: d;
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-areas: "e e e f";
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: stretch;
     align-items: center;
     background-color: rgb(59, 59, 59);
     color: antiquewhite;
+}
+
+.dots {
+    grid-area: e;
 }
 

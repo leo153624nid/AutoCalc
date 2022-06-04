@@ -1,19 +1,29 @@
 import React from "react";
 import s from './GrafBlock.module.css';
+import CarGrafik from './CarGrafik/CarGrafik';
 
 
 function GrafBlock (props) {
     const car = props.car;
+    const idGrafik = props.idGrafik;
+    let grafikNames = [
+        <span>Расходы на топливо, &#8381;</span>,
+        <span>Средний пробег, км</span>,
+        <span>Средний расход, л/100 км</span>,
+        <span>Стоимость топлива, &#8381;/л</span>,
+        <span>Остальные расходы, &#8381;</span>
+    ];
 
 
     return (
         <div className={s.GrafBlock}>
             <div className={s.grafikName}>
-                Здесь будут названия графиков или измеряемая величина
+                <div className={s.names}>{grafikNames[idGrafik-1]}</div>
+                <div className={s.cap}></div> 
             </div>
 
-            <div className={s.grafik}>
-                Здесь будет график
+            <div className={s.CarGrafik}>
+                <CarGrafik idGrafik={idGrafik} car={car} />
             </div>
 
             <aside className={s.aside}>
@@ -39,7 +49,8 @@ function GrafBlock (props) {
             </aside>
 
             <div className={s.toggle}>
-                Здесь будут точки-переключатели
+                <div className={s.dots}>Здесь будут точки-переключатели</div>
+                <div className={s.cap}></div>
             </div>
         </div>
     );
