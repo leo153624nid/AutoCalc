@@ -19,7 +19,7 @@ function GrafBlock (props) {
         <div className={s.GrafBlock}>
             <div className={s.grafikName}>
                 <div className={s.names}>{grafikNames[idGrafik-1]}</div>
-                <div className={s.cap}></div> 
+                <div className={s.cap}></div>   {/*просто декоративная заглушка*/}
             </div>
 
             <div className={s.CarGrafik}>
@@ -50,7 +50,7 @@ function GrafBlock (props) {
 
             <div className={s.toggle}>
                 <div className={s.dots}>Здесь будут точки-переключатели</div>
-                <div className={s.cap}></div>
+                <div className={s.cap}></div>       {/*просто декоративная заглушка*/}
             </div>
         </div>
     );
