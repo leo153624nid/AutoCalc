@@ -20,8 +20,6 @@ const COLORS = {
     red: "#ff0000",
 };
 
-
-
 function getMaxOfArray(numArray) {
   return Math.max.apply(null, numArray);
 }
@@ -45,19 +43,13 @@ function CarGrafik (props) {
     // высота для графика, в родных стилях почему-то фиксированно 400px
     const heightGrafik = window.innerHeight * 0.59;
 
-    // значения по оси Х, пока только 6 последних
-    const categories = ["дата1", 
-                        "дата1", 
-                        "дата1", 
-                        "дата1", 
-                        "дата1", 
-                        "дата1", 
-                        "дата1", 
-                        "дата1", 
-                        "дата1", 
-                        "Октябрь", 
-                        "Ноябрь", 
-                        "Декабрь" ];
+    // даты всех заправок в виде ДД.ММ
+    const dateFuelings = car.fuelings
+        .map( item => `${new Date(item.date).getDate()}.${new Date(item.date).getMonth()}` );
+
+    // значения дат заправок по оси Х, пока только 12 последних
+    const categories = [...dateFuelings];
+    if (categories.length > 12) categories.length = 12; // НЕПРАВИЛЬНО, нужны последние 12 элементов массива
 
     // Массивы данных для построения графиков, наполняются взависимости от Id графика
     let maxDataArr = [];
@@ -66,43 +58,10 @@ function CarGrafik (props) {
     
     // наполнение массивов в зависимости от Id графика
     switch (idGrafik) {
-        case 1: 
-        averageDataArr.push(averageCostFuel, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            averageCostFuel);
-        maxDataArr.push(maxCostFuel, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            maxCostFuel);
-        minDataArr.push(minCostFuel, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            null, 
-                            minCostFuel);
+        case 1:
+            maxDataArr.push( ...categories.map( () => maxCostFuel ) ); 
+            averageDataArr.push( ...categories.map( () => averageCostFuel ) );
+            minDataArr.push( ...categories.map( () => minCostFuel ) );
         case 2: break
         case 3: break
         case 4: break
@@ -132,28 +91,23 @@ function CarGrafik (props) {
     const consumptions = [
         {
         name: "Расходы на топливо",
-        data: [2900, 2800, 2850, 2900, 1000, 2700, 2800, 2800, 2900, 1500, 2000, 3000],
-        color: COLORS.grey,
+        data: car.fuelings.map( item => item.cost ),
         },
         {
         name: "Средний пробег",
         data: [300, 400, 500, 400, 300, 400, 600, 500, 400, 450, 430, 380],
-        color: COLORS.grey,
         },
         {
         name: "Средний расход",
         data: [8, 9, 8, 10, 11, 12, 10, 9, 8, 10, 11, 8],
-        color: COLORS.grey,
         },
         {
         name: "Стоимость топлива",
-        data: [8, 9, 8, 10, 11, 12, 10, 9, 8, 10, 11, 8],
-        color: COLORS.grey,
+        data: car.fuelings.map( item => item.price ),
         },
         {
         name: "Остальные расходы",
-        data: [8, 9, 8, 10, 11, 12, 10, 9, 8, 10, 11, 8],
-        color: COLORS.grey,
+        data: car.etc.map( item => item.cost ),
         },
     ];
 
