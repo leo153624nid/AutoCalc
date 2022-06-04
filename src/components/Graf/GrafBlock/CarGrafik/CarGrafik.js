@@ -11,6 +11,7 @@ import {
   } from "@progress/kendo-react-charts";
 import "hammerjs";
 
+// Цвета для графиков
 const COLORS = {
     green: "#059669",
     grey: "#666666",
@@ -19,18 +20,7 @@ const COLORS = {
     red: "#ff0000",
 };
 
-const categories = ["Январь", 
-                    "Февраль", 
-                    "Март", 
-                    "Апрель", 
-                    "Май", 
-                    "Июнь", 
-                    "Июль", 
-                    "Август", 
-                    "Сентябрь", 
-                    "Октябрь", 
-                    "Ноябрь", 
-                    "Декабрь" ];
+
 
 function getMaxOfArray(numArray) {
   return Math.max.apply(null, numArray);
@@ -54,6 +44,20 @@ function CarGrafik (props) {
 
     // высота для графика, в родных стилях почему-то фиксированно 400px
     const heightGrafik = window.innerHeight * 0.59;
+
+    // значения по оси Х, пока только 6 последних
+    const categories = ["дата1", 
+                        "дата1", 
+                        "дата1", 
+                        "дата1", 
+                        "дата1", 
+                        "дата1", 
+                        "дата1", 
+                        "дата1", 
+                        "дата1", 
+                        "Октябрь", 
+                        "Ноябрь", 
+                        "Декабрь" ];
 
     // Массивы данных для построения графиков, наполняются взависимости от Id графика
     let maxDataArr = [];
@@ -124,11 +128,11 @@ function CarGrafik (props) {
         },
     ];
 
+    // Graph data
     const consumptions = [
         {
         name: "Расходы на топливо",
         data: [2900, 2800, 2850, 2900, 1000, 2700, 2800, 2800, 2900, 1500, 2000, 3000],
-        dataExtra: [],
         color: COLORS.grey,
         },
         {
@@ -153,8 +157,6 @@ function CarGrafik (props) {
         },
     ];
 
-
-
    
 
     return (
@@ -164,11 +166,10 @@ function CarGrafik (props) {
                         alignItems: "center", 
                         height: heightGrafik
                      }}>
-            
-            <ChartLegend position="top" orientation="horizontal" />
             <ChartCategoryAxis>
                 <ChartCategoryAxisItem categories={categories} startAngle={45} />
             </ChartCategoryAxis>
+
             <ChartSeries>
               {/* Линии экстреамльных значений */}      
               {linesExtr.map((item, idx) => (
@@ -185,7 +186,7 @@ function CarGrafik (props) {
                 <ChartSeriesItem
                   key={idGrafik}
                   type="column"
-                  color={consumptions[idGrafik-1].color}
+                  color={COLORS.grey}
                   tooltip={{ visible: true, }}
                   data={consumptions[idGrafik-1].data}
                 />
@@ -196,28 +197,3 @@ function CarGrafik (props) {
 }
 
 export default CarGrafik;
-
-        // <Chart>
-        //     <ChartLegend visible={true} />
-        //     <ChartCategoryAxis>
-        //         <ChartCategoryAxisItem categories={categories}>
-        //             <ChartCategoryAxisTitle text="Months" />
-        //         </ChartCategoryAxisItem>
-        //     </ChartCategoryAxis>
-        //     <ChartSeries>
-        //         {series.map((item, idx) => (
-        //             <ChartSeriesItem
-        //                 key={idx}
-        //                 type="bar"
-        //                 gap={2}
-        //                 spacing={0.25}
-        //                 labels={seriesLabels}
-        //                 data={item.data}
-        //                 name={item.status}
-        //                 color={item.color}
-        //             />
-        //         ))}
-        //     </ChartSeries>
-        // </Chart>
-
-        // style={{ height: heghtGrafik, width: widthGrafik }}
