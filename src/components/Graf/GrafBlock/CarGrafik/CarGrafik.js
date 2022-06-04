@@ -29,8 +29,10 @@ function getMinOfArray(numArray) {
   }
 
 function CarGrafik (props) {
+    console.log ('rerender');
     const car = props.car;
     const idGrafik = props.idGrafik;
+    
 
     // Экстремальные значения расходов на топливо для графика
     const maxCostFuel = getMaxOfArray( car.fuelings.map( item => item.cost ) );
@@ -39,6 +41,20 @@ function CarGrafik (props) {
         .reduce((acc, value) => acc + value) 
         / car.fuelings.length);
     const minCostFuel = getMinOfArray( car.fuelings.map( item => item.cost ) );
+
+    // Экстремальные значения среднего пробега для графика 
+    // (НЕ ЗАБЫТЬ ПОТОМ УКОРОТИТЬ ВСЕ МАССИВЫ ДАННЫХ ДЛЯ ГРАФИКОВ ДО 12 или 6)
+    let distanceArr = car.fuelings.map( item => item.distance );
+    distanceArr.unshift(distanceArr[0]);    
+    let tempArr = distanceArr.map( (item, index, arr) => arr[index+1] - item );
+    tempArr.pop();
+    distanceArr = tempArr;
+    
+    const maxDistance = getMaxOfArray(distanceArr);
+    const averageDistance =Math.floor(distanceArr
+        .reduce( (acc, value) => acc + value ) 
+        / (distanceArr.length - 1));
+    const minDistance = getMinOfArray(distanceArr);
 
     // высота для графика, в родных стилях почему-то фиксированно 400px
     const heightGrafik = window.innerHeight * 0.59;
@@ -49,20 +65,25 @@ function CarGrafik (props) {
 
     // значения дат заправок по оси Х, пока только 12 последних
     const categories = [...dateFuelings];
-    if (categories.length > 12) categories.length = 12; // НЕПРАВИЛЬНО, нужны последние 12 элементов массива
+    // НЕПРАВИЛЬНО, нужны последние 12 элементов массива
 
     // Массивы данных для построения графиков, наполняются взависимости от Id графика
     let maxDataArr = [];
     let averageDataArr = [];
     let minDataArr = [];
-    
+
     // наполнение массивов в зависимости от Id графика
     switch (idGrafik) {
         case 1:
             maxDataArr.push( ...categories.map( () => maxCostFuel ) ); 
             averageDataArr.push( ...categories.map( () => averageCostFuel ) );
             minDataArr.push( ...categories.map( () => minCostFuel ) );
-        case 2: break
+            break
+        case 2: 
+            maxDataArr.push( ...categories.map( () => maxDistance ) ); 
+            averageDataArr.push( ...categories.map( () => averageDistance ) );
+            minDataArr.push( ...categories.map( () => minDistance ) );
+            break
         case 3: break
         case 4: break
         case 5: break
@@ -73,17 +94,14 @@ function CarGrafik (props) {
         {
         name: "макс",
         data: maxDataArr,
-        color: COLORS.linesExtr,
         },
         {
         name: "среднее",
         data: averageDataArr,
-        color: COLORS.linesExtr,
         },
         {
         name: "мин",
         data: minDataArr,
-        color: COLORS.linesExtr,
         },
     ];
 
@@ -95,7 +113,7 @@ function CarGrafik (props) {
         },
         {
         name: "Средний пробег",
-        data: [300, 400, 500, 400, 300, 400, 600, 500, 400, 450, 430, 380],
+        data: distanceArr,
         },
         {
         name: "Средний расход",
@@ -111,6 +129,7 @@ function CarGrafik (props) {
         },
     ];
 
+   
    
 
     return (
@@ -130,7 +149,7 @@ function CarGrafik (props) {
                 <ChartSeriesItem
                   key={idx}
                   type="line"
-                  color={item.color}
+                  color={COLORS.linesExtr}
                   tooltip={{ visible: true, }}
                   data={item.data}
                 //   name={item.name}
