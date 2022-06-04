@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.k-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 59vh;
+}
+
+.k-chart-surface {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  height: 59vh;
+}

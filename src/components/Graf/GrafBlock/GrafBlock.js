@@ -1,6 +1,8 @@
 import React from "react";
 import s from './GrafBlock.module.css';
 import CarGrafik from './CarGrafik/CarGrafik';
+import "@progress/kendo-theme-material/dist/all.css";
+import "hammerjs";
 
 
 function GrafBlock (props) {
