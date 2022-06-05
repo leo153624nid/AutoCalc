@@ -55,6 +55,19 @@ function CarGrafik (props) {
         / (distanceArr.length - 1));
     const minDistance = getMinOfArray(distanceArr);
 
+    // Экстремальные значения СРЕДНЕГО РАСХОДА для графика
+    let volumeArr = car.fuelings
+        .map( (item, index) => (Math.floor( 1000 * item.volume / distanceArr[index]) / 10 ));
+    for (let i = 0; i < volumeArr.length; i++) {
+      let badIndex = volumeArr.findIndex ( item => item === NaN || Infinity);
+      if (badIndex !== -1) volumeArr.splice(badIndex, 1, 0)
+    }
+    const maxVolumeFuel = getMaxOfArray( volumeArr );
+    const averageVolumeFuel = Math.floor( 10 * volumeArr
+        .reduce((acc, value) => acc + value) 
+        / car.fuelings.length) / 10;
+    const minVolumeFuel = getMinOfArray( volumeArr );
+
     // Экстремальные значения СТОИМОСТИ ТОПЛИВА для графика
     const maxPriceFuel = getMaxOfArray( car.fuelings.map( item => item.price ) );
     const averagePriceFuel = Math.floor( 10 * car.fuelings
@@ -99,7 +112,11 @@ function CarGrafik (props) {
             averageDataArr.push( ...categories.map( () => averageDistance ) );
             minDataArr.push( ...categories.map( () => minDistance ) );
             break
-        case 3: break
+        case 3:
+            maxDataArr.push( ...categories.map( () => maxVolumeFuel ) ); 
+            averageDataArr.push( ...categories.map( () => averageVolumeFuel ) );
+            minDataArr.push( ...categories.map( () => minVolumeFuel ) );
+            break 
         case 4: 
             maxDataArr.push( ...categories.map( () => maxPriceFuel ) ); 
             averageDataArr.push( ...categories.map( () => averagePriceFuel ) );
@@ -140,7 +157,7 @@ function CarGrafik (props) {
         },
         {
         name: "Средний расход",
-        data: [8, 9, 8, 10, 11, 12, 10, 9, 8, 10, 11, 8],
+        data: volumeArr,
         },
         {
         name: "Стоимость топлива",
