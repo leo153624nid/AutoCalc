@@ -33,7 +33,6 @@ function CarGrafik (props) {
     const car = props.car;
     const idGrafik = props.idGrafik;
     
-
     // Экстремальные значения РАСХОДОВ НА ТОПЛИВО для графика
     const maxCostFuel = getMaxOfArray( car.fuelings.map( item => item.cost ) );
     const averageCostFuel = Math.floor( car.fuelings
@@ -168,10 +167,7 @@ function CarGrafik (props) {
         data: car.etc.map( item => item.cost ),
         },
     ];
-
-   
-   
-
+    
     return (
         <Chart style = {{ display: "flex", 
                         flex: 1, 
