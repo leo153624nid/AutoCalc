@@ -32,66 +32,149 @@ function CarGrafik (props) {
     console.log ('rerender');
     const car = props.car;
     const idGrafik = props.idGrafik;
-    
+
+    // Проверка есть ли данные о заправках или о прочих расходах
+    if ( car.fuelings.length === 0 && idGrafik !== 5 ) {
+        return (
+            <div style = {{ display: "flex", 
+                        flex: 1, 
+                        justifyContent: "center", 
+                        alignItems: "center", 
+                        }}>
+                <span>Нет данных</span>
+            </div>
+        );
+    } else if ( car.etc.length === 0 && idGrafik === 5) {
+        return (
+            <div style = {{ display: "flex", 
+                        flex: 1, 
+                        justifyContent: "center", 
+                        alignItems: "center", 
+                        }}>
+                <span>Нет данных</span>
+            </div>
+        );
+    }
     // Экстремальные значения РАСХОДОВ НА ТОПЛИВО для графика
-    const maxCostFuel = getMaxOfArray( car.fuelings.map( item => item.cost ) );
-    const averageCostFuel = Math.floor( car.fuelings
-        .map( item => item.cost )
-        .reduce((acc, value) => acc + value) 
-        / car.fuelings.length);
-    const minCostFuel = getMinOfArray( car.fuelings.map( item => item.cost ) );
+    let maxCostFuel = 0;
+    let averageCostFuel = 0;
+    let minCostFuel = 0;
+
+    function getCostFuelExtr (idGrafik) {
+        if (idGrafik !==1) return
+        
+        maxCostFuel = getMaxOfArray( car.fuelings.map( item => item.cost ) );
+        averageCostFuel = Math.floor( car.fuelings
+            .map( item => item.cost )
+            .reduce((acc, value) => acc + value) 
+            / car.fuelings.length);
+        minCostFuel = getMinOfArray( car.fuelings.map( item => item.cost ) );
+    }
+    getCostFuelExtr(idGrafik);
 
     // Экстремальные значения СРЕДНЕГО ПРОБЕГА для графика 
     // (НЕ ЗАБЫТЬ ПОТОМ УКОРОТИТЬ ВСЕ МАССИВЫ ДАННЫХ ДЛЯ ГРАФИКОВ ДО 12 и 6)
-    let distanceArr = car.fuelings.map( item => item.distance );
-    distanceArr.unshift(distanceArr[0]);    
-    let tempArr = distanceArr.map( (item, index, arr) => arr[index+1] - item );
-    tempArr.pop();
-    distanceArr = tempArr;
-    const maxDistance = getMaxOfArray(distanceArr);
-    const averageDistance =Math.floor(distanceArr
-        .reduce( (acc, value) => acc + value ) 
-        / (distanceArr.length - 1));
-    const minDistance = getMinOfArray(distanceArr);
+    let distanceArr = [];  
+    let maxDistance = 0;
+    let averageDistance = 0;
+    let minDistance = 0;
+
+    function getDistanceExtr (idGrafik) {
+        if (idGrafik !==2 && idGrafik !==3) return
+        
+        distanceArr = car.fuelings.map( item => item.distance );
+        distanceArr.unshift(distanceArr[0]);    
+        let tempArr = distanceArr.map( (item, index, arr) => arr[index+1] - item );
+        tempArr.pop();
+        distanceArr = tempArr;
+        
+        maxDistance = getMaxOfArray(distanceArr);
+        averageDistance = Math.floor(distanceArr
+            .reduce( (acc, value) => acc + value ) 
+            / (distanceArr.length - 1));
+        minDistance = getMinOfArray(distanceArr);
+    }
+    getDistanceExtr (idGrafik);
 
     // Экстремальные значения СРЕДНЕГО РАСХОДА для графика
-    let volumeArr = car.fuelings
-        .map( (item, index) => (Math.floor( 1000 * item.volume / distanceArr[index]) / 10 ));
-    for (let i = 0; i < volumeArr.length; i++) {
-      let badIndex = volumeArr.findIndex ( item => item === NaN || Infinity);
-      if (badIndex !== -1) volumeArr.splice(badIndex, 1, 0)
+    let volumeArr = [];
+    let maxVolumeFuel = 0;
+    let averageVolumeFuel = 0;
+    let minVolumeFuel = 0;
+
+    function getVolumeFuelExtr (idGrafik) {
+        if (idGrafik !==2 && idGrafik !==3) return
+
+        volumeArr = car.fuelings
+            .map( (item, index) => (Math.floor( 1000 * item.volume / distanceArr[index]) / 10 ));
+        for (let i = 0; i < volumeArr.length; i++) {
+            let badIndex = volumeArr.findIndex ( item => item === NaN || Infinity);
+            if (badIndex !== -1) volumeArr.splice(badIndex, 1, 0)
+        }
+        
+        maxVolumeFuel = getMaxOfArray( volumeArr );
+        averageVolumeFuel = Math.floor( 10 * volumeArr
+            .reduce((acc, value) => acc + value) 
+            / car.fuelings.length) / 10;
+        minVolumeFuel = getMinOfArray( volumeArr );
     }
-    const maxVolumeFuel = getMaxOfArray( volumeArr );
-    const averageVolumeFuel = Math.floor( 10 * volumeArr
-        .reduce((acc, value) => acc + value) 
-        / car.fuelings.length) / 10;
-    const minVolumeFuel = getMinOfArray( volumeArr );
+    getVolumeFuelExtr (idGrafik);
 
     // Экстремальные значения СТОИМОСТИ ТОПЛИВА для графика
-    const maxPriceFuel = getMaxOfArray( car.fuelings.map( item => item.price ) );
-    const averagePriceFuel = Math.floor( 10 * car.fuelings
-        .map( item => item.price )
-        .reduce((acc, value) => acc + value) 
-        / car.fuelings.length) / 10;
-    const minPriceFuel = getMinOfArray( car.fuelings.map( item => item.price ) );
+    let maxPriceFuel = 0;
+    let averagePriceFuel = 0;
+    let minPriceFuel = 0;
 
-     // Экстремальные значения ОСТАЛЬНЫХ РАСХОДОВ для графика
-     const maxCostEtc = getMaxOfArray( car.etc.map( item => item.cost ) );
-     const averageCostEtc = Math.floor( car.etc
-         .map( item => item.cost )
-         .reduce((acc, value) => acc + value) 
-         / car.etc.length);
-     const minCostEtc = getMinOfArray( car.etc.map( item => item.cost ) );
+    function getPriceFuel (idGrafik) {
+        if (idGrafik !==4) return
+
+        maxPriceFuel = getMaxOfArray( car.fuelings.map( item => item.price ) );
+        averagePriceFuel = Math.floor( 10 * car.fuelings
+            .map( item => item.price )
+            .reduce((acc, value) => acc + value) 
+            / car.fuelings.length) / 10;
+        minPriceFuel = getMinOfArray( car.fuelings.map( item => item.price ) );
+    }
+    getPriceFuel (idGrafik);
+
+    // Экстремальные значения ОСТАЛЬНЫХ РАСХОДОВ для графика
+    let maxCostEtc = 0;
+    let averageCostEtc = 0;
+    let minCostEtc = 0;
+
+    function getCostEtcExtr (idGrafik) {
+        if (idGrafik !==5) return
+
+        maxCostEtc = getMaxOfArray( car.etc.map( item => item.cost ) );
+        averageCostEtc = Math.floor( car.etc
+            .map( item => item.cost )
+            .reduce((acc, value) => acc + value) 
+            / car.etc.length);
+        minCostEtc = getMinOfArray( car.etc.map( item => item.cost ) );
+    }
+    getCostEtcExtr (idGrafik);
 
     // высота для графика, в родных стилях почему-то фиксированно 400px
     const heightGrafik = window.innerHeight * 0.59;
 
     // даты всех заправок в виде ДД.ММ
-    const dateFuelings = car.fuelings
+    let dateFuelings = [];
+    if (car.fuelings.length !== 0) {
+        dateFuelings = car.fuelings
         .map( item => `${new Date(item.date).getDate()}.${new Date(item.date).getMonth()}` );
+    }
 
-    // значения дат заправок по оси Х, пока только 12 последних
-    const categories = [...dateFuelings];
+    // даты всех прочих расходов в виде ДД.ММ
+    let dateEtc = [];
+    if (car.etc.length !== 0) {
+        dateEtc = car.etc
+        .map( item => `${new Date(item.date).getDate()}.${new Date(item.date).getMonth()}` );
+    }
+
+    // значения дат заправок или прочих расходов по оси Х, пока только 12 последних
+    let categories = [];
+    if (idGrafik !==5) categories = [...dateFuelings];
+    else categories = [...dateEtc];
     // НЕПРАВИЛЬНО, нужны последние 12 элементов массива
 
     // Обнуление, Массивы данных для построения графиков, наполняются взависимости от Id графика 

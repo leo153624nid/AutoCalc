@@ -3,12 +3,20 @@ import s from './BottomBlock.module.css';
 
 function BottomBlock (props) {
     const car = props.car;
-    let yourDistance = car.fuelings.at(-1).distance - car.fuelings.at(0).distance;
-    yourDistance = Math.floor(yourDistance);
-    let costFuel = car.fuelings.map( f => f.cost ).reduce( (total, value) => total + value );
-    costFuel = Math.floor(costFuel);
-    let itogo = Math.floor(costFuel + car.etcConsumptions);
-   
+
+    let yourDistance = 0;
+    let costFuel = 0;
+    let itogo = 0;
+    if (car.fuelings.length !== 0 ) {
+        yourDistance = Math.floor(
+            car.fuelings.at(-1).distance - car.fuelings.at(0).distance
+        );
+        costFuel = Math.floor(
+            car.fuelings.map( f => f.cost ).reduce( (total, value) => total + value )
+        );
+        itogo = Math.floor(costFuel + car.etcConsumptions);
+    }
+    
     return (
         <div className={s.BottomBlock}>
             <div className={s.distance}>

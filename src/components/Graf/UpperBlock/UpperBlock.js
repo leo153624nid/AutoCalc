@@ -4,8 +4,8 @@ import s from './UpperBlock.module.css';
  
 function UpperBlock (props) {
     const carName = props.carName;
-    let changeGrafik = props.changeGrafik;
-    let wrapper = React.useRef();
+    const changeGrafik = props.changeGrafik;
+    const wrapper = React.useRef();
 
     // Функция меняет классы у переключателей графиков и запускает функцию смены графиков
     function changeBtn (event) {

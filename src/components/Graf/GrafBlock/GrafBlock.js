@@ -9,6 +9,7 @@ function GrafBlock (props) {
     const car = props.car;
     let idGrafik = props.idGrafik;
     let grafikNames = [
+        <span>Нет данных</span>,
         <span>Расходы на топливо, &#8381;</span>,
         <span>Средний пробег, км</span>,
         <span>Средний расход, л/100 км</span>,
@@ -19,7 +20,7 @@ function GrafBlock (props) {
     return (
         <div className={s.GrafBlock}>
             <div className={s.grafikName}>
-                <div className={s.names}>{grafikNames[idGrafik-1]}</div>
+                <div className={s.names}>{grafikNames[idGrafik]}</div>
                 <div className={s.cap}></div>   {/*просто декоративная заглушка*/}
             </div>
 
