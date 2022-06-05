@@ -7,7 +7,7 @@ import "hammerjs";
 
 function GrafBlock (props) {
     const car = props.car;
-    const idGrafik = props.idGrafik;
+    let idGrafik = props.idGrafik;
     let grafikNames = [
         <span>Расходы на топливо, &#8381;</span>,
         <span>Средний пробег, км</span>,
@@ -15,7 +15,6 @@ function GrafBlock (props) {
         <span>Стоимость топлива, &#8381;/л</span>,
         <span>Остальные расходы, &#8381;</span>
     ];
-
 
     return (
         <div className={s.GrafBlock}>
