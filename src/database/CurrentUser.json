@@ -91,7 +91,7 @@
                     "mark": "АИ-95",
                     "price": 30.6,
                     "volume": 60,
-                    "cost": 1836,
+                    "cost": 2000,
                     "full": 1,
                     "distance": 215178
                 },
@@ -101,7 +101,7 @@
                     "mark": "АИ-95",
                     "price": 30.8,
                     "volume": 32.47,
-                    "cost": 1000,
+                    "cost": 3200,
                     "full": 0,
                     "distance": 215851
                 },
@@ -111,7 +111,7 @@
                     "mark": "АИ-95",
                     "price": 30.8,
                     "volume": 32.47,
-                    "cost": 1000,
+                    "cost": 3000,
                     "full": 1,
                     "distance": 216270
                 },
@@ -121,7 +121,7 @@
                     "mark": "АИ-95",
                     "price": 30.8,
                     "volume": 32.47,
-                    "cost": 1000,
+                    "cost": 6000,
                     "full": 0,
                     "distance": 216685
                 },
@@ -131,7 +131,7 @@
                     "mark": "АИ-95",
                     "price": 30.8,
                     "volume": 32.47,
-                    "cost": 1000,
+                    "cost": 2000,
                     "full": 0,
                     "distance": 217093
                 },
@@ -141,7 +141,7 @@
                     "mark": "АИ-95",
                     "price": 30.8,
                     "volume": 60.71,
-                    "cost": 1870,
+                    "cost": 2500,
                     "full": 1,
                     "distance": 217495
                 },
@@ -151,7 +151,7 @@
                     "mark": "АИ-95",
                     "price": 30.8,
                     "volume": 32.47,
-                    "cost": 1000,
+                    "cost": 5000,
                     "full": 0,
                     "distance": 218273
                 }    
