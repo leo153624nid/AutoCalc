@@ -6,32 +6,36 @@ import BottomBlock from './BottomBlock/BottomBlock';
 import { useState } from 'react';
 
 function Graf (props) {
-    const [grafik, setGrafik] = useState(0);
+    const [grafik, setGrafik] = useState(1);
     const car = props.data;
-    debugger;
-    function checkAndChangeGrafikId (grafikId) {
-        if (car.fuelings.length == 0 && car.etc.length) {
-            setGrafik(5);
-            console.log ('Нет данных о заправках');
-            alert('Нет данных о заправках');
-        } else if (car.fuelings.length == 0 && car.etc.length == 0) {
-            setGrafik(0);
-            console.log ('Нет данных о заправках и о прочих расходах');
-            alert('Нет данных о заправках и о прочих расходах');
-        } else if (car.etc.length == 0 && grafikId === 5) {
-            setGrafik(1);
-            console.log ('Нет данных о прочих расходах');
-            alert('Нет данных о прочих расходах');
-        }
-        setGrafik(grafikId);
-        console.log(grafikId);
+
+    // function checkAndChangeGrafikId (grafikId) {
+    //     if (car.fuelings.length == 0 && car.etc.length) {
+    //         setGrafik(5);
+    //         console.log ('Нет данных о заправках');
+    //         // alert('Нет данных о заправках');
+    //     } else if (car.fuelings.length == 0 && car.etc.length == 0) {
+    //         setGrafik(0);
+    //         console.log ('Нет данных о заправках и о прочих расходах');
+    //         // alert('Нет данных о заправках и о прочих расходах');
+    //     } else if (car.etc.length == 0 && grafikId === 5) {
+    //         setGrafik(1);
+    //         console.log ('Нет данных о прочих расходах');
+    //         // alert('Нет данных о прочих расходах');
+    //     }
+    //     setGrafik(grafikId);
+    //     console.log(grafikId);
+    // }
+    // checkAndChangeGrafikId(grafik);
+
+    function changeGrafik (key) {
+        setGrafik(+key);
     }
-    checkAndChangeGrafikId(grafik);
  
 
     return (
         <div className={s.Graf}>
-            <UpperBlock changeGrafik={checkAndChangeGrafikId} carName={car.carName}/>
+            <UpperBlock changeGrafik={changeGrafik} carName={car.carName}/>
 
             <GrafBlock idGrafik={grafik} car={car}/>
 
