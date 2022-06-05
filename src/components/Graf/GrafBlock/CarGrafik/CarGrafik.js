@@ -34,7 +34,7 @@ function CarGrafik (props) {
     const idGrafik = props.idGrafik;
     
 
-    // Экстремальные значения расходов на топливо для графика
+    // Экстремальные значения РАСХОДОВ НА ТОПЛИВО для графика
     const maxCostFuel = getMaxOfArray( car.fuelings.map( item => item.cost ) );
     const averageCostFuel = Math.floor( car.fuelings
         .map( item => item.cost )
@@ -42,28 +42,34 @@ function CarGrafik (props) {
         / car.fuelings.length);
     const minCostFuel = getMinOfArray( car.fuelings.map( item => item.cost ) );
 
-    // Экстремальные значения среднего пробега для графика 
-    // (НЕ ЗАБЫТЬ ПОТОМ УКОРОТИТЬ ВСЕ МАССИВЫ ДАННЫХ ДЛЯ ГРАФИКОВ ДО 12 или 6)
+    // Экстремальные значения СРЕДНЕГО ПРОБЕГА для графика 
+    // (НЕ ЗАБЫТЬ ПОТОМ УКОРОТИТЬ ВСЕ МАССИВЫ ДАННЫХ ДЛЯ ГРАФИКОВ ДО 12 и 6)
     let distanceArr = car.fuelings.map( item => item.distance );
     distanceArr.unshift(distanceArr[0]);    
     let tempArr = distanceArr.map( (item, index, arr) => arr[index+1] - item );
     tempArr.pop();
     distanceArr = tempArr;
-    
     const maxDistance = getMaxOfArray(distanceArr);
     const averageDistance =Math.floor(distanceArr
         .reduce( (acc, value) => acc + value ) 
         / (distanceArr.length - 1));
     const minDistance = getMinOfArray(distanceArr);
 
-    // Экстремальные значения стоимости топлива для графика
+    // Экстремальные значения СТОИМОСТИ ТОПЛИВА для графика
     const maxPriceFuel = getMaxOfArray( car.fuelings.map( item => item.price ) );
     const averagePriceFuel = Math.floor( 10 * car.fuelings
         .map( item => item.price )
         .reduce((acc, value) => acc + value) 
         / car.fuelings.length) / 10;
     const minPriceFuel = getMinOfArray( car.fuelings.map( item => item.price ) );
-    console.log(maxPriceFuel, averagePriceFuel, minPriceFuel);
+
+     // Экстремальные значения ОСТАЛЬНЫХ РАСХОДОВ для графика
+     const maxCostEtc = getMaxOfArray( car.etc.map( item => item.cost ) );
+     const averageCostEtc = Math.floor( car.etc
+         .map( item => item.cost )
+         .reduce((acc, value) => acc + value) 
+         / car.etc.length);
+     const minCostEtc = getMinOfArray( car.etc.map( item => item.cost ) );
 
     // высота для графика, в родных стилях почему-то фиксированно 400px
     const heightGrafik = window.innerHeight * 0.59;
@@ -99,7 +105,11 @@ function CarGrafik (props) {
             averageDataArr.push( ...categories.map( () => averagePriceFuel ) );
             minDataArr.push( ...categories.map( () => minPriceFuel ) );
             break
-        case 5: break
+        case 5:
+            maxDataArr.push( ...categories.map( () => maxCostEtc ) ); 
+            averageDataArr.push( ...categories.map( () => averageCostEtc ) );
+            minDataArr.push( ...categories.map( () => minCostEtc ) );
+            break 
     }
 
     // Graph data
