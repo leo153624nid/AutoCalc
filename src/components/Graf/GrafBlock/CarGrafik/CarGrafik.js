@@ -56,6 +56,15 @@ function CarGrafik (props) {
         / (distanceArr.length - 1));
     const minDistance = getMinOfArray(distanceArr);
 
+    // Экстремальные значения стоимости топлива для графика
+    const maxPriceFuel = getMaxOfArray( car.fuelings.map( item => item.price ) );
+    const averagePriceFuel = Math.floor( 10 * car.fuelings
+        .map( item => item.price )
+        .reduce((acc, value) => acc + value) 
+        / car.fuelings.length) / 10;
+    const minPriceFuel = getMinOfArray( car.fuelings.map( item => item.price ) );
+    console.log(maxPriceFuel, averagePriceFuel, minPriceFuel);
+
     // высота для графика, в родных стилях почему-то фиксированно 400px
     const heightGrafik = window.innerHeight * 0.59;
 
@@ -67,7 +76,7 @@ function CarGrafik (props) {
     const categories = [...dateFuelings];
     // НЕПРАВИЛЬНО, нужны последние 12 элементов массива
 
-    // Массивы данных для построения графиков, наполняются взависимости от Id графика
+    // Обнуление, Массивы данных для построения графиков, наполняются взависимости от Id графика 
     let maxDataArr = [];
     let averageDataArr = [];
     let minDataArr = [];
@@ -85,7 +94,11 @@ function CarGrafik (props) {
             minDataArr.push( ...categories.map( () => minDistance ) );
             break
         case 3: break
-        case 4: break
+        case 4: 
+            maxDataArr.push( ...categories.map( () => maxPriceFuel ) ); 
+            averageDataArr.push( ...categories.map( () => averagePriceFuel ) );
+            minDataArr.push( ...categories.map( () => minPriceFuel ) );
+            break
         case 5: break
     }
 
