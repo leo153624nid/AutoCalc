@@ -1,16 +1,21 @@
-import React from "react";
-import s from './Footer.module.css';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import s from './Footer.module.css'
 
-function Footer () {
+function Footer() {
     return (
         <div className={s.footer}>
-            <span><Link to='/'>Главная</Link></span>
-            <span><Link to='/'>О приложении</Link></span>
-            <span><Link to='/'>Поддержка</Link></span>
-            
+            <span>
+                <Link to="/">Главная</Link>
+            </span>
+            <span>
+                <Link to="/">О приложении</Link>
+            </span>
+            <span>
+                <Link to="/">Поддержка</Link>
+            </span>
         </div>
-    );
+    )
 }
 
-export default Footer;
+export default Footer

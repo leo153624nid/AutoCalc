@@ -1,10 +1,10 @@
-import React from "react";
-import AddCarBtn from "../Header/AddCarBtn/AddCarBtn";
-import CurrentUser from "../Header/CurrentUser/CurrentUser";
-import Logotype from "../Header/Logotype/Logotype";
-import s from './Header.module.css';
+import React from 'react'
+import AddCarBtn from './AddCarBtn/AddCarBtn'
+import CurrentUser from './CurrentUser/CurrentUser'
+import Logotype from './Logotype/Logotype'
+import s from './Header.module.css'
 
-function Header () {
+function Header() {
     return (
         <header className={s.head}>
             <div className={s.CurrentUser}>
@@ -19,7 +19,7 @@ function Header () {
                 <AddCarBtn />
             </div>
         </header>
-    );
+    )
 }
 
-export default Header;
+export default Header
