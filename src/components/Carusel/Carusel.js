@@ -9,13 +9,15 @@ import ArrowNext from './ArrowNext/ArrowNext'
 import ArrowPrev from './ArrowPrev/ArrowPrev'
 import CarBlock from './CarBlock/CarBlock'
 import AddCarBtn from '../Header/AddCarBtn/AddCarBtn'
+
 // Временное решение по подгрузке картинок машин, потом они будут приходить с сервера
-import carPic1 from '../../img/e46.JPG'
-import carPic2 from '../../img/e83.jpg'
-import carPic3 from '../../img/b14.jpeg'
+// import carPic1 from '../../img/e46.JPG'
+// import carPic2 from '../../img/e83.jpg'
+// import carPic3 from '../../img/b14.jpeg'
 
 function Carusel(props) {
     const userCars = props.userCars
+
     const [cars, setCars] = useState([userCars[0], userCars[1], userCars[2]])
     const carBlockList = []
 
@@ -35,7 +37,7 @@ function Carusel(props) {
                     className={`${s.CarBlock} ${s.activeCarBlock}`}
                     key={cars[0].carId}
                 >
-                    <CarBlock carPic={carPic1} carData={cars[0]} />
+                    <CarBlock carData={cars[0]} />
                 </div>
             )
         } else if (userCars.length === 2) {
@@ -44,28 +46,28 @@ function Carusel(props) {
                     className={`${s.CarBlock} ${s.activeCarBlock}`}
                     key={cars[0].carId}
                 >
-                    <CarBlock carPic={carPic1} carData={cars[0]} />
+                    <CarBlock carData={cars[0]} />
                 </div>,
 
                 <div className={s.CarBlock} key={cars[1].carId}>
-                    <CarBlock carPic={carPic2} carData={cars[1]} />
+                    <CarBlock carData={cars[1]} />
                 </div>
             )
         } else if (userCars.length >= 3) {
             carBlockList.push(
                 <div className={s.CarBlock} key={cars[0].carId}>
-                    <CarBlock carPic={carPic1} carData={cars[0]} />
+                    <CarBlock carData={cars[0]} />
                 </div>,
 
                 <div
                     className={`${s.CarBlock} ${s.activeCarBlock}`}
                     key={cars[1].carId}
                 >
-                    <CarBlock carPic={carPic2} carData={cars[1]} />
+                    <CarBlock carData={cars[1]} />
                 </div>,
 
                 <div className={s.CarBlock} key={cars[2].carId}>
-                    <CarBlock carPic={carPic3} carData={cars[2]} />
+                    <CarBlock carData={cars[2]} />
                 </div>
             )
         }

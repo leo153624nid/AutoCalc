@@ -5,7 +5,7 @@
         {
             "carId": 1,
             "carName": "BMW e46 318i",
-            "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e46.JPG",
+            "carPic": "https://firebasestorage.googleapis.com/v0/b/autocalculato.appspot.com/o/e46.JPG?alt=media&token=d417bd80-fb6f-4249-81d7-9fcc27c3c74b",
             "distance": 244447,
             "fuelConsumptions": 8.4,
             "etcConsumptions": 360464,
@@ -154,13 +154,13 @@
                     "cost": 5000,
                     "full": 0,
                     "distance": 218273
-                }    
+                }
             ]
         },
         {
             "carId": 2,
             "carName": "BMW e83 30i",
-            "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/e83.jpg",
+            "carPic": "https://firebasestorage.googleapis.com/v0/b/autocalculato.appspot.com/o/e83.jpg?alt=media&token=fbe5c253-70d1-47ee-8fe5-64035a6b9b08",
             "distance": 181206,
             "fuelConsumptions": 14.5,
             "etcConsumptions": 549994,
@@ -309,13 +309,13 @@
                     "cost": 2032.06,
                     "full": 1,
                     "distance": 152652
-                }  
+                }
             ]
         },
         {
             "carId": 3,
             "carName": "NISSAN b14 1.6",
-            "carPic": "S:/Users/Алексей/Desktop/IT/GitHub/auto_calc/src/img/b14.jpeg",
+            "carPic": "https://firebasestorage.googleapis.com/v0/b/autocalculato.appspot.com/o/b14.jpeg?alt=media&token=56aacddd-4044-4f45-8610-7baa921b1c99",
             "distance": 322499,
             "fuelConsumptions": 9.2,
             "etcConsumptions": 91958,
@@ -387,7 +387,7 @@
                     "fuelingId": 7,
                     "date": 1503792000000,
                     "mark": "АИ-92",
-                    "price": 39.00,
+                    "price": 39.0,
                     "volume": 37.34,
                     "cost": 1456.26,
                     "full": 1,
@@ -459,7 +459,7 @@
                     "etcId": 7,
                     "date": 1503792000000,
                     "mark": "АИ-92",
-                    "price": 39.00,
+                    "price": 39.0,
                     "volume": 37.34,
                     "cost": 1456.26,
                     "full": 1,
