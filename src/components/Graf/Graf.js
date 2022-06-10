@@ -1,27 +1,20 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-import React, { useState } from 'react'
+import React from 'react'
 import s from './Graf.module.css'
 import UpperBlock from './UpperBlock/UpperBlock'
 import GrafBlock from './GrafBlock/GrafBlock'
 import BottomBlock from './BottomBlock/BottomBlock'
 
-function Graf(props) {
-    const [grafik, setGrafik] = useState(1)
-    const car = props.data
-
-    function changeGrafik(key) {
-        setGrafik(+key)
-    }
-
+function Graf({ carData, idGrafik, changeGrafik }) {
     return (
         <div className={s.Graf}>
-            <UpperBlock changeGrafik={changeGrafik} carName={car.carName} />
+            <UpperBlock changeGrafik={changeGrafik} carName={carData.carName} />
 
-            <GrafBlock idGrafik={grafik} car={car} />
+            <GrafBlock idGrafik={idGrafik} carData={carData} />
 
-            <BottomBlock car={car} />
+            <BottomBlock carData={carData} />
         </div>
     )
 }
