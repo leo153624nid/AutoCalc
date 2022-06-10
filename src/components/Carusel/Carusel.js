@@ -10,7 +10,7 @@ import ArrowPrev from './ArrowPrev/ArrowPrev'
 import CarBlock from './CarBlock/CarBlock'
 import AddCarBtn from '../Header/AddCarBtn/AddCarBtn'
 
-function Carusel({ carusel, changeCarusel }) {
+function Carusel({ carusel, dispatch }) {
     // массив карт машин
     const carBlockList = []
 
@@ -79,7 +79,13 @@ function Carusel({ carusel, changeCarusel }) {
         <div className={s.content}>
             <div
                 className={`${s.arrow} ${s.ArrowPrev}`}
-                onClick={() => changeCarusel('left', carusel)}
+                onClick={() =>
+                    dispatch({
+                        type: 'CHANGE_CARUSEL',
+                        direction: 'left',
+                        carusel,
+                    })
+                }
             >
                 <ArrowPrev />
             </div>
@@ -88,7 +94,13 @@ function Carusel({ carusel, changeCarusel }) {
 
             <div
                 className={`${s.arrow} ${s.ArrowNext}`}
-                onClick={() => changeCarusel('right', carusel)}
+                onClick={() =>
+                    dispatch({
+                        type: 'CHANGE_CARUSEL',
+                        direction: 'right',
+                        carusel,
+                    })
+                }
             >
                 <ArrowNext />
             </div>
