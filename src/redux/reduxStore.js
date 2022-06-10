@@ -31,6 +31,10 @@ import userData from '../database/CurrentUser.json'
 // }
 // caruselInit()
 
+// let rerender = () => {
+//     console.log('rerender')
+// }
+
 const store = {
     state: {
         userData,
@@ -54,33 +58,42 @@ const store = {
             etc: [],
         },
     },
+    callsubscriber() {},
     getState() {
         return this.state
     },
-    changeCarusel() {
-        // const newCars = [cars[0], cars[1], cars[2]]
-        // const nextCarId = userCars.findIndex(
-        //     (item) => item.carId > cars[2].carId
-        // )
-        // const prevCarId =
-        //     userCars.findIndex((item) => item.carId === cars[0].carId) - 1
-        // if (direction === 'left') {
-        //     newCars.shift()
-        //     if (nextCarId !== -1) {
-        //         newCars.push(userCars[nextCarId])
-        //     } else {
-        //         newCars.push(userCars[0])
-        //     }
-        //     setCars(newCars)
-        // } else if (direction === 'right') {
-        //     newCars.pop()
-        //     if (prevCarId === -1) {
-        //         newCars.unshift(userCars.at(-1))
-        //     } else {
-        //         newCars.unshift(userCars[prevCarId])
-        //     }
-        //     setCars(newCars)
-        // }
+    subscribe(observer) {
+        this.callsubscriber = observer
+    },
+    changeCarusel(direction, carusel) {
+        const cars = this.state.userData.userCars
+        const lastCarId = cars.findIndex(
+            (item) => item.carId === carusel.at(-1).carId
+        )
+        const firstCarId = cars.findIndex(
+            (item) => item.carId === carusel[0].carId
+        )
+        switch (direction) {
+            case 'left':
+                this.state.carusel.shift()
+                if (lastCarId !== cars.length - 1) {
+                    this.state.carusel.push(cars[lastCarId + 1])
+                } else {
+                    this.state.carusel.push(cars[0])
+                }
+                break
+            case 'right':
+                this.state.carusel.pop()
+                if (firstCarId !== 0) {
+                    this.state.carusel.unshift(cars[firstCarId - 1])
+                } else {
+                    this.state.carusel.unshift(cars.at(-1))
+                }
+                break
+            default:
+                break
+        }
+        this.callsubscriber(this.state)
     },
 }
 
