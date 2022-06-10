@@ -6,9 +6,7 @@
 import React from 'react'
 import s from './UpperBlock.module.css'
 
-function UpperBlock(props) {
-    const carName = props.carName
-    const changeGrafik = props.changeGrafik
+function UpperBlock({ carName, changeGrafik }) {
     const wrapper = React.useRef()
 
     // Функция меняет классы у переключателей графиков и запускает функцию смены графиков
