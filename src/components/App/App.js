@@ -9,7 +9,7 @@ import Footer from '../Footer/Footer'
 import Graf from '../Graf/Graf'
 import s from './App.module.css'
 
-function App({ state, changeCarusel }) {
+function App({ state, changeCarusel, changeGrafik }) {
     // Весь Массив машин пользователя
     const userCars = state.userData.userCars
 
@@ -23,7 +23,14 @@ function App({ state, changeCarusel }) {
         <Route
             key={car.carId}
             path={`/graf/${car.carId}`}
-            element={<Graf data={car} key={car.carId} />}
+            element={
+                <Graf
+                    carData={car}
+                    key={car.carId}
+                    idGrafik={state.idGrafik}
+                    changeGrafik={changeGrafik}
+                />
+            }
         />
     ))
 
@@ -41,7 +48,17 @@ function App({ state, changeCarusel }) {
                         />
                     }
                 />
-                <Route path="/graf" element={<Graf data={noCar} />} />
+                <Route
+                    path="/graf"
+                    element={
+                        <Graf
+                            carData={noCar}
+                            key={noCar.carId}
+                            idGrafik={state.idGrafik}
+                            changeGrafik={changeGrafik}
+                        />
+                    }
+                />
                 {routeList}
             </Routes>
 
