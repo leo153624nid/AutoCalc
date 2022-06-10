@@ -7,9 +7,7 @@ import CarGrafik from './CarGrafik/CarGrafik'
 import '@progress/kendo-theme-material/dist/all.css'
 import 'hammerjs'
 
-function GrafBlock(props) {
-    const car = props.car
-    const idGrafik = props.idGrafik
+function GrafBlock({ carData, idGrafik }) {
     const grafikNames = [
         <span>Нет данных</span>,
         <span>Расходы на топливо, &#8381;</span>,
@@ -27,28 +25,28 @@ function GrafBlock(props) {
             </div>
 
             <div className={s.CarGrafik}>
-                <CarGrafik idGrafik={idGrafik} car={car} />
+                <CarGrafik idGrafik={idGrafik} carData={carData} />
             </div>
 
             <aside className={s.aside}>
                 <div className={s.generalDistance}>
                     <span>Общий пробег</span>
-                    <span>{car.distance} км</span>
+                    <span>{carData.distance} км</span>
                 </div>
 
                 <div className={s.generalFuel}>
                     <span>Общий расход топлива</span>
-                    <span>{car.fuelConsumptions} л/100 км</span>
+                    <span>{carData.fuelConsumptions} л/100 км</span>
                 </div>
 
                 <div className={s.generalCostOneKm}>
                     <span>Стоимость 1 км</span>
-                    <span>{car.costOneKm} &#8381;/км</span>
+                    <span>{carData.costOneKm} &#8381;/км</span>
                 </div>
 
                 <div className={s.generalCostOneDay}>
                     <span>Стоимость владения</span>
-                    <span>{car.costOneDay} &#8381;/день</span>
+                    <span>{carData.costOneDay} &#8381;/день</span>
                 </div>
             </aside>
 
