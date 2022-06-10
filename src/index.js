@@ -12,11 +12,7 @@ const rerenderAll = (state) => {
     root.render(
         <React.StrictMode>
             <Router>
-                <App
-                    state={state}
-                    changeCarusel={store.changeCarusel.bind(store)}
-                    changeGrafik={store.changeGrafik.bind(store)}
-                />
+                <App state={state} dispatch={store.dispatch.bind(store)} />
             </Router>
         </React.StrictMode>
     )
