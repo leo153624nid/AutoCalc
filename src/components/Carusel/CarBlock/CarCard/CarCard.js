@@ -5,13 +5,12 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import s from './CarCard.module.css'
 
-function CarCard(props) {
-    const carPic = props.carPic
-    const carName = props.carData.carName
-    const carDistance = props.carData.distance
-    const fuelConsumptions = props.carData.fuelConsumptions
-    const allMonth = Math.floor(props.carData.allMonth)
-    const carId = props.carData.carId
+function CarCard({ carData, carPic }) {
+    const carName = carData.carName
+    const carDistance = carData.distance
+    const fuelConsumptions = carData.fuelConsumptions
+    const allMonth = Math.floor(carData.allMonth)
+    const carId = carData.carId
 
     return (
         <div className={s.CarCard}>
