@@ -11,12 +11,10 @@ import CarBlock from './CarBlock/CarBlock'
 import AddCarBtn from '../Header/AddCarBtn/AddCarBtn'
 
 function Carusel({ carusel, changeCarusel }) {
-    // const userCars = props.userCars
-
-    // const [cars, setCars] = useState([userCars[0], userCars[1], userCars[2]])
+    // массив карт машин
     const carBlockList = []
 
-    // функция получает массив машин для карусели и создает секцию из 1...3 карт машин
+    // функция получает массив машин для карусели и наполняет массив карт 1...3 картами машин
     function caruselInit() {
         if (
             carusel[0] === undefined &&
@@ -77,43 +75,11 @@ function Carusel({ carusel, changeCarusel }) {
 
     caruselInit()
 
-    // Функция смены автомобильных карт влево или вправо
-    // function changeCarusel(direction) {
-    //     const newCars = [cars[0], cars[1], cars[2]]
-    //     const nextCarId = userCars.findIndex(
-    //         (item) => item.carId > cars[2].carId
-    //     )
-    //     const prevCarId =
-    //         userCars.findIndex((item) => item.carId === cars[0].carId) - 1
-
-    //     if (direction === 'left') {
-    //         newCars.shift()
-
-    //         if (nextCarId !== -1) {
-    //             newCars.push(userCars[nextCarId])
-    //         } else {
-    //             newCars.push(userCars[0])
-    //         }
-
-    //         setCars(newCars)
-    //     } else if (direction === 'right') {
-    //         newCars.pop()
-
-    //         if (prevCarId === -1) {
-    //             newCars.unshift(userCars.at(-1))
-    //         } else {
-    //             newCars.unshift(userCars[prevCarId])
-    //         }
-
-    //         setCars(newCars)
-    //     }
-    // }
-
     return (
         <div className={s.content}>
             <div
                 className={`${s.arrow} ${s.ArrowPrev}`}
-                onClick={() => changeCarusel('left')}
+                onClick={() => changeCarusel('left', carusel)}
             >
                 <ArrowPrev />
             </div>
@@ -122,7 +88,7 @@ function Carusel({ carusel, changeCarusel }) {
 
             <div
                 className={`${s.arrow} ${s.ArrowNext}`}
-                onClick={() => changeCarusel('right')}
+                onClick={() => changeCarusel('right', carusel)}
             >
                 <ArrowNext />
             </div>
