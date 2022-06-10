@@ -6,7 +6,7 @@
 import React from 'react'
 import s from './UpperBlock.module.css'
 
-function UpperBlock({ carName, changeGrafik }) {
+function UpperBlock({ carName, dispatch }) {
     const wrapper = React.useRef()
 
     // Функция меняет классы у переключателей графиков и запускает функцию смены графиков
@@ -15,7 +15,10 @@ function UpperBlock({ carName, changeGrafik }) {
             elem.classList.remove(`${s.click}`)
         )
         event.currentTarget.classList.add(`${s.click}`)
-        changeGrafik(event.currentTarget.id)
+        dispatch({
+            type: 'CHANGE_GRAFIK',
+            key: event.currentTarget.id,
+        })
     }
 
     return (
