@@ -1,20 +1,19 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable prefer-destructuring */
 import React from 'react'
 import s from './CarBlock.module.css'
 import CarCard from './CarCard/CarCard'
 import CarBtns from './CarBtns/CarBtns'
 import NoCar from '../../../img/noCar.jpg'
 
-function CarBlock(props) {
-    const car = props.carData
-    let carPic = car.carPic
+function CarBlock({ carData }) {
+    let carPic = carData.carPic
 
     if (carPic === '') carPic = NoCar
     return (
         <div className={s.CarBlock}>
-            <CarCard carPic={carPic} carData={car} />
+            <CarCard carPic={carPic} carData={carData} />
 
             <CarBtns className={s.CarBtns} />
         </div>
