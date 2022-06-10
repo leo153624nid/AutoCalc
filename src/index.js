@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
@@ -13,8 +14,8 @@ const rerenderAll = (state) => {
             <Router>
                 <App
                     state={state}
-                    // eslint-disable-next-line react/jsx-no-bind
                     changeCarusel={store.changeCarusel.bind(store)}
+                    changeGrafik={store.changeGrafik.bind(store)}
                 />
             </Router>
         </React.StrictMode>
