@@ -7,14 +7,20 @@ import store from './redux/reduxStore'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
-root.render(
-    <React.StrictMode>
-        <Router>
-            <App
-                state={store.getState()}
-                // eslint-disable-next-line react/jsx-no-bind
-                changeCarusel={store.changeCarusel.bind(store)}
-            />
-        </Router>
-    </React.StrictMode>
-)
+const rerenderAll = (state) => {
+    root.render(
+        <React.StrictMode>
+            <Router>
+                <App
+                    state={state}
+                    // eslint-disable-next-line react/jsx-no-bind
+                    changeCarusel={store.changeCarusel.bind(store)}
+                />
+            </Router>
+        </React.StrictMode>
+    )
+}
+
+rerenderAll(store.getState())
+
+store.subscribe(rerenderAll)
