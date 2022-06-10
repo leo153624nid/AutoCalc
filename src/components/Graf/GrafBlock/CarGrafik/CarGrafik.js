@@ -32,12 +32,9 @@ function getMinOfArray(numArray) {
     return Math.min.apply(null, numArray)
 }
 
-function CarGrafik(props) {
-    const car = props.car
-    const idGrafik = props.idGrafik
-
+function CarGrafik({ carData, idGrafik }) {
     // Проверка есть ли данные о заправках или о прочих расходах
-    if (car.fuelings.length === 0 && idGrafik !== 5) {
+    if (carData.fuelings.length === 0 && idGrafik !== 5) {
         return (
             <div
                 style={{
@@ -51,7 +48,7 @@ function CarGrafik(props) {
             </div>
         )
     }
-    if (car.etc.length === 0 && idGrafik === 5) {
+    if (carData.etc.length === 0 && idGrafik === 5) {
         return (
             <div
                 style={{
@@ -73,13 +70,13 @@ function CarGrafik(props) {
     function getCostFuelExtr(id) {
         if (id !== 1) return
 
-        maxCostFuel = getMaxOfArray(car.fuelings.map((item) => item.cost))
+        maxCostFuel = getMaxOfArray(carData.fuelings.map((item) => item.cost))
         averageCostFuel = Math.floor(
-            car.fuelings
+            carData.fuelings
                 .map((item) => item.cost)
-                .reduce((acc, value) => acc + value) / car.fuelings.length
+                .reduce((acc, value) => acc + value) / carData.fuelings.length
         )
-        minCostFuel = getMinOfArray(car.fuelings.map((item) => item.cost))
+        minCostFuel = getMinOfArray(carData.fuelings.map((item) => item.cost))
     }
     getCostFuelExtr(idGrafik)
 
@@ -93,7 +90,7 @@ function CarGrafik(props) {
     function getDistanceExtr(id) {
         if (id !== 2 && id !== 3) return
 
-        distanceArr = car.fuelings.map((item) => item.distance)
+        distanceArr = carData.fuelings.map((item) => item.distance)
         distanceArr.unshift(distanceArr[0])
         const tempArr = distanceArr.map(
             (item, index, arr) => arr[index + 1] - item
@@ -119,7 +116,7 @@ function CarGrafik(props) {
     function getVolumeFuelExtr(id) {
         if (id !== 2 && id !== 3) return
 
-        volumeArr = car.fuelings.map(
+        volumeArr = carData.fuelings.map(
             (item, index) =>
                 Math.floor((1000 * item.volume) / distanceArr[index]) / 10
         )
@@ -135,7 +132,7 @@ function CarGrafik(props) {
         averageVolumeFuel =
             Math.floor(
                 (10 * volumeArr.reduce((acc, value) => acc + value)) /
-                    car.fuelings.length
+                    carData.fuelings.length
             ) / 10
         minVolumeFuel = getMinOfArray(volumeArr)
     }
@@ -149,16 +146,16 @@ function CarGrafik(props) {
     function getPriceFuel(id) {
         if (id !== 4) return
 
-        maxPriceFuel = getMaxOfArray(car.fuelings.map((item) => item.price))
+        maxPriceFuel = getMaxOfArray(carData.fuelings.map((item) => item.price))
         averagePriceFuel =
             Math.floor(
                 (10 *
-                    car.fuelings
+                    carData.fuelings
                         .map((item) => item.price)
                         .reduce((acc, value) => acc + value)) /
-                    car.fuelings.length
+                    carData.fuelings.length
             ) / 10
-        minPriceFuel = getMinOfArray(car.fuelings.map((item) => item.price))
+        minPriceFuel = getMinOfArray(carData.fuelings.map((item) => item.price))
     }
     getPriceFuel(idGrafik)
 
@@ -170,13 +167,13 @@ function CarGrafik(props) {
     function getCostEtcExtr(id) {
         if (id !== 5) return
 
-        maxCostEtc = getMaxOfArray(car.etc.map((item) => item.cost))
+        maxCostEtc = getMaxOfArray(carData.etc.map((item) => item.cost))
         averageCostEtc = Math.floor(
-            car.etc
+            carData.etc
                 .map((item) => item.cost)
-                .reduce((acc, value) => acc + value) / car.etc.length
+                .reduce((acc, value) => acc + value) / carData.etc.length
         )
-        minCostEtc = getMinOfArray(car.etc.map((item) => item.cost))
+        minCostEtc = getMinOfArray(carData.etc.map((item) => item.cost))
     }
     getCostEtcExtr(idGrafik)
 
@@ -185,8 +182,8 @@ function CarGrafik(props) {
 
     // даты всех заправок в виде ДД.ММ
     let dateFuelings = []
-    if (car.fuelings.length !== 0) {
-        dateFuelings = car.fuelings.map(
+    if (carData.fuelings.length !== 0) {
+        dateFuelings = carData.fuelings.map(
             (item) =>
                 `${new Date(item.date).getDate()}.${new Date(
                     item.date
@@ -196,8 +193,8 @@ function CarGrafik(props) {
 
     // даты всех прочих расходов в виде ДД.ММ
     let dateEtc = []
-    if (car.etc.length !== 0) {
-        dateEtc = car.etc.map(
+    if (carData.etc.length !== 0) {
+        dateEtc = carData.etc.map(
             (item) =>
                 `${new Date(item.date).getDate()}.${new Date(
                     item.date
@@ -267,7 +264,7 @@ function CarGrafik(props) {
     const consumptions = [
         {
             name: 'Расходы на топливо',
-            data: car.fuelings.map((item) => item.cost),
+            data: carData.fuelings.map((item) => item.cost),
         },
         {
             name: 'Средний пробег',
@@ -279,11 +276,11 @@ function CarGrafik(props) {
         },
         {
             name: 'Стоимость топлива',
-            data: car.fuelings.map((item) => item.price),
+            data: carData.fuelings.map((item) => item.price),
         },
         {
             name: 'Остальные расходы',
-            data: car.etc.map((item) => item.cost),
+            data: carData.etc.map((item) => item.cost),
         },
     ]
 
