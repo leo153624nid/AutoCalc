@@ -95,6 +95,10 @@ const store = {
         }
         this.callsubscriber(this.state)
     },
+    changeGrafik(key) {
+        this.state.idGrafik = +key
+        this.callsubscriber(this.state)
+    },
 }
 
 export default store
