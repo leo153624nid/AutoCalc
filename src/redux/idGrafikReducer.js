@@ -3,10 +3,12 @@ import { createReducer } from '@reduxjs/toolkit'
 const CHANGE_GRAFIK = 'CHANGE_GRAFIK'
 
 const idGrafikReducer = createReducer(1, (builder) => {
-    builder.addCase(CHANGE_GRAFIK, (state, action) => {
-        const newState = Number(action.key)
-        return newState
-    })
+    builder
+        .addCase(CHANGE_GRAFIK, (state, action) => {
+            const newState = Number(action.key)
+            return newState
+        })
+        .addDefaultCase((state) => state)
 })
 
 // const idGrafikReducer2 = (action, state = 1) => {

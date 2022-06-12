@@ -20,4 +20,6 @@ const rerenderAll = (state) => {
 
 rerenderAll(store.getState())
 
-store.subscribe(rerenderAll)
+store.subscribe(() => {
+    rerenderAll(store.getState())
+})
