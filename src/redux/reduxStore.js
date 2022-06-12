@@ -2,8 +2,8 @@
 import NoCarPic from '../img/noCar.jpg'
 import userData from '../database/CurrentUser.json'
 
-// const CHANGE_CARUSEL = 'CHANGE_CARUSEL'
-// const CHANGE_GRAFIK = 'CHANGE_GRAFIK'
+const CHANGE_CARUSEL = 'CHANGE_CARUSEL'
+const CHANGE_GRAFIK = 'CHANGE_GRAFIK'
 
 const store = {
     state: {
@@ -37,7 +37,7 @@ const store = {
     },
     dispatch(action) {
         switch (action.type) {
-            case 'CHANGE_CARUSEL':
+            case CHANGE_CARUSEL:
                 const cars = this.state.userData.userCars
                 const lastCarId = cars.findIndex(
                     (item) => item.carId === this.state.carusel.at(-1).carId
@@ -67,7 +67,7 @@ const store = {
                 }
                 this.callsubscriber(this.state)
                 break
-            case 'CHANGE_GRAFIK':
+            case CHANGE_GRAFIK:
                 this.state.idGrafik = +action.key
                 this.callsubscriber(this.state)
                 break
@@ -77,14 +77,14 @@ const store = {
     },
 }
 
-export const changeGrafikActionCreator = (value) => ({
-    type: 'CHANGE_GRAFIK',
-    key: value,
+export const changeCaruselActionCreator = (direct) => ({
+    type: CHANGE_CARUSEL,
+    direction: direct,
 })
 
-export const changeCaruselActionCreator = (direct) => ({
-    type: 'CHANGE_CARUSEL',
-    direction: direct,
+export const changeGrafikActionCreator = (value) => ({
+    type: CHANGE_GRAFIK,
+    key: value,
 })
 
 export default store
