@@ -40,10 +40,10 @@ const store = {
             case 'CHANGE_CARUSEL':
                 const cars = this.state.userData.userCars
                 const lastCarId = cars.findIndex(
-                    (item) => item.carId === action.carusel.at(-1).carId
+                    (item) => item.carId === this.state.carusel.at(-1).carId
                 )
                 const firstCarId = cars.findIndex(
-                    (item) => item.carId === action.carusel[0].carId
+                    (item) => item.carId === this.state.carusel[0].carId
                 )
                 switch (action.direction) {
                     case 'left':
@@ -76,5 +76,15 @@ const store = {
         }
     },
 }
+
+export const changeGrafikActionCreator = (value) => ({
+    type: 'CHANGE_GRAFIK',
+    key: value,
+})
+
+export const changeCaruselActionCreator = (direct) => ({
+    type: 'CHANGE_CARUSEL',
+    direction: direct,
+})
 
 export default store

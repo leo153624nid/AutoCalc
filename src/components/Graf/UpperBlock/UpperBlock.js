@@ -5,6 +5,7 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react'
 import s from './UpperBlock.module.css'
+import { changeGrafikActionCreator } from '../../../redux/reduxStore'
 
 function UpperBlock({ carName, dispatch }) {
     const wrapper = React.useRef()
@@ -15,10 +16,7 @@ function UpperBlock({ carName, dispatch }) {
             elem.classList.remove(`${s.click}`)
         )
         event.currentTarget.classList.add(`${s.click}`)
-        dispatch({
-            type: 'CHANGE_GRAFIK',
-            key: event.currentTarget.id,
-        })
+        dispatch(changeGrafikActionCreator(event.currentTarget.id))
     }
 
     return (
