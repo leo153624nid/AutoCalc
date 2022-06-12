@@ -5,7 +5,7 @@
 /* eslint-disable prefer-destructuring */
 import React from 'react'
 import s from './UpperBlock.module.css'
-import { changeGrafikActionCreator } from '../../../redux/reduxStore'
+import { changeGrafikActionCreator } from '../../../redux/idGrafikReducer'
 
 function UpperBlock({ carName, dispatch }) {
     const wrapper = React.useRef()
