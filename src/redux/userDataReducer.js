@@ -2,6 +2,7 @@ import { createReducer } from '@reduxjs/toolkit'
 import userData from '../database/CurrentUser.json'
 
 const initialState = userData
+// Добавление в начальный state массива машин пользователя для карусели
 initialState.carusel = [
     userData.userCars[0],
     userData.userCars[1],
