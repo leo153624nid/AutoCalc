@@ -493,5 +493,19 @@
             "fuelings": [],
             "etc": []
         }
-    ]
+    ],
+    "carusel": ["userCars[0]", "userCars[1]", "userCars[2]"],
+    "noCar": {
+        "carId": 0,
+        "carName": "-",
+        "carPic": "https://firebasestorage.googleapis.com/v0/b/autocalculato.appspot.com/o/noCar.jpg?alt=media&token=218b6f0e-0b96-45e1-87d7-030e0d7c614e",
+        "distance": 0,
+        "fuelConsumptions": 0,
+        "etcConsumptions": 0,
+        "allMonth": 0,
+        "costOneKm": 0,
+        "costOneDay": 0,
+        "fuelings": [],
+        "etc": []
+    }
 }

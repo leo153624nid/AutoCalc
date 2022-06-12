@@ -14,10 +14,10 @@ function App({ state, dispatch }) {
     const userCars = state.userData.userCars
 
     // Массив машин для карусели
-    const carusel = state.carusel
+    const carusel = state.userData.carusel
 
     // ПУСТАЯ МАШИНА
-    const noCar = state.noCar
+    const noCar = state.userData.noCar
 
     const routeList = userCars.map((car) => (
         <Route

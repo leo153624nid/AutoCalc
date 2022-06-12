@@ -9,7 +9,7 @@ import ArrowNext from './ArrowNext/ArrowNext'
 import ArrowPrev from './ArrowPrev/ArrowPrev'
 import CarBlock from './CarBlock/CarBlock'
 import AddCarBtn from '../Header/AddCarBtn/AddCarBtn'
-import { changeCaruselActionCreator } from '../../redux/caruselReducer'
+import { changeCaruselActionCreator } from '../../redux/userDataReducer'
 
 function Carusel({ carusel, dispatch }) {
     // массив карт машин
