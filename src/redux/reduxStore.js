@@ -4,9 +4,6 @@ import userData from '../database/CurrentUser.json'
 import caruselReducer from './caruselReducer'
 import idGrafikReducer from './idGrafikReducer'
 
-const CHANGE_CARUSEL = 'CHANGE_CARUSEL'
-const CHANGE_GRAFIK = 'CHANGE_GRAFIK'
-
 const store = {
     state: {
         userData,
@@ -44,15 +41,5 @@ const store = {
         this.callsubscriber(this.state)
     },
 }
-
-export const changeCaruselActionCreator = (direct) => ({
-    type: CHANGE_CARUSEL,
-    direction: direct,
-})
-
-export const changeGrafikActionCreator = (value) => ({
-    type: CHANGE_GRAFIK,
-    key: value,
-})
 
 export default store
