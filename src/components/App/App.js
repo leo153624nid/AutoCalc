@@ -4,20 +4,20 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Header from '../Header/Header'
-import Carusel from '../Carusel/Carusel'
 import Footer from '../Footer/Footer'
 import Graf from '../Graf/Graf'
 import s from './App.module.css'
+import CaruselContainer from '../Carusel/CaruselContainer'
 
-function App({ state, dispatch }) {
+function App({ store }) {
     // Весь Массив машин пользователя
-    const userCars = state.userData.userCars
+    const userCars = store.getState().userData.userCars
 
     // Массив машин для карусели
-    const carusel = state.userData.carusel
+    // const carusel = store.getState().userData.carusel
 
     // ПУСТАЯ МАШИНА
-    const noCar = state.userData.noCar
+    const noCar = store.getState().userData.noCar
 
     const routeList = userCars.map((car) => (
         <Route
@@ -27,8 +27,8 @@ function App({ state, dispatch }) {
                 <Graf
                     carData={car}
                     key={car.carId}
-                    idGrafik={state.idGrafik}
-                    dispatch={dispatch}
+                    // idGrafik={store.getState().idGrafik}
+                    // dispatch={dispatch}
                 />
             }
         />
@@ -39,18 +39,15 @@ function App({ state, dispatch }) {
             <Header />
 
             <Routes>
-                <Route
-                    path="/"
-                    element={<Carusel carusel={carusel} dispatch={dispatch} />}
-                />
+                <Route path="/" element={<CaruselContainer store={store} />} />
                 <Route
                     path="/graf"
                     element={
                         <Graf
                             carData={noCar}
                             key={noCar.carId}
-                            idGrafik={state.idGrafik}
-                            dispatch={dispatch}
+                            // idGrafik={state.idGrafik}
+                            // dispatch={dispatch}
                         />
                     }
                 />
