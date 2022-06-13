@@ -2,6 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable prefer-destructuring */
 import React from 'react'
+import { connect } from 'react-redux'
 import s from './GrafBlock.module.css'
 import CarGrafik from './CarGrafik/CarGrafik'
 import '@progress/kendo-theme-material/dist/all.css'
@@ -58,4 +59,8 @@ function GrafBlock({ carData, idGrafik }) {
     )
 }
 
-export default GrafBlock
+const mapStateToProps = (state) => ({
+    idGrafik: state.idGrafik,
+})
+
+export default connect(mapStateToProps)(GrafBlock)
