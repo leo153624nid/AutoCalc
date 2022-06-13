@@ -9,9 +9,8 @@ import ArrowNext from './ArrowNext/ArrowNext'
 import ArrowPrev from './ArrowPrev/ArrowPrev'
 import CarBlock from './CarBlock/CarBlock'
 import AddCarBtn from '../Header/AddCarBtn/AddCarBtn'
-import { changeCaruselActionCreator } from '../../redux/userDataReducer'
 
-function Carusel({ carusel, dispatch }) {
+function Carusel({ carusel, changeCarusel }) {
     // массив карт машин
     const carBlockList = []
 
@@ -80,7 +79,7 @@ function Carusel({ carusel, dispatch }) {
         <div className={s.content}>
             <div
                 className={`${s.arrow} ${s.ArrowPrev}`}
-                onClick={() => dispatch(changeCaruselActionCreator('left'))}
+                onClick={() => changeCarusel('left')}
             >
                 <ArrowPrev />
             </div>
@@ -89,7 +88,7 @@ function Carusel({ carusel, dispatch }) {
 
             <div
                 className={`${s.arrow} ${s.ArrowNext}`}
-                onClick={() => dispatch(changeCaruselActionCreator('right'))}
+                onClick={() => changeCarusel('right')}
             >
                 <ArrowNext />
             </div>
