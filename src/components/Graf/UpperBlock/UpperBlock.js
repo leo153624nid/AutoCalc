@@ -1,13 +1,12 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable prefer-destructuring */
 import React from 'react'
+import { connect } from 'react-redux'
 import s from './UpperBlock.module.css'
 import { changeGrafikActionCreator } from '../../../redux/idGrafikReducer'
 
-function UpperBlock({ carName, dispatch }) {
+function UpperBlock({ carName, changeGrafik }) {
     const wrapper = React.useRef()
 
     // Функция меняет классы у переключателей графиков и запускает функцию смены графиков
@@ -16,7 +15,7 @@ function UpperBlock({ carName, dispatch }) {
             elem.classList.remove(`${s.click}`)
         )
         event.currentTarget.classList.add(`${s.click}`)
-        dispatch(changeGrafikActionCreator(event.currentTarget.id))
+        changeGrafik(event.currentTarget.id)
     }
 
     return (
@@ -84,4 +83,10 @@ function UpperBlock({ carName, dispatch }) {
     )
 }
 
-export default UpperBlock
+const mapDispatchToProps = (dispatch) => ({
+    changeGrafik: (value) => {
+        dispatch(changeGrafikActionCreator(value))
+    },
+})
+
+export default connect(null, mapDispatchToProps)(UpperBlock)

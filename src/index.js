@@ -9,24 +9,20 @@ import store from './redux/reduxStore'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
-const rerenderAll = (state) => {
+const rerenderAll = () => {
     root.render(
         <React.StrictMode>
             <Router>
                 <Provider store={store}>
-                    <App
-                        state={state}
-                        dispatch={store.dispatch.bind(store)}
-                        store={store}
-                    />
+                    <App />
                 </Provider>
             </Router>
         </React.StrictMode>
     )
 }
 
-rerenderAll(store.getState())
+rerenderAll()
 
-store.subscribe(() => {
-    rerenderAll(store.getState())
-})
+// store.subscribe(() => {
+//     rerenderAll()
+// })

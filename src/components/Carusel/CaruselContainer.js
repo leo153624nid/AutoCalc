@@ -1,21 +1,17 @@
-import React from 'react'
+import { connect } from 'react-redux'
 import Carusel from './Carusel'
 import { changeCaruselActionCreator } from '../../redux/userDataReducer'
 
-// eslint-disable-next-line react/prop-types
-function CaruselContainer({ store }) {
-    const changeCarusel = (direction) => {
-        // eslint-disable-next-line react/prop-types
-        store.dispatch(changeCaruselActionCreator(direction))
-    }
+const mapStateToProps = (state) => ({
+    carusel: state.userData.carusel,
+})
 
-    return (
-        <Carusel
-            // eslint-disable-next-line react/prop-types
-            carusel={store.getState().userData.carusel}
-            changeCarusel={changeCarusel}
-        />
-    )
-}
+const mapDispatchToProps = (dispatch) => ({
+    changeCarusel: (direction) => {
+        dispatch(changeCaruselActionCreator(direction))
+    },
+})
+
+const CaruselContainer = connect(mapStateToProps, mapDispatchToProps)(Carusel)
 
 export default CaruselContainer
