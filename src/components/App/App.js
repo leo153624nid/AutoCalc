@@ -21,13 +21,7 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/graf/${car.carId}`}
-            element={
-                <Graf
-                    carData={car}
-                    key={car.carId}
-                    idGrafik={props.state.idGrafik}
-                />
-            }
+            element={<Graf carData={car} key={car.carId} />}
         />
     ))
 
@@ -39,13 +33,7 @@ function App(props) {
                 <Route path="/" element={<CaruselContainer />} />
                 <Route
                     path="/graf"
-                    element={
-                        <Graf
-                            carData={noCar}
-                            key={noCar.carId}
-                            idGrafik={props.state.idGrafik}
-                        />
-                    }
+                    element={<Graf carData={noCar} key={noCar.carId} />}
                 />
                 {routeList}
             </Routes>
