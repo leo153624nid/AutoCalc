@@ -7,12 +7,12 @@ import UpperBlock from './UpperBlock/UpperBlock'
 import GrafBlock from './GrafBlock/GrafBlock'
 import BottomBlock from './BottomBlock/BottomBlock'
 
-function Graf({ carData, idGrafik }) {
+function Graf({ carData }) {
     return (
         <div className={s.Graf}>
             <UpperBlock carName={carData.carName} />
 
-            <GrafBlock idGrafik={idGrafik} carData={carData} />
+            <GrafBlock carData={carData} />
 
             <BottomBlock carData={carData} />
         </div>
