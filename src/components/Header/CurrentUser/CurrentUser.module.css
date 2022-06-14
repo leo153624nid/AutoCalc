@@ -9,3 +9,16 @@
     align-items: center;
     color: brown;
 }
+
+.user:active {
+    background-color: antiquewhite;
+}
+
+.btn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
