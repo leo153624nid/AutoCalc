@@ -1,12 +1,15 @@
-import React from "react";
-import s from './AddCarBtn.module.css';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import s from './AddCarBtn.module.css'
 
-function AddCarBtn () {
+function AddCarBtn() {
     return (
         <div className={s.addCarBtn}>
-            <span>Add Car</span>
+            <NavLink to="/add" className={s.btn}>
+                + Добавить авто
+            </NavLink>
         </div>
-    );
+    )
 }
 
-export default AddCarBtn;
+export default AddCarBtn
