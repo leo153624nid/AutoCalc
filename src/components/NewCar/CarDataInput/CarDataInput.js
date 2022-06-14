@@ -8,7 +8,7 @@ function CarDataInput({ label }) {
             <span className={s.pad}>
                 <b>{label}</b>
             </span>
-            <input placeholder="1" />
+            <input placeholder="1" className={s.input} />
         </div>
     )
 }
