@@ -1,0 +1,9 @@
+.NewCar {
+    height: 85vh;
+    width: 100%;
+    background-color: rgb(85, 85, 88);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
