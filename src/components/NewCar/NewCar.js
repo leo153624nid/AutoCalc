@@ -4,10 +4,10 @@ import CarDataInput from './CarDataInput/CarDataInput'
 import CarPreview from './CarPreview/CarPreview'
 
 const carName = 'Название машины'
-const distance = 'Пробег'
+const distance = 'Пробег, км'
 const yearProduction = 'Год производства'
 const yearOfBuying = 'Год покупки'
-const costOfBuying = 'Стоимость покупки'
+const costOfBuying = 'Стоимость покупки, руб'
 const vin = 'VIN номер'
 const notes = 'Заметки'
 
