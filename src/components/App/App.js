@@ -9,6 +9,7 @@ import Footer from '../Footer/Footer'
 import Graf from '../Graf/Graf'
 import s from './App.module.css'
 import CaruselContainer from '../Carusel/CaruselContainer'
+import NewCar from '../NewCar/NewCar'
 
 function App(props) {
     // Весь Массив машин пользователя
@@ -31,6 +32,7 @@ function App(props) {
 
             <Routes>
                 <Route path="/" element={<CaruselContainer />} />
+                <Route path="/add" element={<NewCar />} />
                 <Route
                     path="/graf"
                     element={<Graf carData={noCar} key={noCar.carId} />}
