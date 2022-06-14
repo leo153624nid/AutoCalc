@@ -24,7 +24,9 @@ function NewCar() {
                 <CarDataInput label={notes} />
             </div>
 
-            <CarPreview />
+            <div className={s.carPrev}>
+                <CarPreview />
+            </div>
         </div>
     )
 }
