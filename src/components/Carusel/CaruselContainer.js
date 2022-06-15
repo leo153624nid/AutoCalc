@@ -10,6 +10,8 @@ const mapDispatchToProps = (dispatch) => ({
     changeCarusel: (direction) => {
         dispatch(changeCaruselAC(direction))
     },
+    // На будущее, установка первоначальной карусели карт
+    // (данные с сервера при первой отрисовки страницы)
     setCarusel: (cars) => {
         dispatch(setCaruselAC(cars))
     },
