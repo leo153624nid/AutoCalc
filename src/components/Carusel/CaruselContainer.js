@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Carusel from './Carusel'
-import { changeCaruselActionCreator } from '../../redux/userDataReducer'
+import { changeCaruselAC, setCaruselAC } from '../../redux/userDataReducer'
 
 const mapStateToProps = (state) => ({
     carusel: state.userData.carusel,
@@ -8,7 +8,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     changeCarusel: (direction) => {
-        dispatch(changeCaruselActionCreator(direction))
+        dispatch(changeCaruselAC(direction))
+    },
+    setCarusel: (cars) => {
+        dispatch(setCaruselAC(cars))
     },
 })
 
