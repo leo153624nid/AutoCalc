@@ -10,6 +10,7 @@ import Graf from '../Graf/Graf'
 import s from './App.module.css'
 import CaruselContainer from '../Carusel/CaruselContainer'
 import NewCar from '../NewCar/NewCar'
+import NewFuel from '../NewFuel/NewFuel'
 
 function App(props) {
     // Весь Массив машин пользователя
@@ -32,7 +33,10 @@ function App(props) {
 
             <Routes>
                 <Route path="/" element={<CaruselContainer />} />
-                <Route path="/add" element={<NewCar />} />
+                <Route path="/add_car" element={<NewCar />} />
+                <Route path="/change_car" element={<NewCar />} />
+                <Route path="/add_fuel" element={<NewFuel />} />
+                <Route path="/change_fuel" element={<NewFuel />} />
                 <Route
                     path="/graf"
                     element={<Graf carData={noCar} key={noCar.carId} />}
