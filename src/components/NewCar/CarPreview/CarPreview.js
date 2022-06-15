@@ -7,7 +7,7 @@ function CarPreview() {
     const carDistance = 'carData.distance'
     const fuelConsumptions = 'carData.fuelConsumptions'
     const allMonth = 'Math.floor(carData.allMonth)'
-    const carId = 'carData.carId'
+    // const carId = 'carData.carId'
     const carPic = 'https://img.icons8.com/wired/64/undefined/add-image.png'
 
     return (
@@ -44,7 +44,7 @@ function CarPreview() {
             </div>
 
             <div className={s.CarTake}>
-                <NavLink to={`/graf/${carId}`} className={s.btn}>
+                <NavLink to="/" className={s.btn}>
                     Подтвердить
                 </NavLink>
             </div>
