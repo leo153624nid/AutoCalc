@@ -5,7 +5,7 @@ import s from './AddCarBtn.module.css'
 function AddCarBtn() {
     return (
         <div className={s.addCarBtn}>
-            <NavLink to="/add" className={s.btn}>
+            <NavLink to="/add_car" className={s.btn}>
                 + Добавить авто
             </NavLink>
         </div>
