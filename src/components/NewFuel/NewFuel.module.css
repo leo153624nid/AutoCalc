@@ -1,0 +1,48 @@
+.NewFuel {
+    height: 85vh;
+    width: 100vw;
+    background-color: antiquewhite;
+    display: grid;
+    grid-template-areas:
+        'a b c d'
+        'e f g h';
+
+    grid-template-columns: 1fr 2fr 2fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    grid-area: b;
+    height: 100%;
+    width: 100%;
+}
+
+/* .carPrev {
+    grid-area: c;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.CarTake {
+    grid-area: f;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.btn {
+    width: 22vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(199, 201, 201);
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 20px 0 20px 0;
+}
