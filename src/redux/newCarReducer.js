@@ -15,7 +15,7 @@ const initialState = {
     costOfBuying: 0,
     vin: '',
     notes: '',
-    carPic: '',
+    carPic: 'https://img.icons8.com/wired/64/undefined/add-image.png',
     fuelConsumptions: 0,
     etcConsumptions: 0,
     allMonth: 0,
@@ -82,7 +82,7 @@ const newCarReducer = createReducer(initialState, (builder) => {
 })
 
 // Добавить данные новой машины
-export const addCarlAC = () => ({
+export const addCarAC = () => ({
     type: ADD_CAR,
 })
 
