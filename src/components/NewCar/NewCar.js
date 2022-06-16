@@ -36,7 +36,6 @@ function NewCar({
     changeNotes,
     changeCarPic,
 }) {
-    console.log('render')
     return (
         <div className={s.NewCar}>
             <div className={s.form}>
