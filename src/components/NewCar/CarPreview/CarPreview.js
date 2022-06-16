@@ -1,18 +1,25 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import s from './CarPreview.module.css'
 
-function CarPreview() {
-    const carName = 'carData.carName'
-    const carDistance = 'carData.distance'
-    const fuelConsumptions = 'carData.fuelConsumptions'
-    const allMonth = 'Math.floor(carData.allMonth)'
-    // const carId = 'carData.carId'
-    const carPic = 'https://img.icons8.com/wired/64/undefined/add-image.png'
-
+function CarPreview({
+    carName,
+    distance,
+    carPic,
+    addNewCar,
+    changeCarPic,
+    fuelConsumptions,
+    allMonth,
+}) {
     return (
         <div className={s.CarPreview}>
-            <div className={s.carPic}>
+            <div
+                onClick={() => changeCarPic() /* Доделать */}
+                className={s.carPic}
+            >
                 <img src={carPic} alt="addCarPic" />
             </div>
 
@@ -21,7 +28,7 @@ function CarPreview() {
                     <b>{carName}</b>
                 </span>
                 <span className={s.pad}>
-                    Пробег <span>{carDistance}</span> км
+                    Пробег <span>{distance}</span> км
                 </span>
             </div>
 
@@ -43,7 +50,7 @@ function CarPreview() {
                 </div>
             </div>
 
-            <div className={s.CarTake}>
+            <div onClick={() => addNewCar()} className={s.CarTake}>
                 <NavLink to="/" className={s.btn}>
                     Подтвердить
                 </NavLink>
