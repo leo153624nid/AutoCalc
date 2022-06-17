@@ -1,24 +1,25 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import s from './CarBtns.module.css'
 
-function CarBtns() {
+function CarBtns({ carId }) {
     return (
         <div className={s.CarBtns}>
             <div className={s.fuel}>
-                <NavLink to="/add_fuel" className={s.btn}>
+                <NavLink to={`/add_fuel/${carId}`} className={s.btn}>
                     + fuel
                 </NavLink>
             </div>
 
             <div className={s.etc}>
-                <NavLink to="/" className={s.btn}>
+                <NavLink to={`/add_etc/${carId}`} className={s.btn}>
                     + etc
                 </NavLink>
             </div>
 
             <div className={s.change}>
-                <NavLink to="/add_car" className={s.btn}>
+                <NavLink to={`/change_car/${carId}`} className={s.btn}>
                     Редактировать
                 </NavLink>
             </div>
