@@ -3,10 +3,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react'
 import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import s from './UpperBlock.module.css'
 import { changeGrafikActionCreator } from '../../../redux/idGrafikReducer'
 
-function UpperBlock({ carName, changeGrafik }) {
+function UpperBlock({ carName, carId, changeGrafik }) {
     const wrapper = React.useRef()
 
     // Функция меняет классы у переключателей графиков и запускает функцию смены графиков
@@ -70,14 +71,15 @@ function UpperBlock({ carName, changeGrafik }) {
                 <span>Остальные расходы</span>
             </div>
 
-            <div className={`${s.carInfo} ${s.btn}`}>
-                <span>
-                    <b>{carName}</b>
-                </span>{' '}
-                {/* Потом сделать кнопкой для редактирования текущей машины */}
-                <span className={s.word}>
-                    <i>Редактировать</i>
-                </span>
+            <div className={s.carInfo}>
+                <NavLink to={`/change_car/${carId}`} className={s.btn}>
+                    <div>
+                        <b>{carName}</b>
+                    </div>
+                    <div className={s.word}>
+                        <i>Редактировать</i>
+                    </div>
+                </NavLink>
             </div>
         </div>
     )
