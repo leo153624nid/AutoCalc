@@ -15,7 +15,7 @@ function CarBlock({ carData }) {
         <div className={s.CarBlock}>
             <CarCard carPic={carPic} carData={carData} />
 
-            <CarBtns className={s.CarBtns} />
+            <CarBtns className={s.CarBtns} carId={carData.carId} />
         </div>
     )
 }
