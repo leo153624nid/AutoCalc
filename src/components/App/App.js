@@ -27,11 +27,20 @@ function App(props) {
         />
     ))
 
-    const carList = userCars.map((car) => (
+    // доделать, пропсы редактируемой машины не приходят
+    const carChangeList = userCars.map((car) => (
         <Route
             key={car.carId}
             path={`/change_car/${car.carId}`}
             element={<NewCar newCar={car} />}
+        />
+    ))
+
+    const addFuelList = userCars.map((car) => (
+        <Route
+            key={car.carId}
+            path={`/add_fuel/${car.carId}`}
+            element={<NewFuel />}
         />
     ))
 
@@ -42,9 +51,9 @@ function App(props) {
             <Routes>
                 <Route path="/" element={<CaruselContainer />} />
                 <Route path="/add_car" element={<NewCar />} />
-                {carList}
-                <Route path="/add_fuel" element={<NewFuel />} />
-                <Route path="/change_fuel" element={<NewFuel />} />
+                {carChangeList}
+                {addFuelList}
+                {/* <Route path="/change_fuel" element={<NewFuel />} /> */}
                 <Route
                     path="/graf"
                     element={<Graf carData={noCar} key={noCar.carId} />}
