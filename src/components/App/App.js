@@ -19,7 +19,7 @@ function App(props) {
     // ПУСТАЯ МАШИНА
     const noCar = props.state.userData.noCar
 
-    const routeList = userCars.map((car) => (
+    const grafList = userCars.map((car) => (
         <Route
             key={car.carId}
             path={`/graf/${car.carId}`}
@@ -34,14 +34,17 @@ function App(props) {
             <Routes>
                 <Route path="/" element={<CaruselContainer />} />
                 <Route path="/add_car" element={<NewCar />} />
-                <Route path="/change_car" element={<NewCar />} />
+                <Route
+                    path="/change_car"
+                    element={<NewCar carId={'/* добавить carId */'} />}
+                />
                 <Route path="/add_fuel" element={<NewFuel />} />
                 <Route path="/change_fuel" element={<NewFuel />} />
                 <Route
                     path="/graf"
                     element={<Graf carData={noCar} key={noCar.carId} />}
                 />
-                {routeList}
+                {grafList}
             </Routes>
 
             <Footer />

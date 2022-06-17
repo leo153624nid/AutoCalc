@@ -4,10 +4,10 @@
     background-color: antiquewhite;
     display: grid;
     grid-template-areas:
-        'a b c d'
-        'e f g h';
+        'a b c'
+        'd e f';
 
-    grid-template-columns: 1fr 2fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
 }
@@ -28,7 +28,7 @@
 } */
 
 .CarTake {
-    grid-area: f;
+    grid-area: e;
     flex: 1;
     display: flex;
     justify-content: center;

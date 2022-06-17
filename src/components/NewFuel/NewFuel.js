@@ -1,31 +1,81 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import s from './NewFuel.module.css'
 import CarDataInput from '../NewCar/CarDataInput/CarDataInput'
+import {
+    addFuelAC,
+    changeDateFuelAC,
+    changeDistanceFuelAC,
+    changeMarkFuelAC,
+    changePriceFuelAC,
+    changeVolumeFuelAC,
+    changeCostFuelAC,
+    changeFullFuelAC,
+} from '../../redux/newFuelReducer'
 
 const dateFueling = 'Дата заправки'
-const distance = 'Текущий пробег, км'
+const dist = 'Текущий пробег, км'
 const markFuel = 'Марка топлива'
 const priceFuel = 'Цена за литр, руб'
 const volumeFuel = 'Обьем, л'
 const costFuel = 'Стоимость, руб'
-const fullTank = 'Полный бак (1 или 0)'
+const fullTank = 'Полный бак (Введите 1 - полный или 0 - неполный)'
 
-function NewFuel() {
+function NewFuel({
+    newFuel,
+    addFuel,
+    changeDateFuel,
+    changeDistanceFuel,
+    changeMarkFuel,
+    changePriceFuel,
+    changeVolumeFuel,
+    changeCostFuel,
+    changeFullFuel,
+}) {
     return (
         <div className={s.NewFuel}>
             <div className={s.form}>
-                <CarDataInput label={dateFueling} />
-                <CarDataInput label={distance} />
-                <CarDataInput label={markFuel} />
-                <CarDataInput label={priceFuel} />
-                <CarDataInput label={volumeFuel} />
-                <CarDataInput label={costFuel} />
-                <CarDataInput label={fullTank} />
+                <CarDataInput
+                    label={dateFueling}
+                    value={newFuel.date}
+                    change={changeDateFuel}
+                />
+                <CarDataInput
+                    label={dist}
+                    value={newFuel.distance}
+                    change={changeDistanceFuel}
+                />
+                <CarDataInput
+                    label={markFuel}
+                    value={newFuel.mark}
+                    change={changeMarkFuel}
+                />
+                <CarDataInput
+                    label={priceFuel}
+                    value={newFuel.price}
+                    change={changePriceFuel}
+                />
+                <CarDataInput
+                    label={volumeFuel}
+                    value={newFuel.volume}
+                    change={changeVolumeFuel}
+                />
+                <CarDataInput
+                    label={costFuel}
+                    value={newFuel.cost}
+                    change={changeCostFuel}
+                />
+                <CarDataInput
+                    label={fullTank}
+                    value={newFuel.full}
+                    change={changeFullFuel}
+                />
             </div>
 
             <div className={s.CarTake}>
-                <NavLink to="/" className={s.btn}>
+                <NavLink to="/" className={s.btn} onClick={() => addFuel()}>
                     Подтвердить
                 </NavLink>
             </div>
@@ -33,4 +83,35 @@ function NewFuel() {
     )
 }
 
-export default NewFuel
+const mapStateToProps = (state) => ({
+    newFuel: state.newFuel,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    addFuel: () => {
+        dispatch(addFuelAC())
+    },
+    changeDateFuel: (value) => {
+        dispatch(changeDateFuelAC(value))
+    },
+    changeDistanceFuel: (value) => {
+        dispatch(changeDistanceFuelAC(value))
+    },
+    changeMarkFuel: (value) => {
+        dispatch(changeMarkFuelAC(value))
+    },
+    changePriceFuel: (value) => {
+        dispatch(changePriceFuelAC(value))
+    },
+    changeVolumeFuel: (value) => {
+        dispatch(changeVolumeFuelAC(value))
+    },
+    changeCostFuel: (value) => {
+        dispatch(changeCostFuelAC(value))
+    },
+    changeFullFuel: (value) => {
+        dispatch(changeFullFuelAC(value))
+    },
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewFuel)
