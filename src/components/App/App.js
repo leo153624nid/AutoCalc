@@ -27,6 +27,14 @@ function App(props) {
         />
     ))
 
+    const carList = userCars.map((car) => (
+        <Route
+            key={car.carId}
+            path={`/change_car/${car.carId}`}
+            element={<NewCar newCar={car} />}
+        />
+    ))
+
     return (
         <div className={s.App}>
             <Header />
@@ -34,10 +42,7 @@ function App(props) {
             <Routes>
                 <Route path="/" element={<CaruselContainer />} />
                 <Route path="/add_car" element={<NewCar />} />
-                <Route
-                    path="/change_car"
-                    element={<NewCar carId={'/* добавить carId */'} />}
-                />
+                {carList}
                 <Route path="/add_fuel" element={<NewFuel />} />
                 <Route path="/change_fuel" element={<NewFuel />} />
                 <Route
