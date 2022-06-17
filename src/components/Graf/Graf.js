@@ -10,7 +10,7 @@ import BottomBlock from './BottomBlock/BottomBlock'
 function Graf({ carData }) {
     return (
         <div className={s.Graf}>
-            <UpperBlock carName={carData.carName} />
+            <UpperBlock carName={carData.carName} carId={carData.carId} />
 
             <GrafBlock carData={carData} />
 
