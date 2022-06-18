@@ -10,7 +10,7 @@ initialState.carusel = [
 ]
 
 const CHANGE_CARUSEL = 'CHANGE_CARUSEL'
-const SET_CARUSEL = 'SET_CARUSEL'
+const GET_CARUSEL = 'GET_CARUSEL'
 
 const userDataReducer = createReducer(initialState, (builder) => {
     builder
@@ -48,7 +48,7 @@ const userDataReducer = createReducer(initialState, (builder) => {
                     break
             }
         })
-        .addCase(SET_CARUSEL, (state) => state)
+        .addCase(GET_CARUSEL, (state) => state)
         .addDefaultCase((state) => state)
 })
 
@@ -59,8 +59,8 @@ export const changeCaruselAC = (direction) => ({
 })
 
 // Получение начальной карусели карт машин
-export const setCaruselAC = (cars) => ({
-    type: SET_CARUSEL,
+export const getCaruselAC = (cars) => ({
+    type: GET_CARUSEL,
     cars,
 })
 
