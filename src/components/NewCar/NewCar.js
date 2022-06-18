@@ -16,6 +16,7 @@ import {
     changeNotesAC,
     changeCarPicAC,
 } from '../../redux/newCarReducer'
+import { addUserCarAC } from '../../redux/userDataReducer'
 
 const name = 'Название машины'
 const dist = 'Пробег, км'
@@ -46,69 +47,13 @@ function NewCar({
     changeCarPic,
 }) {
     let newCarId = getNewCarId()
+
+    // Проверка на новую или редактируемую машину,
     if (newCar.carId === 0 && yourCar !== null) {
         getNewCar(yourCar)
         newCarId = yourCar.carId
     }
 
-    // Проверка на новую или редактируемую машину,
-    // НЕПРАВИЛЬНО! Нужно менять initialState у nerCarReducer
-    // if (yourCar) {
-    //     return (
-    //         <div className={s.NewCar}>
-    //             <div className={s.form}>
-    //                 <CarDataInput
-    //                     label={name}
-    //                     value={yourCar.carName}
-    //                     change={changeCarname}
-    //                 />
-    //                 <CarDataInput
-    //                     label={dist}
-    //                     value={yourCar.distance}
-    //                     change={changeDistance}
-    //                 />
-    //                 <CarDataInput
-    //                     label={yearProd}
-    //                     value={yourCar.yearProduction}
-    //                     change={changeYearProd}
-    //                 />
-    //                 <CarDataInput
-    //                     label={yearOfBuy}
-    //                     value={yourCar.yearOfBuying}
-    //                     change={changeYearBuy}
-    //                 />
-    //                 <CarDataInput
-    //                     label={costOfBuy}
-    //                     value={yourCar.costOfBuying}
-    //                     change={changeCostBuy}
-    //                 />
-    //                 <CarDataInput
-    //                     label={vinNumber}
-    //                     value={yourCar.vin}
-    //                     change={changeVin}
-    //                 />
-    //                 <CarDataInput
-    //                     label={note}
-    //                     value={yourCar.notes}
-    //                     change={changeNotes}
-    //                 />
-    //             </div>
-
-    //             <div className={s.carPrev}>
-    //                 <CarPreview
-    //                     carName={yourCar.carName}
-    //                     distance={yourCar.distance}
-    //                     carPic={yourCar.carPic}
-    //                     addNewCar={addNewCar}
-    //                     changeCarPic={changeCarPic}
-    //                     fuelConsumptions={yourCar.fuelConsumptions}
-    //                     allMonth={yourCar.allMonth}
-    //                     carId={yourCar.carId}
-    //                 />
-    //             </div>
-    //         </div>
-    //     )
-    // }
     return (
         <div className={s.NewCar}>
             <div className={s.form}>
@@ -159,6 +104,7 @@ function NewCar({
                     fuelConsumptions={newCar.fuelConsumptions}
                     allMonth={newCar.allMonth}
                     carId={newCarId}
+                    newCar={newCar}
                 />
             </div>
         </div>
@@ -171,7 +117,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     addNewCar: (value) => {
-        dispatch(addCarAC(value))
+        dispatch(addUserCarAC(value))
     },
     getNewCar: (value) => {
         dispatch(getCarAC(value))
