@@ -20,6 +20,7 @@ const initialState = {
 }
 
 const ADD_CAR = 'ADD_CAR'
+const GET_CAR = 'GET_CAR'
 const CHANGE_CARNAME = 'CHANGE_CARNAME'
 const CHANGE_DISTANCE = 'CHANGE_DISTANCE'
 const CHANGE_YEARPROD = 'CHANGE_YEARPROD'
@@ -33,8 +34,11 @@ const newCarReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(ADD_CAR, (state, action) => ({
             ...initialState,
-            carId: action.carId,
+            // carId: action.carId,
         })) // Добавить POST запрос на сервер с новой машиной, пропушить новую машину в массив машин
+        .addCase(GET_CAR, (state, action) => ({
+            ...action.car,
+        }))
         .addCase(CHANGE_CARNAME, (state, action) => ({
             ...state,
             carName: action.carName,
@@ -71,6 +75,12 @@ const newCarReducer = createReducer(initialState, (builder) => {
 export const addCarAC = (carId) => ({
     type: ADD_CAR,
     carId,
+})
+
+// Получить данные машины для редактирования
+export const getCarAC = (car) => ({
+    type: GET_CAR,
+    car,
 })
 
 // Смена имени машины
