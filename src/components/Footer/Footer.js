@@ -1,18 +1,18 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import s from './Footer.module.css'
 
 function Footer() {
     return (
         <div className={s.footer}>
             <span>
-                <Link to="/">Главная</Link>
+                <NavLink to="/">Главная</NavLink>
             </span>
             <span>
-                <Link to="/">О приложении</Link>
+                <NavLink to="/">О приложении</NavLink>
             </span>
             <span>
-                <Link to="/">Поддержка</Link>
+                <NavLink to="/">Поддержка</NavLink>
             </span>
         </div>
     )
