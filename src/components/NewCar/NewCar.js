@@ -5,7 +5,6 @@ import s from './NewCar.module.css'
 import CarDataInput from './CarDataInput/CarDataInput'
 import CarPreview from './CarPreview/CarPreview'
 import {
-    addCarAC,
     getCarAC,
     changeCarNameAC,
     changeDistanceAC,
@@ -15,6 +14,7 @@ import {
     changeVinAC,
     changeNotesAC,
     changeCarPicAC,
+    changeCarIdAC,
 } from '../../redux/newCarReducer'
 import { addUserCarAC } from '../../redux/userDataReducer'
 
@@ -45,14 +45,14 @@ function NewCar({
     changeVin,
     changeNotes,
     changeCarPic,
+    changeCarId,
 }) {
-    let newCarId = getNewCarId()
-
     // Проверка на новую или редактируемую машину,
-    if (newCar.carId === 0 && yourCar !== null) {
-        getNewCar(yourCar)
-        newCarId = yourCar.carId
-    }
+    // if (yourCar !== null) {
+    //     getNewCar(yourCar)
+    // } else if (newCar.carId === 0) {
+    //     changeCarId(getNewCarId())
+    // }
 
     return (
         <div className={s.NewCar}>
@@ -103,7 +103,7 @@ function NewCar({
                     changeCarPic={changeCarPic}
                     fuelConsumptions={newCar.fuelConsumptions}
                     allMonth={newCar.allMonth}
-                    carId={newCarId}
+                    carId={newCar.carId}
                     newCar={newCar}
                 />
             </div>
@@ -145,6 +145,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     changeCarPic: (value) => {
         dispatch(changeCarPicAC(value))
+    },
+    changeCarId: (value) => {
+        dispatch(changeCarIdAC(value))
     },
 })
 
