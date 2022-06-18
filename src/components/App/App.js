@@ -8,7 +8,7 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import Graf from '../Graf/Graf'
 import s from './App.module.css'
-import CaruselContainer from '../Carusel/CaruselContainer'
+import Carusel from '../Carusel/Carusel'
 import NewCar from '../NewCar/NewCar'
 import NewFuel from '../NewFuel/NewFuel'
 
@@ -49,7 +49,7 @@ function App(props) {
             <Header />
 
             <Routes>
-                <Route path="/" element={<CaruselContainer />} />
+                <Route path="/" element={<Carusel />} />
                 <Route path="/add_car" element={<NewCar yourCar={null} />} />
                 {carChangeList}
                 {addFuelList}
