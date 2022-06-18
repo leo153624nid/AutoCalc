@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 import s from './NewFuel.module.css'
 import CarDataInput from '../NewCar/CarDataInput/CarDataInput'
 import {
-    addFuelAC,
+    clearFuelAC,
     changeDateFuelAC,
     changeDistanceFuelAC,
     changeMarkFuelAC,
@@ -14,6 +14,7 @@ import {
     changeCostFuelAC,
     changeFullFuelAC,
 } from '../../redux/newFuelReducer'
+import { addFuelCarAC } from '../../redux/userDataReducer'
 
 const dateFueling = 'Дата заправки'
 const dist = 'Текущий пробег, км'
@@ -28,7 +29,8 @@ const getNowDate = (timestamp) => new Date(timestamp)
 
 function NewFuel({
     newFuel,
-    addFuel,
+    carId,
+    addFuelCar,
     changeDateFuel,
     changeDistanceFuel,
     changeMarkFuel,
@@ -78,7 +80,13 @@ function NewFuel({
             </div>
 
             <div className={s.CarTake}>
-                <NavLink to="/" className={s.btn} onClick={() => addFuel()}>
+                <NavLink
+                    to="/"
+                    className={s.btn}
+                    onClick={() => {
+                        addFuelCar({ ...newFuel, carId })
+                    }}
+                >
                     Подтвердить
                 </NavLink>
             </div>
@@ -91,8 +99,11 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    addFuel: () => {
-        dispatch(addFuelAC())
+    clearFuel: () => {
+        dispatch(clearFuelAC())
+    },
+    addFuelCar: (value) => {
+        dispatch(addFuelCarAC(value))
     },
     changeDateFuel: (value) => {
         dispatch(changeDateFuelAC(value))

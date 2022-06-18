@@ -40,7 +40,7 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/add_fuel/${car.carId}`}
-            element={<NewFuel />}
+            element={<NewFuel carId={car.carId} />}
         />
     ))
 

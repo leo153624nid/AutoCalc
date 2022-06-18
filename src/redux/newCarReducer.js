@@ -95,25 +95,25 @@ export const changeCarNameAC = (carName) => ({
 // Смена пробега
 export const changeDistanceAC = (distance) => ({
     type: CHANGE_DISTANCE,
-    distance,
+    distance: Number(distance),
 })
 
 // Смена года производства
 export const changeYearProdAC = (yearProduction) => ({
     type: CHANGE_YEARPROD,
-    yearProduction,
+    yearProduction: Number(yearProduction),
 })
 
 // Смена года покупки
 export const changeYearBuyAC = (yearOfBuying) => ({
     type: CHANGE_YEARBUY,
-    yearOfBuying,
+    yearOfBuying: Number(yearOfBuying),
 })
 
 // Смена стоимости покупки
 export const changeCostBuyAC = (costOfBuying) => ({
     type: CHANGE_COSTBUY,
-    costOfBuying,
+    costOfBuying: Number(costOfBuying),
 })
 
 // Смена VIN номера
@@ -134,10 +134,10 @@ export const changeCarPicAC = (carPic) => ({
     carPic,
 })
 
-// Смена картинки машины
+// Смена carId машины
 export const changeCarIdAC = (carId) => ({
     type: CHANGE_CAR_ID,
-    carId,
+    carId: Number(carId),
 })
 
 export default newCarReducer

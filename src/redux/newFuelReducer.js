@@ -10,7 +10,7 @@ const getNowDateMS = () => {
 const getDate = (time) => time.getTime()
 
 const initialState = {
-    fuelingId: 0,
+    fuelingId: getNowDateMS(),
     date: getNowDateMS(),
     mark: 'АИ-95',
     price: 0,
@@ -18,9 +18,10 @@ const initialState = {
     cost: 0,
     full: 0,
     distance: 0,
+    carId: 0,
 }
 
-const ADD_FUEL = 'ADD_FUEL'
+const CLEAR_FUEL = 'CLEAR_FUEL'
 const CHANGE_DATE_FUEL = 'CHANGE_DATE_FUEL'
 const CHANGE_DISTANCE_FUEL = 'CHANGE_DISTANCE_FUEL'
 const CHANGE_MARK_FUEL = 'CHANGE_MARK_FUEL'
@@ -31,9 +32,10 @@ const CHANGE_FULL_FUEL = 'CHANGE_FULL_FUEL'
 
 const newFuelReducer = createReducer(initialState, (builder) => {
     builder
-        .addCase(ADD_FUEL, () => ({
+        .addCase(CLEAR_FUEL, () => ({
             ...initialState,
             fuelingId: getNowDateMS(),
+            date: getNowDateMS(),
         })) // Добавить POST запрос на сервер с новой заправкой, пропушить новую заправку в массив заправок
         .addCase(CHANGE_DATE_FUEL, (state, action) => ({
             ...state,
@@ -66,9 +68,9 @@ const newFuelReducer = createReducer(initialState, (builder) => {
         .addDefaultCase((state) => state)
 })
 
-// Добавить данные новой заправки
-export const addFuelAC = () => ({
-    type: ADD_FUEL,
+// Сбросить данные новой заправки
+export const clearFuelAC = () => ({
+    type: CLEAR_FUEL,
 })
 
 // Смена даты заправки
@@ -80,7 +82,7 @@ export const changeDateFuelAC = (date) => ({
 // Смена пробега заправки
 export const changeDistanceFuelAC = (distance) => ({
     type: CHANGE_DISTANCE_FUEL,
-    distance,
+    distance: Number(distance),
 })
 
 // Смена марки топлива
@@ -92,25 +94,25 @@ export const changeMarkFuelAC = (mark) => ({
 // Смена цены топлива
 export const changePriceFuelAC = (price) => ({
     type: CHANGE_PRICE_FUEL,
-    price,
+    price: Number(price),
 })
 
 // Смена обьема топлива
 export const changeVolumeFuelAC = (volume) => ({
     type: CHANGE_VOLUME_FUEL,
-    volume,
+    volume: Number(volume),
 })
 
 // Смена стоимости заправки
 export const changeCostFuelAC = (cost) => ({
     type: CHANGE_COST_FUEL,
-    cost,
+    cost: Number(cost),
 })
 
 // Смена значения полного бака
 export const changeFullFuelAC = (full) => ({
     type: CHANGE_FULL_FUEL,
-    full,
+    full: Number(full),
 })
 
 export default newFuelReducer

@@ -11,6 +11,7 @@ initialState.carusel = [
 
 const CHANGE_CARUSEL = 'CHANGE_CARUSEL'
 const ADD_USER_CAR = 'ADD_USER_CAR'
+const ADD_FUEL_CAR = 'ADD_FUEL_CAR'
 
 const userDataReducer = createReducer(initialState, (builder) => {
     builder
@@ -49,7 +50,7 @@ const userDataReducer = createReducer(initialState, (builder) => {
             }
         })
         .addCase(ADD_USER_CAR, (state, action) => {
-            // Добавить POST запрос на сервер с новой машиной, пропушить новую машину в массив машин
+            // Добавить POST запрос на сервер с новой машиной
 
             // Весь массив id машин пользователя
             const carsIds = state.userCars.map((item) => item.carId)
@@ -65,6 +66,18 @@ const userDataReducer = createReducer(initialState, (builder) => {
                 state.carusel.splice(caruselGoodIndex, 1, action.car)
             }
         })
+        .addCase(ADD_FUEL_CAR, (state, action) => {
+            // Добавить POST запрос на сервер с новой заправкой
+
+            // Весь массив id машин пользователя
+            const carsIds = state.userCars.map((item) => item.carId)
+
+            const goodIndex = carsIds.indexOf(action.fuel.carId)
+
+            if (goodIndex !== -1) {
+                state.userCars[goodIndex].fuelings.push(action.fuel)
+            }
+        })
         .addDefaultCase((state) => state)
 })
 
@@ -78,6 +91,12 @@ export const changeCaruselAC = (direction) => ({
 export const addUserCarAC = (car) => ({
     type: ADD_USER_CAR,
     car,
+})
+
+// Добавление или редактирование заправки машины
+export const addFuelCarAC = (fuel) => ({
+    type: ADD_FUEL_CAR,
+    fuel,
 })
 
 export default userDataReducer
