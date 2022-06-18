@@ -24,8 +24,15 @@ const costOfBuy = 'Стоимость покупки, руб'
 const vinNumber = 'VIN номер'
 const note = 'Заметки'
 
+// Создание нового carId по текущей дате в мс
+const getNewCarId = () => {
+    const now = new Date()
+    return now.getTime()
+}
+
 function NewCar({
     newCar,
+    yourCar,
     addNewCar,
     changeCarname,
     changeDistance,
@@ -36,6 +43,64 @@ function NewCar({
     changeNotes,
     changeCarPic,
 }) {
+    // Проверка на новую или редактируемую машину,
+    // НЕПРАВИЛЬНО! Нужно менять initialState у nerCarReducer
+    if (yourCar) {
+        return (
+            <div className={s.NewCar}>
+                <div className={s.form}>
+                    <CarDataInput
+                        label={name}
+                        value={yourCar.carName}
+                        change={changeCarname}
+                    />
+                    <CarDataInput
+                        label={dist}
+                        value={yourCar.distance}
+                        change={changeDistance}
+                    />
+                    <CarDataInput
+                        label={yearProd}
+                        value={yourCar.yearProduction}
+                        change={changeYearProd}
+                    />
+                    <CarDataInput
+                        label={yearOfBuy}
+                        value={yourCar.yearOfBuying}
+                        change={changeYearBuy}
+                    />
+                    <CarDataInput
+                        label={costOfBuy}
+                        value={yourCar.costOfBuying}
+                        change={changeCostBuy}
+                    />
+                    <CarDataInput
+                        label={vinNumber}
+                        value={yourCar.vin}
+                        change={changeVin}
+                    />
+                    <CarDataInput
+                        label={note}
+                        value={yourCar.notes}
+                        change={changeNotes}
+                    />
+                </div>
+
+                <div className={s.carPrev}>
+                    <CarPreview
+                        carName={yourCar.carName}
+                        distance={yourCar.distance}
+                        carPic={yourCar.carPic}
+                        addNewCar={addNewCar}
+                        changeCarPic={changeCarPic}
+                        fuelConsumptions={yourCar.fuelConsumptions}
+                        allMonth={yourCar.allMonth}
+                        carId={yourCar.carId}
+                    />
+                </div>
+            </div>
+        )
+    }
     return (
         <div className={s.NewCar}>
             <div className={s.form}>
@@ -85,6 +150,7 @@ function NewCar({
                     changeCarPic={changeCarPic}
                     fuelConsumptions={newCar.fuelConsumptions}
                     allMonth={newCar.allMonth}
+                    carId={getNewCarId()}
                 />
             </div>
         </div>
@@ -96,8 +162,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    addNewCar: () => {
-        dispatch(addCarAC())
+    addNewCar: (value) => {
+        dispatch(addCarAC(value))
     },
     changeCarname: (value) => {
         dispatch(changeCarNameAC(value))
