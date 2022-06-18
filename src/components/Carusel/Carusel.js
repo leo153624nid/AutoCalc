@@ -10,9 +10,9 @@ import ArrowNext from './ArrowNext/ArrowNext'
 import ArrowPrev from './ArrowPrev/ArrowPrev'
 import CarBlock from './CarBlock/CarBlock'
 import AddCarBtn from '../Header/AddCarBtn/AddCarBtn'
-import { changeCaruselAC, getCaruselAC } from '../../redux/userDataReducer'
+import { changeCaruselAC, setCaruselAC } from '../../redux/userDataReducer'
 
-function Carusel({ carusel, changeCarusel }) {
+function Carusel({ carusel, changeCarusel, setCarusel }) {
     // массив карт машин
     const carBlockList = []
 
@@ -109,8 +109,8 @@ const mapDispatchToProps = (dispatch) => ({
     },
     // На будущее, установка первоначальной карусели карт
     // (данные с сервера при первой отрисовки страницы)
-    getCarusel: (cars) => {
-        dispatch(getCaruselAC(cars))
+    setCarusel: (cars) => {
+        dispatch(setCaruselAC(cars))
     },
 })
 
