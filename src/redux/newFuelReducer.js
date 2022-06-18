@@ -6,15 +6,12 @@ const getNowDateMS = () => {
     return now.getTime()
 }
 
-// Получение текущей даты в ДД.ММ.ГГГГ
-const getNowDate = () => {
-    const now = new Date()
-    return now
-}
+// Перевод даты в мс
+const getDate = (time) => time.getTime()
 
 const initialState = {
     fuelingId: 0,
-    date: getNowDate(),
+    date: getNowDateMS(),
     mark: 'АИ-95',
     price: 0,
     volume: 0,
@@ -77,7 +74,7 @@ export const addFuelAC = () => ({
 // Смена даты заправки
 export const changeDateFuelAC = (date) => ({
     type: CHANGE_DATE_FUEL,
-    date,
+    date: getDate(date),
 })
 
 // Смена пробега заправки

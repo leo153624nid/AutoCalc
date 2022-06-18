@@ -23,6 +23,9 @@ const volumeFuel = 'Обьем, л'
 const costFuel = 'Стоимость, руб'
 const fullTank = 'Полный бак (Введите 1 - полный или 0 - неполный)'
 
+// Перевод даты в ДД.ММ.ГГГГ
+const getNowDate = (timestamp) => new Date(timestamp)
+
 function NewFuel({
     newFuel,
     addFuel,
@@ -39,7 +42,7 @@ function NewFuel({
             <div className={s.form}>
                 <CarDataInput
                     label={dateFueling}
-                    value={newFuel.date}
+                    value={getNowDate(newFuel.date)}
                     change={changeDateFuel}
                 />
                 <CarDataInput
