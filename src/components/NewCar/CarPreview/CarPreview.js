@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom'
 import s from './CarPreview.module.css'
 
 function CarPreview({
+    carId,
     carName,
     distance,
     carPic,
@@ -50,7 +51,7 @@ function CarPreview({
                 </div>
             </div>
 
-            <div onClick={() => addNewCar()} className={s.CarTake}>
+            <div onClick={() => addNewCar(carId)} className={s.CarTake}>
                 <NavLink to="/" className={s.btn}>
                     Подтвердить
                 </NavLink>
