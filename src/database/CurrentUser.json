@@ -12,6 +12,11 @@
             "allMonth": 12023.28,
             "costOneKm": 15.3,
             "costOneDay": 400.8,
+            "yearProduction": 2000,
+            "yearOfBuying": 2013,
+            "costOfBuying": 330000,
+            "vin": "",
+            "notes": "",
             "fuelings": [
                 {
                     "fuelingId": 1,
@@ -167,6 +172,11 @@
             "allMonth": 15714.18,
             "costOneKm": 24.5,
             "costOneDay": 523.8,
+            "yearProduction": 2006,
+            "yearOfBuying": 2017,
+            "costOfBuying": 635000,
+            "vin": "",
+            "notes": "",
             "fuelings": [
                 {
                     "fuelingId": 1,
@@ -322,6 +332,11 @@
             "allMonth": 4244.68,
             "costOneKm": 6.6,
             "costOneDay": 141.5,
+            "yearProduction": 1997,
+            "yearOfBuying": 2018,
+            "costOfBuying": 0,
+            "vin": "",
+            "notes": "",
             "fuelings": [
                 {
                     "fuelingId": 1,
@@ -477,6 +492,11 @@
             "allMonth": 0,
             "costOneKm": 0,
             "costOneDay": 0,
+            "yearProduction": 2008,
+            "yearOfBuying": 2008,
+            "costOfBuying": 615000,
+            "vin": "",
+            "notes": "",
             "fuelings": [],
             "etc": []
         },
@@ -490,6 +510,11 @@
             "allMonth": 0,
             "costOneKm": 0,
             "costOneDay": 0,
+            "yearProduction": 2011,
+            "yearOfBuying": 2011,
+            "costOfBuying": 0,
+            "vin": "",
+            "notes": "",
             "fuelings": [],
             "etc": []
         }
