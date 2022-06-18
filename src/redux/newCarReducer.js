@@ -1,11 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit'
 
-// Создание нового carId по текущей дате в мс
-const getNewCarId = () => {
-    const now = new Date()
-    return now.getTime()
-}
-
 const initialState = {
     carId: 0,
     carName: '',
@@ -37,9 +31,9 @@ const CHANGE_CARPIC = 'CHANGE_CARPIC'
 
 const newCarReducer = createReducer(initialState, (builder) => {
     builder
-        .addCase(ADD_CAR, () => ({
+        .addCase(ADD_CAR, (state, action) => ({
             ...initialState,
-            carId: getNewCarId(),
+            carId: action.carId,
         })) // Добавить POST запрос на сервер с новой машиной, пропушить новую машину в массив машин
         .addCase(CHANGE_CARNAME, (state, action) => ({
             ...state,
@@ -74,8 +68,9 @@ const newCarReducer = createReducer(initialState, (builder) => {
 })
 
 // Добавить данные новой машины
-export const addCarAC = () => ({
+export const addCarAC = (carId) => ({
     type: ADD_CAR,
+    carId,
 })
 
 // Смена имени машины
