@@ -134,7 +134,7 @@ export const changeCarPicAC = (carPic) => ({
 
 // Смена картинки машины
 export const changeCarIdAC = (carId) => ({
-    type: CHANGE_CARPIC,
+    type: CHANGE_CAR_ID,
     carId,
 })
 
