@@ -23,7 +23,7 @@ function CarPreview({
                 onClick={() => changeCarPic() /* Доделать */}
                 className={s.carPic}
             >
-                <img src={carPic} alt="addCarPic" />
+                <img src={carPic} alt="Добавьте фото машины" />
             </div>
 
             <div className={s.CarName}>
