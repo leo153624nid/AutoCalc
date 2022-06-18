@@ -32,10 +32,7 @@ const CHANGE_CARPIC = 'CHANGE_CARPIC'
 
 const newCarReducer = createReducer(initialState, (builder) => {
     builder
-        .addCase(ADD_CAR, (state, action) => ({
-            ...initialState,
-            // carId: action.carId,
-        })) // Добавить POST запрос на сервер с новой машиной, пропушить новую машину в массив машин
+        .addCase(ADD_CAR, () => ({ ...initialState }))
         .addCase(GET_CAR, (state, action) => ({
             ...action.car,
         }))
