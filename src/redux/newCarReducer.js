@@ -22,7 +22,7 @@ const initialState = {
 }
 
 const CLEAR_CAR = 'CLEAR_CAR'
-const SET_CAR = 'GET_CAR'
+const SET_CAR = 'SET_CAR'
 const CHANGE_CARNAME = 'CHANGE_CARNAME'
 const CHANGE_DISTANCE = 'CHANGE_DISTANCE'
 const CHANGE_YEARPROD = 'CHANGE_YEARPROD'
