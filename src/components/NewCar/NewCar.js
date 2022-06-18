@@ -49,6 +49,7 @@ function NewCar({
     changeCarPic,
     changeCarId,
 }) {
+    // сlearNewCar()
     // Проверка на новую или редактируемую машину,
     if (newCar.carId === 0 && yourCar !== null) {
         setNewCar(yourCar)
