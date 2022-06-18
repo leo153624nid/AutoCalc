@@ -10,7 +10,6 @@ initialState.carusel = [
 ]
 
 const CHANGE_CARUSEL = 'CHANGE_CARUSEL'
-const SET_CARUSEL = 'SET_CARUSEL'
 const ADD_USER_CAR = 'ADD_USER_CAR'
 
 const userDataReducer = createReducer(initialState, (builder) => {
@@ -49,7 +48,6 @@ const userDataReducer = createReducer(initialState, (builder) => {
                     break
             }
         })
-        .addCase(SET_CARUSEL, (state) => state)
         .addCase(ADD_USER_CAR, (state, action) => {
             // Добавить POST запрос на сервер с новой машиной, пропушить новую машину в массив машин
 
@@ -74,12 +72,6 @@ const userDataReducer = createReducer(initialState, (builder) => {
 export const changeCaruselAC = (direction) => ({
     type: CHANGE_CARUSEL,
     direction,
-})
-
-// Получение начальной карусели карт машин
-export const setCaruselAC = (cars) => ({
-    type: SET_CARUSEL,
-    cars,
 })
 
 // Добавление или редактирование машины
