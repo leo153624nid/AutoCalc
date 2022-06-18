@@ -11,8 +11,10 @@ import ArrowPrev from './ArrowPrev/ArrowPrev'
 import CarBlock from './CarBlock/CarBlock'
 import AddCarBtn from '../Header/AddCarBtn/AddCarBtn'
 import { changeCaruselAC } from '../../redux/userDataReducer'
+import { clearCarAC } from '../../redux/newCarReducer'
 
-function Carusel({ carusel, changeCarusel }) {
+function Carusel({ carusel, changeCarusel, сlearNewCar }) {
+    сlearNewCar()
     // массив карт машин
     const carBlockList = []
 
@@ -106,6 +108,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     changeCarusel: (direction) => {
         dispatch(changeCaruselAC(direction))
+    },
+    сlearNewCar: () => {
+        dispatch(clearCarAC())
     },
 })
 
