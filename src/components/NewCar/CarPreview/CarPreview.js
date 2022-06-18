@@ -11,6 +11,7 @@ function CarPreview({
     distance,
     carPic,
     addNewCar,
+    сlearNewCar,
     changeCarPic,
     fuelConsumptions,
     allMonth,
@@ -53,7 +54,10 @@ function CarPreview({
             </div>
 
             <div
-                onClick={() => addNewCar({ ...newCar, carId })}
+                onClick={() => {
+                    addNewCar({ ...newCar, carId })
+                    сlearNewCar()
+                }}
                 className={s.CarTake}
             >
                 <NavLink to="/" className={s.btn}>
