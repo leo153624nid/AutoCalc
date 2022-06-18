@@ -4,11 +4,13 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable prefer-destructuring */
 import React from 'react'
+import { connect } from 'react-redux'
 import s from './Carusel.module.css'
 import ArrowNext from './ArrowNext/ArrowNext'
 import ArrowPrev from './ArrowPrev/ArrowPrev'
 import CarBlock from './CarBlock/CarBlock'
 import AddCarBtn from '../Header/AddCarBtn/AddCarBtn'
+import { changeCaruselAC, getCaruselAC } from '../../redux/userDataReducer'
 
 function Carusel({ carusel, changeCarusel }) {
     // массив карт машин
@@ -96,4 +98,20 @@ function Carusel({ carusel, changeCarusel }) {
     )
 }
 
-export default Carusel
+const mapStateToProps = (state) => ({
+    carusel: state.userData.carusel,
+    userData: state.userData,
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    changeCarusel: (direction) => {
+        dispatch(changeCaruselAC(direction))
+    },
+    // На будущее, установка первоначальной карусели карт
+    // (данные с сервера при первой отрисовки страницы)
+    getCarusel: (cars) => {
+        dispatch(getCaruselAC(cars))
+    },
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Carusel)
