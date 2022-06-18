@@ -19,8 +19,8 @@ const initialState = {
     etc: [],
 }
 
-const ADD_CAR = 'ADD_CAR'
-const GET_CAR = 'GET_CAR'
+const CLEAR_CAR = 'CLEAR_CAR'
+const SET_CAR = 'GET_CAR'
 const CHANGE_CARNAME = 'CHANGE_CARNAME'
 const CHANGE_DISTANCE = 'CHANGE_DISTANCE'
 const CHANGE_YEARPROD = 'CHANGE_YEARPROD'
@@ -33,8 +33,8 @@ const CHANGE_CAR_ID = 'CHANGE_CAR_ID'
 
 const newCarReducer = createReducer(initialState, (builder) => {
     builder
-        .addCase(ADD_CAR, () => ({ ...initialState }))
-        .addCase(GET_CAR, (state, action) => ({
+        .addCase(CLEAR_CAR, () => ({ ...initialState }))
+        .addCase(SET_CAR, (state, action) => ({
             ...action.car,
         }))
         .addCase(CHANGE_CARNAME, (state, action) => ({
@@ -73,15 +73,14 @@ const newCarReducer = createReducer(initialState, (builder) => {
         .addDefaultCase((state) => state)
 })
 
-// Добавить данные новой машины
-export const addCarAC = (carId) => ({
-    type: ADD_CAR,
-    carId,
+// Сбросить данные новой машины до initialState
+export const clearCarAC = () => ({
+    type: CLEAR_CAR,
 })
 
 // Получить данные машины для редактирования
-export const getCarAC = (car) => ({
-    type: GET_CAR,
+export const setCarAC = (car) => ({
+    type: SET_CAR,
     car,
 })
 
