@@ -14,6 +14,7 @@ function CarPreview({
     changeCarPic,
     fuelConsumptions,
     allMonth,
+    newCar,
 }) {
     return (
         <div className={s.CarPreview}>
@@ -51,7 +52,10 @@ function CarPreview({
                 </div>
             </div>
 
-            <div onClick={() => addNewCar(carId)} className={s.CarTake}>
+            <div
+                onClick={() => addNewCar({ ...newCar, carId })}
+                className={s.CarTake}
+            >
                 <NavLink to="/" className={s.btn}>
                     Подтвердить
                 </NavLink>
