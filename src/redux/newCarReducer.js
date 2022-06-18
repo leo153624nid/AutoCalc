@@ -29,6 +29,7 @@ const CHANGE_COSTBUY = 'CHANGE_COSTBUY'
 const CHANGE_VIN = 'CHANGE_VIN'
 const CHANGE_NOTES = 'CHANGE_NOTES'
 const CHANGE_CARPIC = 'CHANGE_CARPIC'
+const CHANGE_CAR_ID = 'CHANGE_CAR_ID'
 
 const newCarReducer = createReducer(initialState, (builder) => {
     builder
@@ -64,6 +65,10 @@ const newCarReducer = createReducer(initialState, (builder) => {
         .addCase(CHANGE_CARPIC, (state, action) => ({
             ...state,
             carPic: action.carPic,
+        }))
+        .addCase(CHANGE_CAR_ID, (state, action) => ({
+            ...state,
+            carId: action.carId,
         }))
         .addDefaultCase((state) => state)
 })
@@ -126,6 +131,12 @@ export const changeNotesAC = (notes) => ({
 export const changeCarPicAC = (carPic) => ({
     type: CHANGE_CARPIC,
     carPic,
+})
+
+// Смена картинки машины
+export const changeCarIdAC = (carId) => ({
+    type: CHANGE_CARPIC,
+    carId,
 })
 
 export default newCarReducer
