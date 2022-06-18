@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Carusel from './Carusel'
-import { changeCaruselAC, setCaruselAC } from '../../redux/userDataReducer'
+import { changeCaruselAC, getCaruselAC } from '../../redux/userDataReducer'
 
 const mapStateToProps = (state) => ({
     carusel: state.userData.carusel,
@@ -12,8 +12,8 @@ const mapDispatchToProps = (dispatch) => ({
     },
     // На будущее, установка первоначальной карусели карт
     // (данные с сервера при первой отрисовки страницы)
-    setCarusel: (cars) => {
-        dispatch(setCaruselAC(cars))
+    getCarusel: (cars) => {
+        dispatch(getCaruselAC(cars))
     },
 })
 
