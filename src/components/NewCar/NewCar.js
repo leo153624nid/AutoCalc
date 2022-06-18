@@ -5,7 +5,8 @@ import s from './NewCar.module.css'
 import CarDataInput from './CarDataInput/CarDataInput'
 import CarPreview from './CarPreview/CarPreview'
 import {
-    getCarAC,
+    setCarAC,
+    clearCarAC,
     changeCarNameAC,
     changeDistanceAC,
     changeYearProdAC,
@@ -36,7 +37,8 @@ function NewCar({
     newCar,
     yourCar,
     addNewCar,
-    getNewCar,
+    сlearNewCar,
+    setNewCar,
     changeCarname,
     changeDistance,
     changeYearProd,
@@ -48,11 +50,11 @@ function NewCar({
     changeCarId,
 }) {
     // Проверка на новую или редактируемую машину,
-    // if (yourCar !== null) {
-    //     getNewCar(yourCar)
-    // } else if (newCar.carId === 0) {
-    //     changeCarId(getNewCarId())
-    // }
+    if (newCar.carId === 0 && yourCar !== null) {
+        setNewCar(yourCar)
+    } else if (newCar.carId === 0) {
+        changeCarId(getNewCarId())
+    }
 
     return (
         <div className={s.NewCar}>
@@ -100,6 +102,7 @@ function NewCar({
                     distance={newCar.distance}
                     carPic={newCar.carPic}
                     addNewCar={addNewCar}
+                    сlearNewCar={сlearNewCar}
                     changeCarPic={changeCarPic}
                     fuelConsumptions={newCar.fuelConsumptions}
                     allMonth={newCar.allMonth}
@@ -119,8 +122,11 @@ const mapDispatchToProps = (dispatch) => ({
     addNewCar: (value) => {
         dispatch(addUserCarAC(value))
     },
-    getNewCar: (value) => {
-        dispatch(getCarAC(value))
+    сlearNewCar: () => {
+        dispatch(clearCarAC())
+    },
+    setNewCar: (value) => {
+        dispatch(setCarAC(value))
     },
     changeCarname: (value) => {
         dispatch(changeCarNameAC(value))
