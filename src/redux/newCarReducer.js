@@ -1,5 +1,7 @@
 import { createReducer } from '@reduxjs/toolkit'
 
+// https://img.icons8.com/wired/64/undefined/add-image.png
+
 const initialState = {
     carId: 0,
     carName: '',
@@ -9,7 +11,7 @@ const initialState = {
     costOfBuying: 0,
     vin: '',
     notes: '',
-    carPic: 'https://img.icons8.com/wired/64/undefined/add-image.png',
+    carPic: '',
     fuelConsumptions: 0,
     etcConsumptions: 0,
     allMonth: 0,
