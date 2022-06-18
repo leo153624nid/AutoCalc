@@ -32,7 +32,7 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/change_car/${car.carId}`}
-            element={<NewCar newCar={car} />}
+            element={<NewCar yourCar={car} />}
         />
     ))
 
@@ -50,7 +50,7 @@ function App(props) {
 
             <Routes>
                 <Route path="/" element={<CaruselContainer />} />
-                <Route path="/add_car" element={<NewCar />} />
+                <Route path="/add_car" element={<NewCar yourCar={null} />} />
                 {carChangeList}
                 {addFuelList}
                 {/* <Route path="/change_fuel" element={<NewFuel />} /> */}
