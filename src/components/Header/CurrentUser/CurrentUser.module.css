@@ -12,7 +12,12 @@
 
 .user:active {
     background-color: antiquewhite;
-    margin-top: 8px;
+    margin-top: 6px;
+}
+
+.user:hover {
+    box-shadow: 0px 0px 5px 10px rgba(218, 5, 5, 0.486);
+    border-radius: 6px;
 }
 
 .btn {
