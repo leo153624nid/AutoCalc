@@ -8,7 +8,7 @@
 
 .carPic {
     width: 100%;
-    height: 25vh;
+    height: 35vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,9 +17,9 @@
 }
 
 .carPic img {
-    width: 90%;
-    max-height: 45vh;
-    object-fit: cover;
+    /* width: 90%; */
+    max-height: 35vh;
+    object-fit: fill;
 }
 
 .CarName {
