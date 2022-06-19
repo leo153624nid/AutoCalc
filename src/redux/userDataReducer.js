@@ -100,7 +100,7 @@ export const addUserCarAC = (car) => ({
     car,
 })
 
-// Добавление или редактирование заправки машины
+// Добавление заправки машины
 export const addFuelCarAC = (fuel) => ({
     type: ADD_FUEL_CAR,
     fuel,
