@@ -12,6 +12,7 @@
 
 .user:active {
     background-color: antiquewhite;
+    margin-top: 8px;
 }
 
 .btn {

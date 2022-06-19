@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import AddCarBtn from './AddCarBtn/AddCarBtn'
 import CurrentUser from './CurrentUser/CurrentUser'
 import Logotype from './Logotype/Logotype'
@@ -12,7 +13,9 @@ function Header() {
             </div>
 
             <div className={s.Logotype}>
-                <Logotype />
+                <NavLink to="/" className={s.link}>
+                    <Logotype />
+                </NavLink>
             </div>
 
             <div className={s.AddCarBtn}>

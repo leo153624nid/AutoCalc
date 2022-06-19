@@ -5,15 +5,15 @@ import s from './Footer.module.css'
 function Footer() {
     return (
         <div className={s.footer}>
-            <span>
+            <div className={s.btn}>
                 <NavLink to="/">Главная</NavLink>
-            </span>
-            <span>
+            </div>
+            <div className={s.btn}>
                 <NavLink to="/">О приложении</NavLink>
-            </span>
-            <span>
+            </div>
+            <div className={s.btn}>
                 <NavLink to="/">Поддержка</NavLink>
-            </span>
+            </div>
         </div>
     )
 }
