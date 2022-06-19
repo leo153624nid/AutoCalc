@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable prefer-destructuring */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import s from './Carusel.module.css'
 import ArrowNext from './ArrowNext/ArrowNext'
@@ -15,8 +15,11 @@ import { clearCarAC } from '../../redux/newCarReducer'
 import { clearFuelAC } from '../../redux/newFuelReducer'
 
 function Carusel({ carusel, changeCarusel, сlearNewCar, сlearFuel }) {
-    сlearNewCar()
-    сlearFuel()
+    useEffect(() => {
+        сlearNewCar()
+        сlearFuel()
+    })
+
     // массив карт машин
     const carBlockList = []
 

@@ -5,7 +5,6 @@ import { NavLink } from 'react-router-dom'
 import s from './NewFuel.module.css'
 import CarDataInput from '../NewCar/CarDataInput/CarDataInput'
 import {
-    clearFuelAC,
     changeDateFuelAC,
     changeDistanceFuelAC,
     changeMarkFuelAC,
@@ -99,9 +98,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    clearFuel: () => {
-        dispatch(clearFuelAC())
-    },
     addFuelCar: (value) => {
         dispatch(addFuelCarAC(value))
     },

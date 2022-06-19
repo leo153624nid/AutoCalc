@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import s from './NewCar.module.css'
 import CarDataInput from './CarDataInput/CarDataInput'
 import CarPreview from './CarPreview/CarPreview'
 import {
     setCarAC,
-    clearCarAC,
     changeCarNameAC,
     changeDistanceAC,
     changeYearProdAC,
@@ -37,7 +36,6 @@ function NewCar({
     newCar,
     yourCar,
     addNewCar,
-    сlearNewCar,
     setNewCar,
     changeCarname,
     changeDistance,
@@ -49,13 +47,14 @@ function NewCar({
     changeCarPic,
     changeCarId,
 }) {
-    // сlearNewCar()
-    // Проверка на новую или редактируемую машину,
-    if (newCar.carId === 0 && yourCar !== null) {
-        setNewCar(yourCar)
-    } else if (newCar.carId === 0) {
-        changeCarId(getNewCarId())
-    }
+    useEffect(() => {
+        // Проверка на новую или редактируемую машину,
+        if (newCar.carId === 0 && yourCar !== null) {
+            setNewCar(yourCar)
+        } else if (newCar.carId === 0) {
+            changeCarId(getNewCarId())
+        }
+    }, [])
 
     return (
         <div className={s.NewCar}>
@@ -103,7 +102,6 @@ function NewCar({
                     distance={newCar.distance}
                     carPic={newCar.carPic}
                     addNewCar={addNewCar}
-                    сlearNewCar={сlearNewCar}
                     changeCarPic={changeCarPic}
                     fuelConsumptions={newCar.fuelConsumptions}
                     allMonth={newCar.allMonth}
@@ -122,9 +120,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     addNewCar: (value) => {
         dispatch(addUserCarAC(value))
-    },
-    сlearNewCar: () => {
-        dispatch(clearCarAC())
     },
     setNewCar: (value) => {
         dispatch(setCarAC(value))

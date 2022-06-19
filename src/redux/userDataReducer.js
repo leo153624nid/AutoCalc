@@ -55,8 +55,10 @@ const userDataReducer = createReducer(initialState, (builder) => {
             // Весь массив id машин пользователя
             const carsIds = state.userCars.map((item) => item.carId)
             const caruselCarsIds = state.carusel.map((item) => item.carId)
+
             const goodIndex = carsIds.indexOf(action.car.carId)
             const caruselGoodIndex = caruselCarsIds.indexOf(action.car.carId)
+
             if (goodIndex !== -1) {
                 state.userCars.splice(goodIndex, 1, action.car)
             } else {
@@ -71,11 +73,16 @@ const userDataReducer = createReducer(initialState, (builder) => {
 
             // Весь массив id машин пользователя
             const carsIds = state.userCars.map((item) => item.carId)
+            const caruselCarsIds = state.carusel.map((item) => item.carId)
 
             const goodIndex = carsIds.indexOf(action.fuel.carId)
+            const caruselGoodIndex = caruselCarsIds.indexOf(action.fuel.carId)
 
             if (goodIndex !== -1) {
                 state.userCars[goodIndex].fuelings.push(action.fuel)
+            }
+            if (caruselGoodIndex !== -1) {
+                state.carusel[caruselGoodIndex].fuelings.push(action.fuel)
             }
         })
         .addDefaultCase((state) => state)
