@@ -11,6 +11,7 @@ import s from './App.module.css'
 import Carusel from '../Carusel/Carusel'
 import NewCar from '../NewCar/NewCar'
 import NewFuel from '../NewFuel/NewFuel'
+import NewEtc from '../NewEtc/NewEtc'
 
 function App(props) {
     // Весь Массив машин пользователя
@@ -44,6 +45,14 @@ function App(props) {
         />
     ))
 
+    const addEtcList = userCars.map((car) => (
+        <Route
+            key={car.carId}
+            path={`/add_etc/${car.carId}`}
+            element={<NewEtc carId={car.carId} />}
+        />
+    ))
+
     return (
         <div className={s.App}>
             <Header />
@@ -54,6 +63,8 @@ function App(props) {
                 {carChangeList}
                 {addFuelList}
                 {/* <Route path="/change_fuel" element={<NewFuel />} /> */}
+                {addEtcList}
+                {/* <Route path="/change_etc" element={<NewEtc />} /> */}
                 <Route
                     path="/graf"
                     element={<Graf carData={noCar} key={noCar.carId} />}

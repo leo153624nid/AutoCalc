@@ -12,6 +12,7 @@ initialState.carusel = [
 const CHANGE_CARUSEL = 'CHANGE_CARUSEL'
 const ADD_USER_CAR = 'ADD_USER_CAR'
 const ADD_FUEL_CAR = 'ADD_FUEL_CAR'
+const ADD_ETC_CAR = 'ADD_ETC_CAR'
 
 const userDataReducer = createReducer(initialState, (builder) => {
     builder
@@ -85,6 +86,23 @@ const userDataReducer = createReducer(initialState, (builder) => {
                 state.carusel[caruselGoodIndex].fuelings.push(action.fuel)
             }
         })
+        .addCase(ADD_ETC_CAR, (state, action) => {
+            // Добавить POST запрос на сервер с новой заправкой
+
+            // Весь массив id машин пользователя
+            const carsIds = state.userCars.map((item) => item.carId)
+            const caruselCarsIds = state.carusel.map((item) => item.carId)
+
+            const goodIndex = carsIds.indexOf(action.etc.carId)
+            const caruselGoodIndex = caruselCarsIds.indexOf(action.etc.carId)
+
+            if (goodIndex !== -1) {
+                state.userCars[goodIndex].etc.push(action.etc)
+            }
+            if (caruselGoodIndex !== -1) {
+                state.carusel[caruselGoodIndex].etc.push(action.etc)
+            }
+        })
         .addDefaultCase((state) => state)
 })
 
@@ -104,6 +122,12 @@ export const addUserCarAC = (car) => ({
 export const addFuelCarAC = (fuel) => ({
     type: ADD_FUEL_CAR,
     fuel,
+})
+
+// Добавление прочих расходов машины
+export const addEtcCarAC = (etc) => ({
+    type: ADD_ETC_CAR,
+    etc,
 })
 
 export default userDataReducer

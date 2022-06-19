@@ -13,11 +13,13 @@ import AddCarBtn from '../Header/AddCarBtn/AddCarBtn'
 import { changeCaruselAC } from '../../redux/userDataReducer'
 import { clearCarAC } from '../../redux/newCarReducer'
 import { clearFuelAC } from '../../redux/newFuelReducer'
+import { clearEtcAC } from '../../redux/newEtcReducer'
 
-function Carusel({ carusel, changeCarusel, сlearNewCar, сlearFuel }) {
+function Carusel({ carusel, changeCarusel, сlearNewCar, сlearFuel, сlearEtc }) {
     useEffect(() => {
         сlearNewCar()
         сlearFuel()
+        сlearEtc()
     })
 
     // массив карт машин
@@ -119,6 +121,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     сlearFuel: () => {
         dispatch(clearFuelAC())
+    },
+    сlearEtc: () => {
+        dispatch(clearEtcAC())
     },
 })
 

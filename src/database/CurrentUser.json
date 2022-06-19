@@ -97,7 +97,7 @@
                     "price": 30.6,
                     "volume": 60,
                     "cost": 2000,
-                    "full": 1,
+                    "carId": 1,
                     "distance": 215178
                 },
                 {
@@ -107,7 +107,7 @@
                     "price": 30.8,
                     "volume": 32.47,
                     "cost": 3200,
-                    "full": 0,
+                    "carId": 1,
                     "distance": 215851
                 },
                 {
@@ -117,7 +117,7 @@
                     "price": 30.8,
                     "volume": 32.47,
                     "cost": 3000,
-                    "full": 1,
+                    "carId": 1,
                     "distance": 216270
                 },
                 {
@@ -127,7 +127,7 @@
                     "price": 30.8,
                     "volume": 32.47,
                     "cost": 6000,
-                    "full": 0,
+                    "carId": 1,
                     "distance": 216685
                 },
                 {
@@ -137,7 +137,7 @@
                     "price": 30.8,
                     "volume": 32.47,
                     "cost": 2000,
-                    "full": 0,
+                    "carId": 1,
                     "distance": 217093
                 },
                 {
@@ -147,7 +147,7 @@
                     "price": 30.8,
                     "volume": 60.71,
                     "cost": 2500,
-                    "full": 1,
+                    "carId": 1,
                     "distance": 217495
                 },
                 {
@@ -157,7 +157,7 @@
                     "price": 30.8,
                     "volume": 32.47,
                     "cost": 5000,
-                    "full": 0,
+                    "carId": 1,
                     "distance": 218273
                 }
             ]
@@ -257,7 +257,7 @@
                     "price": 44.09,
                     "volume": 20,
                     "cost": 881.8,
-                    "full": 0,
+                    "carId": 2,
                     "distance": 150205
                 },
                 {
@@ -267,7 +267,7 @@
                     "price": 46.4,
                     "volume": 58.95,
                     "cost": 2735.28,
-                    "full": 1,
+                    "carId": 2,
                     "distance": 150375
                 },
                 {
@@ -277,7 +277,7 @@
                     "price": 46.29,
                     "volume": 63.3,
                     "cost": 2930.16,
-                    "full": 1,
+                    "carId": 2,
                     "distance": 150839
                 },
                 {
@@ -287,7 +287,7 @@
                     "price": 47.4,
                     "volume": 60.38,
                     "cost": 2862.01,
-                    "full": 1,
+                    "carId": 2,
                     "distance": 151315
                 },
                 {
@@ -297,7 +297,7 @@
                     "price": 47.4,
                     "volume": 63.33,
                     "cost": 3001.84,
-                    "full": 0,
+                    "carId": 2,
                     "distance": 151804
                 },
                 {
@@ -307,7 +307,7 @@
                     "price": 40.46,
                     "volume": 62.37,
                     "cost": 2523.49,
-                    "full": 1,
+                    "carId": 2,
                     "distance": 152226
                 },
                 {
@@ -317,7 +317,7 @@
                     "price": 46.8,
                     "volume": 43.42,
                     "cost": 2032.06,
-                    "full": 1,
+                    "carId": 2,
                     "distance": 152652
                 }
             ]
@@ -417,7 +417,7 @@
                     "price": 38.1,
                     "volume": 36.03,
                     "cost": 1372.74,
-                    "full": 1,
+                    "carId": 3,
                     "distance": 282845
                 },
                 {
@@ -427,7 +427,7 @@
                     "price": 37.85,
                     "volume": 34.54,
                     "cost": 1307.34,
-                    "full": 1,
+                    "carId": 3,
                     "distance": 283261
                 },
                 {
@@ -437,7 +437,7 @@
                     "price": 38.6,
                     "volume": 36.0,
                     "cost": 1389.6,
-                    "full": 1,
+                    "carId": 3,
                     "distance": 283734
                 },
                 {
@@ -447,7 +447,7 @@
                     "price": 39.0,
                     "volume": 37.0,
                     "cost": 1443,
-                    "full": 1,
+                    "carId": 3,
                     "distance": 284293
                 },
                 {
@@ -457,7 +457,7 @@
                     "price": 39.0,
                     "volume": 38.04,
                     "cost": 1483.56,
-                    "full": 1,
+                    "carId": 3,
                     "distance": 284846
                 },
                 {
@@ -467,7 +467,7 @@
                     "price": 39.0,
                     "volume": 29.81,
                     "cost": 1162.59,
-                    "full": 1,
+                    "carId": 3,
                     "distance": 285269
                 },
                 {
@@ -477,7 +477,7 @@
                     "price": 39.0,
                     "volume": 37.34,
                     "cost": 1456.26,
-                    "full": 1,
+                    "carId": 3,
                     "distance": 285840
                 }
             ]
