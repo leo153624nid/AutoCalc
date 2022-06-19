@@ -5,7 +5,7 @@ import React, { useContext, useState } from 'react'
 import ModalContext from '../../contexts/ModalContext/ModalContext'
 import s from './Modal.module.css'
 
-function Modal({ title, children }) {
+function Modal({ title, body }) {
     const { closeModal } = useContext(ModalContext)
 
     const [closingModal, setClosingModal] = useState(false)
@@ -32,9 +32,10 @@ function Modal({ title, children }) {
                 }}
             >
                 <div className={s.header}>
-                    <h4>{title}</h4>
+                    <h3>{title}</h3>
                 </div>
-                <div className={s.body}>{children}</div>
+
+                <div className={s.body}>{body}</div>
             </div>
         </div>
     )
