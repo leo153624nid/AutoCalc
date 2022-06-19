@@ -12,6 +12,7 @@ import Carusel from '../Carusel/Carusel'
 import NewCar from '../NewCar/NewCar'
 import NewFuel from '../NewFuel/NewFuel'
 import NewEtc from '../NewEtc/NewEtc'
+import ModalProvider from '../../contexts/ModalContext/ModalContextProvider'
 
 function App(props) {
     // Весь Массив машин пользователя
@@ -54,26 +55,31 @@ function App(props) {
     ))
 
     return (
-        <div className={s.App}>
-            <Header />
+        <ModalProvider>
+            <div className={s.App}>
+                <Header />
 
-            <Routes>
-                <Route path="/" element={<Carusel />} />
-                <Route path="/add_car" element={<NewCar yourCar={null} />} />
-                {carChangeList}
-                {addFuelList}
-                {/* <Route path="/change_fuel" element={<NewFuel />} /> */}
-                {addEtcList}
-                {/* <Route path="/change_etc" element={<NewEtc />} /> */}
-                <Route
-                    path="/graf"
-                    element={<Graf carData={noCar} key={noCar.carId} />}
-                />
-                {grafList}
-            </Routes>
+                <Routes>
+                    <Route path="/" element={<Carusel />} />
+                    <Route
+                        path="/add_car"
+                        element={<NewCar yourCar={null} />}
+                    />
+                    {carChangeList}
+                    {addFuelList}
+                    {/* <Route path="/change_fuel" element={<NewFuel />} /> */}
+                    {addEtcList}
+                    {/* <Route path="/change_etc" element={<NewEtc />} /> */}
+                    <Route
+                        path="/graf"
+                        element={<Graf carData={noCar} key={noCar.carId} />}
+                    />
+                    {grafList}
+                </Routes>
 
-            <Footer />
-        </div>
+                <Footer />
+            </div>
+        </ModalProvider>
     )
 }
 

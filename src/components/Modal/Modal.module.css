@@ -1,0 +1,87 @@
+@keyframes showBackdrop {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes hideBackdrop {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes showModal {
+    0% {
+        opacity: 0;
+        transform: translateY(500px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes hideModal {
+    0% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(500px);
+    }
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(31, 3, 3, 0.5);
+    transition: all 0.3s;
+    animation: showBackdrop 0.3s ease-out;
+    z-index: 100;
+}
+
+.hide {
+    opacity: 0;
+    animation: hideBackdrop 0.3s ease-out;
+}
+
+.hide .Modal {
+    opacity: 0;
+    transform: translateY(500px);
+    animation: hideModal 0.3s ease-out;
+}
+
+.Modal {
+    background: wheat;
+    width: 600px;
+    height: 600px;
+    box-shadow: 0 0 25px grey;
+    border-radius: 10px;
+    transition: all 0.3s;
+    animation: showModal 0.3s ease-out;
+    z-index: 100;
+}
+
+.header {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(31, 3, 3);
+}
+
+.body {
+    padding: 10px;
+}
