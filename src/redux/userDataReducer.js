@@ -13,6 +13,8 @@ const CHANGE_CARUSEL = 'CHANGE_CARUSEL'
 const ADD_USER_CAR = 'ADD_USER_CAR'
 const ADD_FUEL_CAR = 'ADD_FUEL_CAR'
 const ADD_ETC_CAR = 'ADD_ETC_CAR'
+// const CHANGE_YOUR_FUEL = 'CHANGE_YOUR_FUEL'
+// const DELETE_YOUR_FUEL = 'DELETE_YOUR_FUEL'
 
 const userDataReducer = createReducer(initialState, (builder) => {
     builder
