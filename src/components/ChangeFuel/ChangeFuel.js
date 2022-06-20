@@ -1,15 +1,39 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
-import React from 'react'
-// import { connect } from 'react-redux'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import s from './ChangeFuel.module.css'
-import { getThisDate } from '../../redux/dateFunctions'
+// import { getThisDate } from '../../redux/dateFunctions'
+import {
+    clearChangingAC,
+    setNewChangingAC,
+    changeFuelingIdAC,
+} from '../../redux/changeConsumptionsReducer'
 
-function ChangeFuel({ car }) {
+function ChangeFuel({
+    car,
+    // changing,
+    // clearChanging,
+    // setNewChanging,
+    changeFuelingId,
+}) {
+    // useEffect(() => {
+    //     clearChanging()
+    // }, []) // !!!! возможно надо пустой []
+
     const fuelingsList = car.fuelings.map((fuel) => (
         <li key={fuel.fuelingId}>
-            <div>{getThisDate(fuel.date)}</div>
-            <div className={s.ChangeTake}>
+            <div>
+                <span>{fuel.date}</span>
+            </div>
+            <div
+                className={s.ChangeTake}
+                onClick={() => {
+                    changeFuelingId(fuel.fuelingId)
+                }}
+            >
                 <NavLink to={`/change_fuel/${car.carId}`} className={s.btn}>
                     Редактировать
                 </NavLink>
@@ -31,37 +55,20 @@ function ChangeFuel({ car }) {
     )
 }
 
-// const mapStateToProps = (state) => ({
-//     changeFuel: state.changeFuel,
-// })
+const mapStateToProps = (state) => ({
+    changing: state.changing,
+})
 
-// const mapDispatchToProps = (dispatch) => ({
-//     addFuelCar: (value) => {
-//         dispatch(addFuelCarAC(value))
-//     },
-//     changeDateFuel: (value) => {
-//         dispatch(changeDateFuelAC(value))
-//     },
-//     changeDistanceFuel: (value) => {
-//         dispatch(changeDistanceFuelAC(value))
-//     },
-//     changeMarkFuel: (value) => {
-//         dispatch(changeMarkFuelAC(value))
-//     },
-//     changePriceFuel: (value) => {
-//         dispatch(changePriceFuelAC(value))
-//     },
-//     changeVolumeFuel: (value) => {
-//         dispatch(changeVolumeFuelAC(value))
-//     },
-//     changeCostFuel: (value) => {
-//         dispatch(changeCostFuelAC(value))
-//     },
-//     changeFullFuel: (value) => {
-//         dispatch(changeFullFuelAC(value))
-//     },
-// })
+const mapDispatchToProps = (dispatch) => ({
+    clearChanging: () => {
+        dispatch(clearChangingAC())
+    },
+    setNewChanging: (value) => {
+        dispatch(setNewChangingAC(value))
+    },
+    changeFuelingId: (value) => {
+        dispatch(changeFuelingIdAC(value))
+    },
+})
 
-// export default connect(mapStateToProps, mapDispatchToProps)(ChangeFuel)
-
-export default ChangeFuel
+export default connect(mapStateToProps, mapDispatchToProps)(ChangeFuel)
