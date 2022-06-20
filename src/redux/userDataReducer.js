@@ -15,6 +15,8 @@ const ADD_FUEL_CAR = 'ADD_FUEL_CAR'
 const ADD_ETC_CAR = 'ADD_ETC_CAR'
 // const CHANGE_YOUR_FUEL = 'CHANGE_YOUR_FUEL'
 // const DELETE_YOUR_FUEL = 'DELETE_YOUR_FUEL'
+// const CHANGE_YOUR_ETC = 'CHANGE_YOUR_ETC'
+// const DELETE_YOUR_ETC = 'DELETE_YOUR_ETC'
 
 const userDataReducer = createReducer(initialState, (builder) => {
     builder
