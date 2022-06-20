@@ -54,7 +54,7 @@ function NewCar({
         } else if (newCar.carId === 0) {
             changeCarId(getNewCarId())
         }
-    })
+    }, [changeCarId, newCar.carId, setNewCar, yourCar])
 
     return (
         <div className={s.NewCar}>
