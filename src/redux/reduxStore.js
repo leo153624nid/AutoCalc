@@ -6,7 +6,7 @@ import idGrafikReducer from './idGrafikReducer'
 import newCarReducer from './newCarReducer'
 import newFuelReducer from './newFuelReducer'
 import newEtcReducer from './newEtcReducer'
-// import changeFuelReducer from './changeFuelReducer'
+import changeConsumptionsReducer from './changeConsumptionsReducer'
 
 const rootReducer = combineReducers({
     userData: userDataReducer,
@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
     newCar: newCarReducer,
     newFuel: newFuelReducer,
     newEtc: newEtcReducer,
+    changing: changeConsumptionsReducer,
 })
 
 const store = configureStore({
