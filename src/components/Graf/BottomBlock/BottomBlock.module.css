@@ -2,7 +2,7 @@
     width: 100%;
     height: 12vh;
     display: grid;
-    grid-template-areas: "a b c d";
+    grid-template-areas: 'a b c d';
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 12vh;
     justify-content: center;
@@ -17,14 +17,13 @@
     justify-content: center;
     align-items: center;
     border-right: 1px solid rgb(199, 201, 201);
-    
 }
 
 .fuel {
     grid-area: b;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     border-left: 1px solid rgb(199, 201, 201);
     border-right: 1px solid rgb(199, 201, 201);
@@ -34,11 +33,10 @@
     grid-area: c;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     border-left: 1px solid rgb(199, 201, 201);
     border-right: 1px solid rgb(199, 201, 201);
-    
 }
 
 .itogo {
@@ -50,3 +48,27 @@
     border-left: 1px solid rgb(199, 201, 201);
 }
 
+.btn {
+    width: 60%;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: rgb(199, 201, 201);
+    border-radius: 6px;
+}
+
+.btn:active {
+    background-color: antiquewhite;
+    margin-top: 6px;
+}
+
+.link {
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
