@@ -40,15 +40,44 @@ function NewFuel({
     changeVolumeFuel,
     changeCostFuel,
     changeFullFuel,
-    add,
+    changing,
 }) {
-    useEffect(() => {
-        setNewFuel({ ...newFuel, carId: car.carId, fuelingId, date })
-    }, [car.carId, date, fuelingId, newFuel, setNewFuel])
+    const yourFuelingId = fuelingId !== null ? fuelingId : changing.fuelingId
+    const yourDate = date !== null ? date : changing.fuelingId
+    let yourMark = 'АИ-95'
+    let yourPrice = 0
+    let yourVolume = 0
+    let yourCost = 0
+    let yourFull = 0
+    let yourDistance = 0
 
-    // if (add === false) {
-    //     action = { ...newFuel }
-    // }
+    const yourFueling = car.fuelings.find(
+        (item) => item.fuelingId === changing.fuelingId
+    )
+
+    if (fuelingId === null && yourFueling !== undefined) {
+        yourMark = yourFueling.mark
+        yourPrice = yourFueling.price
+        yourVolume = yourFueling.volume
+        yourCost = yourFueling.cost
+        yourFull = yourFueling.full
+        yourDistance = yourFueling.distance
+    }
+
+    useEffect(() => {
+        setNewFuel({
+            fuelingId: yourFuelingId,
+            date: yourDate,
+            carId: car.carId,
+            mark: yourMark,
+            price: yourPrice,
+            volume: yourVolume,
+            cost: yourCost,
+            full: yourFull,
+            distance: yourDistance,
+        })
+    }, []) // !!!! возможно надо пустой []
+
     return (
         <div className={s.NewFuel}>
             <div className={s.form}>
@@ -94,7 +123,7 @@ function NewFuel({
                     to="/"
                     className={s.btn}
                     onClick={() => {
-                        addFuelCar(newFuel)
+                        addFuelCar(newFuel) // или changeFuelCar, должен быть выбор если это не новая заправка
                     }}
                 >
                     Подтвердить
@@ -106,6 +135,7 @@ function NewFuel({
 
 const mapStateToProps = (state) => ({
     newFuel: state.newFuel,
+    changing: state.changing,
 })
 
 const mapDispatchToProps = (dispatch) => ({
