@@ -145,19 +145,13 @@ export const addUserCarAC = (car) => ({
     car,
 })
 
-// Добавление заправки машины
+// Добавление или редактирование заправки машины
 export const addFuelCarAC = (fuel) => ({
     type: ADD_FUEL_CAR,
     fuel,
 })
 
-// Изменение заправки машины
-// export const changeFuelCarAC = (fuel) => ({
-//     type: CHANGE_YOUR_FUEL,
-//     fuel,
-// })
-
-// Добавление прочих расходов машины
+// Добавление или редактирование прочих расходов машины
 export const addEtcCarAC = (etc) => ({
     type: ADD_ETC_CAR,
     etc,
