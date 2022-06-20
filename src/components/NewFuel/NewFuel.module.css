@@ -18,15 +18,6 @@
     width: 100%;
 }
 
-/* .carPrev {
-    grid-area: c;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
 .CarTake {
     grid-area: e;
     flex: 1;
