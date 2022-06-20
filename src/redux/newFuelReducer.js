@@ -1,17 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit'
-
-// Получение текущей даты в мс
-const getNowDateMS = () => {
-    const now = new Date()
-    return now.getTime()
-}
-
-// Перевод даты в мс
-const getDate = (time) => time.getTime()
+import { getDate } from './dateFunctions'
 
 const initialState = {
-    fuelingId: getNowDateMS(),
-    date: getNowDateMS(),
+    fuelingId: 0,
+    date: 0,
     mark: 'АИ-95',
     price: 0,
     volume: 0,
@@ -22,6 +14,7 @@ const initialState = {
 }
 
 const CLEAR_FUEL = 'CLEAR_FUEL'
+const SET_NEW_FUEL = 'SET_NEW_FUEL'
 const CHANGE_DATE_FUEL = 'CHANGE_DATE_FUEL'
 const CHANGE_DISTANCE_FUEL = 'CHANGE_DISTANCE_FUEL'
 const CHANGE_MARK_FUEL = 'CHANGE_MARK_FUEL'
@@ -34,9 +27,10 @@ const newFuelReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(CLEAR_FUEL, () => ({
             ...initialState,
-            fuelingId: getNowDateMS(),
-            date: getNowDateMS(),
-        })) // Добавить POST запрос на сервер с новой заправкой, пропушить новую заправку в массив заправок
+        }))
+        .addCase(SET_NEW_FUEL, (state, action) => ({
+            ...action.fuel,
+        }))
         .addCase(CHANGE_DATE_FUEL, (state, action) => ({
             ...state,
             date: action.date,
@@ -71,6 +65,12 @@ const newFuelReducer = createReducer(initialState, (builder) => {
 // Сбросить данные новой заправки
 export const clearFuelAC = () => ({
     type: CLEAR_FUEL,
+})
+
+// Обновить данные новой заправки
+export const setNewFuelAC = (fuel) => ({
+    type: SET_NEW_FUEL,
+    fuel,
 })
 
 // Смена даты заправки
