@@ -80,14 +80,37 @@ const userDataReducer = createReducer(initialState, (builder) => {
             const carsIds = state.userCars.map((item) => item.carId)
             const caruselCarsIds = state.carusel.map((item) => item.carId)
 
-            const goodIndex = carsIds.indexOf(action.fuel.carId)
-            const caruselGoodIndex = caruselCarsIds.indexOf(action.fuel.carId)
+            const goodIndexCar = carsIds.indexOf(action.fuel.carId)
+            const caruselGoodIndexCar = caruselCarsIds.indexOf(
+                action.fuel.carId
+            )
 
-            if (goodIndex !== -1) {
-                state.userCars[goodIndex].fuelings.push(action.fuel)
+            const goodIndexFuel = state.userCars[goodIndexCar].fuelings
+                .map((item) => item.fuelingId)
+                .indexOf(action.fuel.fuelingId)
+            const caruselGoodIndexFuel = state.carusel[
+                caruselGoodIndexCar
+            ].fuelings
+                .map((item) => item.fuelingId)
+                .indexOf(action.fuel.fuelingId)
+
+            if (goodIndexFuel !== -1) {
+                state.userCars[goodIndexCar].fuelings.splice(
+                    goodIndexFuel,
+                    1,
+                    action.fuel
+                )
+            } else {
+                state.userCars[goodIndexCar].fuelings.push(action.fuel)
             }
-            if (caruselGoodIndex !== -1) {
-                state.carusel[caruselGoodIndex].fuelings.push(action.fuel)
+            if (caruselGoodIndexFuel !== -1) {
+                state.carusel[caruselGoodIndexCar].fuelings.splice(
+                    caruselGoodIndexFuel,
+                    1,
+                    action.fuel
+                )
+            } else {
+                state.carusel[caruselGoodIndexCar].fuelings.push(action.fuel)
             }
         })
         .addCase(ADD_ETC_CAR, (state, action) => {
@@ -127,6 +150,12 @@ export const addFuelCarAC = (fuel) => ({
     type: ADD_FUEL_CAR,
     fuel,
 })
+
+// Изменение заправки машины
+// export const changeFuelCarAC = (fuel) => ({
+//     type: CHANGE_YOUR_FUEL,
+//     fuel,
+// })
 
 // Добавление прочих расходов машины
 export const addEtcCarAC = (etc) => ({

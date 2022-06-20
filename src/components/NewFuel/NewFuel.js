@@ -123,7 +123,7 @@ function NewFuel({
                     to="/"
                     className={s.btn}
                     onClick={() => {
-                        addFuelCar(newFuel) // или changeFuelCar, должен быть выбор если это не новая заправка
+                        addFuelCar(newFuel)
                     }}
                 >
                     Подтвердить
