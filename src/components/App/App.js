@@ -12,7 +12,9 @@ import Carusel from '../Carusel/Carusel'
 import NewCar from '../NewCar/NewCar'
 import NewFuel from '../NewFuel/NewFuel'
 import NewEtc from '../NewEtc/NewEtc'
+import ChangeFuel from '../ChangeFuel/ChangeFuel'
 import ModalProvider from '../../contexts/ModalContext/ModalContextProvider'
+import { getNowDateMS } from '../../redux/dateFunctions'
 
 function App(props) {
     // Весь Массив машин пользователя
@@ -29,7 +31,6 @@ function App(props) {
         />
     ))
 
-    // доделать, пропсы редактируемой машины не приходят
     const carChangeList = userCars.map((car) => (
         <Route
             key={car.carId}
@@ -42,7 +43,32 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/add_fuel/${car.carId}`}
-            element={<NewFuel carId={car.carId} />}
+            element={
+                <NewFuel
+                    car={car}
+                    fuelingId={getNowDateMS()}
+                    date={getNowDateMS()}
+                    changing={false}
+                />
+            }
+        />
+    ))
+
+    const changeFuelList = userCars.map((car) => (
+        <Route
+            key={car.carId}
+            path={`/change_fuel_list/${car.carId}`}
+            element={<ChangeFuel car={car} />}
+        />
+    ))
+
+    const fuelList = userCars.map((car) => (
+        <Route
+            key={car.carId}
+            path={`/change_fuel/${car.carId}`}
+            element={
+                <NewFuel car={car} fuelingId={null} date={null} changing />
+            }
         />
     ))
 
@@ -67,7 +93,8 @@ function App(props) {
                     />
                     {carChangeList}
                     {addFuelList}
-                    {/* <Route path="/change_fuel" element={<NewFuel />} /> */}
+                    {changeFuelList}
+                    {fuelList}
                     {addEtcList}
                     {/* <Route path="/change_etc" element={<NewEtc />} /> */}
                     <Route
