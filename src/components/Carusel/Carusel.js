@@ -20,7 +20,7 @@ function Carusel({ carusel, changeCarusel, сlearNewCar, сlearFuel, сlearEtc }
         сlearNewCar()
         сlearFuel()
         сlearEtc()
-    })
+    }, [сlearEtc, сlearFuel, сlearNewCar])
 
     // массив карт машин
     const carBlockList = []
