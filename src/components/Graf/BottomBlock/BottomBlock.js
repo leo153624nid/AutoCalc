@@ -2,12 +2,14 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable prefer-destructuring */
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import s from './BottomBlock.module.css'
 
 function BottomBlock({ carData }) {
     let yourDistance = 0
     let costFuel = 0
     let itogo = 0
+
     if (carData.fuelings.length !== 0) {
         yourDistance = Math.floor(
             carData.fuelings.at(-1).distance - carData.fuelings.at(0).distance
@@ -28,14 +30,28 @@ function BottomBlock({ carData }) {
             </div>
 
             <div className={s.fuel}>
-                <span>Топливо</span>
-                <span>{costFuel} &#8381;</span>
+                <div>
+                    <div>Топливо</div>
+                    <div>{costFuel} &#8381;</div>
+                </div>
+                <div className={s.btn}>
+                    <NavLink className={s.link} to="">
+                        Редактировать
+                    </NavLink>
+                </div>
             </div>
 
             <div className={s.etc}>
-                <span>Прочее</span>
-                <span>{carData.etcConsumptions} &#8381;</span>{' '}
-                {/* Не вычисляется пока что, просто берется из базы данных */}
+                <div>
+                    <div>Прочее</div>
+                    <div>{carData.etcConsumptions} &#8381;</div>{' '}
+                    {/* Не вычисляется пока что, просто берется из базы данных */}
+                </div>
+                <div className={s.btn}>
+                    <NavLink className={s.link} to="">
+                        Редактировать
+                    </NavLink>
+                </div>
             </div>
 
             <div className={s.itogo}>
