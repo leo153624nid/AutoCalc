@@ -6,6 +6,7 @@ import idGrafikReducer from './idGrafikReducer'
 import newCarReducer from './newCarReducer'
 import newFuelReducer from './newFuelReducer'
 import newEtcReducer from './newEtcReducer'
+// import changeFuelReducer from './changeFuelReducer'
 
 const rootReducer = combineReducers({
     userData: userDataReducer,
