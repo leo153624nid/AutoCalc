@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import s from './NewFuel.module.css'
@@ -12,8 +12,11 @@ import {
     changeVolumeFuelAC,
     changeCostFuelAC,
     changeFullFuelAC,
+    setNewFuelAC,
+    clearFuelAC,
 } from '../../redux/newFuelReducer'
 import { addFuelCarAC } from '../../redux/userDataReducer'
+import { getThisDate } from '../../redux/dateFunctions'
 
 const dateFueling = 'Дата заправки'
 const dist = 'Текущий пробег, км'
@@ -23,13 +26,13 @@ const volumeFuel = 'Обьем, л'
 const costFuel = 'Стоимость, руб'
 const fullTank = 'Полный бак (Введите 1 - полный или 0 - неполный)'
 
-// Перевод даты в ДД.ММ.ГГГГ
-const getNowDate = (timestamp) => new Date(timestamp)
-
 function NewFuel({
     newFuel,
-    carId,
+    car,
+    fuelingId,
+    date,
     addFuelCar,
+    setNewFuel,
     changeDateFuel,
     changeDistanceFuel,
     changeMarkFuel,
@@ -37,13 +40,21 @@ function NewFuel({
     changeVolumeFuel,
     changeCostFuel,
     changeFullFuel,
+    add,
 }) {
+    useEffect(() => {
+        setNewFuel({ ...newFuel, carId: car.carId, fuelingId, date })
+    }, [car.carId, date, fuelingId, newFuel, setNewFuel])
+
+    // if (add === false) {
+    //     action = { ...newFuel }
+    // }
     return (
         <div className={s.NewFuel}>
             <div className={s.form}>
                 <CarDataInput
                     label={dateFueling}
-                    value={getNowDate(newFuel.date)}
+                    value={getThisDate(newFuel.date)}
                     change={changeDateFuel}
                 />
                 <CarDataInput
@@ -83,7 +94,7 @@ function NewFuel({
                     to="/"
                     className={s.btn}
                     onClick={() => {
-                        addFuelCar({ ...newFuel, carId })
+                        addFuelCar(newFuel)
                     }}
                 >
                     Подтвердить
@@ -100,6 +111,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     addFuelCar: (value) => {
         dispatch(addFuelCarAC(value))
+    },
+    сlearFuel: () => {
+        dispatch(clearFuelAC())
+    },
+    setNewFuel: (value) => {
+        dispatch(setNewFuelAC(value))
     },
     changeDateFuel: (value) => {
         dispatch(changeDateFuelAC(value))
