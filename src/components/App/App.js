@@ -48,7 +48,6 @@ function App(props) {
                     car={car}
                     fuelingId={getNowDateMS()}
                     date={getNowDateMS()}
-                    changing={false}
                 />
             }
         />
@@ -66,9 +65,7 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/change_fuel/${car.carId}`}
-            element={
-                <NewFuel car={car} fuelingId={null} date={null} changing />
-            }
+            element={<NewFuel car={car} fuelingId={null} date={null} />}
         />
     ))
 
@@ -103,8 +100,9 @@ function App(props) {
                     />
                     {grafList}
                 </Routes>
-
-                <Footer />
+                <div className={s.Footer}>
+                    <Footer />
+                </div>
             </div>
         </ModalProvider>
     )
