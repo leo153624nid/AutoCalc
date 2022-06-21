@@ -51,7 +51,10 @@ function BottomBlock({ carData }) {
                     {/* Не вычисляется пока что, просто берется из базы данных */}
                 </div>
                 <div className={s.btn}>
-                    <NavLink className={s.link} to="">
+                    <NavLink
+                        className={s.link}
+                        to={`/change_etc_list/${carData.carId}`}
+                    >
                         Редактировать
                     </NavLink>
                 </div>
