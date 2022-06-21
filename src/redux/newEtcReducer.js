@@ -1,41 +1,35 @@
 import { createReducer } from '@reduxjs/toolkit'
-
-// Получение текущей даты в мс
-const getNowDateMS = () => {
-    const now = new Date()
-    return now.getTime()
-}
-
-// Перевод даты в мс
-const getDate = (time) => time.getTime()
+import { getDate } from './dateFunctions'
 
 const initialState = {
-    etcId: getNowDateMS(),
-    date: getNowDateMS(),
+    etcId: 0,
+    date: 0,
     mark: '',
     price: 0,
     volume: 0,
     cost: 0,
-    carId: 0,
     distance: 0,
+    carId: 0,
 }
 
 const CLEAR_ETC = 'CLEAR_ETC'
+const SET_NEW_ETC = 'SET_NEW_ETC'
 const CHANGE_DATE_ETC = 'CHANGE_DATE_ETC'
 const CHANGE_DISTANCE_ETC = 'CHANGE_DISTANCE_ETC'
 const CHANGE_MARK_ETC = 'CHANGE_MARK_ETC'
 const CHANGE_PRICE_ETC = 'CHANGE_PRICE_ETC'
 const CHANGE_VOLUME_ETC = 'CHANGE_VOLUME_ETC'
 const CHANGE_COST_ETC = 'CHANGE_COST_ETC'
-const CHANGE_CAR_ID_ETC = 'CHANGE_CAR_ID_ETC'
+// const CHANGE_CAR_ID_ETC = 'CHANGE_CAR_ID_ETC'
 
 const newEtcReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(CLEAR_ETC, () => ({
             ...initialState,
-            etcId: getNowDateMS(),
-            date: getNowDateMS(),
-        })) // Добавить POST запрос на сервер с новой заправкой, пропушить новую заправку в массив заправок
+        }))
+        .addCase(SET_NEW_ETC, (state, action) => ({
+            ...action.etc,
+        }))
         .addCase(CHANGE_DATE_ETC, (state, action) => ({
             ...state,
             date: action.date,
@@ -60,16 +54,22 @@ const newEtcReducer = createReducer(initialState, (builder) => {
             ...state,
             cost: action.cost,
         }))
-        .addCase(CHANGE_CAR_ID_ETC, (state, action) => ({
-            ...state,
-            carId: action.carId,
-        }))
+        // .addCase(CHANGE_CAR_ID_ETC, (state, action) => ({
+        //     ...state,
+        //     carId: action.carId,
+        // }))
         .addDefaultCase((state) => state)
 })
 
 // Сбросить данные новых прочих расходов
 export const clearEtcAC = () => ({
     type: CLEAR_ETC,
+})
+
+// Обновить данные новых прочих расходов
+export const setNewEtcAC = (etc) => ({
+    type: SET_NEW_ETC,
+    etc,
 })
 
 // Смена даты прочих расходов
@@ -109,9 +109,9 @@ export const changeCostEtcAC = (cost) => ({
 })
 
 // Смена carId машины прочих расходов
-export const changeCarIdEtcAC = (carId) => ({
-    type: CHANGE_CAR_ID_ETC,
-    carId: Number(carId),
-})
+// export const changeCarIdEtcAC = (carId) => ({
+//     type: CHANGE_CAR_ID_ETC,
+//     carId: Number(carId),
+// })
 
 export default newEtcReducer
