@@ -8,13 +8,13 @@ function CarBtns({ carId }) {
         <div className={s.CarBtns}>
             <div className={s.fuel}>
                 <NavLink to={`/add_fuel/${carId}`} className={s.btn}>
-                    + fuel
+                    + Топливо
                 </NavLink>
             </div>
 
             <div className={s.etc}>
                 <NavLink to={`/add_etc/${carId}`} className={s.btn}>
-                    + etc
+                    + Прочее
                 </NavLink>
             </div>
 
