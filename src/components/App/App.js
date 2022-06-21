@@ -12,9 +12,9 @@ import Carusel from '../Carusel/Carusel'
 import NewCar from '../NewCar/NewCar'
 import NewFuel from '../NewFuel/NewFuel'
 import NewEtc from '../NewEtc/NewEtc'
-import ChangeFuel from '../ChangeFuel/ChangeFuel'
 import ModalProvider from '../../contexts/ModalContext/ModalContextProvider'
 import { getNowDateMS } from '../../redux/dateFunctions'
+import ChangeFuelAndEtc from '../ChangeFuelAndEtc/ChangeFuelAndEtc'
 
 function App(props) {
     // Весь Массив машин пользователя
@@ -57,7 +57,7 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/change_fuel_list/${car.carId}`}
-            element={<ChangeFuel car={car} />}
+            element={<ChangeFuelAndEtc car={car} fuelNotEtc />}
         />
     ))
 
@@ -73,7 +73,29 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/add_etc/${car.carId}`}
-            element={<NewEtc carId={car.carId} />}
+            element={
+                <NewEtc
+                    car={car}
+                    etcId={getNowDateMS()}
+                    date={getNowDateMS()}
+                />
+            }
+        />
+    ))
+
+    const changeEtcList = userCars.map((car) => (
+        <Route
+            key={car.carId}
+            path={`/change_etc_list/${car.carId}`}
+            element={<ChangeFuelAndEtc car={car} fuelNotEtc={false} />}
+        />
+    ))
+
+    const etcList = userCars.map((car) => (
+        <Route
+            key={car.carId}
+            path={`/change_etc/${car.carId}`}
+            element={<NewEtc car={car} etcId={null} date={null} />}
         />
     ))
 
@@ -89,11 +111,15 @@ function App(props) {
                         element={<NewCar yourCar={null} />}
                     />
                     {carChangeList}
+
                     {addFuelList}
                     {changeFuelList}
                     {fuelList}
+
                     {addEtcList}
-                    {/* <Route path="/change_etc" element={<NewEtc />} /> */}
+                    {changeEtcList}
+                    {etcList}
+
                     <Route
                         path="/graf"
                         element={<Graf carData={noCar} key={noCar.carId} />}
