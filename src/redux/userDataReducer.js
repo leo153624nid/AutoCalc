@@ -13,9 +13,9 @@ const CHANGE_CARUSEL = 'CHANGE_CARUSEL'
 const ADD_USER_CAR = 'ADD_USER_CAR'
 const ADD_FUEL_CAR = 'ADD_FUEL_CAR'
 const ADD_ETC_CAR = 'ADD_ETC_CAR'
-// const CHANGE_YOUR_FUEL = 'CHANGE_YOUR_FUEL'
+
 // const DELETE_YOUR_FUEL = 'DELETE_YOUR_FUEL'
-// const CHANGE_YOUR_ETC = 'CHANGE_YOUR_ETC'
+
 // const DELETE_YOUR_ETC = 'DELETE_YOUR_ETC'
 
 const userDataReducer = createReducer(initialState, (builder) => {
@@ -120,14 +120,33 @@ const userDataReducer = createReducer(initialState, (builder) => {
             const carsIds = state.userCars.map((item) => item.carId)
             const caruselCarsIds = state.carusel.map((item) => item.carId)
 
-            const goodIndex = carsIds.indexOf(action.etc.carId)
-            const caruselGoodIndex = caruselCarsIds.indexOf(action.etc.carId)
+            const goodIndexCar = carsIds.indexOf(action.etc.carId)
+            const caruselGoodIndexCar = caruselCarsIds.indexOf(action.etc.carId)
 
-            if (goodIndex !== -1) {
-                state.userCars[goodIndex].etc.push(action.etc)
+            const goodIndexFuel = state.userCars[goodIndexCar].etc
+                .map((item) => item.etcId)
+                .indexOf(action.etc.etcId)
+            const caruselGoodIndexFuel = state.carusel[caruselGoodIndexCar].etc
+                .map((item) => item.etcId)
+                .indexOf(action.etc.etcId)
+
+            if (goodIndexFuel !== -1) {
+                state.userCars[goodIndexCar].etc.splice(
+                    goodIndexFuel,
+                    1,
+                    action.etc
+                )
+            } else {
+                state.userCars[goodIndexCar].etc.push(action.etc)
             }
-            if (caruselGoodIndex !== -1) {
-                state.carusel[caruselGoodIndex].etc.push(action.etc)
+            if (caruselGoodIndexFuel !== -1) {
+                state.carusel[caruselGoodIndexCar].etc.splice(
+                    caruselGoodIndexFuel,
+                    1,
+                    action.etc
+                )
+            } else {
+                state.carusel[caruselGoodIndexCar].etc.push(action.etc)
             }
         })
         .addDefaultCase((state) => state)
