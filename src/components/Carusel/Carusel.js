@@ -14,13 +14,22 @@ import { changeCaruselAC } from '../../redux/userDataReducer'
 import { clearCarAC } from '../../redux/newCarReducer'
 import { clearFuelAC } from '../../redux/newFuelReducer'
 import { clearEtcAC } from '../../redux/newEtcReducer'
+import { сlearChangingAC } from '../../redux/changeConsumptionsReducer'
 
-function Carusel({ carusel, changeCarusel, сlearNewCar, сlearFuel, сlearEtc }) {
+function Carusel({
+    carusel,
+    changeCarusel,
+    сlearNewCar,
+    сlearFuel,
+    сlearEtc,
+    сlearChanging,
+}) {
     useEffect(() => {
         сlearNewCar()
         сlearFuel()
         сlearEtc()
-    }, [сlearEtc, сlearFuel, сlearNewCar])
+        сlearChanging()
+    }, [сlearEtc, сlearFuel, сlearNewCar, сlearChanging])
 
     // массив карт машин
     const carBlockList = []
@@ -124,6 +133,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     сlearEtc: () => {
         dispatch(clearEtcAC())
+    },
+    сlearChanging: () => {
+        dispatch(сlearChangingAC())
     },
 })
 
