@@ -1,26 +1,24 @@
 .Change {
-    /* height: 85vh; */
+    min-height: 85vh;
     width: 100vw;
     background-color: antiquewhite;
     display: grid;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     margin-bottom: 5vh;
 }
 
 .list {
-    height: 100%;
+    min-height: 85vh;
     width: 60vw;
     display: grid;
-    justify-content: center;
-    align-items: stretch;
     gap: 10px;
     padding-top: 20px;
 }
 
 .post {
-    height: 100%;
-    width: 60vw;
+    height: 140px;
+    width: 550px;
     border: 1px solid rgb(199, 201, 201);
     display: grid;
     grid-template-areas:
