@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
@@ -7,7 +8,7 @@ import s from './Graf.module.css'
 import UpperBlock from './UpperBlock/UpperBlock'
 import GrafBlock from './GrafBlock/GrafBlock'
 import BottomBlock from './BottomBlock/BottomBlock'
-import { сlearChangingAC } from '../../redux/changeConsumptionsReducer'
+import { сlearChanging } from '../../redux/changeConsumptionsReducer'
 
 function Graf({ carData, сlearChanging }) {
     useEffect(() => {
@@ -24,10 +25,10 @@ function Graf({ carData, сlearChanging }) {
     )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    сlearChanging: () => {
-        dispatch(сlearChangingAC())
-    },
-})
+// const mapDispatchToProps = (dispatch) => ({
+//     сlearChanging: () => {
+//         dispatch(сlearChanging())
+//     },
+// })
 
-export default connect(null, mapDispatchToProps)(Graf)
+export default connect(null, { сlearChanging })(Graf)

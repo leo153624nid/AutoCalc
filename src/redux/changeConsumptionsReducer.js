@@ -26,18 +26,18 @@ const changeConsumptionsReducer = createReducer(initialState, (builder) => {
 })
 
 // Сбросить данные об изменяемом обьекте
-export const сlearChangingAC = () => ({
+export const сlearChanging = () => ({
     type: CLEAR_CHANGING,
 })
 
 // Смена ID заправки
-export const changeFuelingIdAC = (fuelingId) => ({
+export const changeFuelingId = (fuelingId) => ({
     type: CHANGE_FUELING_ID,
     fuelingId: Number(fuelingId),
 })
 
 // Смена ID прочих расходов
-export const changeEtcIdAC = (etcId) => ({
+export const changeEtcId = (etcId) => ({
     type: CHANGE_ETC_ID,
     etcId: Number(etcId),
 })

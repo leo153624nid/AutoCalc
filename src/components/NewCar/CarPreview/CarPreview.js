@@ -10,7 +10,7 @@ function CarPreview({
     carName,
     distance,
     carPic,
-    addNewCar,
+    addUserCar,
     delUserCar,
     changeCarPic,
     fuelConsumptions,
@@ -56,7 +56,7 @@ function CarPreview({
 
             <div
                 onClick={() => {
-                    addNewCar({ ...newCar, carId })
+                    addUserCar({ ...newCar, carId })
                 }}
                 className={s.CarTake}
             >

@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
@@ -6,10 +7,10 @@ import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import s from './ChangeFuelAndEtc.module.css'
 import {
-    changeFuelingIdAC,
-    changeEtcIdAC,
+    changeFuelingId,
+    changeEtcId,
 } from '../../redux/changeConsumptionsReducer'
-import { delFuelCarAC, delEtcCarAC } from '../../redux/userDataReducer'
+import { delFuelCar, delEtcCar } from '../../redux/userDataReducer'
 import { getThisDate } from '../../redux/dateFunctions'
 
 function ChangeFuelAndEtc({
@@ -117,19 +118,24 @@ const mapStateToProps = (state) => ({
     changing: state.changing,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    changeFuelingId: (value) => {
-        dispatch(changeFuelingIdAC(value))
-    },
-    delFuelCar: (value1, value2) => {
-        dispatch(delFuelCarAC(value1, value2))
-    },
-    changeEtcId: (value) => {
-        dispatch(changeEtcIdAC(value))
-    },
-    delEtcCar: (value1, value2) => {
-        dispatch(delEtcCarAC(value1, value2))
-    },
-})
+// const mapDispatchToProps = (dispatch) => ({
+//     changeFuelingId: (value) => {
+//         dispatch(changeFuelingId(value))
+//     },
+//     delFuelCar: (value1, value2) => {
+//         dispatch(delFuelCar(value1, value2))
+//     },
+//     changeEtcId: (value) => {
+//         dispatch(changeEtcId(value))
+//     },
+//     delEtcCar: (value1, value2) => {
+//         dispatch(delEtcCar(value1, value2))
+//     },
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChangeFuelAndEtc)
+export default connect(mapStateToProps, {
+    changeFuelingId,
+    delFuelCar,
+    changeEtcId,
+    delEtcCar,
+})(ChangeFuelAndEtc)

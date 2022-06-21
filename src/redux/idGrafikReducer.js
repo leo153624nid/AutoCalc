@@ -11,7 +11,7 @@ const idGrafikReducer = createReducer(1, (builder) => {
         .addDefaultCase((state) => state)
 })
 
-export const changeGrafikActionCreator = (value) => ({
+export const changeGrafik = (value) => ({
     type: CHANGE_GRAFIK,
     key: value,
 })

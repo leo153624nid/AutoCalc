@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
@@ -5,16 +6,16 @@ import { NavLink } from 'react-router-dom'
 import s from './NewFuel.module.css'
 import CarDataInput from '../NewCar/CarDataInput/CarDataInput'
 import {
-    changeDateFuelAC,
-    changeDistanceFuelAC,
-    changeMarkFuelAC,
-    changePriceFuelAC,
-    changeVolumeFuelAC,
-    changeCostFuelAC,
-    changeFullFuelAC,
-    setNewFuelAC,
+    changeDateFuel,
+    changeDistanceFuel,
+    changeMarkFuel,
+    changePriceFuel,
+    changeVolumeFuel,
+    changeCostFuel,
+    changeFullFuel,
+    setNewFuel,
 } from '../../redux/newFuelReducer'
-import { addFuelCarAC } from '../../redux/userDataReducer'
+import { addFuelCar } from '../../redux/userDataReducer'
 import { getThisDate } from '../../redux/dateFunctions'
 
 const dateFueling = 'Дата заправки'
@@ -137,34 +138,44 @@ const mapStateToProps = (state) => ({
     changing: state.changing,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    addFuelCar: (value) => {
-        dispatch(addFuelCarAC(value))
-    },
-    setNewFuel: (value) => {
-        dispatch(setNewFuelAC(value))
-    },
-    changeDateFuel: (value) => {
-        dispatch(changeDateFuelAC(value))
-    },
-    changeDistanceFuel: (value) => {
-        dispatch(changeDistanceFuelAC(value))
-    },
-    changeMarkFuel: (value) => {
-        dispatch(changeMarkFuelAC(value))
-    },
-    changePriceFuel: (value) => {
-        dispatch(changePriceFuelAC(value))
-    },
-    changeVolumeFuel: (value) => {
-        dispatch(changeVolumeFuelAC(value))
-    },
-    changeCostFuel: (value) => {
-        dispatch(changeCostFuelAC(value))
-    },
-    changeFullFuel: (value) => {
-        dispatch(changeFullFuelAC(value))
-    },
-})
+// const mapDispatchToProps = (dispatch) => ({
+//     addFuelCar: (value) => {
+//         dispatch(addFuelCar(value))
+//     },
+//     setNewFuel: (value) => {
+//         dispatch(setNewFuel(value))
+//     },
+//     changeDateFuel: (value) => {
+//         dispatch(changeDateFuel(value))
+//     },
+//     changeDistanceFuel: (value) => {
+//         dispatch(changeDistanceFuel(value))
+//     },
+//     changeMarkFuel: (value) => {
+//         dispatch(changeMarkFuel(value))
+//     },
+//     changePriceFuel: (value) => {
+//         dispatch(changePriceFuel(value))
+//     },
+//     changeVolumeFuel: (value) => {
+//         dispatch(changeVolumeFuel(value))
+//     },
+//     changeCostFuel: (value) => {
+//         dispatch(changeCostFuel(value))
+//     },
+//     changeFullFuel: (value) => {
+//         dispatch(changeFullFuel(value))
+//     },
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewFuel)
+export default connect(mapStateToProps, {
+    addFuelCar,
+    setNewFuel,
+    changeDateFuel,
+    changeDistanceFuel,
+    changeMarkFuel,
+    changePriceFuel,
+    changeVolumeFuel,
+    changeCostFuel,
+    changeFullFuel,
+})(NewFuel)

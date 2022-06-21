@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -5,7 +6,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import s from './UpperBlock.module.css'
-import { changeGrafikActionCreator } from '../../../redux/idGrafikReducer'
+import { changeGrafik } from '../../../redux/idGrafikReducer'
 
 function UpperBlock({ carName, carId, changeGrafik }) {
     const wrapper = React.useRef()
@@ -85,10 +86,10 @@ function UpperBlock({ carName, carId, changeGrafik }) {
     )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    changeGrafik: (value) => {
-        dispatch(changeGrafikActionCreator(value))
-    },
-})
+// const mapDispatchToProps = (dispatch) => ({
+//     changeGrafik: (value) => {
+//         dispatch(changeGrafik(value))
+//     },
+// })
 
-export default connect(null, mapDispatchToProps)(UpperBlock)
+export default connect(null, { changeGrafik })(UpperBlock)

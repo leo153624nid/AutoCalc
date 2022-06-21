@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
@@ -5,15 +6,15 @@ import { NavLink } from 'react-router-dom'
 import s from './NewEtc.module.css'
 import CarDataInput from '../NewCar/CarDataInput/CarDataInput'
 import {
-    changeDateEtcAC,
-    changeDistanceEtcAC,
-    changeMarkEtcAC,
-    changePriceEtcAC,
-    changeVolumeEtcAC,
-    changeCostEtcAC,
-    setNewEtcAC,
+    changeDateEtc,
+    changeDistanceEtc,
+    changeMarkEtc,
+    changePriceEtc,
+    changeVolumeEtc,
+    changeCostEtc,
+    setNewEtc,
 } from '../../redux/newEtcReducer'
-import { addEtcCarAC } from '../../redux/userDataReducer'
+import { addEtcCar } from '../../redux/userDataReducer'
 import { getThisDate } from '../../redux/dateFunctions'
 
 const dateEtc = 'Дата прочих расходов'
@@ -124,31 +125,40 @@ const mapStateToProps = (state) => ({
     changing: state.changing,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    addEtcCar: (value) => {
-        dispatch(addEtcCarAC(value))
-    },
-    setNewEtc: (value) => {
-        dispatch(setNewEtcAC(value))
-    },
-    changeDateEtc: (value) => {
-        dispatch(changeDateEtcAC(value))
-    },
-    changeDistanceEtc: (value) => {
-        dispatch(changeDistanceEtcAC(value))
-    },
-    changeMarkEtc: (value) => {
-        dispatch(changeMarkEtcAC(value))
-    },
-    changePriceEtc: (value) => {
-        dispatch(changePriceEtcAC(value))
-    },
-    changeVolumeEtc: (value) => {
-        dispatch(changeVolumeEtcAC(value))
-    },
-    changeCostEtc: (value) => {
-        dispatch(changeCostEtcAC(value))
-    },
-})
+// const mapDispatchToProps = (dispatch) => ({
+//     addEtcCar: (value) => {
+//         dispatch(addEtcCar(value))
+//     },
+//     setNewEtc: (value) => {
+//         dispatch(setNewEtc(value))
+//     },
+//     changeDateEtc: (value) => {
+//         dispatch(changeDateEtc(value))
+//     },
+//     changeDistanceEtc: (value) => {
+//         dispatch(changeDistanceEtc(value))
+//     },
+//     changeMarkEtc: (value) => {
+//         dispatch(changeMarkEtc(value))
+//     },
+//     changePriceEtc: (value) => {
+//         dispatch(changePriceEtc(value))
+//     },
+//     changeVolumeEtc: (value) => {
+//         dispatch(changeVolumeEtc(value))
+//     },
+//     changeCostEtc: (value) => {
+//         dispatch(changeCostEtc(value))
+//     },
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewEtc)
+export default connect(mapStateToProps, {
+    addEtcCar,
+    setNewEtc,
+    changeDateEtc,
+    changeDistanceEtc,
+    changeMarkEtc,
+    changePriceEtc,
+    changeVolumeEtc,
+    changeCostEtc,
+})(NewEtc)

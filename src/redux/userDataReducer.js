@@ -234,44 +234,44 @@ const userDataReducer = createReducer(initialState, (builder) => {
 })
 
 // Вращение карусели карт машин влево или вправо
-export const changeCaruselAC = (direction) => ({
+export const changeCarusel = (direction) => ({
     type: CHANGE_CARUSEL,
     direction,
 })
 
 // Добавление или редактирование машины
-export const addUserCarAC = (car) => ({
+export const addUserCar = (car) => ({
     type: ADD_USER_CAR,
     car,
 })
 
 // Удаление машины
-export const delUserCarAC = (carId) => ({
+export const delUserCar = (carId) => ({
     type: DELETE_YOUR_CAR,
     carId,
 })
 
 // Добавление или редактирование заправки машины
-export const addFuelCarAC = (fuel) => ({
+export const addFuelCar = (fuel) => ({
     type: ADD_FUEL_CAR,
     fuel,
 })
 
 // Удаление заправки машины
-export const delFuelCarAC = (carId, fuelingId) => ({
+export const delFuelCar = (carId, fuelingId) => ({
     type: DELETE_YOUR_FUEL,
     carId,
     fuelingId,
 })
 
 // Добавление или редактирование прочих расходов машины
-export const addEtcCarAC = (etc) => ({
+export const addEtcCar = (etc) => ({
     type: ADD_ETC_CAR,
     etc,
 })
 
 // Удаление прочих расходов машины
-export const delEtcCarAC = (carId, etcId) => ({
+export const delEtcCar = (carId, etcId) => ({
     type: DELETE_YOUR_ETC,
     carId,
     etcId,

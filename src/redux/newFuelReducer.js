@@ -63,54 +63,54 @@ const newFuelReducer = createReducer(initialState, (builder) => {
 })
 
 // Сбросить данные новой заправки
-export const clearFuelAC = () => ({
+export const clearFuel = () => ({
     type: CLEAR_FUEL,
 })
 
 // Обновить данные новой заправки
-export const setNewFuelAC = (fuel) => ({
+export const setNewFuel = (fuel) => ({
     type: SET_NEW_FUEL,
     fuel,
 })
 
 // Смена даты заправки
-export const changeDateFuelAC = (date) => ({
+export const changeDateFuel = (date) => ({
     type: CHANGE_DATE_FUEL,
     date: getDate(date),
 })
 
 // Смена пробега заправки
-export const changeDistanceFuelAC = (distance) => ({
+export const changeDistanceFuel = (distance) => ({
     type: CHANGE_DISTANCE_FUEL,
     distance: Number(distance),
 })
 
 // Смена марки топлива
-export const changeMarkFuelAC = (mark) => ({
+export const changeMarkFuel = (mark) => ({
     type: CHANGE_MARK_FUEL,
     mark,
 })
 
 // Смена цены топлива
-export const changePriceFuelAC = (price) => ({
+export const changePriceFuel = (price) => ({
     type: CHANGE_PRICE_FUEL,
     price: Number(price),
 })
 
 // Смена обьема топлива
-export const changeVolumeFuelAC = (volume) => ({
+export const changeVolumeFuel = (volume) => ({
     type: CHANGE_VOLUME_FUEL,
     volume: Number(volume),
 })
 
 // Смена стоимости заправки
-export const changeCostFuelAC = (cost) => ({
+export const changeCostFuel = (cost) => ({
     type: CHANGE_COST_FUEL,
     cost: Number(cost),
 })
 
 // Смена значения полного бака
-export const changeFullFuelAC = (full) => ({
+export const changeFullFuel = (full) => ({
     type: CHANGE_FULL_FUEL,
     full: Number(full),
 })

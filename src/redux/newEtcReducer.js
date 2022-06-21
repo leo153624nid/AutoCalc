@@ -62,48 +62,48 @@ const newEtcReducer = createReducer(initialState, (builder) => {
 })
 
 // Сбросить данные новых прочих расходов
-export const clearEtcAC = () => ({
+export const clearEtc = () => ({
     type: CLEAR_ETC,
 })
 
 // Обновить данные новых прочих расходов
-export const setNewEtcAC = (etc) => ({
+export const setNewEtc = (etc) => ({
     type: SET_NEW_ETC,
     etc,
 })
 
 // Смена даты прочих расходов
-export const changeDateEtcAC = (date) => ({
+export const changeDateEtc = (date) => ({
     type: CHANGE_DATE_ETC,
     date: getDate(date),
 })
 
 // Смена пробега прочих расходов
-export const changeDistanceEtcAC = (distance) => ({
+export const changeDistanceEtc = (distance) => ({
     type: CHANGE_DISTANCE_ETC,
     distance: Number(distance),
 })
 
 // Смена марки прочих расходов
-export const changeMarkEtcAC = (mark) => ({
+export const changeMarkEtc = (mark) => ({
     type: CHANGE_MARK_ETC,
     mark,
 })
 
 // Смена цены прочих расходов
-export const changePriceEtcAC = (price) => ({
+export const changePriceEtc = (price) => ({
     type: CHANGE_PRICE_ETC,
     price: Number(price),
 })
 
 // Смена количества прочих расходов
-export const changeVolumeEtcAC = (volume) => ({
+export const changeVolumeEtc = (volume) => ({
     type: CHANGE_VOLUME_ETC,
     volume: Number(volume),
 })
 
 // Смена стоимости прочих расходов
-export const changeCostEtcAC = (cost) => ({
+export const changeCostEtc = (cost) => ({
     type: CHANGE_COST_ETC,
     cost: Number(cost),
 })

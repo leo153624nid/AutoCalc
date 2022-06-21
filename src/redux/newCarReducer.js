@@ -76,66 +76,66 @@ const newCarReducer = createReducer(initialState, (builder) => {
 })
 
 // Сбросить данные новой машины до initialState
-export const clearCarAC = () => ({
+export const clearCar = () => ({
     type: CLEAR_CAR,
 })
 
 // Получить данные машины для редактирования
-export const setCarAC = (car) => ({
+export const setCar = (car) => ({
     type: SET_CAR,
     car,
 })
 
 // Смена имени машины
-export const changeCarNameAC = (carName) => ({
+export const changeCarName = (carName) => ({
     type: CHANGE_CARNAME,
     carName,
 })
 
 // Смена пробега
-export const changeDistanceAC = (distance) => ({
+export const changeDistance = (distance) => ({
     type: CHANGE_DISTANCE,
     distance: Number(distance),
 })
 
 // Смена года производства
-export const changeYearProdAC = (yearProduction) => ({
+export const changeYearProd = (yearProduction) => ({
     type: CHANGE_YEARPROD,
     yearProduction: Number(yearProduction),
 })
 
 // Смена года покупки
-export const changeYearBuyAC = (yearOfBuying) => ({
+export const changeYearBuy = (yearOfBuying) => ({
     type: CHANGE_YEARBUY,
     yearOfBuying: Number(yearOfBuying),
 })
 
 // Смена стоимости покупки
-export const changeCostBuyAC = (costOfBuying) => ({
+export const changeCostBuy = (costOfBuying) => ({
     type: CHANGE_COSTBUY,
     costOfBuying: Number(costOfBuying),
 })
 
 // Смена VIN номера
-export const changeVinAC = (vin) => ({
+export const changeVin = (vin) => ({
     type: CHANGE_VIN,
     vin,
 })
 
 // Смена заметок о машине
-export const changeNotesAC = (notes) => ({
+export const changeNotes = (notes) => ({
     type: CHANGE_NOTES,
     notes,
 })
 
-// Смена картинки машины
-export const changeCarPicAC = (carPic) => ({
+// Смена картинки машины !!!!! ДОДЕЛАТЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+export const changeCarPic = (carPic) => ({
     type: CHANGE_CARPIC,
     carPic,
 })
 
 // Смена carId машины
-export const changeCarIdAC = (carId) => ({
+export const changeCarId = (carId) => ({
     type: CHANGE_CAR_ID,
     carId: Number(carId),
 })

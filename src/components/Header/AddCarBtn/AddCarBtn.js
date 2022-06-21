@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -5,11 +6,11 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import s from './AddCarBtn.module.css'
-import { clearCarAC } from '../../../redux/newCarReducer'
+import { clearCar } from '../../../redux/newCarReducer'
 
-function AddCarBtn({ сlearNewCar }) {
+function AddCarBtn({ clearCar }) {
     return (
-        <div className={s.addCarBtn} onClick={() => сlearNewCar()}>
+        <div className={s.addCarBtn} onClick={() => clearCar()}>
             <NavLink to="/add_car" className={s.btn}>
                 + Добавить авто
             </NavLink>
@@ -17,10 +18,10 @@ function AddCarBtn({ сlearNewCar }) {
     )
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    сlearNewCar: () => {
-        dispatch(clearCarAC())
-    },
-})
+// const mapDispatchToProps = (dispatch) => ({
+//     сlearNewCar: () => {
+//         dispatch(clearCar())
+//     },
+// })
 
-export default connect(null, mapDispatchToProps)(AddCarBtn)
+export default connect(null, { clearCar })(AddCarBtn)

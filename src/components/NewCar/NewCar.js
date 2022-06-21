@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
@@ -5,18 +6,18 @@ import s from './NewCar.module.css'
 import CarDataInput from './CarDataInput/CarDataInput'
 import CarPreview from './CarPreview/CarPreview'
 import {
-    setCarAC,
-    changeCarNameAC,
-    changeDistanceAC,
-    changeYearProdAC,
-    changeYearBuyAC,
-    changeCostBuyAC,
-    changeVinAC,
-    changeNotesAC,
-    changeCarPicAC,
-    changeCarIdAC,
+    setCar,
+    changeCarName,
+    changeDistance,
+    changeYearProd,
+    changeYearBuy,
+    changeCostBuy,
+    changeVin,
+    changeNotes,
+    changeCarPic,
+    changeCarId,
 } from '../../redux/newCarReducer'
-import { addUserCarAC, delUserCarAC } from '../../redux/userDataReducer'
+import { addUserCar, delUserCar } from '../../redux/userDataReducer'
 
 const name = 'Название машины'
 const dist = 'Пробег, км'
@@ -35,9 +36,9 @@ const getNewCarId = () => {
 function NewCar({
     newCar,
     yourCar,
-    addNewCar,
+    addUserCar,
     delUserCar,
-    setNewCar,
+    setCar,
     changeCarname,
     changeDistance,
     changeYearProd,
@@ -51,11 +52,11 @@ function NewCar({
     useEffect(() => {
         // Проверка на новую или редактируемую машину,
         if (newCar.carId === 0 && yourCar !== null) {
-            setNewCar(yourCar)
+            setCar(yourCar)
         } else if (newCar.carId === 0) {
             changeCarId(getNewCarId())
         }
-    }, [changeCarId, newCar.carId, setNewCar, yourCar])
+    }, [changeCarId, newCar.carId, setCar, yourCar])
 
     return (
         <div className={s.NewCar}>
@@ -102,7 +103,7 @@ function NewCar({
                     carName={newCar.carName}
                     distance={newCar.distance}
                     carPic={newCar.carPic}
-                    addNewCar={addNewCar}
+                    addUserCar={addUserCar}
                     delUserCar={delUserCar}
                     changeCarPic={changeCarPic}
                     fuelConsumptions={newCar.fuelConsumptions}
@@ -120,43 +121,56 @@ const mapStateToProps = (state) => ({
     newCar: state.newCar,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    addNewCar: (value) => {
-        dispatch(addUserCarAC(value))
-    },
-    delUserCar: (value) => {
-        dispatch(delUserCarAC(value))
-    },
-    setNewCar: (value) => {
-        dispatch(setCarAC(value))
-    },
-    changeCarname: (value) => {
-        dispatch(changeCarNameAC(value))
-    },
-    changeDistance: (value) => {
-        dispatch(changeDistanceAC(value))
-    },
-    changeYearProd: (value) => {
-        dispatch(changeYearProdAC(value))
-    },
-    changeYearBuy: (value) => {
-        dispatch(changeYearBuyAC(value))
-    },
-    changeCostBuy: (value) => {
-        dispatch(changeCostBuyAC(value))
-    },
-    changeVin: (value) => {
-        dispatch(changeVinAC(value))
-    },
-    changeNotes: (value) => {
-        dispatch(changeNotesAC(value))
-    },
-    changeCarPic: (value) => {
-        dispatch(changeCarPicAC(value))
-    },
-    changeCarId: (value) => {
-        dispatch(changeCarIdAC(value))
-    },
-})
+// const mapDispatchToProps = (dispatch) => ({
+//     addNewCar: (value) => {
+//         dispatch(addUserCar(value))
+//     },
+//     delUserCar: (value) => {
+//         dispatch(delUserCar(value))
+//     },
+//     setNewCar: (value) => {
+//         dispatch(setCar(value))
+//     },
+//     changeCarname: (value) => {
+//         dispatch(changeCarName(value))
+//     },
+//     changeDistance: (value) => {
+//         dispatch(changeDistance(value))
+//     },
+//     changeYearProd: (value) => {
+//         dispatch(changeYearProd(value))
+//     },
+//     changeYearBuy: (value) => {
+//         dispatch(changeYearBuy(value))
+//     },
+//     changeCostBuy: (value) => {
+//         dispatch(changeCostBuy(value))
+//     },
+//     changeVin: (value) => {
+//         dispatch(changeVin(value))
+//     },
+//     changeNotes: (value) => {
+//         dispatch(changeNotes(value))
+//     },
+//     changeCarPic: (value) => {
+//         dispatch(changeCarPic(value))
+//     },
+//     changeCarId: (value) => {
+//         dispatch(changeCarId(value))
+//     },
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCar)
+export default connect(mapStateToProps, {
+    addUserCar,
+    delUserCar,
+    setCar,
+    changeCarName,
+    changeDistance,
+    changeYearProd,
+    changeYearBuy,
+    changeCostBuy,
+    changeVin,
+    changeNotes,
+    changeCarPic,
+    changeCarId,
+})(NewCar)

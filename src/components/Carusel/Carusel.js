@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
@@ -10,26 +11,26 @@ import ArrowNext from './ArrowNext/ArrowNext'
 import ArrowPrev from './ArrowPrev/ArrowPrev'
 import CarBlock from './CarBlock/CarBlock'
 import AddCarBtn from '../Header/AddCarBtn/AddCarBtn'
-import { changeCaruselAC } from '../../redux/userDataReducer'
-import { clearCarAC } from '../../redux/newCarReducer'
-import { clearFuelAC } from '../../redux/newFuelReducer'
-import { clearEtcAC } from '../../redux/newEtcReducer'
-import { сlearChangingAC } from '../../redux/changeConsumptionsReducer'
+import { changeCarusel } from '../../redux/userDataReducer'
+import { clearCar } from '../../redux/newCarReducer'
+import { clearFuel } from '../../redux/newFuelReducer'
+import { clearEtc } from '../../redux/newEtcReducer'
+import { сlearChanging } from '../../redux/changeConsumptionsReducer'
 
 function Carusel({
     carusel,
     changeCarusel,
-    сlearNewCar,
-    сlearFuel,
-    сlearEtc,
+    clearCar,
+    clearFuel,
+    clearEtc,
     сlearChanging,
 }) {
     useEffect(() => {
-        сlearNewCar()
-        сlearFuel()
-        сlearEtc()
+        clearCar()
+        clearFuel()
+        clearEtc()
         сlearChanging()
-    }, [сlearEtc, сlearFuel, сlearNewCar, сlearChanging])
+    }, [clearEtc, clearFuel, clearCar, сlearChanging])
 
     // массив карт машин
     const carBlockList = []
@@ -121,22 +122,28 @@ const mapStateToProps = (state) => ({
     userData: state.userData,
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    changeCarusel: (direction) => {
-        dispatch(changeCaruselAC(direction))
-    },
-    сlearNewCar: () => {
-        dispatch(clearCarAC())
-    },
-    сlearFuel: () => {
-        dispatch(clearFuelAC())
-    },
-    сlearEtc: () => {
-        dispatch(clearEtcAC())
-    },
-    сlearChanging: () => {
-        dispatch(сlearChangingAC())
-    },
-})
+// const mapDispatchToProps = (dispatch) => ({
+//     changeCarusel: (direction) => {
+//         dispatch(changeCaruselAC(direction))
+//     },
+//     сlearNewCar: () => {
+//         dispatch(clearCarAC())
+//     },
+//     сlearFuel: () => {
+//         dispatch(clearFuelAC())
+//     },
+//     сlearEtc: () => {
+//         dispatch(clearEtcAC())
+//     },
+//     сlearChanging: () => {
+//         dispatch(сlearChangingAC())
+//     },
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Carusel)
+export default connect(mapStateToProps, {
+    changeCarusel,
+    clearCar,
+    clearFuel,
+    clearEtc,
+    сlearChanging,
+})(Carusel)
