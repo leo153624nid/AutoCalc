@@ -4,12 +4,10 @@
     background-color: antiquewhite;
     display: grid;
     justify-content: center;
-    align-items: stretch;
     margin-bottom: 5vh;
 }
 
 .list {
-    min-height: 85vh;
     width: 60vw;
     display: grid;
     gap: 10px;
