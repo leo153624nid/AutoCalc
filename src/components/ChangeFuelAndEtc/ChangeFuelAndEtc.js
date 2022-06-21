@@ -20,9 +20,9 @@ function ChangeFuelAndEtc({
     delFuelCar,
     delEtcCar,
 }) {
-    let listConsumptions = []
+    let listConsumptions = [<h3>У вас нет расходов</h3>]
 
-    if (fuelNotEtc) {
+    if (fuelNotEtc && car.fuelings.length > 0) {
         listConsumptions = car.fuelings.map((fuel, index) => (
             <li key={fuel.fuelingId} className={s.post}>
                 <div className={s.discription}>
@@ -63,7 +63,7 @@ function ChangeFuelAndEtc({
                 </div>
             </li>
         ))
-    } else {
+    } else if (car.etc.length > 0) {
         listConsumptions = car.etc.map((etc, index) => (
             <li key={etc.etcId} className={s.post}>
                 <div className={s.discription}>
