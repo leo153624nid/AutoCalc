@@ -3,11 +3,10 @@ import { createReducer } from '@reduxjs/toolkit'
 const initialState = {
     fuelingId: 0,
     etcId: 0,
-    carId: 0,
 }
 
 const CLEAR_CHANGING = 'CLEAR_CHANGING'
-const SET_NEW_CHANGING = 'SET_NEW_CHANGING'
+// const SET_NEW_CHANGING = 'SET_NEW_CHANGING'
 const CHANGE_FUELING_ID = 'CHANGE_FUELING_ID'
 const CHANGE_ETC_ID = 'CHANGE_ETC_ID'
 
@@ -16,9 +15,9 @@ const changeConsumptionsReducer = createReducer(initialState, (builder) => {
         .addCase(CLEAR_CHANGING, () => ({
             ...initialState,
         }))
-        .addCase(SET_NEW_CHANGING, (state, action) => ({
-            ...action.changing,
-        }))
+        // .addCase(SET_NEW_CHANGING, (state, action) => ({
+        //     ...action.changing,
+        // }))
         .addCase(CHANGE_FUELING_ID, (state, action) => ({
             ...state,
             fuelingId: action.fuelingId,
@@ -31,15 +30,15 @@ const changeConsumptionsReducer = createReducer(initialState, (builder) => {
 })
 
 // Сбросить данные об изменяемом обьекте
-export const clearChangingAC = () => ({
+export const сlearChangingAC = () => ({
     type: CLEAR_CHANGING,
 })
 
 // Обновить данные об изменяемом обьекте
-export const setNewChangingAC = (changing) => ({
-    type: SET_NEW_CHANGING,
-    changing,
-})
+// export const setNewChangingAC = (changing) => ({
+//     type: SET_NEW_CHANGING,
+//     changing,
+// })
 
 // Смена ID заправки
 export const changeFuelingIdAC = (fuelingId) => ({
