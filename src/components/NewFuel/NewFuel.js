@@ -13,7 +13,6 @@ import {
     changeCostFuelAC,
     changeFullFuelAC,
     setNewFuelAC,
-    clearFuelAC,
 } from '../../redux/newFuelReducer'
 import { addFuelCarAC } from '../../redux/userDataReducer'
 import { getThisDate } from '../../redux/dateFunctions'
@@ -76,7 +75,7 @@ function NewFuel({
             full: yourFull,
             distance: yourDistance,
         })
-    }, []) // !!!! возможно надо пустой []
+    }, [])
 
     return (
         <div className={s.NewFuel}>
@@ -120,7 +119,7 @@ function NewFuel({
 
             <div className={s.CarTake}>
                 <NavLink
-                    to="/"
+                    to={`/graf/${car.carId}`}
                     className={s.btn}
                     onClick={() => {
                         addFuelCar(newFuel)
@@ -141,9 +140,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     addFuelCar: (value) => {
         dispatch(addFuelCarAC(value))
-    },
-    сlearFuel: () => {
-        dispatch(clearFuelAC())
     },
     setNewFuel: (value) => {
         dispatch(setNewFuelAC(value))
