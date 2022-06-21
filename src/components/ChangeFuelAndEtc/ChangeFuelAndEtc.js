@@ -9,9 +9,17 @@ import {
     changeFuelingIdAC,
     changeEtcIdAC,
 } from '../../redux/changeConsumptionsReducer'
+import { delFuelCarAC, delEtcCarAC } from '../../redux/userDataReducer'
 import { getThisDate } from '../../redux/dateFunctions'
 
-function ChangeFuelAndEtc({ car, changeFuelingId, changeEtcId, fuelNotEtc }) {
+function ChangeFuelAndEtc({
+    car,
+    changeFuelingId,
+    changeEtcId,
+    fuelNotEtc,
+    delFuelCar,
+    delEtcCar,
+}) {
     let listConsumptions = []
 
     if (fuelNotEtc) {
@@ -23,9 +31,11 @@ function ChangeFuelAndEtc({ car, changeFuelingId, changeEtcId, fuelNotEtc }) {
                         <span> {`${getThisDate(fuel.date)}`} </span>
                     </div>
                     <div>
-                        <span> {fuel.distance} км </span>
+                        <span> {fuel.mark} </span>
                         <span> ............... </span>
                         <span> {fuel.cost} &#8381; </span>
+                        <span> ............... </span>
+                        <span> {fuel.distance} км </span>
                     </div>
                 </div>
                 <div
@@ -38,7 +48,12 @@ function ChangeFuelAndEtc({ car, changeFuelingId, changeEtcId, fuelNotEtc }) {
                         Редактировать
                     </NavLink>
                 </div>
-                <div className={s.DelTake}>
+                <div
+                    className={s.DelTake}
+                    onClick={() => {
+                        delFuelCar(car.carId, fuel.fuelingId)
+                    }}
+                >
                     <NavLink
                         to={`/change_fuel_list/${car.carId}`}
                         className={s.btn}
@@ -57,9 +72,11 @@ function ChangeFuelAndEtc({ car, changeFuelingId, changeEtcId, fuelNotEtc }) {
                         <span> {`${getThisDate(etc.date)}`} </span>
                     </div>
                     <div>
-                        <span> {etc.distance} км </span>
+                        <span> {etc.mark} </span>
                         <span> ............... </span>
                         <span> {etc.cost} &#8381; </span>
+                        <span> ............... </span>
+                        <span> {etc.distance} км </span>
                     </div>
                 </div>
                 <div
@@ -72,7 +89,12 @@ function ChangeFuelAndEtc({ car, changeFuelingId, changeEtcId, fuelNotEtc }) {
                         Редактировать
                     </NavLink>
                 </div>
-                <div className={s.DelTake}>
+                <div
+                    className={s.DelTake}
+                    onClick={() => {
+                        delEtcCar(car.carId, etc.etcId)
+                    }}
+                >
                     <NavLink
                         to={`/change_etc_list/${car.carId}`}
                         className={s.btn}
@@ -99,8 +121,14 @@ const mapDispatchToProps = (dispatch) => ({
     changeFuelingId: (value) => {
         dispatch(changeFuelingIdAC(value))
     },
+    delFuelCar: (value1, value2) => {
+        dispatch(delFuelCarAC(value1, value2))
+    },
     changeEtcId: (value) => {
         dispatch(changeEtcIdAC(value))
+    },
+    delEtcCar: (value1, value2) => {
+        dispatch(delEtcCarAC(value1, value2))
     },
 })
 
