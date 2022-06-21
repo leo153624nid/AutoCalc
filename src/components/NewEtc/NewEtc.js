@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import s from './NewEtc.module.css'
@@ -11,9 +11,10 @@ import {
     changePriceEtcAC,
     changeVolumeEtcAC,
     changeCostEtcAC,
-    // changeCarIdEtcAC,
+    setNewEtcAC,
 } from '../../redux/newEtcReducer'
 import { addEtcCarAC } from '../../redux/userDataReducer'
+import { getThisDate } from '../../redux/dateFunctions'
 
 const dateEtc = 'Дата прочих расходов'
 const dist = 'Текущий пробег, км'
@@ -22,27 +23,58 @@ const priceEtc = 'Цена за шт, руб'
 const volumeEtc = 'Количество, шт'
 const costEtc = 'Стоимость, руб'
 
-// Перевод даты в ДД.ММ.ГГГГ
-const getNowDate = (timestamp) => new Date(timestamp)
-
 function NewEtc({
     newEtc,
-    carId,
+    car,
+    etcId,
+    date,
     addEtcCar,
+    setNewEtc,
     changeDateEtc,
     changeDistanceEtc,
     changeMarkEtc,
     changePriceEtc,
     changeVolumeEtc,
     changeCostEtc,
-    // changeCarIdEtc,
+    changing,
 }) {
+    const yourEtcId = etcId !== null ? etcId : changing.etcId
+    const yourDate = date !== null ? date : changing.etcId
+    let yourMark = ''
+    let yourPrice = 0
+    let yourVolume = 0
+    let yourCost = 0
+    let yourDistance = 0
+
+    const yourEtc = car.etc.find((item) => item.etcId === changing.etcId)
+
+    if (etcId === null && yourEtc !== undefined) {
+        yourMark = yourEtc.mark
+        yourPrice = yourEtc.price
+        yourVolume = yourEtc.volume
+        yourCost = yourEtc.cost
+        yourDistance = yourEtc.distance
+    }
+
+    useEffect(() => {
+        setNewEtc({
+            etcId: yourEtcId,
+            date: yourDate,
+            carId: car.carId,
+            mark: yourMark,
+            price: yourPrice,
+            volume: yourVolume,
+            cost: yourCost,
+            distance: yourDistance,
+        })
+    }, [])
+
     return (
         <div className={s.NewEtc}>
             <div className={s.form}>
                 <CarDataInput
                     label={dateEtc}
-                    value={getNowDate(newEtc.date)}
+                    value={getThisDate(newEtc.date)}
                     change={changeDateEtc}
                 />
                 <CarDataInput
@@ -74,10 +106,10 @@ function NewEtc({
 
             <div className={s.CarTake}>
                 <NavLink
-                    to="/"
+                    to={`/graf/${car.carId}`}
                     className={s.btn}
                     onClick={() => {
-                        addEtcCar({ ...newEtc, carId })
+                        addEtcCar(newEtc)
                     }}
                 >
                     Подтвердить
@@ -89,11 +121,15 @@ function NewEtc({
 
 const mapStateToProps = (state) => ({
     newEtc: state.newEtc,
+    changing: state.changing,
 })
 
 const mapDispatchToProps = (dispatch) => ({
     addEtcCar: (value) => {
         dispatch(addEtcCarAC(value))
+    },
+    setNewEtc: (value) => {
+        dispatch(setNewEtcAC(value))
     },
     changeDateEtc: (value) => {
         dispatch(changeDateEtcAC(value))
@@ -113,9 +149,6 @@ const mapDispatchToProps = (dispatch) => ({
     changeCostEtc: (value) => {
         dispatch(changeCostEtcAC(value))
     },
-    // changeCarIdEtc: (value) => {
-    //     dispatch(changeCarIdEtcAC(value))
-    // },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewEtc)
