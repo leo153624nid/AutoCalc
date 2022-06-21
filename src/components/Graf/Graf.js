@@ -1,13 +1,18 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 import s from './Graf.module.css'
 import UpperBlock from './UpperBlock/UpperBlock'
 import GrafBlock from './GrafBlock/GrafBlock'
 import BottomBlock from './BottomBlock/BottomBlock'
+import { сlearChangingAC } from '../../redux/changeConsumptionsReducer'
 
-function Graf({ carData }) {
+function Graf({ carData, clearChanging }) {
+    useEffect(() => {
+        clearChanging()
+    }, [clearChanging])
     return (
         <div className={s.Graf}>
             <UpperBlock carName={carData.carName} carId={carData.carId} />
@@ -19,4 +24,10 @@ function Graf({ carData }) {
     )
 }
 
-export default Graf
+const mapDispatchToProps = (dispatch) => ({
+    сlearChanging: () => {
+        dispatch(сlearChangingAC())
+    },
+})
+
+export default connect(null, mapDispatchToProps)(Graf)
