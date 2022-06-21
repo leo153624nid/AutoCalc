@@ -16,7 +16,7 @@ import {
     changeCarPicAC,
     changeCarIdAC,
 } from '../../redux/newCarReducer'
-import { addUserCarAC } from '../../redux/userDataReducer'
+import { addUserCarAC, delUserCarAC } from '../../redux/userDataReducer'
 
 const name = 'Название машины'
 const dist = 'Пробег, км'
@@ -36,6 +36,7 @@ function NewCar({
     newCar,
     yourCar,
     addNewCar,
+    delUserCar,
     setNewCar,
     changeCarname,
     changeDistance,
@@ -102,11 +103,13 @@ function NewCar({
                     distance={newCar.distance}
                     carPic={newCar.carPic}
                     addNewCar={addNewCar}
+                    delUserCar={delUserCar}
                     changeCarPic={changeCarPic}
                     fuelConsumptions={newCar.fuelConsumptions}
                     allMonth={newCar.allMonth}
                     carId={newCar.carId}
                     newCar={newCar}
+                    yourCar={yourCar}
                 />
             </div>
         </div>
@@ -120,6 +123,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     addNewCar: (value) => {
         dispatch(addUserCarAC(value))
+    },
+    delUserCar: (value) => {
+        dispatch(delUserCarAC(value))
     },
     setNewCar: (value) => {
         dispatch(setCarAC(value))

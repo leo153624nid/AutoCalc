@@ -69,6 +69,10 @@
     align-items: flex-start;
 }
 
+.hide {
+    display: none;
+}
+
 .btn {
     width: 22vw;
     height: 5vh;

@@ -11,10 +11,12 @@ function CarPreview({
     distance,
     carPic,
     addNewCar,
+    delUserCar,
     changeCarPic,
     fuelConsumptions,
     allMonth,
     newCar,
+    yourCar,
 }) {
     return (
         <div className={s.CarPreview}>
@@ -60,6 +62,16 @@ function CarPreview({
             >
                 <NavLink to="/" className={s.btn}>
                     Подтвердить
+                </NavLink>
+            </div>
+            <div
+                onClick={() => {
+                    delUserCar(carId)
+                }}
+                className={yourCar !== null ? s.CarTake : s.hide}
+            >
+                <NavLink to="/" className={s.btn}>
+                    Удалить
                 </NavLink>
             </div>
         </div>
