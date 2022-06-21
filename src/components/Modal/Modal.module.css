@@ -53,13 +53,13 @@
     z-index: 100;
 }
 
-.hide {
-    opacity: 0;
+.backdropHide {
+    display: none;
     animation: hideBackdrop 0.3s ease-out;
 }
 
-.hide .Modal {
-    opacity: 0;
+.ModalHide {
+    display: none;
     transform: translateY(500px);
     animation: hideModal 0.3s ease-out;
 }
