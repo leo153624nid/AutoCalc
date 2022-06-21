@@ -9,10 +9,10 @@ import GrafBlock from './GrafBlock/GrafBlock'
 import BottomBlock from './BottomBlock/BottomBlock'
 import { сlearChangingAC } from '../../redux/changeConsumptionsReducer'
 
-function Graf({ carData, clearChanging }) {
+function Graf({ carData, сlearChanging }) {
     useEffect(() => {
-        clearChanging()
-    }, [clearChanging])
+        сlearChanging()
+    }, [сlearChanging])
     return (
         <div className={s.Graf}>
             <UpperBlock carName={carData.carName} carId={carData.carId} />
