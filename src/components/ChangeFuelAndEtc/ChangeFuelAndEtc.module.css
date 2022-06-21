@@ -1,0 +1,65 @@
+.Change {
+    /* height: 85vh; */
+    width: 100vw;
+    background-color: antiquewhite;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5vh;
+}
+
+.list {
+    height: 100%;
+    width: 60vw;
+    display: grid;
+    justify-content: center;
+    align-items: stretch;
+    gap: 10px;
+    padding-top: 20px;
+}
+
+.post {
+    height: 100%;
+    width: 60vw;
+    border: 1px solid rgb(199, 201, 201);
+    display: grid;
+    grid-template-areas:
+        'a a a'
+        'b c d';
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+
+.discription {
+    grid-area: a;
+}
+
+.ChangeTake {
+    grid-area: b;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.DelTake {
+    grid-area: d;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.btn {
+    width: 150px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(199, 201, 201);
+    border-radius: 6px;
+    text-decoration: none;
+    margin: 5px 0 5px 0;
+}
