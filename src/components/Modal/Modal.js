@@ -19,14 +19,13 @@ function Modal({ title, body }) {
         }, 300)
     }
 
-    const backdropHide = closingModal ? 'hide' : ''
     return (
         <div
-            className={`${s.backdrop} ${`s.${backdropHide}`}`}
+            className={closingModal ? s.backdropHide : s.backdrop}
             onClick={handleCloseModal}
         >
             <div
-                className={s.Modal}
+                className={closingModal ? s.ModalHide : s.Modal}
                 onClick={(e) => {
                     e.stopPropagation()
                 }}
