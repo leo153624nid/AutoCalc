@@ -520,24 +520,6 @@
             "notes": "",
             "fuelings": [],
             "etc": []
-        },
-        {
-            "carId": 7,
-            "carName": "NISSAN Terrano 2.0",
-            "carPic": "",
-            "distance": 0,
-            "fuelConsumptions": 0,
-            "etcConsumptions": 0,
-            "allMonth": 0,
-            "costOneKm": 0,
-            "costOneDay": 0,
-            "yearProduction": 2011,
-            "yearOfBuying": 2011,
-            "costOfBuying": 0,
-            "vin": "",
-            "notes": "",
-            "fuelings": [],
-            "etc": []
         }
     ],
     "carusel": ["userCars[0]", "userCars[1]", "userCars[2]"],
