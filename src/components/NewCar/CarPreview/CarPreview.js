@@ -7,14 +7,9 @@ import s from './CarPreview.module.css'
 
 function CarPreview({
     carId,
-    carName,
-    distance,
-    carPic,
     addUserCar,
     delUserCar,
     changeCarPic,
-    fuelConsumptions,
-    allMonth,
     newCar,
     yourCar,
 }) {
@@ -24,15 +19,15 @@ function CarPreview({
                 onClick={() => changeCarPic() /* Доделать */}
                 className={s.carPic}
             >
-                <img src={carPic} alt="Добавить фото машины" />
+                <img src={newCar.carPic} alt="Добавить фото машины" />
             </div>
 
             <div className={s.CarName}>
                 <span className={s.pad}>
-                    <b>{carName}</b>
+                    <b>{newCar.carName}</b>
                 </span>
                 <span className={s.pad}>
-                    Пробег <span>{distance}</span> км
+                    Пробег <span>{newCar.distance}</span> км
                 </span>
             </div>
 
@@ -41,7 +36,7 @@ function CarPreview({
                     <span className={s.pad}>Расход топлива</span>
                     <span className={s.pad}>
                         {' '}
-                        <span>{fuelConsumptions}</span> л/100 км
+                        <span>{newCar.fuelConsumptions}</span> л/100 км
                     </span>
                 </div>
 
@@ -49,7 +44,7 @@ function CarPreview({
                     <span className={s.pad}>Содержание</span>
                     <span className={s.pad}>
                         {' '}
-                        <span>{allMonth}</span> &#8381;/мес
+                        <span>{newCar.allMonth}</span> &#8381;/мес
                     </span>
                 </div>
             </div>

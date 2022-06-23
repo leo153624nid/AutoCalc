@@ -6,15 +6,15 @@ import { Route, Routes } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
-import Graf from '../Graf/Graf'
+import GrafContainer from '../Graf/GrafContainer'
 import s from './App.module.css'
-import Carusel from '../Carusel/Carusel'
-import NewCar from '../NewCar/NewCar'
-import NewFuel from '../NewFuel/NewFuel'
-import NewEtc from '../NewEtc/NewEtc'
+import CaruselContainer from '../Carusel/CaruselContainer'
+import NewCarContainer from '../NewCar/NewCarContainer'
+import NewFuelContainer from '../NewFuel/NewFuelContainer'
+import NewEtcContainer from '../NewEtc/NewEtcContainer'
+import ChangeFuelAndEtc from '../ChangeFuelAndEtc/ChangeFuelAndEtc'
 import ModalProvider from '../../contexts/ModalContext/ModalContextProvider'
 import { getNowDateMS } from '../../redux/dateFunctions'
-import ChangeFuelAndEtc from '../ChangeFuelAndEtc/ChangeFuelAndEtc'
 
 function App(props) {
     // Весь Массив машин пользователя
@@ -27,7 +27,7 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/graf/${car.carId}`}
-            element={<Graf carData={car} key={car.carId} />}
+            element={<GrafContainer carData={car} key={car.carId} />}
         />
     ))
 
@@ -35,7 +35,7 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/change_car/${car.carId}`}
-            element={<NewCar yourCar={car} />}
+            element={<NewCarContainer yourCar={car} />}
         />
     ))
 
@@ -44,7 +44,7 @@ function App(props) {
             key={car.carId}
             path={`/add_fuel/${car.carId}`}
             element={
-                <NewFuel
+                <NewFuelContainer
                     car={car}
                     fuelingId={getNowDateMS()}
                     date={getNowDateMS()}
@@ -65,7 +65,9 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/change_fuel/${car.carId}`}
-            element={<NewFuel car={car} fuelingId={null} date={null} />}
+            element={
+                <NewFuelContainer car={car} fuelingId={null} date={null} />
+            }
         />
     ))
 
@@ -74,7 +76,7 @@ function App(props) {
             key={car.carId}
             path={`/add_etc/${car.carId}`}
             element={
-                <NewEtc
+                <NewEtcContainer
                     car={car}
                     etcId={getNowDateMS()}
                     date={getNowDateMS()}
@@ -95,7 +97,7 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/change_etc/${car.carId}`}
-            element={<NewEtc car={car} etcId={null} date={null} />}
+            element={<NewEtcContainer car={car} etcId={null} date={null} />}
         />
     ))
 
@@ -105,10 +107,11 @@ function App(props) {
                 <Header />
 
                 <Routes>
-                    <Route path="/" element={<Carusel />} />
+                    <Route path="/" element={<CaruselContainer />} />
+
                     <Route
                         path="/add_car"
-                        element={<NewCar yourCar={null} />}
+                        element={<NewCarContainer yourCar={null} />}
                     />
                     {carChangeList}
 
@@ -122,7 +125,9 @@ function App(props) {
 
                     <Route
                         path="/graf"
-                        element={<Graf carData={noCar} key={noCar.carId} />}
+                        element={
+                            <GrafContainer carData={noCar} key={noCar.carId} />
+                        }
                     />
                     {grafList}
                 </Routes>

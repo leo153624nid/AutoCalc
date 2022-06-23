@@ -118,21 +118,6 @@ const mapStateToProps = (state) => ({
     changing: state.changing,
 })
 
-// const mapDispatchToProps = (dispatch) => ({
-//     changeFuelingId: (value) => {
-//         dispatch(changeFuelingId(value))
-//     },
-//     delFuelCar: (value1, value2) => {
-//         dispatch(delFuelCar(value1, value2))
-//     },
-//     changeEtcId: (value) => {
-//         dispatch(changeEtcId(value))
-//     },
-//     delEtcCar: (value1, value2) => {
-//         dispatch(delEtcCar(value1, value2))
-//     },
-// })
-
 export default connect(mapStateToProps, {
     changeFuelingId,
     delFuelCar,

@@ -1,23 +1,9 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import s from './NewCar.module.css'
 import CarDataInput from './CarDataInput/CarDataInput'
 import CarPreview from './CarPreview/CarPreview'
-import {
-    setCar,
-    changeCarName,
-    changeDistance,
-    changeYearProd,
-    changeYearBuy,
-    changeCostBuy,
-    changeVin,
-    changeNotes,
-    changeCarPic,
-    changeCarId,
-} from '../../redux/newCarReducer'
-import { addUserCar, delUserCar } from '../../redux/userDataReducer'
 
 const name = 'Название машины'
 const dist = 'Пробег, км'
@@ -27,19 +13,12 @@ const costOfBuy = 'Стоимость покупки, руб'
 const vinNumber = 'VIN номер'
 const note = 'Заметки'
 
-// Создание нового carId по текущей дате в мс
-const getNewCarId = () => {
-    const now = new Date()
-    return now.getTime()
-}
-
 function NewCar({
     newCar,
     yourCar,
     addUserCar,
     delUserCar,
-    setCar,
-    changeCarname,
+    changeCarName,
     changeDistance,
     changeYearProd,
     changeYearBuy,
@@ -47,24 +26,14 @@ function NewCar({
     changeVin,
     changeNotes,
     changeCarPic,
-    changeCarId,
 }) {
-    useEffect(() => {
-        // Проверка на новую или редактируемую машину,
-        if (newCar.carId === 0 && yourCar !== null) {
-            setCar(yourCar)
-        } else if (newCar.carId === 0) {
-            changeCarId(getNewCarId())
-        }
-    }, [changeCarId, newCar.carId, setCar, yourCar])
-
     return (
         <div className={s.NewCar}>
             <div className={s.form}>
                 <CarDataInput
                     label={name}
                     value={newCar.carName}
-                    change={changeCarname}
+                    change={changeCarName}
                 />
                 <CarDataInput
                     label={dist}
@@ -100,77 +69,16 @@ function NewCar({
 
             <div className={s.carPrev}>
                 <CarPreview
-                    carName={newCar.carName}
-                    distance={newCar.distance}
-                    carPic={newCar.carPic}
+                    newCar={newCar}
+                    yourCar={yourCar}
+                    carId={newCar.carId}
                     addUserCar={addUserCar}
                     delUserCar={delUserCar}
                     changeCarPic={changeCarPic}
-                    fuelConsumptions={newCar.fuelConsumptions}
-                    allMonth={newCar.allMonth}
-                    carId={newCar.carId}
-                    newCar={newCar}
-                    yourCar={yourCar}
                 />
             </div>
         </div>
     )
 }
 
-const mapStateToProps = (state) => ({
-    newCar: state.newCar,
-})
-
-// const mapDispatchToProps = (dispatch) => ({
-//     addNewCar: (value) => {
-//         dispatch(addUserCar(value))
-//     },
-//     delUserCar: (value) => {
-//         dispatch(delUserCar(value))
-//     },
-//     setNewCar: (value) => {
-//         dispatch(setCar(value))
-//     },
-//     changeCarname: (value) => {
-//         dispatch(changeCarName(value))
-//     },
-//     changeDistance: (value) => {
-//         dispatch(changeDistance(value))
-//     },
-//     changeYearProd: (value) => {
-//         dispatch(changeYearProd(value))
-//     },
-//     changeYearBuy: (value) => {
-//         dispatch(changeYearBuy(value))
-//     },
-//     changeCostBuy: (value) => {
-//         dispatch(changeCostBuy(value))
-//     },
-//     changeVin: (value) => {
-//         dispatch(changeVin(value))
-//     },
-//     changeNotes: (value) => {
-//         dispatch(changeNotes(value))
-//     },
-//     changeCarPic: (value) => {
-//         dispatch(changeCarPic(value))
-//     },
-//     changeCarId: (value) => {
-//         dispatch(changeCarId(value))
-//     },
-// })
-
-export default connect(mapStateToProps, {
-    addUserCar,
-    delUserCar,
-    setCar,
-    changeCarName,
-    changeDistance,
-    changeYearProd,
-    changeYearBuy,
-    changeCostBuy,
-    changeVin,
-    changeNotes,
-    changeCarPic,
-    changeCarId,
-})(NewCar)
+export default NewCar

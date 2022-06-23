@@ -1,37 +1,14 @@
-/* eslint-disable no-shadow */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable prefer-destructuring */
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import s from './Carusel.module.css'
 import ArrowNext from './ArrowNext/ArrowNext'
 import ArrowPrev from './ArrowPrev/ArrowPrev'
 import CarBlock from './CarBlock/CarBlock'
 import AddCarBtn from '../Header/AddCarBtn/AddCarBtn'
-import { changeCarusel } from '../../redux/userDataReducer'
-import { clearCar } from '../../redux/newCarReducer'
-import { clearFuel } from '../../redux/newFuelReducer'
-import { clearEtc } from '../../redux/newEtcReducer'
-import { сlearChanging } from '../../redux/changeConsumptionsReducer'
 
-function Carusel({
-    carusel,
-    changeCarusel,
-    clearCar,
-    clearFuel,
-    clearEtc,
-    сlearChanging,
-}) {
-    useEffect(() => {
-        clearCar()
-        clearFuel()
-        clearEtc()
-        сlearChanging()
-    }, [clearEtc, clearFuel, clearCar, сlearChanging])
-
+function Carusel({ carusel, changeCarusel }) {
     // массив карт машин
     const carBlockList = []
 
@@ -117,33 +94,4 @@ function Carusel({
     )
 }
 
-const mapStateToProps = (state) => ({
-    carusel: state.userData.carusel,
-    userData: state.userData,
-})
-
-// const mapDispatchToProps = (dispatch) => ({
-//     changeCarusel: (direction) => {
-//         dispatch(changeCaruselAC(direction))
-//     },
-//     сlearNewCar: () => {
-//         dispatch(clearCarAC())
-//     },
-//     сlearFuel: () => {
-//         dispatch(clearFuelAC())
-//     },
-//     сlearEtc: () => {
-//         dispatch(clearEtcAC())
-//     },
-//     сlearChanging: () => {
-//         dispatch(сlearChangingAC())
-//     },
-// })
-
-export default connect(mapStateToProps, {
-    changeCarusel,
-    clearCar,
-    clearFuel,
-    clearEtc,
-    сlearChanging,
-})(Carusel)
+export default Carusel
