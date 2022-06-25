@@ -1,14 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit'
-import userData from '../database/CurrentUser.json'
+// import userData from '../database/CurrentUser.json'
 
-const initialState = userData
-// Добавление в начальный state массива машин пользователя для карусели
-initialState.carusel = [
-    userData.userCars[0],
-    userData.userCars[1],
-    userData.userCars[2],
-]
+const initialState = null
 
+const SET_USER_DATA = 'SET_USER_DATA'
 const CHANGE_CARUSEL = 'CHANGE_CARUSEL'
 const ADD_USER_CAR = 'ADD_USER_CAR'
 const ADD_FUEL_CAR = 'ADD_FUEL_CAR'
@@ -19,6 +14,15 @@ const DELETE_YOUR_ETC = 'DELETE_YOUR_ETC'
 
 const userDataReducer = createReducer(initialState, (builder) => {
     builder
+        .addCase(SET_USER_DATA, (state, action) => ({
+            ...state,
+            ...action.userData,
+            carusel: [
+                action.userData.userCars[0],
+                action.userData.userCars[1],
+                action.userData.userCars[2],
+            ],
+        }))
         .addCase(CHANGE_CARUSEL, (state, action) => {
             // Весь массив машин пользователя
             const cars = state.userCars
@@ -231,6 +235,12 @@ const userDataReducer = createReducer(initialState, (builder) => {
             }
         })
         .addDefaultCase((state) => state)
+})
+
+// Установка данных пользователя
+export const setUserData = (userData) => ({
+    type: SET_USER_DATA,
+    userData,
 })
 
 // Вращение карусели карт машин влево или вправо
