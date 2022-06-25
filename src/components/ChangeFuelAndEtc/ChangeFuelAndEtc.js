@@ -2,27 +2,50 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import s from './ChangeFuelAndEtc.module.css'
 import {
     changeFuelingId,
     changeEtcId,
+    changeCurrentPage,
 } from '../../redux/changeConsumptionsReducer'
 import { delFuelCar, delEtcCar } from '../../redux/userDataReducer'
 import { getThisDate } from '../../redux/dateFunctions'
 
 function ChangeFuelAndEtc({
     car,
+    currentPage,
     changeFuelingId,
     changeEtcId,
     fuelNotEtc,
     delFuelCar,
     delEtcCar,
+    changeCurrentPage,
 }) {
-    let listConsumptions = [<h3>У вас нет расходов</h3>]
+    const pageSize = 4
+    const totalPagesCount = fuelNotEtc
+        ? car.fuelings.length / pageSize
+        : car.etc.length / pageSize
 
+    // Устанавливаем последнюю страничку по умолчанию
+    useEffect(() => {
+        changeCurrentPage(totalPagesCount)
+    }, [totalPagesCount])
+
+    let listConsumptions = [<h3>У вас нет расходов</h3>]
+    const pages = []
+
+    for (let i = 1; i <= totalPagesCount; i += 1) {
+        pages.push(i)
+    }
+
+    const pagesList = pages.map((p) => (
+        <span className={currentPage === p && s.selectedPage}> {p} </span>
+    ))
+
+    // Если редактируем fuel расходы
     if (fuelNotEtc && car.fuelings.length > 0) {
         listConsumptions = car.fuelings.map((fuel, index) => (
             <li key={fuel.fuelingId} className={s.post}>
@@ -65,6 +88,7 @@ function ChangeFuelAndEtc({
             </li>
         ))
     } else if (car.etc.length > 0) {
+        // Если редактируем etc расходы
         listConsumptions = car.etc.map((etc, index) => (
             <li key={etc.etcId} className={s.post}>
                 <div className={s.discription}>
@@ -109,13 +133,20 @@ function ChangeFuelAndEtc({
 
     return (
         <div className={s.Change}>
+            <div className={s.btnBack}>
+                <NavLink to={`/graf/${car.carId}`} className={s.btn}>
+                    К графикам
+                </NavLink>
+            </div>
             <ol className={s.list}>{listConsumptions}</ol>
+            <div>{pagesList}</div>
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
-    changing: state.changing,
+    // changing: state.changing,
+    currentPage: state.changing.currentPage,
 })
 
 export default connect(mapStateToProps, {
@@ -123,4 +154,5 @@ export default connect(mapStateToProps, {
     delFuelCar,
     changeEtcId,
     delEtcCar,
+    changeCurrentPage,
 })(ChangeFuelAndEtc)
