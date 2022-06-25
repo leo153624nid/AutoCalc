@@ -29,7 +29,7 @@ function App(props) {
                     props.setUserData(response.data)
                 })
         }
-    }, [])
+    }, [props.state.userData])
 
     // Если данных пользователя нет то рендерится усеченный вариант
     if (!props.state.userData) {
