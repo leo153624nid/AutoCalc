@@ -14,13 +14,9 @@ function Carusel({ carusel, changeCarusel }) {
 
     // функция получает массив машин для карусели и наполняет массив карт 1...3 картами машин
     function caruselInit() {
-        if (
-            carusel[0] === undefined &&
-            carusel[1] === undefined &&
-            carusel[2] === undefined
-        ) {
+        if (!carusel) {
             carBlockList.push(
-                <div className={s.CarBlock}>
+                <div className={s.CarBlock} key="0">
                     <div className={s.noCar}>У вас нет машин</div>
                     <AddCarBtn />
                 </div>
