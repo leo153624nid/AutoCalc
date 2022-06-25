@@ -3,11 +3,13 @@ import { createReducer } from '@reduxjs/toolkit'
 const initialState = {
     fuelingId: 0,
     etcId: 0,
+    currentPage: 1,
 }
 
 const CLEAR_CHANGING = 'CLEAR_CHANGING'
 const CHANGE_FUELING_ID = 'CHANGE_FUELING_ID'
 const CHANGE_ETC_ID = 'CHANGE_ETC_ID'
+const CHANGE_CURRENT_PAGE = 'CHANGE_CURRENT_PAGE'
 
 const changeConsumptionsReducer = createReducer(initialState, (builder) => {
     builder
@@ -21,6 +23,10 @@ const changeConsumptionsReducer = createReducer(initialState, (builder) => {
         .addCase(CHANGE_ETC_ID, (state, action) => ({
             ...state,
             etcId: action.etcId,
+        }))
+        .addCase(CHANGE_CURRENT_PAGE, (state, action) => ({
+            ...state,
+            page: action.page,
         }))
         .addDefaultCase((state) => state)
 })
@@ -40,6 +46,12 @@ export const changeFuelingId = (fuelingId) => ({
 export const changeEtcId = (etcId) => ({
     type: CHANGE_ETC_ID,
     etcId: Number(etcId),
+})
+
+// Смена текущей странички отображения расходов
+export const changeCurrentPage = (page) => ({
+    type: CHANGE_ETC_ID,
+    page: Number(page),
 })
 
 export default changeConsumptionsReducer
