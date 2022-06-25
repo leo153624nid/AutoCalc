@@ -10,7 +10,7 @@ import { сlearChanging } from '../../redux/changeConsumptionsReducer'
 import Carusel from './Carusel'
 
 function CaruselContainer({
-    carusel,
+    userData,
     changeCarusel,
     clearCar,
     clearFuel,
@@ -22,14 +22,17 @@ function CaruselContainer({
         clearFuel()
         clearEtc()
         сlearChanging()
-    }, [clearEtc, clearFuel, clearCar, сlearChanging])
+    }, [])
 
-    return <Carusel carusel={carusel} changeCarusel={changeCarusel} />
+    if (!userData) {
+        return <Carusel carusel={null} changeCarusel={changeCarusel} />
+    }
+
+    return <Carusel carusel={userData.carusel} changeCarusel={changeCarusel} />
 }
 
 const mapStateToProps = (state) => ({
-    carusel: state.userData.carusel,
-    // userData: state.userData,
+    userData: state.userData,
 })
 
 export default connect(mapStateToProps, {
