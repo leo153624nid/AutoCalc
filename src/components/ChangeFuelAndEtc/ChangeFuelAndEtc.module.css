@@ -4,16 +4,24 @@
     background-color: antiquewhite;
     display: grid;
     justify-content: center;
+    align-items: center;
     margin-bottom: 5vh;
+}
+
+.btnBack {
+    display: grid;
+    justify-content: center;
+    align-items: center;
 }
 
 .list {
     width: 60vw;
     display: grid;
     gap: 10px;
-    padding-top: 20px;
     justify-content: center;
     align-items: center;
+    padding-inline-start: 0;
+    margin: 0;
 }
 
 .post {
@@ -60,4 +68,8 @@
     border-radius: 6px;
     text-decoration: none;
     margin: 5px 0 5px 0;
+}
+
+.selectedPage {
+    font-weight: bold;
 }
