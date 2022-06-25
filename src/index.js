@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { initializeApp } from 'firebase/app'
-import { getDatabase, ref, onValue } from 'firebase/database'
+// import { getDatabase, ref, onValue } from 'firebase/database'
+import { getDatabase } from 'firebase/database'
 // import {} from 'https://www.gstatic.com/firebasejs/9.8.4/firebase-database'
 import './index.css'
 import { BrowserRouter as Router } from 'react-router-dom'
@@ -21,6 +22,7 @@ root.render(
     </React.StrictMode>
 )
 
+// инициализация базы данных firebase
 const firebaseConfig = {
     apiKey: 'AIzaSyBbtI6Rc4XhYRURHzMBNtKvGwLo0h3fBAc',
     authDomain: 'autocalculato.firebaseapp.com',
@@ -31,19 +33,18 @@ const firebaseConfig = {
     databaseURL:
         'https://autocalculato-default-rtdb.europe-west1.firebasedatabase.app/',
 }
-
 const app = initializeApp(firebaseConfig)
-
 const database = getDatabase(app)
+console.dir(database)
 
-const itsWorkRef = ref(database, 'itsWork/')
-onValue(itsWorkRef, (snapshot) => {
-    const data = snapshot.val()
-    console.log(data)
-})
+// const itsWorkRef = ref(database, 'itsWork/')
+// onValue(itsWorkRef, (snapshot) => {
+//     const data = snapshot.val()
+//     console.log(data)
+// })
 
-const userIdRef = ref(database, 'userId/')
-onValue(userIdRef, (snapshot) => {
-    const data = snapshot.val()
-    console.log(data)
-})
+// const userIdRef = ref(database, 'userId/')
+// onValue(userIdRef, (snapshot) => {
+//     const data = snapshot.val()
+//     console.log(data)
+// })
