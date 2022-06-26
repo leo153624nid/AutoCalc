@@ -7,7 +7,7 @@ import s from './ChangeFuelAndEtc.module.css'
 
 function ChangeFuelAndEtc({ carId, listConsumptions, pagesList }) {
     let consumptions = [<h3 key="0">У вас нет расходов</h3>]
-    if (!listConsumptions) {
+    if (listConsumptions.length > 0) {
         consumptions = listConsumptions
     }
     return (
