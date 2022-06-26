@@ -26,7 +26,7 @@ const changeConsumptionsReducer = createReducer(initialState, (builder) => {
         }))
         .addCase(CHANGE_CURRENT_PAGE, (state, action) => ({
             ...state,
-            page: action.page,
+            currentPage: action.currentPage,
         }))
         .addDefaultCase((state) => state)
 })
@@ -49,9 +49,9 @@ export const changeEtcId = (etcId) => ({
 })
 
 // Смена текущей странички отображения расходов
-export const changeCurrentPage = (page) => ({
-    type: CHANGE_ETC_ID,
-    page: Number(page),
+export const changeCurrentPage = (currentPage) => ({
+    type: CHANGE_CURRENT_PAGE,
+    currentPage: Number(currentPage),
 })
 
 export default changeConsumptionsReducer

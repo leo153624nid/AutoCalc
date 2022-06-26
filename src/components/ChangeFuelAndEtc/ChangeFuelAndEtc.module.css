@@ -70,6 +70,10 @@
     margin: 5px 0 5px 0;
 }
 
+.pages {
+    cursor: pointer;
+}
+
 .selectedPage {
     font-weight: bold;
 }

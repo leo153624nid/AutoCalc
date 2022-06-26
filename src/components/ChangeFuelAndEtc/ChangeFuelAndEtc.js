@@ -25,9 +25,9 @@ function ChangeFuelAndEtc({
     changeCurrentPage,
 }) {
     const pageSize = 4
-    const totalPagesCount = fuelNotEtc
-        ? car.fuelings.length / pageSize
-        : car.etc.length / pageSize
+    const totalPagesCount = Math.ceil(
+        fuelNotEtc ? car.fuelings.length / pageSize : car.etc.length / pageSize
+    )
 
     // Устанавливаем последнюю страничку по умолчанию
     useEffect(() => {
@@ -42,7 +42,16 @@ function ChangeFuelAndEtc({
     }
 
     const pagesList = pages.map((p) => (
-        <span className={currentPage === p && s.selectedPage}> {p} </span>
+        <span
+            key={p}
+            className={currentPage === p ? s.selectedPage : ''}
+            onClick={() => {
+                changeCurrentPage(p)
+            }}
+        >
+            {' '}
+            {p}{' '}
+        </span>
     ))
 
     // Если редактируем fuel расходы
@@ -138,8 +147,13 @@ function ChangeFuelAndEtc({
                     К графикам
                 </NavLink>
             </div>
-            <ol className={s.list}>{listConsumptions}</ol>
-            <div>{pagesList}</div>
+            <ol className={s.list}>
+                {listConsumptions.slice(
+                    currentPage * pageSize - pageSize,
+                    currentPage * pageSize
+                )}
+            </ol>
+            <div className={s.pages}>{pagesList}</div>
         </div>
     )
 }
