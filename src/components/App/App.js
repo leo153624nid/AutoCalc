@@ -13,7 +13,7 @@ import GrafContainer from '../Graf/GrafContainer'
 import NewCarContainer from '../NewCar/NewCarContainer'
 import NewFuelContainer from '../NewFuel/NewFuelContainer'
 import NewEtcContainer from '../NewEtc/NewEtcContainer'
-import ChangeFuelAndEtc from '../ChangeFuelAndEtc/ChangeFuelAndEtc'
+import ChangeFuelAndEtcContainer from '../ChangeFuelAndEtc/ChangeFuelAndEtcContainer'
 import ModalProvider from '../../contexts/ModalContext/ModalContextProvider'
 import { getNowDateMS } from '../../redux/dateFunctions'
 import { setUserData } from '../../redux/userDataReducer'
@@ -105,7 +105,7 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/change_fuel_list/${car.carId}`}
-            element={<ChangeFuelAndEtc car={car} fuelNotEtc />}
+            element={<ChangeFuelAndEtcContainer car={car} fuelNotEtc />}
         />
     ))
     // Список компонет NewFuelContainer для каждой машины
@@ -137,7 +137,7 @@ function App(props) {
         <Route
             key={car.carId}
             path={`/change_etc_list/${car.carId}`}
-            element={<ChangeFuelAndEtc car={car} fuelNotEtc={false} />}
+            element={<ChangeFuelAndEtcContainer car={car} fuelNotEtc={false} />}
         />
     ))
     // Список компонет NewEtcContainer для каждой машины
