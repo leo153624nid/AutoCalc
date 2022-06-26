@@ -36,8 +36,15 @@ function NewEtcContainer({
     let yourVolume = 0
     let yourCost = 0
     let yourDistance = 0
+    let carData = { ...car }
 
-    const yourEtc = car.etc.find((item) => item.etcId === changing.etcId)
+    if (car.fuelings === undefined) carData = { ...car, fuelings: [] }
+    if (car.etc === undefined) carData = { ...car, etc: [] }
+    if (car.fuelings === undefined && car.etc === undefined) {
+        carData = { ...carData, fuelings: [], etc: [] }
+    }
+
+    const yourEtc = carData.etc.find((item) => item.etcId === changing.etcId)
 
     if (etcId === null && yourEtc !== undefined) {
         yourMark = yourEtc.mark
@@ -63,7 +70,7 @@ function NewEtcContainer({
     return (
         <NewEtc
             newEtc={newEtc}
-            car={car}
+            car={carData}
             addEtcCar={addEtcCar}
             changeDateEtc={changeDateEtc}
             changeDistanceEtc={changeDistanceEtc}
