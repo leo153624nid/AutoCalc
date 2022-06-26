@@ -12,7 +12,11 @@ import {
     changeCostEtc,
     setNewEtc,
 } from '../../redux/newEtcReducer'
-import { addEtcCar } from '../../redux/userDataReducer'
+import {
+    addEtcCar,
+    initFuelArray,
+    initEtcArray,
+} from '../../redux/userDataReducer'
 
 function NewEtcContainer({
     newEtc,
@@ -28,6 +32,8 @@ function NewEtcContainer({
     changeVolumeEtc,
     changeCostEtc,
     changing,
+    initFuelArray,
+    initEtcArray,
 }) {
     const yourEtcId = etcId !== null ? etcId : changing.etcId
     const yourDate = date !== null ? date : changing.etcId
@@ -55,6 +61,8 @@ function NewEtcContainer({
     }
 
     useEffect(() => {
+        if (car.fuelings === undefined) initFuelArray(car.carId)
+        if (car.etc === undefined) initEtcArray(car.carId)
         setNewEtc({
             etcId: yourEtcId,
             date: yourDate,
@@ -96,4 +104,6 @@ export default connect(mapStateToProps, {
     changePriceEtc,
     changeVolumeEtc,
     changeCostEtc,
+    initFuelArray,
+    initEtcArray,
 })(NewEtcContainer)

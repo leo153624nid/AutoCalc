@@ -13,7 +13,11 @@ import {
     changeFullFuel,
     setNewFuel,
 } from '../../redux/newFuelReducer'
-import { addFuelCar } from '../../redux/userDataReducer'
+import {
+    addFuelCar,
+    initFuelArray,
+    initEtcArray,
+} from '../../redux/userDataReducer'
 
 function NewFuelContainer({
     newFuel,
@@ -30,6 +34,8 @@ function NewFuelContainer({
     changeCostFuel,
     changeFullFuel,
     changing,
+    initFuelArray,
+    initEtcArray,
 }) {
     const yourFuelingId = fuelingId !== null ? fuelingId : changing.fuelingId
     const yourDate = date !== null ? date : changing.fuelingId
@@ -61,6 +67,8 @@ function NewFuelContainer({
     }
 
     useEffect(() => {
+        if (car.fuelings === undefined) initFuelArray(car.carId)
+        if (car.etc === undefined) initEtcArray(car.carId)
         setNewFuel({
             fuelingId: yourFuelingId,
             date: yourDate,
@@ -105,4 +113,6 @@ export default connect(mapStateToProps, {
     changeVolumeFuel,
     changeCostFuel,
     changeFullFuel,
+    initFuelArray,
+    initEtcArray,
 })(NewFuelContainer)

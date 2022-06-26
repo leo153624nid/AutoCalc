@@ -4,6 +4,8 @@ import { createReducer } from '@reduxjs/toolkit'
 const initialState = null
 
 const SET_USER_DATA = 'SET_USER_DATA'
+const INIT_FUEL_ARRAY = 'INIT_FUEL_ARRAY'
+const INIT_ETC_ARRAY = 'INIT_ETC_ARRAY'
 const CHANGE_CARUSEL = 'CHANGE_CARUSEL'
 const ADD_USER_CAR = 'ADD_USER_CAR'
 const ADD_FUEL_CAR = 'ADD_FUEL_CAR'
@@ -15,7 +17,6 @@ const DELETE_YOUR_ETC = 'DELETE_YOUR_ETC'
 const userDataReducer = createReducer(initialState, (builder) => {
     builder
         .addCase(SET_USER_DATA, (state, action) => ({
-            ...state,
             ...action.userData,
             carusel: [
                 action.userData.userCars[0],
@@ -23,6 +24,46 @@ const userDataReducer = createReducer(initialState, (builder) => {
                 action.userData.userCars[2],
             ],
         }))
+        .addCase(INIT_FUEL_ARRAY, (state, action) => {
+            // Весь массив id машин пользователя
+            const carsIds = state.userCars.map((item) => item.carId)
+            const caruselCarsIds = state.carusel.map((item) => item.carId)
+
+            const goodIndex = carsIds.indexOf(action.carId)
+            const caruselGoodIndex = caruselCarsIds.indexOf(action.carId)
+
+            if (goodIndex !== -1) {
+                const newCar = { ...state.userCars[goodIndex], fuelings: [] }
+                state.userCars.splice(goodIndex, 1, newCar)
+            }
+            if (caruselGoodIndex !== -1) {
+                const newCar = {
+                    ...state.carusel[caruselGoodIndex],
+                    fuelings: [],
+                }
+                state.carusel.splice(caruselGoodIndex, 1, newCar)
+            }
+        })
+        .addCase(INIT_ETC_ARRAY, (state, action) => {
+            // Весь массив id машин пользователя
+            const carsIds = state.userCars.map((item) => item.carId)
+            const caruselCarsIds = state.carusel.map((item) => item.carId)
+
+            const goodIndex = carsIds.indexOf(action.carId)
+            const caruselGoodIndex = caruselCarsIds.indexOf(action.carId)
+
+            if (goodIndex !== -1) {
+                const newCar = { ...state.userCars[goodIndex], etc: [] }
+                state.userCars.splice(goodIndex, 1, newCar)
+            }
+            if (caruselGoodIndex !== -1) {
+                const newCar = {
+                    ...state.carusel[caruselGoodIndex],
+                    etc: [],
+                }
+                state.carusel.splice(caruselGoodIndex, 1, newCar)
+            }
+        })
         .addCase(CHANGE_CARUSEL, (state, action) => {
             // Весь массив машин пользователя
             const cars = state.userCars
@@ -241,6 +282,18 @@ const userDataReducer = createReducer(initialState, (builder) => {
 export const setUserData = (userData) => ({
     type: SET_USER_DATA,
     userData,
+})
+
+// Инициализация пустых массивов FUELINGS, которые не приходят с firebase
+export const initFuelArray = (carId) => ({
+    type: INIT_FUEL_ARRAY,
+    carId,
+})
+
+// Инициализация пустых массивов ETC, которые не приходят с firebase
+export const initEtcArray = (carId) => ({
+    type: INIT_ETC_ARRAY,
+    carId,
 })
 
 // Вращение карусели карт машин влево или вправо
