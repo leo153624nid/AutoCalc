@@ -26,10 +26,18 @@ function ChangeFuelAndEtcContainer({
     changeCurrentPage,
 }) {
     let items = 1
+    let carData = { ...car }
+
+    if (car.fuelings === undefined) carData = { ...car, fuelings: [] }
+    if (car.etc === undefined) carData = { ...car, etc: [] }
+    if (car.fuelings === undefined && car.etc === undefined) {
+        carData = { ...carData, fuelings: [], etc: [] }
+    }
+
     if (fuelNotEtc) {
-        items = car.fuelings === undefined ? 1 : car.fuelings.length
+        items = carData.fuelings.length === 0 ? 1 : carData.fuelings.length
     } else {
-        items = car.etc === undefined ? 1 : car.etc.length
+        items = carData.etc.length === 0 ? 1 : carData.etc.length
     }
 
     const pageSize = 4
@@ -61,8 +69,8 @@ function ChangeFuelAndEtcContainer({
     ))
 
     // Если редактируем fuel расходы
-    if (fuelNotEtc && car.fuelings.length !== 0) {
-        consumptions = car.fuelings.map((fuel, index) => (
+    if (fuelNotEtc && carData.fuelings.length !== 0) {
+        consumptions = carData.fuelings.map((fuel, index) => (
             <li key={fuel.fuelingId} className={s.post}>
                 <div className={s.discription}>
                     <div>
@@ -83,18 +91,21 @@ function ChangeFuelAndEtcContainer({
                         changeFuelingId(fuel.fuelingId)
                     }}
                 >
-                    <NavLink to={`/change_fuel/${car.carId}`} className={s.btn}>
+                    <NavLink
+                        to={`/change_fuel/${carData.carId}`}
+                        className={s.btn}
+                    >
                         Редактировать
                     </NavLink>
                 </div>
                 <div
                     className={s.DelTake}
                     onClick={() => {
-                        delFuelCar(car.carId, fuel.fuelingId)
+                        delFuelCar(carData.carId, fuel.fuelingId)
                     }}
                 >
                     <NavLink
-                        to={`/change_fuel_list/${car.carId}`}
+                        to={`/change_fuel_list/${carData.carId}`}
                         className={s.btn}
                     >
                         Удалить
@@ -102,9 +113,9 @@ function ChangeFuelAndEtcContainer({
                 </div>
             </li>
         ))
-    } else if (car.etc.length !== 0) {
+    } else if (carData.etc.length !== 0) {
         // Если редактируем etc расходы
-        consumptions = car.etc.map((etc, index) => (
+        consumptions = carData.etc.map((etc, index) => (
             <li key={etc.etcId} className={s.post}>
                 <div className={s.discription}>
                     <div>
@@ -125,18 +136,21 @@ function ChangeFuelAndEtcContainer({
                         changeEtcId(etc.etcId)
                     }}
                 >
-                    <NavLink to={`/change_etc/${car.carId}`} className={s.btn}>
+                    <NavLink
+                        to={`/change_etc/${carData.carId}`}
+                        className={s.btn}
+                    >
                         Редактировать
                     </NavLink>
                 </div>
                 <div
                     className={s.DelTake}
                     onClick={() => {
-                        delEtcCar(car.carId, etc.etcId)
+                        delEtcCar(carData.carId, etc.etcId)
                     }}
                 >
                     <NavLink
-                        to={`/change_etc_list/${car.carId}`}
+                        to={`/change_etc_list/${carData.carId}`}
                         className={s.btn}
                     >
                         Удалить
