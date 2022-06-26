@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable prefer-destructuring */
@@ -8,7 +9,13 @@ import CarGrafik from './CarGrafik/CarGrafik'
 import '@progress/kendo-theme-material/dist/all.css'
 import 'hammerjs'
 
-function GrafBlock({ carData, idGrafik }) {
+function GrafBlock({
+    carData,
+    idGrafik,
+    yourFuelConsumptions,
+    yourCostOneKm,
+    yourCostOneDay,
+}) {
     const grafikNames = [
         <span>Нет данных</span>,
         <span>Расходы на топливо, &#8381;</span>,
@@ -37,17 +44,17 @@ function GrafBlock({ carData, idGrafik }) {
 
                 <div className={s.generalFuel}>
                     <span>Общий расход топлива</span>
-                    <span>{carData.fuelConsumptions} л/100 км</span>
+                    <span>{yourFuelConsumptions} л/100 км</span>
                 </div>
 
                 <div className={s.generalCostOneKm}>
                     <span>Стоимость 1 км</span>
-                    <span>{carData.costOneKm} &#8381;/км</span>
+                    <span>{yourCostOneKm} &#8381;/км</span>
                 </div>
 
                 <div className={s.generalCostOneDay}>
                     <span>Стоимость владения</span>
-                    <span>{carData.costOneDay} &#8381;/день</span>
+                    <span>{yourCostOneDay} &#8381;/день</span>
                 </div>
             </aside>
 
