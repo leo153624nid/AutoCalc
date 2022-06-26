@@ -9,7 +9,7 @@ function CarCard({ carData, carPic }) {
     const carName = carData.carName
     const carDistance = carData.distance
     const fuelConsumptions = carData.fuelConsumptions
-    const allMonth = Math.floor(carData.allMonth)
+    const costOneDay = Math.floor(carData.costOneDay)
     const carId = carData.carId
 
     return (
@@ -38,7 +38,7 @@ function CarCard({ carData, carPic }) {
                     <span className={s.pad}>Содержание</span>
                     <span className={s.pad}>
                         {' '}
-                        <span>{allMonth}</span> &#8381;/мес
+                        <span>{costOneDay}</span> &#8381;/день
                     </span>
                 </div>
             </div>
