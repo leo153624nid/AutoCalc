@@ -10,7 +10,7 @@ function BottomBlock({ carData }) {
     let costFuel = 0
     let itogo = 0
 
-    if (carData.fuelings.length !== 0) {
+    if (carData.fuelings.length > 0) {
         yourDistance = Math.floor(
             carData.fuelings.at(-1).distance - carData.fuelings.at(0).distance
         )
