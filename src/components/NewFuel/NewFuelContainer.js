@@ -39,8 +39,15 @@ function NewFuelContainer({
     let yourCost = 0
     let yourFull = 0
     let yourDistance = 0
+    let carData = { ...car }
 
-    const yourFueling = car.fuelings.find(
+    if (car.fuelings === undefined) carData = { ...car, fuelings: [] }
+    if (car.etc === undefined) carData = { ...car, etc: [] }
+    if (car.fuelings === undefined && car.etc === undefined) {
+        carData = { ...carData, fuelings: [], etc: [] }
+    }
+
+    const yourFueling = carData.fuelings.find(
         (item) => item.fuelingId === changing.fuelingId
     )
 
@@ -70,7 +77,7 @@ function NewFuelContainer({
     return (
         <NewFuel
             newFuel={newFuel}
-            car={car}
+            car={carData}
             addFuelCar={addFuelCar}
             changeDateFuel={changeDateFuel}
             changeDistanceFuel={changeDistanceFuel}
