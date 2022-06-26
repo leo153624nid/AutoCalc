@@ -13,6 +13,7 @@ const ADD_ETC_CAR = 'ADD_ETC_CAR'
 const DELETE_YOUR_CAR = 'DELETE_YOUR_CAR'
 const DELETE_YOUR_FUEL = 'DELETE_YOUR_FUEL'
 const DELETE_YOUR_ETC = 'DELETE_YOUR_ETC'
+const SET_CAR_DATA = 'SET_CAR_DATA'
 
 const userDataReducer = createReducer(initialState, (builder) => {
     builder
@@ -275,6 +276,23 @@ const userDataReducer = createReducer(initialState, (builder) => {
                 )
             }
         })
+        .addCase(SET_CAR_DATA, (state, action) => {
+            // Добавить POST запрос на сервер с новой машиной
+
+            // Весь массив id машин пользователя
+            const carsIds = state.userCars.map((item) => item.carId)
+            const caruselCarsIds = state.carusel.map((item) => item.carId)
+
+            const goodIndex = carsIds.indexOf(action.car.carId)
+            const caruselGoodIndex = caruselCarsIds.indexOf(action.car.carId)
+
+            if (goodIndex !== -1) {
+                state.userCars.splice(goodIndex, 1, action.car)
+            }
+            if (caruselGoodIndex !== -1) {
+                state.carusel.splice(caruselGoodIndex, 1, action.car)
+            }
+        })
         .addDefaultCase((state) => state)
 })
 
@@ -338,6 +356,12 @@ export const delEtcCar = (carId, etcId) => ({
     type: DELETE_YOUR_ETC,
     carId,
     etcId,
+})
+
+// Устанвока пересчитанных значений расходов машины
+export const setCarData = (car) => ({
+    type: SET_CAR_DATA,
+    car,
 })
 
 export default userDataReducer
