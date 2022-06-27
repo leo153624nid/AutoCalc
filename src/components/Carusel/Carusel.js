@@ -17,7 +17,7 @@ function Carusel({ carusel, changeCarusel }) {
         if (!carusel) {
             carBlockList.push(
                 <div className={s.CarBlock} key="0">
-                    <div className={s.noCar}>У вас нет машин</div>
+                    <div className={s.noCar}>У вас пока нет машин</div>
                     <AddCarBtn />
                 </div>
             )
