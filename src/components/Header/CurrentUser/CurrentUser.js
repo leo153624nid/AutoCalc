@@ -6,9 +6,15 @@ import s from './CurrentUser.module.css'
 function CurrentUser({ auth }) {
     return (
         <div className={s.user}>
-            <NavLink to="/login" className={s.btn}>
-                {auth.userName}
-            </NavLink>
+            {auth.isAuth ? (
+                <NavLink to="/" className={s.btn}>
+                    {auth.userName}
+                </NavLink>
+            ) : (
+                <NavLink to="/login" className={s.btn}>
+                    login
+                </NavLink>
+            )}
         </div>
     )
 }
