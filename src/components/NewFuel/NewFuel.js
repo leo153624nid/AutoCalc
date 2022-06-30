@@ -4,7 +4,7 @@ import React from 'react'
 
 import { NavLink } from 'react-router-dom'
 import s from './NewFuel.module.css'
-import CarDataInput from '../NewCar/CarDataInput/CarDataInput'
+import CarDataInput from '../common/CarDataInput/CarDataInput'
 import { getThisDate } from '../../redux/dateFunctions'
 
 const dateFueling = 'Дата заправки'
