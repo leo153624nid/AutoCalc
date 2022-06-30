@@ -18,10 +18,4 @@ function AddCarBtn({ clearCar }) {
     )
 }
 
-// const mapDispatchToProps = (dispatch) => ({
-//     сlearNewCar: () => {
-//         dispatch(clearCar())
-//     },
-// })
-
 export default connect(null, { clearCar })(AddCarBtn)
