@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import AddCarBtn from './AddCarBtn/AddCarBtn'
@@ -5,11 +6,11 @@ import CurrentUser from './CurrentUser/CurrentUser'
 import Logotype from './Logotype/Logotype'
 import s from './Header.module.css'
 
-function Header() {
+function Header({ auth }) {
     return (
         <header className={s.head}>
             <div className={s.CurrentUser}>
-                <CurrentUser />
+                <CurrentUser auth={auth} />
             </div>
 
             <div className={s.Logotype}>
