@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react'
+import axios from 'axios'
 import { NavLink } from 'react-router-dom'
 import s from './CarPreview.module.css'
 
@@ -13,6 +14,17 @@ function CarPreview({
     newCar,
     yourCar,
 }) {
+    const onAddUserCar = () => {
+        // axios
+        //     .put(
+        //         'https://autocalculato-default-rtdb.europe-west1.firebasedatabase.app/users/0/userCars.json',
+        //         { ...newCar, carId }
+        //     )
+        //     .then((response) => {
+        //         console.dir(response)
+        //     })
+    }
+
     return (
         <div className={s.CarPreview}>
             <div
@@ -52,6 +64,7 @@ function CarPreview({
             <div
                 onClick={() => {
                     addUserCar({ ...newCar, carId })
+                    onAddUserCar()
                 }}
                 className={s.CarTake}
             >
