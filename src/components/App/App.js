@@ -21,21 +21,19 @@ import { setUser } from '../../redux/authReducer'
 
 function App(props) {
     useEffect(() => {
-        if (props.state.userData === null) {
+        if (props.state.userData === null && props.state.auth.isAuth) {
             axios
                 .get(
                     'https://autocalculato-default-rtdb.europe-west1.firebasedatabase.app/users/0.json'
                 )
                 .then((response) => {
-                    if (props.state.auth.isAuth) {
-                        props.setUser(
-                            response.data.userId,
-                            response.data.login,
-                            response.data.email,
-                            response.data.userName
-                        )
-                        props.setUserData(response.data)
-                    }
+                    props.setUser(
+                        response.data.userId,
+                        response.data.login,
+                        response.data.email,
+                        response.data.userName
+                    )
+                    props.setUserData(response.data)
                 })
         }
     }, [])
