@@ -7,6 +7,7 @@ import newCarReducer from './newCarReducer'
 import newFuelReducer from './newFuelReducer'
 import newEtcReducer from './newEtcReducer'
 import changeConsumptionsReducer from './changeConsumptionsReducer'
+import authReducer from './authReducer'
 
 const rootReducer = combineReducers({
     userData: userDataReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
     newFuel: newFuelReducer,
     newEtc: newEtcReducer,
     changing: changeConsumptionsReducer,
+    auth: authReducer,
 })
 
 const store = configureStore({
