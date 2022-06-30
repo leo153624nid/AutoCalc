@@ -1,7 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit'
 
-// https://img.icons8.com/wired/64/undefined/add-image.png
-
 const initialState = {
     carId: 0,
     carName: '',
