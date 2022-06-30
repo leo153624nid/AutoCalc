@@ -6,7 +6,7 @@ import s from './Carusel.module.css'
 import ArrowNext from './ArrowNext/ArrowNext'
 import ArrowPrev from './ArrowPrev/ArrowPrev'
 import CarBlock from './CarBlock/CarBlock'
-import AddCarBtn from '../Header/AddCarBtn/AddCarBtn'
+import AddCarBtn from '../common/AddCarBtn/AddCarBtn'
 
 function Carusel({ carusel, changeCarusel }) {
     // массив карт машин
