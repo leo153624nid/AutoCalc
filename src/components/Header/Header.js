@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import AddCarBtn from './AddCarBtn/AddCarBtn'
+import AddCarBtn from '../common/AddCarBtn/AddCarBtn'
 import CurrentUser from './CurrentUser/CurrentUser'
 import Logotype from './Logotype/Logotype'
 import s from './Header.module.css'
