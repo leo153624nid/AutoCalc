@@ -100,8 +100,6 @@ const userDataReducer = createReducer(initialState, (builder) => {
             }
         })
         .addCase(ADD_USER_CAR, (state, action) => {
-            // Добавить POST запрос на сервер с новой машиной
-
             // Весь массив id машин пользователя
             const carsIds = state.userCars.map((item) => item.carId)
             const caruselCarsIds = state.carusel.map((item) => item.carId)
@@ -121,8 +119,6 @@ const userDataReducer = createReducer(initialState, (builder) => {
             }
         })
         .addCase(DELETE_YOUR_CAR, (state, action) => {
-            // Добавить POST запрос на сервер с новой машиной
-
             // Весь массив id машин пользователя
             const carsIds = state.userCars.map((item) => item.carId)
             // const caruselCarsIds = state.carusel.map((item) => item.carId)
@@ -144,8 +140,6 @@ const userDataReducer = createReducer(initialState, (builder) => {
             }
         })
         .addCase(ADD_FUEL_CAR, (state, action) => {
-            // Добавить POST запрос на сервер с новой заправкой
-
             // Весь массив id машин пользователя
             const carsIds = state.userCars.map((item) => item.carId)
             const caruselCarsIds = state.carusel.map((item) => item.carId)
@@ -184,8 +178,6 @@ const userDataReducer = createReducer(initialState, (builder) => {
             }
         })
         .addCase(DELETE_YOUR_FUEL, (state, action) => {
-            // Добавить POST запрос на сервер с новой заправкой
-
             // Весь массив id машин пользователя
             const carsIds = state.userCars.map((item) => item.carId)
             const caruselCarsIds = state.carusel.map((item) => item.carId)
@@ -214,8 +206,6 @@ const userDataReducer = createReducer(initialState, (builder) => {
             }
         })
         .addCase(ADD_ETC_CAR, (state, action) => {
-            // Добавить POST запрос на сервер с новой заправкой
-
             // Весь массив id машин пользователя
             const carsIds = state.userCars.map((item) => item.carId)
             const caruselCarsIds = state.carusel.map((item) => item.carId)
@@ -250,8 +240,6 @@ const userDataReducer = createReducer(initialState, (builder) => {
             }
         })
         .addCase(DELETE_YOUR_ETC, (state, action) => {
-            // Добавить POST запрос на сервер с новой заправкой
-
             // Весь массив id машин пользователя
             const carsIds = state.userCars.map((item) => item.carId)
             const caruselCarsIds = state.carusel.map((item) => item.carId)
@@ -277,8 +265,6 @@ const userDataReducer = createReducer(initialState, (builder) => {
             }
         })
         .addCase(SET_CAR_DATA, (state, action) => {
-            // Добавить POST запрос на сервер с новой машиной
-
             // Весь массив id машин пользователя
             const carsIds = state.userCars.map((item) => item.carId)
             const caruselCarsIds = state.carusel.map((item) => item.carId)
