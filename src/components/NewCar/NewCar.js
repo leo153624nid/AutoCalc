@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
 import s from './NewCar.module.css'
-import CarDataInput from './CarDataInput/CarDataInput'
+import CarDataInput from '../common/CarDataInput/CarDataInput'
 import CarPreview from './CarPreview/CarPreview'
 
 const name = 'Название машины'
