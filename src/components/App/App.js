@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import s from './App.module.css'
-import Header from '../Header/Header'
+import HeaderContainer from '../Header/HeaderContainer'
 import Footer from '../Footer/Footer'
 import CaruselContainer from '../Carusel/CaruselContainer'
 import GrafContainer from '../Graf/GrafContainer'
@@ -17,16 +17,25 @@ import ChangeFuelAndEtcContainer from '../ChangeFuelAndEtc/ChangeFuelAndEtcConta
 import ModalProvider from '../../contexts/ModalContext/ModalContextProvider'
 import { getNowDateMS } from '../../redux/dateFunctions'
 import { setUserData } from '../../redux/userDataReducer'
+import { setUser } from '../../redux/authReducer'
 
 function App(props) {
     useEffect(() => {
-        if (!props.state.userData) {
+        if (props.state.userData === null) {
             axios
                 .get(
                     'https://autocalculato-default-rtdb.europe-west1.firebasedatabase.app/users/0.json'
                 )
                 .then((response) => {
-                    props.setUserData(response.data)
+                    if (props.state.auth.isAuth) {
+                        props.setUser(
+                            response.data.userId,
+                            response.data.login,
+                            response.data.email,
+                            response.data.userName
+                        )
+                        props.setUserData(response.data)
+                    }
                 })
         }
     }, [])
@@ -36,7 +45,7 @@ function App(props) {
         return (
             <ModalProvider>
                 <div className={s.App}>
-                    <Header />
+                    <HeaderContainer />
 
                     <Routes>
                         <Route path="/" element={<CaruselContainer />} />
@@ -152,7 +161,7 @@ function App(props) {
     return (
         <ModalProvider>
             <div className={s.App}>
-                <Header />
+                <HeaderContainer />
 
                 <Routes>
                     <Route path="/" element={<CaruselContainer />} />
@@ -193,4 +202,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
     setUserData,
+    setUser,
 })(App)
