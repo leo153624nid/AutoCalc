@@ -38,6 +38,9 @@ function App(props) {
         }
     }, [])
 
+    // Следующий Индекс в массиве машин пользователя (для добавления новой машины в базу данных)
+    let nextCarIndex = 0
+
     // Если данных пользователя нет то рендерится усеченный вариант
     if (!props.state.userData) {
         return (
@@ -50,7 +53,13 @@ function App(props) {
 
                         <Route
                             path="/add_car"
-                            element={<NewCarContainer yourCar={null} />}
+                            element={
+                                <NewCarContainer
+                                    yourCar={null}
+                                    nextCarIndex={nextCarIndex}
+                                    thisCarIndex={0}
+                                />
+                            }
                         />
                     </Routes>
                     <div className={s.Footer}>
@@ -63,6 +72,7 @@ function App(props) {
 
     // Весь Массив машин пользователя
     const userCars = props.state.userData.userCars
+    nextCarIndex = userCars.length
     // ПУСТАЯ МАШИНА
     const noCar = {
         carId: 0,
@@ -86,11 +96,17 @@ function App(props) {
         />
     ))
     // Список компонет NewCarContainer для каждой машины
-    const carChangeList = userCars.map((car) => (
+    const carChangeList = userCars.map((car, index) => (
         <Route
             key={car.carId}
             path={`/change_car/${car.carId}`}
-            element={<NewCarContainer yourCar={car} />}
+            element={
+                <NewCarContainer
+                    yourCar={car}
+                    nextCarIndex={nextCarIndex}
+                    thisCarIndex={index}
+                />
+            }
         />
     ))
     // Список компонет NewFuelContainer для каждой машины
@@ -166,7 +182,12 @@ function App(props) {
 
                     <Route
                         path="/add_car"
-                        element={<NewCarContainer yourCar={null} />}
+                        element={
+                            <NewCarContainer
+                                yourCar={null}
+                                nextCarIndex={nextCarIndex}
+                            />
+                        }
                     />
                     {carChangeList}
 
