@@ -39,6 +39,8 @@ function NewCarContainer({
     changeNotes,
     changeCarPic,
     changeCarId,
+    nextCarIndex,
+    thisCarIndex,
 }) {
     useEffect(() => {
         // Проверка на новую или редактируемую машину,
@@ -50,11 +52,33 @@ function NewCarContainer({
     }, [changeCarId, newCar.carId, setCar, yourCar])
 
     const baseUrl =
-        'https://autocalculato-default-rtdb.europe-west1.firebasedatabase.app/users/0/userCars'
+        'https://autocalculato-default-rtdb.europe-west1.firebasedatabase.app/users/0/userCars/'
 
     const onAddUserCar = () => {
-        axios.patch(`${baseUrl}/4.json`, { ...newCar }).then((response) => {
-            console.dir(response)
+        if (yourCar !== null) {
+            axios
+                .patch(`${baseUrl}${thisCarIndex}.json`, { ...newCar })
+                .then((response) => {
+                    if (response.statusText === 'OK') {
+                        addUserCar(newCar)
+                    }
+                })
+        } else {
+            axios
+                .patch(`${baseUrl}${nextCarIndex}.json`, { ...newCar })
+                .then((response) => {
+                    if (response.statusText === 'OK') {
+                        addUserCar(newCar)
+                    }
+                })
+        }
+    }
+
+    const onDelUserCar = () => {
+        axios.delete(`${baseUrl}${thisCarIndex}.json`).then((response) => {
+            if (response.statusText === 'OK') {
+                delUserCar(newCar.carId)
+            }
         })
     }
 
@@ -62,8 +86,6 @@ function NewCarContainer({
         <NewCar
             newCar={newCar}
             yourCar={yourCar}
-            addUserCar={addUserCar}
-            delUserCar={delUserCar}
             changeCarName={changeCarName}
             changeDistance={changeDistance}
             changeYearProd={changeYearProd}
@@ -73,6 +95,7 @@ function NewCarContainer({
             changeNotes={changeNotes}
             changeCarPic={changeCarPic}
             onAddUserCar={onAddUserCar}
+            onDelUserCar={onDelUserCar}
         />
     )
 }
