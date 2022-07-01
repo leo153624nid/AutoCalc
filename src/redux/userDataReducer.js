@@ -121,13 +121,8 @@ const userDataReducer = createReducer(initialState, (builder) => {
         .addCase(DELETE_YOUR_CAR, (state, action) => {
             // Весь массив id машин пользователя
             const carsIds = state.userCars.map((item) => item.carId)
-            // const caruselCarsIds = state.carusel.map((item) => item.carId)
 
             const goodIndex = carsIds.indexOf(action.carId)
-            // const caruselGoodIndex = caruselCarsIds.indexOf(action.carId)
-
-            // const nextCarIndex =
-            //     goodIndex + 1 === carsIds.length ? 0 : goodIndex + 1
 
             if (goodIndex !== -1) {
                 state.userCars.splice(goodIndex, 1)
