@@ -26,6 +26,7 @@ function NewCar({
     changeVin,
     changeNotes,
     changeCarPic,
+    onAddUserCar,
 }) {
     return (
         <div className={s.NewCar}>
@@ -75,6 +76,7 @@ function NewCar({
                     addUserCar={addUserCar}
                     delUserCar={delUserCar}
                     changeCarPic={changeCarPic}
+                    onAddUserCar={onAddUserCar}
                 />
             </div>
         </div>
