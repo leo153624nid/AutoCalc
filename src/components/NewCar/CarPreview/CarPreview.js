@@ -6,13 +6,11 @@ import { NavLink } from 'react-router-dom'
 import s from './CarPreview.module.css'
 
 function CarPreview({
-    carId,
-    addUserCar,
-    delUserCar,
     changeCarPic,
     newCar,
     yourCar,
     onAddUserCar,
+    onDelUserCar,
 }) {
     return (
         <div className={s.CarPreview}>
@@ -52,7 +50,6 @@ function CarPreview({
 
             <div
                 onClick={() => {
-                    addUserCar({ ...newCar, carId })
                     onAddUserCar()
                 }}
                 className={s.CarTake}
@@ -63,7 +60,7 @@ function CarPreview({
             </div>
             <div
                 onClick={() => {
-                    delUserCar(carId)
+                    onDelUserCar()
                 }}
                 className={yourCar !== null ? s.CarTake : s.hide}
             >
