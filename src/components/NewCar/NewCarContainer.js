@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
+import axios from 'axios'
 import {
     setCar,
     changeCarName,
@@ -48,6 +49,15 @@ function NewCarContainer({
         }
     }, [changeCarId, newCar.carId, setCar, yourCar])
 
+    const baseUrl =
+        'https://autocalculato-default-rtdb.europe-west1.firebasedatabase.app/users/0/userCars'
+
+    const onAddUserCar = () => {
+        axios.patch(`${baseUrl}/4.json`, { ...newCar }).then((response) => {
+            console.dir(response)
+        })
+    }
+
     return (
         <NewCar
             newCar={newCar}
@@ -62,6 +72,7 @@ function NewCarContainer({
             changeVin={changeVin}
             changeNotes={changeNotes}
             changeCarPic={changeCarPic}
+            onAddUserCar={onAddUserCar}
         />
     )
 }
