@@ -16,8 +16,6 @@ const note = 'Заметки'
 function NewCar({
     newCar,
     yourCar,
-    addUserCar,
-    delUserCar,
     changeCarName,
     changeDistance,
     changeYearProd,
@@ -27,6 +25,7 @@ function NewCar({
     changeNotes,
     changeCarPic,
     onAddUserCar,
+    onDelUserCar,
 }) {
     return (
         <div className={s.NewCar}>
@@ -72,11 +71,9 @@ function NewCar({
                 <CarPreview
                     newCar={newCar}
                     yourCar={yourCar}
-                    carId={newCar.carId}
-                    addUserCar={addUserCar}
-                    delUserCar={delUserCar}
                     changeCarPic={changeCarPic}
                     onAddUserCar={onAddUserCar}
+                    onDelUserCar={onDelUserCar}
                 />
             </div>
         </div>
