@@ -16,16 +16,15 @@ import {
 import {
     initFuelArray,
     initEtcArray,
-    addFuelCar,
+    patchUserFuelThunkCreator,
 } from '../../redux/userDataReducer'
-import { userDataAPI } from '../../api/api'
 
 function NewFuelContainer({
     newFuel,
     car,
     fuelingId,
     date,
-    addFuelCar,
+    patchUserFuelThunkCreator,
     setNewFuel,
     changeDateFuel,
     changeDistanceFuel,
@@ -96,21 +95,23 @@ function NewFuelContainer({
     // Обновление или добавление топлива
     const onAddFuelCar = () => {
         if (yourFueling) {
-            userDataAPI
-                .patchUserFuel(newFuel, thisCarIndex, thisFuelIndex)
-                .then((response) => {
-                    if (response.statusText === 'OK') {
-                        addFuelCar(newFuel)
-                    }
-                })
+            patchUserFuelThunkCreator(0, newFuel, thisCarIndex, thisFuelIndex)
+            // userDataAPI
+            //     .patchUserFuel(newFuel, thisCarIndex, thisFuelIndex)
+            //     .then((response) => {
+            //         if (response.statusText === 'OK') {
+            //             addFuelCar(newFuel)
+            //         }
+            //     })
         } else {
-            userDataAPI
-                .patchUserFuel(newFuel, thisCarIndex, nextFuelIndex)
-                .then((response) => {
-                    if (response.statusText === 'OK') {
-                        addFuelCar(newFuel)
-                    }
-                })
+            patchUserFuelThunkCreator(0, newFuel, thisCarIndex, nextFuelIndex)
+            // userDataAPI
+            //     .patchUserFuel(newFuel, thisCarIndex, nextFuelIndex)
+            //     .then((response) => {
+            //         if (response.statusText === 'OK') {
+            //             addFuelCar(newFuel)
+            //         }
+            //     })
         }
     }
 
@@ -137,7 +138,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
     setNewFuel,
-    addFuelCar,
+    patchUserFuelThunkCreator,
     changeDateFuel,
     changeDistanceFuel,
     changeMarkFuel,
