@@ -15,7 +15,14 @@ function CarPreview({
     return (
         <div className={s.CarPreview}>
             <div
-                onClick={() => changeCarPic() /* Доделать */}
+                onClick={() => {
+                    /* Доделать !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+                    alert('Извините, добавление картинок пока не работает!')
+                    console.log(
+                        'Извините, добавление картинок пока не работает!'
+                    )
+                    changeCarPic()
+                }}
                 className={s.carPic}
             >
                 <img src={newCar.carPic} alt="Добавить фото машины" />
