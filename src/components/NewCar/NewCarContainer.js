@@ -14,9 +14,11 @@ import {
     changeCarPic,
     changeCarId,
 } from '../../redux/newCarReducer'
-import { addUserCar, delUserCar } from '../../redux/userDataReducer'
+import {
+    patchUserCarThunkCreator,
+    deleteUserCarThunkCreator,
+} from '../../redux/userDataReducer'
 import NewCar from './NewCar'
-import { userDataAPI } from '../../api/api'
 
 // Создание нового carId по текущей дате в мс
 const getNewCarId = () => {
@@ -27,8 +29,8 @@ const getNewCarId = () => {
 function NewCarContainer({
     newCar,
     yourCar,
-    addUserCar,
-    delUserCar,
+    patchUserCarThunkCreator,
+    deleteUserCarThunkCreator,
     setCar,
     changeCarName,
     changeDistance,
@@ -42,6 +44,7 @@ function NewCarContainer({
     nextCarIndex,
     thisCarIndex,
 }) {
+    // Установка carId в зависимости от новой или редактируемой машины
     useEffect(() => {
         // Проверка на новую или редактируемую машину,
         if (newCar.carId === 0 && yourCar !== null) {
@@ -54,27 +57,15 @@ function NewCarContainer({
     // Обновление или добавление машины
     const onAddUserCar = () => {
         if (yourCar !== null) {
-            userDataAPI.patchUserCar(newCar, thisCarIndex).then((response) => {
-                if (response.statusText === 'OK') {
-                    addUserCar(newCar)
-                }
-            })
+            patchUserCarThunkCreator(0, newCar, thisCarIndex)
         } else {
-            userDataAPI.patchUserCar(newCar, nextCarIndex).then((response) => {
-                if (response.statusText === 'OK') {
-                    addUserCar(newCar)
-                }
-            })
+            patchUserCarThunkCreator(0, newCar, nextCarIndex)
         }
     }
 
     // Удаление машины
     const onDelUserCar = () => {
-        userDataAPI.deleteUserCar(thisCarIndex).then((response) => {
-            if (response.statusText === 'OK') {
-                delUserCar(newCar.carId)
-            }
-        })
+        deleteUserCarThunkCreator(0, thisCarIndex, newCar.carId)
     }
 
     return (
@@ -100,8 +91,8 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {
-    addUserCar,
-    delUserCar,
+    patchUserCarThunkCreator,
+    deleteUserCarThunkCreator,
     setCar,
     changeCarName,
     changeDistance,
