@@ -16,7 +16,7 @@ const costEtc = 'Стоимость, руб'
 function NewEtc({
     newEtc,
     car,
-    addEtcCar,
+    onAddEtcCar,
     changeDateEtc,
     changeDistanceEtc,
     changeMarkEtc,
@@ -64,7 +64,7 @@ function NewEtc({
                     to={`/graf/${car.carId}`}
                     className={s.btn}
                     onClick={() => {
-                        addEtcCar(newEtc)
+                        onAddEtcCar()
                     }}
                 >
                     Подтвердить
