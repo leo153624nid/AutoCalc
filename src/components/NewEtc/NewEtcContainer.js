@@ -15,16 +15,15 @@ import {
 import {
     initFuelArray,
     initEtcArray,
-    addEtcCar,
+    patchUserEtcThunkCreator,
 } from '../../redux/userDataReducer'
-import { userDataAPI } from '../../api/api'
 
 function NewEtcContainer({
     newEtc,
     car,
     etcId,
     date,
-    addEtcCar,
+    patchUserEtcThunkCreator,
     setNewEtc,
     changeDateEtc,
     changeDistanceEtc,
@@ -89,21 +88,23 @@ function NewEtcContainer({
     // Обновление или добавление прочих расходов
     const onAddEtcCar = () => {
         if (yourEtc) {
-            userDataAPI
-                .patchUserEtc(newEtc, thisCarIndex, thisEtcIndex)
-                .then((response) => {
-                    if (response.statusText === 'OK') {
-                        addEtcCar(newEtc)
-                    }
-                })
+            patchUserEtcThunkCreator(0, newEtc, thisCarIndex, thisEtcIndex)
+            // userDataAPI
+            //     .patchUserEtc(newEtc, thisCarIndex, thisEtcIndex)
+            //     .then((response) => {
+            //         if (response.statusText === 'OK') {
+            //             addEtcCar(newEtc)
+            //         }
+            //     })
         } else {
-            userDataAPI
-                .patchUserEtc(newEtc, thisCarIndex, nextEtcIndex)
-                .then((response) => {
-                    if (response.statusText === 'OK') {
-                        addEtcCar(newEtc)
-                    }
-                })
+            patchUserEtcThunkCreator(0, newEtc, thisCarIndex, nextEtcIndex)
+            // userDataAPI
+            //     .patchUserEtc(newEtc, thisCarIndex, nextEtcIndex)
+            //     .then((response) => {
+            //         if (response.statusText === 'OK') {
+            //             addEtcCar(newEtc)
+            //         }
+            //     })
         }
     }
 
@@ -129,7 +130,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
     setNewEtc,
-    addEtcCar,
+    patchUserEtcThunkCreator,
     changeDateEtc,
     changeDistanceEtc,
     changeMarkEtc,
