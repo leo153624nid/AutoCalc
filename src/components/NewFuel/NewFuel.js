@@ -1,7 +1,6 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import React from 'react'
-
 import { NavLink } from 'react-router-dom'
 import s from './NewFuel.module.css'
 import CarDataInput from '../common/CarDataInput/CarDataInput'
@@ -18,7 +17,7 @@ const fullTank = 'Полный бак (Введите 1 - полный или 0 
 function NewFuel({
     newFuel,
     car,
-    addFuelCar,
+    onAddFuelCar,
     changeDateFuel,
     changeDistanceFuel,
     changeMarkFuel,
@@ -72,7 +71,7 @@ function NewFuel({
                     to={`/graf/${car.carId}`}
                     className={s.btn}
                     onClick={() => {
-                        addFuelCar(newFuel)
+                        onAddFuelCar()
                     }}
                 >
                     Подтвердить
