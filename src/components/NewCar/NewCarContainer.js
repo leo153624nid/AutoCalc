@@ -2,7 +2,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import axios from 'axios'
 import {
     setCar,
     changeCarName,
@@ -17,6 +16,7 @@ import {
 } from '../../redux/newCarReducer'
 import { addUserCar, delUserCar } from '../../redux/userDataReducer'
 import NewCar from './NewCar'
+import { patchUserCar, deleteUserCar } from '../../api/api'
 
 // Создание нового carId по текущей дате в мс
 const getNewCarId = () => {
@@ -51,31 +51,26 @@ function NewCarContainer({
         }
     }, [changeCarId, newCar.carId, setCar, yourCar])
 
-    const baseUrl =
-        'https://autocalculato-default-rtdb.europe-west1.firebasedatabase.app/users/0/userCars/'
-
+    // Обновление или добавление машины
     const onAddUserCar = () => {
         if (yourCar !== null) {
-            axios
-                .patch(`${baseUrl}${thisCarIndex}.json`, { ...newCar })
-                .then((response) => {
-                    if (response.statusText === 'OK') {
-                        addUserCar(newCar)
-                    }
-                })
+            patchUserCar(newCar, thisCarIndex).then((response) => {
+                if (response.statusText === 'OK') {
+                    addUserCar(newCar)
+                }
+            })
         } else {
-            axios
-                .patch(`${baseUrl}${nextCarIndex}.json`, { ...newCar })
-                .then((response) => {
-                    if (response.statusText === 'OK') {
-                        addUserCar(newCar)
-                    }
-                })
+            patchUserCar(newCar, nextCarIndex).then((response) => {
+                if (response.statusText === 'OK') {
+                    addUserCar(newCar)
+                }
+            })
         }
     }
 
+    // Удаление машины
     const onDelUserCar = () => {
-        axios.delete(`${baseUrl}${thisCarIndex}.json`).then((response) => {
+        deleteUserCar(thisCarIndex).then((response) => {
             if (response.statusText === 'OK') {
                 delUserCar(newCar.carId)
             }

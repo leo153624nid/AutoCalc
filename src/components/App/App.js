@@ -4,7 +4,6 @@
 import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { connect } from 'react-redux'
-import axios from 'axios'
 import s from './App.module.css'
 import HeaderContainer from '../Header/HeaderContainer'
 import Footer from '../Footer/Footer'
@@ -18,23 +17,20 @@ import ModalProvider from '../../contexts/ModalContext/ModalContextProvider'
 import { getNowDateMS } from '../../redux/dateFunctions'
 import { setUserData } from '../../redux/userDataReducer'
 import { setUser } from '../../redux/authReducer'
+import { getUserData } from '../../api/api'
 
 function App(props) {
     useEffect(() => {
         if (props.state.userData === null && props.state.auth.isAuth) {
-            axios
-                .get(
-                    'https://autocalculato-default-rtdb.europe-west1.firebasedatabase.app/users/0.json'
+            getUserData().then((response) => {
+                props.setUser(
+                    response.data.userId,
+                    response.data.login,
+                    response.data.email,
+                    response.data.userName
                 )
-                .then((response) => {
-                    props.setUser(
-                        response.data.userId,
-                        response.data.login,
-                        response.data.email,
-                        response.data.userName
-                    )
-                    props.setUserData(response.data)
-                })
+                props.setUserData(response.data)
+            })
         }
     }, [])
 
