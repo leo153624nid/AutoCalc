@@ -106,7 +106,7 @@ function App(props) {
         />
     ))
     // Список компонет NewFuelContainer для каждой машины
-    const addFuelList = userCars.map((car) => (
+    const addFuelList = userCars.map((car, index) => (
         <Route
             key={car.carId}
             path={`/add_fuel/${car.carId}`}
@@ -115,30 +115,42 @@ function App(props) {
                     car={car}
                     fuelingId={getNowDateMS()}
                     date={getNowDateMS()}
+                    thisCarIndex={index}
                 />
             }
         />
     ))
     // Список компонет ChangeFuelAndEtc для каждой машины
-    const changeFuelList = userCars.map((car) => (
+    const changeFuelList = userCars.map((car, index) => (
         <Route
             key={car.carId}
             path={`/change_fuel_list/${car.carId}`}
-            element={<ChangeFuelAndEtcContainer car={car} fuelNotEtc />}
+            element={
+                <ChangeFuelAndEtcContainer
+                    car={car}
+                    fuelNotEtc
+                    thisCarIndex={index}
+                />
+            }
         />
     ))
     // Список компонет NewFuelContainer для каждой машины
-    const fuelList = userCars.map((car) => (
+    const fuelList = userCars.map((car, index) => (
         <Route
             key={car.carId}
             path={`/change_fuel/${car.carId}`}
             element={
-                <NewFuelContainer car={car} fuelingId={null} date={null} />
+                <NewFuelContainer
+                    car={car}
+                    fuelingId={null}
+                    date={null}
+                    thisCarIndex={index}
+                />
             }
         />
     ))
     // Список компонет NewEtcContainer для каждой машины
-    const addEtcList = userCars.map((car) => (
+    const addEtcList = userCars.map((car, index) => (
         <Route
             key={car.carId}
             path={`/add_etc/${car.carId}`}
@@ -147,24 +159,38 @@ function App(props) {
                     car={car}
                     etcId={getNowDateMS()}
                     date={getNowDateMS()}
+                    thisCarIndex={index}
                 />
             }
         />
     ))
     // Список компонет ChangeFuelAndEtc для каждой машины
-    const changeEtcList = userCars.map((car) => (
+    const changeEtcList = userCars.map((car, index) => (
         <Route
             key={car.carId}
             path={`/change_etc_list/${car.carId}`}
-            element={<ChangeFuelAndEtcContainer car={car} fuelNotEtc={false} />}
+            element={
+                <ChangeFuelAndEtcContainer
+                    car={car}
+                    fuelNotEtc={false}
+                    thisCarIndex={index}
+                />
+            }
         />
     ))
     // Список компонет NewEtcContainer для каждой машины
-    const etcList = userCars.map((car) => (
+    const etcList = userCars.map((car, index) => (
         <Route
             key={car.carId}
             path={`/change_etc/${car.carId}`}
-            element={<NewEtcContainer car={car} etcId={null} date={null} />}
+            element={
+                <NewEtcContainer
+                    car={car}
+                    etcId={null}
+                    date={null}
+                    thisCarIndex={index}
+                />
+            }
         />
     ))
 
