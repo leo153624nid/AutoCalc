@@ -8,45 +8,49 @@ const axiosInstance = axios.create({
 
 export const userDataAPI = {
     // Получить данные пользователя
-    getUserData() {
-        return axiosInstance.get(`0.json`)
+    getUserData(userId) {
+        return axiosInstance
+            .get(`${userId}.json`)
+            .then((response) => response.data)
     },
     // Обновить или добавить машину
-    patchUserCar(car, index) {
-        return axiosInstance.patch(`0/userCars/${index}.json`, { ...car })
+    patchUserCar(userId, car, index) {
+        return axiosInstance.patch(`${userId}/userCars/${index}.json`, {
+            ...car,
+        })
     },
     // Удалить машину
-    deleteUserCar(index) {
-        return axiosInstance.delete(`0/userCars/${index}.json`)
+    deleteUserCar(userId, index) {
+        return axiosInstance.delete(`${userId}/userCars/${index}.json`)
     },
     // Обновить или добавить заправку
-    patchUserFuel(fuel, carIndex, fuelIndex) {
+    patchUserFuel(userId, fuel, carIndex, fuelIndex) {
         return axiosInstance.patch(
-            `0/userCars/${carIndex}/fuelings/${fuelIndex}.json`,
+            `${userId}/userCars/${carIndex}/fuelings/${fuelIndex}.json`,
             {
                 ...fuel,
             }
         )
     },
     // Удалить заправку
-    deleteUserFuel(carIndex, fuelIndex) {
+    deleteUserFuel(userId, carIndex, fuelIndex) {
         return axiosInstance.delete(
-            `0/userCars/${carIndex}/fuelings/${fuelIndex}.json`
+            `${userId}/userCars/${carIndex}/fuelings/${fuelIndex}.json`
         )
     },
     // Обновить или добавить прочие расходы
-    patchUserEtc(etc, carIndex, etcIndex) {
+    patchUserEtc(userId, etc, carIndex, etcIndex) {
         return axiosInstance.patch(
-            `0/userCars/${carIndex}/etc/${etcIndex}.json`,
+            `${userId}/userCars/${carIndex}/etc/${etcIndex}.json`,
             {
                 ...etc,
             }
         )
     },
     // Удалить прочие расходы
-    deleteUserEtc(carIndex, etcIndex) {
+    deleteUserEtc(userId, carIndex, etcIndex) {
         return axiosInstance.delete(
-            `0/userCars/${carIndex}/etc/${etcIndex}.json`
+            `${userId}/userCars/${carIndex}/etc/${etcIndex}.json`
         )
     },
 }
