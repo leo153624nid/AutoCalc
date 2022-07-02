@@ -11,8 +11,10 @@ import {
     changeEtcId,
     changeCurrentPage,
 } from '../../redux/changeConsumptionsReducer'
-import { userDataAPI } from '../../api/api'
-import { delFuelCar, delEtcCar } from '../../redux/userDataReducer'
+import {
+    deleteUserFuelThunkCreator,
+    deleteUserEtcThunkCreator,
+} from '../../redux/userDataReducer'
 import { getThisDate } from '../../redux/dateFunctions'
 import ChangeFuelAndEtc from './ChangeFuelAndEtc'
 
@@ -24,8 +26,8 @@ function ChangeFuelAndEtcContainer({
     fuelNotEtc,
     changeCurrentPage,
     thisCarIndex,
-    delFuelCar,
-    delEtcCar,
+    deleteUserFuelThunkCreator,
+    deleteUserEtcThunkCreator,
 }) {
     let items = 1
     let carData = { ...car }
@@ -72,24 +74,24 @@ function ChangeFuelAndEtcContainer({
 
     // Удаление заправки
     const onDelFuelCar = (thisFuelIndex, fuelingId) => {
-        userDataAPI
-            .deleteUserFuel(thisCarIndex, thisFuelIndex)
-            .then((response) => {
-                if (response.statusText === 'OK') {
-                    delFuelCar(carData.carId, fuelingId)
-                }
-            })
+        deleteUserFuelThunkCreator(
+            0,
+            thisCarIndex,
+            thisFuelIndex,
+            carData.carId,
+            fuelingId
+        )
     }
 
     // Удаление прочих расходов
     const onDelEtcCar = (thisEtcIndex, etcId) => {
-        userDataAPI
-            .deleteUserEtc(thisCarIndex, thisEtcIndex)
-            .then((response) => {
-                if (response.statusText === 'OK') {
-                    delEtcCar(carData.carId, etcId)
-                }
-            })
+        deleteUserEtcThunkCreator(
+            0,
+            thisCarIndex,
+            thisEtcIndex,
+            carData.carId,
+            etcId
+        )
     }
 
     // Если редактируем fuel расходы
@@ -137,7 +139,7 @@ function ChangeFuelAndEtcContainer({
                 </div>
             </li>
         ))
-    } else if (carData.etc.length !== 0) {
+    } else if (!fuelNotEtc && carData.etc.length !== 0) {
         // Если редактируем etc расходы
         consumptions = carData.etc.map((etc, index) => (
             <li key={etc.etcId} className={s.post}>
@@ -203,8 +205,8 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
     changeFuelingId,
-    delFuelCar,
+    deleteUserFuelThunkCreator,
     changeEtcId,
-    delEtcCar,
+    deleteUserEtcThunkCreator,
     changeCurrentPage,
 })(ChangeFuelAndEtcContainer)
