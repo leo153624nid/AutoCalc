@@ -11,7 +11,7 @@ import {
     changeEtcId,
     changeCurrentPage,
 } from '../../redux/changeConsumptionsReducer'
-import { deleteUserFuel, deleteUserEtc } from '../../api/api'
+import { userDataAPI } from '../../api/api'
 import { delFuelCar, delEtcCar } from '../../redux/userDataReducer'
 import { getThisDate } from '../../redux/dateFunctions'
 import ChangeFuelAndEtc from './ChangeFuelAndEtc'
@@ -72,20 +72,24 @@ function ChangeFuelAndEtcContainer({
 
     // Удаление заправки
     const onDelFuelCar = (thisFuelIndex, fuelingId) => {
-        deleteUserFuel(thisCarIndex, thisFuelIndex).then((response) => {
-            if (response.statusText === 'OK') {
-                delFuelCar(carData.carId, fuelingId)
-            }
-        })
+        userDataAPI
+            .deleteUserFuel(thisCarIndex, thisFuelIndex)
+            .then((response) => {
+                if (response.statusText === 'OK') {
+                    delFuelCar(carData.carId, fuelingId)
+                }
+            })
     }
 
     // Удаление прочих расходов
     const onDelEtcCar = (thisEtcIndex, etcId) => {
-        deleteUserEtc(thisCarIndex, thisEtcIndex).then((response) => {
-            if (response.statusText === 'OK') {
-                delEtcCar(carData.carId, etcId)
-            }
-        })
+        userDataAPI
+            .deleteUserEtc(thisCarIndex, thisEtcIndex)
+            .then((response) => {
+                if (response.statusText === 'OK') {
+                    delEtcCar(carData.carId, etcId)
+                }
+            })
     }
 
     // Если редактируем fuel расходы
