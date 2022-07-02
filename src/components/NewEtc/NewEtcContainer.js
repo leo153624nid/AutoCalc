@@ -17,7 +17,7 @@ import {
     initEtcArray,
     addEtcCar,
 } from '../../redux/userDataReducer'
-import { patchUserEtc } from '../../api/api'
+import { userDataAPI } from '../../api/api'
 
 function NewEtcContainer({
     newEtc,
@@ -89,21 +89,21 @@ function NewEtcContainer({
     // Обновление или добавление прочих расходов
     const onAddEtcCar = () => {
         if (yourEtc) {
-            patchUserEtc(newEtc, thisCarIndex, thisEtcIndex).then(
-                (response) => {
+            userDataAPI
+                .patchUserEtc(newEtc, thisCarIndex, thisEtcIndex)
+                .then((response) => {
                     if (response.statusText === 'OK') {
                         addEtcCar(newEtc)
                     }
-                }
-            )
+                })
         } else {
-            patchUserEtc(newEtc, thisCarIndex, nextEtcIndex).then(
-                (response) => {
+            userDataAPI
+                .patchUserEtc(newEtc, thisCarIndex, nextEtcIndex)
+                .then((response) => {
                     if (response.statusText === 'OK') {
                         addEtcCar(newEtc)
                     }
-                }
-            )
+                })
         }
     }
 
