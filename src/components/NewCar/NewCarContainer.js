@@ -16,7 +16,7 @@ import {
 } from '../../redux/newCarReducer'
 import { addUserCar, delUserCar } from '../../redux/userDataReducer'
 import NewCar from './NewCar'
-import { patchUserCar, deleteUserCar } from '../../api/api'
+import { userDataAPI } from '../../api/api'
 
 // Создание нового carId по текущей дате в мс
 const getNewCarId = () => {
@@ -54,13 +54,13 @@ function NewCarContainer({
     // Обновление или добавление машины
     const onAddUserCar = () => {
         if (yourCar !== null) {
-            patchUserCar(newCar, thisCarIndex).then((response) => {
+            userDataAPI.patchUserCar(newCar, thisCarIndex).then((response) => {
                 if (response.statusText === 'OK') {
                     addUserCar(newCar)
                 }
             })
         } else {
-            patchUserCar(newCar, nextCarIndex).then((response) => {
+            userDataAPI.patchUserCar(newCar, nextCarIndex).then((response) => {
                 if (response.statusText === 'OK') {
                     addUserCar(newCar)
                 }
@@ -70,7 +70,7 @@ function NewCarContainer({
 
     // Удаление машины
     const onDelUserCar = () => {
-        deleteUserCar(thisCarIndex).then((response) => {
+        userDataAPI.deleteUserCar(thisCarIndex).then((response) => {
             if (response.statusText === 'OK') {
                 delUserCar(newCar.carId)
             }
