@@ -49,7 +49,7 @@ function NewCarContainer({
         } else if (newCar.carId === 0) {
             changeCarId(getNewCarId())
         }
-    }, [changeCarId, newCar.carId, setCar, yourCar])
+    }, [])
 
     // Обновление или добавление машины
     const onAddUserCar = () => {
