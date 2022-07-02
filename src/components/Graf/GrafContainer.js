@@ -80,7 +80,7 @@ function GrafContainer({ carData, сlearChanging, setCarData }) {
             costOneKm: yourCostOneKm,
             costOneDay: yourCostOneDay,
         })
-    }, [yourCostOneDay, yourCostOneKm, yourFuelConsumptions])
+    }, [])
 
     return (
         <Graf
