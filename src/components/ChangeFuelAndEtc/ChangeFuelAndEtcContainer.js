@@ -11,6 +11,7 @@ import {
     changeEtcId,
     changeCurrentPage,
 } from '../../redux/changeConsumptionsReducer'
+import { deleteUserFuel, deleteUserEtc } from '../../api/api'
 import { delFuelCar, delEtcCar } from '../../redux/userDataReducer'
 import { getThisDate } from '../../redux/dateFunctions'
 import ChangeFuelAndEtc from './ChangeFuelAndEtc'
@@ -21,9 +22,10 @@ function ChangeFuelAndEtcContainer({
     changeFuelingId,
     changeEtcId,
     fuelNotEtc,
+    changeCurrentPage,
+    thisCarIndex,
     delFuelCar,
     delEtcCar,
-    changeCurrentPage,
 }) {
     let items = 1
     let carData = { ...car }
@@ -68,6 +70,24 @@ function ChangeFuelAndEtcContainer({
         </span>
     ))
 
+    // Удаление заправки
+    const onDelFuelCar = (thisFuelIndex, fuelingId) => {
+        deleteUserFuel(thisCarIndex, thisFuelIndex).then((response) => {
+            if (response.statusText === 'OK') {
+                delFuelCar(carData.carId, fuelingId)
+            }
+        })
+    }
+
+    // Удаление прочих расходов
+    const onDelEtcCar = (thisEtcIndex, etcId) => {
+        deleteUserEtc(thisCarIndex, thisEtcIndex).then((response) => {
+            if (response.statusText === 'OK') {
+                delEtcCar(carData.carId, etcId)
+            }
+        })
+    }
+
     // Если редактируем fuel расходы
     if (fuelNotEtc && carData.fuelings.length !== 0) {
         consumptions = carData.fuelings.map((fuel, index) => (
@@ -101,7 +121,7 @@ function ChangeFuelAndEtcContainer({
                 <div
                     className={s.DelTake}
                     onClick={() => {
-                        delFuelCar(carData.carId, fuel.fuelingId)
+                        onDelFuelCar(index, fuel.fuelingId)
                     }}
                 >
                     <NavLink
@@ -146,7 +166,7 @@ function ChangeFuelAndEtcContainer({
                 <div
                     className={s.DelTake}
                     onClick={() => {
-                        delEtcCar(carData.carId, etc.etcId)
+                        onDelEtcCar(index, etc.etcId)
                     }}
                 >
                     <NavLink
