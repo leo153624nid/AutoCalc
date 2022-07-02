@@ -1,4 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit'
+import { setUser } from './authReducer'
+import { userDataAPI } from '../api/api'
 // import userData from '../database/CurrentUser.json'
 
 const initialState = null
@@ -277,6 +279,7 @@ const userDataReducer = createReducer(initialState, (builder) => {
         .addDefaultCase((state) => state)
 })
 
+// ActionCreators
 // Установка данных пользователя
 export const setUserData = (userData) => ({
     type: SET_USER_DATA,
@@ -344,5 +347,81 @@ export const setCarData = (car) => ({
     type: SET_CAR_DATA,
     car,
 })
+
+// Thunks
+// Получение данных пользователя
+export const getUserDataThunkCreator = (userId) => (dispatch) => {
+    userDataAPI.getUserData(userId).then((data) => {
+        dispatch(setUserData(data))
+        dispatch(setUser(data.userId, data.login, data.email, data.userName))
+    })
+}
+
+// Добавление или редактирование машины
+export const patchUserCarThunkCreator = (userId, car, index) => (dispatch) => {
+    userDataAPI.patchUserCar(userId, car, index).then((response) => {
+        if (response.statusText === 'OK') {
+            dispatch(addUserCar(car))
+        }
+    })
+}
+
+// Удаление машины
+export const deleteUserCarThunkCreator =
+    (userId, index, carId) => (dispatch) => {
+        userDataAPI.deleteUserCar(userId, index).then((response) => {
+            if (response.statusText === 'OK') {
+                dispatch(delUserCar(carId))
+            }
+        })
+    }
+
+// Добавление или редактирование заправки
+export const patchUserFuelThunkCreator =
+    (userId, fuel, carIndex, fuelIndex) => (dispatch) => {
+        userDataAPI
+            .patchUserFuel(userId, fuel, carIndex, fuelIndex)
+            .then((response) => {
+                if (response.statusText === 'OK') {
+                    dispatch(addFuelCar(fuel))
+                }
+            })
+    }
+
+// Удаление заправки
+export const deleteUserFuelThunkCreator =
+    (userId, carIndex, fuelIndex, carId, fuelingId) => (dispatch) => {
+        userDataAPI
+            .deleteUserFuel(userId, carIndex, fuelIndex)
+            .then((response) => {
+                if (response.statusText === 'OK') {
+                    dispatch(delFuelCar(carId, fuelingId))
+                }
+            })
+    }
+
+// Добавление или редактирование прочих расходов
+export const patchUserEtcThunkCreator =
+    (userId, etc, carIndex, etcIndex) => (dispatch) => {
+        userDataAPI
+            .patchUserEtc(userId, etc, carIndex, etcIndex)
+            .then((response) => {
+                if (response.statusText === 'OK') {
+                    dispatch(addEtcCar(etc))
+                }
+            })
+    }
+
+// Удаление прочих расходов
+export const deleteUserEtcThunkCreator =
+    (userId, carIndex, etcIndex, carId, etcId) => (dispatch) => {
+        userDataAPI
+            .deleteUserEtc(userId, carIndex, etcIndex)
+            .then((response) => {
+                if (response.statusText === 'OK') {
+                    dispatch(delEtcCar(carId, etcId))
+                }
+            })
+    }
 
 export default userDataReducer
