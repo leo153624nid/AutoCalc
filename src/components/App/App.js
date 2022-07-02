@@ -15,22 +15,12 @@ import NewEtcContainer from '../NewEtc/NewEtcContainer'
 import ChangeFuelAndEtcContainer from '../ChangeFuelAndEtc/ChangeFuelAndEtcContainer'
 import ModalProvider from '../../contexts/ModalContext/ModalContextProvider'
 import { getNowDateMS } from '../../redux/dateFunctions'
-import { setUserData } from '../../redux/userDataReducer'
-import { setUser } from '../../redux/authReducer'
-import { userDataAPI } from '../../api/api'
+import { getUserDataThunkCreator } from '../../redux/userDataReducer'
 
 function App(props) {
     useEffect(() => {
         if (props.state.userData === null && props.state.auth.isAuth) {
-            userDataAPI.getUserData().then((response) => {
-                props.setUser(
-                    response.data.userId,
-                    response.data.login,
-                    response.data.email,
-                    response.data.userName
-                )
-                props.setUserData(response.data)
-            })
+            props.getUserDataThunkCreator(0)
         }
     }, [])
 
@@ -242,6 +232,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {
-    setUserData,
-    setUser,
+    getUserDataThunkCreator,
 })(App)
