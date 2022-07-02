@@ -14,10 +14,11 @@ import {
     setNewFuel,
 } from '../../redux/newFuelReducer'
 import {
-    addFuelCar,
     initFuelArray,
     initEtcArray,
+    addFuelCar,
 } from '../../redux/userDataReducer'
+import { patchUserFuel } from '../../api/api'
 
 function NewFuelContainer({
     newFuel,
@@ -36,6 +37,7 @@ function NewFuelContainer({
     changing,
     initFuelArray,
     initEtcArray,
+    thisCarIndex,
 }) {
     const yourFuelingId = fuelingId !== null ? fuelingId : changing.fuelingId
     const yourDate = date !== null ? date : changing.fuelingId
@@ -46,14 +48,21 @@ function NewFuelContainer({
     let yourFull = 0
     let yourDistance = 0
     let carData = { ...car }
+    // Следующий Индекс в массиве заправок (для добавления новой заправки в базу данных)
+    let nextFuelIndex = 0
 
+    // Инициализация пустых массивов (т.к. firebase не поддерживает пустые массивы)
     if (car.fuelings === undefined) carData = { ...car, fuelings: [] }
     if (car.etc === undefined) carData = { ...car, etc: [] }
     if (car.fuelings === undefined && car.etc === undefined) {
         carData = { ...carData, fuelings: [], etc: [] }
     }
+    nextFuelIndex = carData.fuelings.length
 
     const yourFueling = carData.fuelings.find(
+        (item) => item.fuelingId === changing.fuelingId
+    )
+    const thisFuelIndex = carData.fuelings.findIndex(
         (item) => item.fuelingId === changing.fuelingId
     )
 
@@ -67,8 +76,10 @@ function NewFuelContainer({
     }
 
     useEffect(() => {
+        // Добавление пустых массивов (т.к. firebase не поддерживает пустые массивы)
         if (car.fuelings === undefined) initFuelArray(car.carId)
         if (car.etc === undefined) initEtcArray(car.carId)
+        // Установка данных редактируемой заправки
         setNewFuel({
             fuelingId: yourFuelingId,
             date: yourDate,
@@ -82,11 +93,32 @@ function NewFuelContainer({
         })
     }, [])
 
+    // Обновление или добавление топлива
+    const onAddFuelCar = () => {
+        if (yourFueling) {
+            patchUserFuel(newFuel, thisCarIndex, thisFuelIndex).then(
+                (response) => {
+                    if (response.statusText === 'OK') {
+                        addFuelCar(newFuel)
+                    }
+                }
+            )
+        } else {
+            patchUserFuel(newFuel, thisCarIndex, nextFuelIndex).then(
+                (response) => {
+                    if (response.statusText === 'OK') {
+                        addFuelCar(newFuel)
+                    }
+                }
+            )
+        }
+    }
+
     return (
         <NewFuel
             newFuel={newFuel}
             car={carData}
-            addFuelCar={addFuelCar}
+            onAddFuelCar={onAddFuelCar}
             changeDateFuel={changeDateFuel}
             changeDistanceFuel={changeDistanceFuel}
             changeMarkFuel={changeMarkFuel}
@@ -104,8 +136,8 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {
-    addFuelCar,
     setNewFuel,
+    addFuelCar,
     changeDateFuel,
     changeDistanceFuel,
     changeMarkFuel,
