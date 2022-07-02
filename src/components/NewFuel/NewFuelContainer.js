@@ -18,7 +18,7 @@ import {
     initEtcArray,
     addFuelCar,
 } from '../../redux/userDataReducer'
-import { patchUserFuel } from '../../api/api'
+import { userDataAPI } from '../../api/api'
 
 function NewFuelContainer({
     newFuel,
@@ -96,21 +96,21 @@ function NewFuelContainer({
     // Обновление или добавление топлива
     const onAddFuelCar = () => {
         if (yourFueling) {
-            patchUserFuel(newFuel, thisCarIndex, thisFuelIndex).then(
-                (response) => {
+            userDataAPI
+                .patchUserFuel(newFuel, thisCarIndex, thisFuelIndex)
+                .then((response) => {
                     if (response.statusText === 'OK') {
                         addFuelCar(newFuel)
                     }
-                }
-            )
+                })
         } else {
-            patchUserFuel(newFuel, thisCarIndex, nextFuelIndex).then(
-                (response) => {
+            userDataAPI
+                .patchUserFuel(newFuel, thisCarIndex, nextFuelIndex)
+                .then((response) => {
                     if (response.statusText === 'OK') {
                         addFuelCar(newFuel)
                     }
-                }
-            )
+                })
         }
     }
 
