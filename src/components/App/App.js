@@ -17,12 +17,12 @@ import ModalProvider from '../../contexts/ModalContext/ModalContextProvider'
 import { getNowDateMS } from '../../redux/dateFunctions'
 import { setUserData } from '../../redux/userDataReducer'
 import { setUser } from '../../redux/authReducer'
-import { getUserData } from '../../api/api'
+import { userDataAPI } from '../../api/api'
 
 function App(props) {
     useEffect(() => {
         if (props.state.userData === null && props.state.auth.isAuth) {
-            getUserData().then((response) => {
+            userDataAPI.getUserData().then((response) => {
                 props.setUser(
                     response.data.userId,
                     response.data.login,
