@@ -43,6 +43,7 @@ function NewCarContainer({
     changeCarId,
     nextCarIndex,
     thisCarIndex,
+    userId,
 }) {
     // Установка carId в зависимости от новой или редактируемой машины
     useEffect(() => {
@@ -57,15 +58,15 @@ function NewCarContainer({
     // Обновление или добавление машины
     const onAddUserCar = () => {
         if (yourCar !== null) {
-            patchUserCarThunkCreator(0, newCar, thisCarIndex)
+            patchUserCarThunkCreator(userId, newCar, thisCarIndex)
         } else {
-            patchUserCarThunkCreator(0, newCar, nextCarIndex)
+            patchUserCarThunkCreator(userId, newCar, nextCarIndex)
         }
     }
 
     // Удаление машины
     const onDelUserCar = () => {
-        deleteUserCarThunkCreator(0, thisCarIndex, newCar.carId)
+        deleteUserCarThunkCreator(userId, thisCarIndex, newCar.carId)
     }
 
     return (
@@ -88,6 +89,7 @@ function NewCarContainer({
 
 const mapStateToProps = (state) => ({
     newCar: state.newCar,
+    userId: state.auth.userId,
 })
 
 export default connect(mapStateToProps, {
