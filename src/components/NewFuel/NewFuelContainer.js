@@ -37,6 +37,7 @@ function NewFuelContainer({
     initFuelArray,
     initEtcArray,
     thisCarIndex,
+    userId,
 }) {
     const yourFuelingId = fuelingId !== null ? fuelingId : changing.fuelingId
     const yourDate = date !== null ? date : changing.fuelingId
@@ -95,23 +96,19 @@ function NewFuelContainer({
     // Обновление или добавление топлива
     const onAddFuelCar = () => {
         if (yourFueling) {
-            patchUserFuelThunkCreator(0, newFuel, thisCarIndex, thisFuelIndex)
-            // userDataAPI
-            //     .patchUserFuel(newFuel, thisCarIndex, thisFuelIndex)
-            //     .then((response) => {
-            //         if (response.statusText === 'OK') {
-            //             addFuelCar(newFuel)
-            //         }
-            //     })
+            patchUserFuelThunkCreator(
+                userId,
+                newFuel,
+                thisCarIndex,
+                thisFuelIndex
+            )
         } else {
-            patchUserFuelThunkCreator(0, newFuel, thisCarIndex, nextFuelIndex)
-            // userDataAPI
-            //     .patchUserFuel(newFuel, thisCarIndex, nextFuelIndex)
-            //     .then((response) => {
-            //         if (response.statusText === 'OK') {
-            //             addFuelCar(newFuel)
-            //         }
-            //     })
+            patchUserFuelThunkCreator(
+                userId,
+                newFuel,
+                thisCarIndex,
+                nextFuelIndex
+            )
         }
     }
 
@@ -134,6 +131,7 @@ function NewFuelContainer({
 const mapStateToProps = (state) => ({
     newFuel: state.newFuel,
     changing: state.changing,
+    userId: state.auth.userId,
 })
 
 export default connect(mapStateToProps, {
