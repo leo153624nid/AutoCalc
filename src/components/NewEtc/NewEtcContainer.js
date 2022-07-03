@@ -35,6 +35,7 @@ function NewEtcContainer({
     initFuelArray,
     initEtcArray,
     thisCarIndex,
+    userId,
 }) {
     const yourEtcId = etcId !== null ? etcId : changing.etcId
     const yourDate = date !== null ? date : changing.etcId
@@ -88,23 +89,9 @@ function NewEtcContainer({
     // Обновление или добавление прочих расходов
     const onAddEtcCar = () => {
         if (yourEtc) {
-            patchUserEtcThunkCreator(0, newEtc, thisCarIndex, thisEtcIndex)
-            // userDataAPI
-            //     .patchUserEtc(newEtc, thisCarIndex, thisEtcIndex)
-            //     .then((response) => {
-            //         if (response.statusText === 'OK') {
-            //             addEtcCar(newEtc)
-            //         }
-            //     })
+            patchUserEtcThunkCreator(userId, newEtc, thisCarIndex, thisEtcIndex)
         } else {
-            patchUserEtcThunkCreator(0, newEtc, thisCarIndex, nextEtcIndex)
-            // userDataAPI
-            //     .patchUserEtc(newEtc, thisCarIndex, nextEtcIndex)
-            //     .then((response) => {
-            //         if (response.statusText === 'OK') {
-            //             addEtcCar(newEtc)
-            //         }
-            //     })
+            patchUserEtcThunkCreator(userId, newEtc, thisCarIndex, nextEtcIndex)
         }
     }
 
@@ -126,6 +113,7 @@ function NewEtcContainer({
 const mapStateToProps = (state) => ({
     newEtc: state.newEtc,
     changing: state.changing,
+    userId: state.auth.userId,
 })
 
 export default connect(mapStateToProps, {
