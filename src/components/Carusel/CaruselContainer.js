@@ -1,6 +1,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react'
+import { Navigate } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { changeCarusel } from '../../redux/userDataReducer'
 import { clearCar } from '../../redux/newCarReducer'
@@ -16,6 +17,7 @@ function CaruselContainer({
     clearFuel,
     clearEtc,
     сlearChanging,
+    isAuth,
 }) {
     useEffect(() => {
         clearCar()
@@ -24,7 +26,11 @@ function CaruselContainer({
         сlearChanging()
     }, [])
 
-    if (!userData) {
+    // Если не авторизован то редирект на страницу логина
+    if (!isAuth) return <Navigate replace to="/login" />
+
+    // Если нет машин у пользователя - рендерится усеченный вариант
+    if (!userData.userCars) {
         return <Carusel carusel={null} changeCarusel={changeCarusel} />
     }
 
@@ -33,6 +39,7 @@ function CaruselContainer({
 
 const mapStateToProps = (state) => ({
     userData: state.userData,
+    isAuth: state.auth.isAuth,
 })
 
 export default connect(mapStateToProps, {
