@@ -26,7 +26,7 @@ const database = getDatabase(app)
 const storage = getStorage(app)
 
 // Функция загрузки картинки в firebase storage
-export const uploadCarPic = async (file) => {
+export const uploadCarPic = (file, dispatch, changeCarPic) => {
     // Create the file metadata
     /** @type {any} */
     const metadata = {
@@ -74,13 +74,10 @@ export const uploadCarPic = async (file) => {
         },
         () => {
             // Upload completed successfully, now we can get the download URL
-            // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            //     console.log('File available at', downloadURL)
-            // })
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                console.log('File available at', downloadURL)
+                dispatch(changeCarPic(downloadURL))
+            })
         }
     )
-
-    const response = await getDownloadURL(uploadTask.snapshot.ref)
-    console.log(response)
-    return response
 }
