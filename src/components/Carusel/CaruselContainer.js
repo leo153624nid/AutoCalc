@@ -19,6 +19,7 @@ function CaruselContainer({
     сlearChanging,
     isAuth,
 }) {
+    // Сброс состояний редактируемых страниц если ушел со страницы не подтвердив
     useEffect(() => {
         clearCar()
         clearFuel()
