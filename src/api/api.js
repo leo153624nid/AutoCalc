@@ -6,11 +6,6 @@ const axiosInstance = axios.create({
         'https://autocalculato-default-rtdb.europe-west1.firebasedatabase.app/users/',
 })
 
-const axiosFBStorageInstance = axios.create({
-    baseURL:
-        'https://console.firebase.google.com/project/autocalculato/storage/autocalculato.appspot.com/files/',
-})
-
 export const userDataAPI = {
     // Получить данные пользователя
     getUserData(userId) {
@@ -57,9 +52,5 @@ export const userDataAPI = {
         return axiosInstance.delete(
             `${userId}/userCars/${carIndex}/etc/${etcIndex}.json`
         )
-    },
-    // Обновить картинку машины, !!!!!! ДОДЕЛАТЬ !!!!!
-    patchCarPic() {
-        return axiosFBStorageInstance.patch(``)
     },
 }
