@@ -437,10 +437,8 @@ export const deleteUserEtc =
     }
 
 // Обновление картинки машины
-export const updateUserCarPic = (carPicFile) => async (dispatch) => {
-    const response = await uploadCarPic(carPicFile)
-
-    dispatch(changeCarPic(response))
+export const updateUserCarPic = (carPicFile) => (dispatch) => {
+    uploadCarPic(carPicFile, dispatch, changeCarPic)
 }
 
 export default userDataReducer
