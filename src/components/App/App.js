@@ -20,7 +20,7 @@ import { getUserDataThunkCreator } from '../../redux/userDataReducer'
 function App(props) {
     // Получение данных пользователя
     useEffect(() => {
-        if (props.state.userData === null && props.state.auth.isAuth) {
+        if (props.state.userData.userId === null && props.state.auth.isAuth) {
             props.getUserDataThunkCreator(0)
         }
     }, [])
@@ -29,7 +29,7 @@ function App(props) {
     let nextCarIndex = 0
 
     // Если данных пользователя нет то рендерится усеченный вариант
-    if (!props.state.userData) {
+    if (!props.state.userData.userCars) {
         return (
             <ModalProvider>
                 <div className={s.App}>
