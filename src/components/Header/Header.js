@@ -19,7 +19,7 @@ function Header({ auth }) {
                 </NavLink>
             </div>
 
-            <div className={s.AddCarBtn}>
+            <div className={`${s.AddCarBtn} ${!auth.isAuth ? s.hide : ''}`}>
                 <AddCarBtn />
             </div>
         </header>
