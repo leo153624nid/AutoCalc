@@ -2,6 +2,7 @@ import { createReducer } from '@reduxjs/toolkit'
 import { setUser } from './authReducer'
 import { changeCarPic } from './newCarReducer'
 import { userDataAPI } from '../api/api'
+import { uploadCarPic } from '../database/firebase'
 // import userData from '../database/CurrentUser.json'
 
 const initialState = {
@@ -358,7 +359,7 @@ export const setCarData = (car) => ({
 
 // Thunks
 // Получение данных пользователя
-export const getUserDataThunkCreator = (userId) => (dispatch) => {
+export const getUserData = (userId) => (dispatch) => {
     userDataAPI.getUserData(userId).then((data) => {
         dispatch(setUserData(data))
         dispatch(setUser(data.userId, data.login, data.email, data.userName))
@@ -366,25 +367,23 @@ export const getUserDataThunkCreator = (userId) => (dispatch) => {
 }
 
 // Добавление или редактирование машины
-export const patchUserCarThunkCreator =
-    (userId, car, index) => async (dispatch) => {
-        const response = await userDataAPI.patchUserCar(userId, car, index)
-        if (response.statusText === 'OK') {
-            dispatch(addUserCar(car))
-        }
+export const patchUserCar = (userId, car, index) => async (dispatch) => {
+    const response = await userDataAPI.patchUserCar(userId, car, index)
+    if (response.statusText === 'OK') {
+        dispatch(addUserCar(car))
     }
+}
 
 // Удаление машины
-export const deleteUserCarThunkCreator =
-    (userId, index, carId) => async (dispatch) => {
-        const response = await userDataAPI.deleteUserCar(userId, index)
-        if (response.statusText === 'OK') {
-            dispatch(delUserCar(carId))
-        }
+export const deleteUserCar = (userId, index, carId) => async (dispatch) => {
+    const response = await userDataAPI.deleteUserCar(userId, index)
+    if (response.statusText === 'OK') {
+        dispatch(delUserCar(carId))
     }
+}
 
 // Добавление или редактирование заправки
-export const patchUserFuelThunkCreator =
+export const patchUserFuel =
     (userId, fuel, carIndex, fuelIndex) => async (dispatch) => {
         const response = await userDataAPI.patchUserFuel(
             userId,
@@ -398,7 +397,7 @@ export const patchUserFuelThunkCreator =
     }
 
 // Удаление заправки
-export const deleteUserFuelThunkCreator =
+export const deleteUserFuel =
     (userId, carIndex, fuelIndex, carId, fuelingId) => async (dispatch) => {
         const response = await userDataAPI.deleteUserFuel(
             userId,
@@ -411,7 +410,7 @@ export const deleteUserFuelThunkCreator =
     }
 
 // Добавление или редактирование прочих расходов
-export const patchUserEtcThunkCreator =
+export const patchUserEtc =
     (userId, etc, carIndex, etcIndex) => async (dispatch) => {
         const response = await userDataAPI.patchUserEtc(
             userId,
@@ -425,7 +424,7 @@ export const patchUserEtcThunkCreator =
     }
 
 // Удаление прочих расходов
-export const deleteUserEtcThunkCreator =
+export const deleteUserEtc =
     (userId, carIndex, etcIndex, carId, etcId) => async (dispatch) => {
         const response = await userDataAPI.deleteUserEtc(
             userId,
@@ -437,12 +436,11 @@ export const deleteUserEtcThunkCreator =
         }
     }
 
-// Обновление картинки машины, !!!!!! ДОДЕЛАТЬ !!!!!!!!
-// export const updateUserCarPicThunkCreator = (carPic) => async (dispatch) => {
-//     const response = await userDataAPI.patchCarPic(carPic)
-//     if (response.statusText === 'OK') {
-//         dispatch(changeCarPic(response.data))
-//     }
-// }
+// Обновление картинки машины
+export const updateUserCarPic = (carPicFile) => async (dispatch) => {
+    const response = await uploadCarPic(carPicFile)
+
+    dispatch(changeCarPic(response))
+}
 
 export default userDataReducer
