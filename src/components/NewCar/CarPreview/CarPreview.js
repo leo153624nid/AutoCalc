@@ -1,11 +1,8 @@
-/* eslint-disable default-case */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-
-import { uploadCarPic } from '../../../database/firebase'
 import s from './CarPreview.module.css'
 
 function CarPreview({
@@ -13,26 +10,18 @@ function CarPreview({
     yourCar,
     onAddUserCar,
     onDelUserCar,
-    changeCarPic,
+    onUpdateCarPic,
 }) {
-    const onUpdateCarPic = (e) => {
-        const file = e.target.files[0]
-
-        const downloadUrl = uploadCarPic(file)
-        console.log(downloadUrl)
-        changeCarPic(downloadUrl)
-    }
-
     return (
         <div className={s.CarPreview}>
+            <input
+                className={`${s.picInput}`}
+                type="file"
+                onChange={(e) => {
+                    onUpdateCarPic(e)
+                }}
+            />
             <div className={s.carPic}>
-                <input
-                    className={`${s.picInput}`}
-                    type="file"
-                    onChange={(e) => {
-                        onUpdateCarPic(e)
-                    }}
-                />
                 {newCar.carPic === '' ? (
                     <div />
                 ) : (
