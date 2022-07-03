@@ -15,7 +15,7 @@ import {
 import {
     initFuelArray,
     initEtcArray,
-    patchUserEtcThunkCreator,
+    patchUserEtc,
 } from '../../redux/userDataReducer'
 
 function NewEtcContainer({
@@ -23,7 +23,7 @@ function NewEtcContainer({
     car,
     etcId,
     date,
-    patchUserEtcThunkCreator,
+    patchUserEtc,
     setNewEtc,
     changeDateEtc,
     changeDistanceEtc,
@@ -89,9 +89,9 @@ function NewEtcContainer({
     // Обновление или добавление прочих расходов
     const onAddEtcCar = () => {
         if (yourEtc) {
-            patchUserEtcThunkCreator(userId, newEtc, thisCarIndex, thisEtcIndex)
+            patchUserEtc(userId, newEtc, thisCarIndex, thisEtcIndex)
         } else {
-            patchUserEtcThunkCreator(userId, newEtc, thisCarIndex, nextEtcIndex)
+            patchUserEtc(userId, newEtc, thisCarIndex, nextEtcIndex)
         }
     }
 
@@ -118,7 +118,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
     setNewEtc,
-    patchUserEtcThunkCreator,
+    patchUserEtc,
     changeDateEtc,
     changeDistanceEtc,
     changeMarkEtc,
