@@ -3,7 +3,14 @@ import { setUser } from './authReducer'
 import { userDataAPI } from '../api/api'
 // import userData from '../database/CurrentUser.json'
 
-const initialState = null
+const initialState = {
+    userId: null,
+    login: null,
+    email: null,
+    userName: null,
+    userCars: null,
+    carusel: null,
+}
 
 const SET_USER_DATA = 'SET_USER_DATA'
 const INIT_FUEL_ARRAY = 'INIT_FUEL_ARRAY'
