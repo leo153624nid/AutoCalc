@@ -10,6 +10,7 @@
     width: 100%;
     height: 35vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border: 5px dotted rgb(199, 201, 201);
@@ -83,4 +84,10 @@
     border-radius: 6px;
     text-decoration: none;
     margin: 9vh 0 20px 0;
+}
+
+.picInput {
+    width: 100%;
+    height: 100%;
+    /* display: none; */
 }

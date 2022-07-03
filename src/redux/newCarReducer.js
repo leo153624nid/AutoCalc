@@ -126,10 +126,10 @@ export const changeNotes = (notes) => ({
     notes,
 })
 
-// Смена картинки машины !!!!! ДОДЕЛАТЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-export const changeCarPic = () => ({
+// Смена картинки машины
+export const changeCarPic = (url) => ({
     type: CHANGE_CARPIC,
-    carPic: '',
+    carPic: url,
 })
 
 // Смена carId машины

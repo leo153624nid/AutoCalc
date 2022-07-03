@@ -5,7 +5,7 @@
         {
             "carId": 1368662400000,
             "carName": "BMW e46 318i",
-            "carPic": "https://firebasestorage.googleapis.com/v0/b/autocalculato.appspot.com/o/e46.JPG?alt=media&token=d417bd80-fb6f-4249-81d7-9fcc27c3c74b",
+            "carPic": "https://firebasestorage.googleapis.com/v0/b/autocalculato.appspot.com/o/images%2Fe46.JPG?alt=media&token=5ad495f9-705b-4a5e-8949-a8b52a34fc10",
             "distance": 244447,
             "fuelConsumptions": 9.1,
             "etcConsumptions": 360464,
@@ -172,7 +172,7 @@
         {
             "carId": 1526774400000,
             "carName": "BMW e83 30i",
-            "carPic": "https://firebasestorage.googleapis.com/v0/b/autocalculato.appspot.com/o/e83.jpg?alt=media&token=fbe5c253-70d1-47ee-8fe5-64035a6b9b08",
+            "carPic": "https://firebasestorage.googleapis.com/v0/b/autocalculato.appspot.com/o/images%2Fe83.jpg?alt=media&token=5ae2eb0e-c972-47b1-921b-6876a38663ec",
             "distance": 181206,
             "fuelConsumptions": 15.1,
             "etcConsumptions": 549994,
@@ -339,7 +339,7 @@
         {
             "carId": 1494892800000,
             "carName": "NISSAN b14 1.6",
-            "carPic": "https://firebasestorage.googleapis.com/v0/b/autocalculato.appspot.com/o/b14.jpeg?alt=media&token=56aacddd-4044-4f45-8610-7baa921b1c99",
+            "carPic": "https://firebasestorage.googleapis.com/v0/b/autocalculato.appspot.com/o/images%2Fb14.jpeg?alt=media&token=99e19788-bbb8-4ab4-b4af-122e983e5db9",
             "distance": 322499,
             "fuelConsumptions": 8.3,
             "etcConsumptions": 91958,

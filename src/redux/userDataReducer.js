@@ -1,5 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit'
 import { setUser } from './authReducer'
+import { changeCarPic } from './newCarReducer'
 import { userDataAPI } from '../api/api'
 // import userData from '../database/CurrentUser.json'
 
@@ -435,5 +436,13 @@ export const deleteUserEtcThunkCreator =
             dispatch(delEtcCar(carId, etcId))
         }
     }
+
+// Обновление картинки машины, !!!!!! ДОДЕЛАТЬ !!!!!!!!
+// export const updateUserCarPicThunkCreator = (carPic) => async (dispatch) => {
+//     const response = await userDataAPI.patchCarPic(carPic)
+//     if (response.statusText === 'OK') {
+//         dispatch(changeCarPic(response.data))
+//     }
+// }
 
 export default userDataReducer

@@ -1,31 +1,43 @@
+/* eslint-disable default-case */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+
+import { uploadCarPic } from '../../../database/firebase'
 import s from './CarPreview.module.css'
 
 function CarPreview({
-    changeCarPic,
     newCar,
     yourCar,
     onAddUserCar,
     onDelUserCar,
+    changeCarPic,
 }) {
+    const onUpdateCarPic = (e) => {
+        const file = e.target.files[0]
+
+        const downloadUrl = uploadCarPic(file)
+        console.log(downloadUrl)
+        changeCarPic(downloadUrl)
+    }
+
     return (
         <div className={s.CarPreview}>
-            <div
-                onClick={() => {
-                    /* Доделать !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
-                    alert('Извините, добавление картинок пока не работает!')
-                    console.log(
-                        'Извините, добавление картинок пока не работает!'
-                    )
-                    changeCarPic()
-                }}
-                className={s.carPic}
-            >
-                <img src={newCar.carPic} alt="Добавить фото машины" />
+            <div className={s.carPic}>
+                <input
+                    className={`${s.picInput}`}
+                    type="file"
+                    onChange={(e) => {
+                        onUpdateCarPic(e)
+                    }}
+                />
+                {newCar.carPic === '' ? (
+                    <div />
+                ) : (
+                    <img src={newCar.carPic} alt="фото машины" />
+                )}
             </div>
 
             <div className={s.CarName}>
