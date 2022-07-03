@@ -16,13 +16,13 @@ import ChangeFuelAndEtcContainer from '../ChangeFuelAndEtc/ChangeFuelAndEtcConta
 import Login from '../Login/Login'
 import ModalProvider from '../../contexts/ModalContext/ModalContextProvider'
 import { getNowDateMS } from '../../redux/dateFunctions'
-import { getUserDataThunkCreator } from '../../redux/userDataReducer'
+import { getUserData } from '../../redux/userDataReducer'
 
 function App(props) {
     // Получение данных пользователя
     useEffect(() => {
         if (props.state.userData.userId === null && props.state.auth.isAuth) {
-            props.getUserDataThunkCreator(0)
+            props.getUserData(0)
         }
     }, [])
 
@@ -238,5 +238,5 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {
-    getUserDataThunkCreator,
+    getUserData,
 })(App)
