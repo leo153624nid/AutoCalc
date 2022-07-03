@@ -1,0 +1,13 @@
+.login {
+    height: 85vh;
+    width: 100%;
+    background-color: rgb(85, 85, 88);
+    background-image: url(../../img/bmw_e86_4_4.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    color: antiquewhite;
+}
