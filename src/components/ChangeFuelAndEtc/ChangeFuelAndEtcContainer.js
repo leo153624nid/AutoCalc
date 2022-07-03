@@ -30,6 +30,7 @@ function ChangeFuelAndEtcContainer({
     let items = 1
     let carData = { ...car }
 
+    // Инициализация пустых массивов т.к. Firebase database не поддерживает пустые массивы
     if (car.fuelings === undefined) carData = { ...car, fuelings: [] }
     if (car.etc === undefined) carData = { ...car, etc: [] }
     if (car.fuelings === undefined && car.etc === undefined) {
