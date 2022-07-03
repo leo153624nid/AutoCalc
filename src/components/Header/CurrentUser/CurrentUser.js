@@ -12,7 +12,7 @@ function CurrentUser({ auth }) {
                 </NavLink>
             ) : (
                 <NavLink to="/login" className={s.btn}>
-                    login
+                    log in
                 </NavLink>
             )}
         </div>
