@@ -11,10 +11,7 @@ import {
     changeEtcId,
     changeCurrentPage,
 } from '../../redux/changeConsumptionsReducer'
-import {
-    deleteUserFuelThunkCreator,
-    deleteUserEtcThunkCreator,
-} from '../../redux/userDataReducer'
+import { deleteUserFuel, deleteUserEtc } from '../../redux/userDataReducer'
 import { getThisDate } from '../../redux/dateFunctions'
 import ChangeFuelAndEtc from './ChangeFuelAndEtc'
 
@@ -26,8 +23,8 @@ function ChangeFuelAndEtcContainer({
     fuelNotEtc,
     changeCurrentPage,
     thisCarIndex,
-    deleteUserFuelThunkCreator,
-    deleteUserEtcThunkCreator,
+    deleteUserFuel,
+    deleteUserEtc,
     userId,
 }) {
     let items = 1
@@ -75,7 +72,7 @@ function ChangeFuelAndEtcContainer({
 
     // Удаление заправки
     const onDelFuelCar = (thisFuelIndex, fuelingId) => {
-        deleteUserFuelThunkCreator(
+        deleteUserFuel(
             userId,
             thisCarIndex,
             thisFuelIndex,
@@ -86,13 +83,7 @@ function ChangeFuelAndEtcContainer({
 
     // Удаление прочих расходов
     const onDelEtcCar = (thisEtcIndex, etcId) => {
-        deleteUserEtcThunkCreator(
-            userId,
-            thisCarIndex,
-            thisEtcIndex,
-            carData.carId,
-            etcId
-        )
+        deleteUserEtc(userId, thisCarIndex, thisEtcIndex, carData.carId, etcId)
     }
 
     // Если редактируем fuel расходы
@@ -207,8 +198,8 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
     changeFuelingId,
-    deleteUserFuelThunkCreator,
+    deleteUserFuel,
     changeEtcId,
-    deleteUserEtcThunkCreator,
+    deleteUserEtc,
     changeCurrentPage,
 })(ChangeFuelAndEtcContainer)
