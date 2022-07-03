@@ -13,6 +13,7 @@ import NewCarContainer from '../NewCar/NewCarContainer'
 import NewFuelContainer from '../NewFuel/NewFuelContainer'
 import NewEtcContainer from '../NewEtc/NewEtcContainer'
 import ChangeFuelAndEtcContainer from '../ChangeFuelAndEtc/ChangeFuelAndEtcContainer'
+import Login from '../Login/Login'
 import ModalProvider from '../../contexts/ModalContext/ModalContextProvider'
 import { getNowDateMS } from '../../redux/dateFunctions'
 import { getUserDataThunkCreator } from '../../redux/userDataReducer'
@@ -48,6 +49,8 @@ function App(props) {
                                 />
                             }
                         />
+
+                        <Route path="/login" element={<Login />} />
                     </Routes>
                     <div className={s.Footer}>
                         <Footer />
@@ -219,6 +222,8 @@ function App(props) {
                         }
                     />
                     {grafList}
+
+                    <Route path="/login" element={<Login />} />
                 </Routes>
                 <div className={s.Footer}>
                     <Footer />
