@@ -15,8 +15,9 @@ import {
     changeCarId,
 } from '../../redux/newCarReducer'
 import {
-    patchUserCarThunkCreator,
-    deleteUserCarThunkCreator,
+    patchUserCar,
+    deleteUserCar,
+    updateUserCarPic,
 } from '../../redux/userDataReducer'
 import NewCar from './NewCar'
 
@@ -29,8 +30,9 @@ const getNewCarId = () => {
 function NewCarContainer({
     newCar,
     yourCar,
-    patchUserCarThunkCreator,
-    deleteUserCarThunkCreator,
+    patchUserCar,
+    deleteUserCar,
+    updateUserCarPic,
     setCar,
     changeCarName,
     changeDistance,
@@ -58,15 +60,23 @@ function NewCarContainer({
     // Обновление или добавление машины
     const onAddUserCar = () => {
         if (yourCar !== null) {
-            patchUserCarThunkCreator(userId, newCar, thisCarIndex)
+            patchUserCar(userId, newCar, thisCarIndex)
         } else {
-            patchUserCarThunkCreator(userId, newCar, nextCarIndex)
+            patchUserCar(userId, newCar, nextCarIndex)
         }
     }
 
     // Удаление машины
     const onDelUserCar = () => {
-        deleteUserCarThunkCreator(userId, thisCarIndex, newCar.carId)
+        deleteUserCar(userId, thisCarIndex, newCar.carId)
+    }
+
+    // Обновление картинки машины, загрузка в хранилище
+    const onUpdateCarPic = (e) => {
+        if (e.target.files.length) {
+            const file = e.target.files[0]
+            updateUserCarPic(file)
+        }
     }
 
     return (
@@ -83,6 +93,7 @@ function NewCarContainer({
             changeCarPic={changeCarPic}
             onAddUserCar={onAddUserCar}
             onDelUserCar={onDelUserCar}
+            onUpdateCarPic={onUpdateCarPic}
         />
     )
 }
@@ -93,8 +104,9 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, {
-    patchUserCarThunkCreator,
-    deleteUserCarThunkCreator,
+    patchUserCar,
+    deleteUserCar,
+    updateUserCarPic,
     setCar,
     changeCarName,
     changeDistance,
