@@ -365,70 +365,75 @@ export const getUserDataThunkCreator = (userId) => (dispatch) => {
 }
 
 // Добавление или редактирование машины
-export const patchUserCarThunkCreator = (userId, car, index) => (dispatch) => {
-    userDataAPI.patchUserCar(userId, car, index).then((response) => {
+export const patchUserCarThunkCreator =
+    (userId, car, index) => async (dispatch) => {
+        const response = await userDataAPI.patchUserCar(userId, car, index)
         if (response.statusText === 'OK') {
             dispatch(addUserCar(car))
         }
-    })
-}
+    }
 
 // Удаление машины
 export const deleteUserCarThunkCreator =
-    (userId, index, carId) => (dispatch) => {
-        userDataAPI.deleteUserCar(userId, index).then((response) => {
-            if (response.statusText === 'OK') {
-                dispatch(delUserCar(carId))
-            }
-        })
+    (userId, index, carId) => async (dispatch) => {
+        const response = await userDataAPI.deleteUserCar(userId, index)
+        if (response.statusText === 'OK') {
+            dispatch(delUserCar(carId))
+        }
     }
 
 // Добавление или редактирование заправки
 export const patchUserFuelThunkCreator =
-    (userId, fuel, carIndex, fuelIndex) => (dispatch) => {
-        userDataAPI
-            .patchUserFuel(userId, fuel, carIndex, fuelIndex)
-            .then((response) => {
-                if (response.statusText === 'OK') {
-                    dispatch(addFuelCar(fuel))
-                }
-            })
+    (userId, fuel, carIndex, fuelIndex) => async (dispatch) => {
+        const response = await userDataAPI.patchUserFuel(
+            userId,
+            fuel,
+            carIndex,
+            fuelIndex
+        )
+        if (response.statusText === 'OK') {
+            dispatch(addFuelCar(fuel))
+        }
     }
 
 // Удаление заправки
 export const deleteUserFuelThunkCreator =
-    (userId, carIndex, fuelIndex, carId, fuelingId) => (dispatch) => {
-        userDataAPI
-            .deleteUserFuel(userId, carIndex, fuelIndex)
-            .then((response) => {
-                if (response.statusText === 'OK') {
-                    dispatch(delFuelCar(carId, fuelingId))
-                }
-            })
+    (userId, carIndex, fuelIndex, carId, fuelingId) => async (dispatch) => {
+        const response = await userDataAPI.deleteUserFuel(
+            userId,
+            carIndex,
+            fuelIndex
+        )
+        if (response.statusText === 'OK') {
+            dispatch(delFuelCar(carId, fuelingId))
+        }
     }
 
 // Добавление или редактирование прочих расходов
 export const patchUserEtcThunkCreator =
-    (userId, etc, carIndex, etcIndex) => (dispatch) => {
-        userDataAPI
-            .patchUserEtc(userId, etc, carIndex, etcIndex)
-            .then((response) => {
-                if (response.statusText === 'OK') {
-                    dispatch(addEtcCar(etc))
-                }
-            })
+    (userId, etc, carIndex, etcIndex) => async (dispatch) => {
+        const response = await userDataAPI.patchUserEtc(
+            userId,
+            etc,
+            carIndex,
+            etcIndex
+        )
+        if (response.statusText === 'OK') {
+            dispatch(addEtcCar(etc))
+        }
     }
 
 // Удаление прочих расходов
 export const deleteUserEtcThunkCreator =
-    (userId, carIndex, etcIndex, carId, etcId) => (dispatch) => {
-        userDataAPI
-            .deleteUserEtc(userId, carIndex, etcIndex)
-            .then((response) => {
-                if (response.statusText === 'OK') {
-                    dispatch(delEtcCar(carId, etcId))
-                }
-            })
+    (userId, carIndex, etcIndex, carId, etcId) => async (dispatch) => {
+        const response = await userDataAPI.deleteUserEtc(
+            userId,
+            carIndex,
+            etcIndex
+        )
+        if (response.statusText === 'OK') {
+            dispatch(delEtcCar(carId, etcId))
+        }
     }
 
 export default userDataReducer
