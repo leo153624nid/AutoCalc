@@ -8,6 +8,7 @@ import Graf from './Graf'
 import { getNowDateMS } from '../../redux/dateFunctions'
 
 function GrafContainer({ carData, сlearChanging, setCarData }) {
+    // Сброс изменяемых данных к начальным значениеям
     useEffect(() => {
         сlearChanging()
     }, [сlearChanging])
@@ -42,6 +43,7 @@ function GrafContainer({ carData, сlearChanging, setCarData }) {
     }
     car = { ...carData }
 
+    // Определение "средних" статистических значений
     if (car.fuelings.length > 0) {
         yourDistance = Math.floor(
             car.fuelings.at(-1).distance - car.fuelings.at(0).distance
@@ -72,6 +74,7 @@ function GrafContainer({ carData, сlearChanging, setCarData }) {
         itogo / ((getNowDateMS() - car.carId) / 86400000)
     )
 
+    // Установка данных "средних" значений
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         setCarData({
