@@ -18,6 +18,7 @@ import { getNowDateMS } from '../../redux/dateFunctions'
 import { getUserDataThunkCreator } from '../../redux/userDataReducer'
 
 function App(props) {
+    // Получение данных пользователя
     useEffect(() => {
         if (props.state.userData === null && props.state.auth.isAuth) {
             props.getUserDataThunkCreator(0)
