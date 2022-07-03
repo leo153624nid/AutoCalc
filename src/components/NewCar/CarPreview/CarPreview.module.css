@@ -14,11 +14,9 @@
     justify-content: center;
     align-items: center;
     border: 5px dotted rgb(199, 201, 201);
-    margin-top: 3vh;
 }
 
 .carPic img {
-    /* width: 90%; */
     max-height: 35vh;
     object-fit: fill;
 }
@@ -87,7 +85,12 @@
 }
 
 .picInput {
-    width: 100%;
-    height: 100%;
-    /* display: none; */
+    width: 22vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(199, 201, 201);
+    border-radius: 6px;
+    text-decoration: none;
 }
