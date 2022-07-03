@@ -28,6 +28,7 @@ function ChangeFuelAndEtcContainer({
     thisCarIndex,
     deleteUserFuelThunkCreator,
     deleteUserEtcThunkCreator,
+    userId,
 }) {
     let items = 1
     let carData = { ...car }
@@ -75,7 +76,7 @@ function ChangeFuelAndEtcContainer({
     // Удаление заправки
     const onDelFuelCar = (thisFuelIndex, fuelingId) => {
         deleteUserFuelThunkCreator(
-            0,
+            userId,
             thisCarIndex,
             thisFuelIndex,
             carData.carId,
@@ -86,7 +87,7 @@ function ChangeFuelAndEtcContainer({
     // Удаление прочих расходов
     const onDelEtcCar = (thisEtcIndex, etcId) => {
         deleteUserEtcThunkCreator(
-            0,
+            userId,
             thisCarIndex,
             thisEtcIndex,
             carData.carId,
@@ -201,6 +202,7 @@ function ChangeFuelAndEtcContainer({
 
 const mapStateToProps = (state) => ({
     currentPage: state.changing.currentPage,
+    userId: state.auth.userId,
 })
 
 export default connect(mapStateToProps, {
