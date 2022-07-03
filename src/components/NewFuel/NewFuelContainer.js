@@ -16,7 +16,7 @@ import {
 import {
     initFuelArray,
     initEtcArray,
-    patchUserFuelThunkCreator,
+    patchUserFuel,
 } from '../../redux/userDataReducer'
 
 function NewFuelContainer({
@@ -24,7 +24,7 @@ function NewFuelContainer({
     car,
     fuelingId,
     date,
-    patchUserFuelThunkCreator,
+    patchUserFuel,
     setNewFuel,
     changeDateFuel,
     changeDistanceFuel,
@@ -96,19 +96,9 @@ function NewFuelContainer({
     // Обновление или добавление топлива
     const onAddFuelCar = () => {
         if (yourFueling) {
-            patchUserFuelThunkCreator(
-                userId,
-                newFuel,
-                thisCarIndex,
-                thisFuelIndex
-            )
+            patchUserFuel(userId, newFuel, thisCarIndex, thisFuelIndex)
         } else {
-            patchUserFuelThunkCreator(
-                userId,
-                newFuel,
-                thisCarIndex,
-                nextFuelIndex
-            )
+            patchUserFuel(userId, newFuel, thisCarIndex, nextFuelIndex)
         }
     }
 
@@ -136,7 +126,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
     setNewFuel,
-    patchUserFuelThunkCreator,
+    patchUserFuel,
     changeDateFuel,
     changeDistanceFuel,
     changeMarkFuel,
